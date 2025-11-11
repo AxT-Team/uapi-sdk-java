@@ -1,0 +1,15 @@
+
+
+# GetNetworkWhois200ResponseOneOf
+
+### 文本格式响应 当 `format=text` 或未指定时，`whois` 字段包含原始的WHOIS查询文本。这保留了最完整的信息，适合需要自行解析或展示原始数据的场景。
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**code** | **Integer** |  |  [optional] |
+|**whois** | **String** | **WHOIS原始文本**  返回未经处理的原始WHOIS查询结果文本。 |  [optional] |
+
+
+

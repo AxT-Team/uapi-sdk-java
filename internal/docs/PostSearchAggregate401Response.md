@@ -1,0 +1,15 @@
+
+
+# PostSearchAggregate401Response
+
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**code** | **String** |  |  [optional] |
+|**message** | **String** |  |  [optional] |
+|**timestamp** | **OffsetDateTime** |  |  [optional] |
+
+
+
