@@ -1,6 +1,6 @@
 # uapi-sdk-java
 
-![Banner](./banner.png)
+![Banner](https://raw.githubusercontent.com/AxT-Team/uapi-sdk-java/main/banner.png)
 
 [![Java](https://img.shields.io/badge/Java-17+-EA2D2F?style=flat-square&logo=openjdk&logoColor=white)](https://adoptium.net/)
 [![Docs](https://img.shields.io/badge/Docs-uapis.cn-2EAE5D?style=flat-square)](https://uapis.cn/)
@@ -71,3 +71,4 @@ public class Demo {
 ## 文档
 
 访问 [UApi文档首页](https://uapis.cn/docs/introduction) 并选择任意接口，向下滚动到 **快速启动** 区块即可看到最新的 Java 示例代码。
+
