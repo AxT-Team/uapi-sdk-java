@@ -2,7 +2,7 @@
 
 UAPI
 - API version: 1.0.0
-  - Build date: 2025-11-11T14:56:09.257300600+08:00[Asia/Shanghai]
+  - Build date: 2025-11-11T15:37:17.258797600+08:00[Asia/Shanghai]
   - Generator version: 7.17.0
 
 UAPI 官方接口文档

@@ -3,8 +3,19 @@ on:
   push:
     tags: ['v*.*.*']
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
-      - run: echo "Release placeholder - customize per registry"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - run: mvn -q -Dmaven.test.skip=true package
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            target/*.jar
+          generate_release_notes: true
