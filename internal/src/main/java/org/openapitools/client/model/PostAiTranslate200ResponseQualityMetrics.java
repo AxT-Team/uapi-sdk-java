@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * 翻译质量指标，仅在单个翻译时返回。
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-11T15:37:17.258797600+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostAiTranslate200ResponseQualityMetrics {
   public static final String SERIALIZED_NAME_FLUENCY_SCORE = "fluency_score";
   @SerializedName(SERIALIZED_NAME_FLUENCY_SCORE)

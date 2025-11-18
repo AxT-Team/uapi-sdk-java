@@ -266,6 +266,9 @@ docs/PostTextMd5Request.md
 docs/PostTextMd5Verify200Response.md
 docs/PostTextMd5Verify400Response.md
 docs/PostTextMd5VerifyRequest.md
+docs/PostTranslateStream400Response.md
+docs/PostTranslateStream500Response.md
+docs/PostTranslateStreamRequest.md
 docs/PostTranslateText200Response.md
 docs/PostTranslateText400Response.md
 docs/PostTranslateText500Response.md
@@ -573,6 +576,9 @@ src/main/java/org/openapitools/client/model/PostTextMd5Request.java
 src/main/java/org/openapitools/client/model/PostTextMd5Verify200Response.java
 src/main/java/org/openapitools/client/model/PostTextMd5Verify400Response.java
 src/main/java/org/openapitools/client/model/PostTextMd5VerifyRequest.java
+src/main/java/org/openapitools/client/model/PostTranslateStream400Response.java
+src/main/java/org/openapitools/client/model/PostTranslateStream500Response.java
+src/main/java/org/openapitools/client/model/PostTranslateStreamRequest.java
 src/main/java/org/openapitools/client/model/PostTranslateText200Response.java
 src/main/java/org/openapitools/client/model/PostTranslateText400Response.java
 src/main/java/org/openapitools/client/model/PostTranslateText500Response.java
@@ -580,3 +586,6 @@ src/main/java/org/openapitools/client/model/PostTranslateTextRequest.java
 src/main/java/org/openapitools/client/model/PostWebTomarkdownAsync202Response.java
 src/main/java/org/openapitools/client/model/PostWebTomarkdownAsync400Response.java
 src/main/java/org/openapitools/client/model/SingleEndpoint.java
+src/test/java/org/openapitools/client/model/PostTranslateStream400ResponseTest.java
+src/test/java/org/openapitools/client/model/PostTranslateStream500ResponseTest.java
+src/test/java/org/openapitools/client/model/PostTranslateStreamRequestTest.java

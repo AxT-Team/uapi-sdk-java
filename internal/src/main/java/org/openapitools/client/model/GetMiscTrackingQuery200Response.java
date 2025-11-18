@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetMiscTrackingQuery200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-11T15:37:17.258797600+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscTrackingQuery200Response {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)

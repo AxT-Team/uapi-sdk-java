@@ -2,7 +2,7 @@
 
 UAPI
 - API version: 1.0.0
-  - Build date: 2025-11-11T15:37:17.258797600+08:00[Asia/Shanghai]
+  - Build date: 2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]
   - Generator version: 7.17.0
 
 UAPI 官方接口文档
@@ -186,6 +186,7 @@ Class | Method | HTTP request | Description
 *TextApi* | [**postTextMd5Verify**](docs/TextApi.md#postTextMd5Verify) | **POST** /text/md5/verify | 校验MD5哈希值
 *TranslateApi* | [**getAiTranslateLanguages**](docs/TranslateApi.md#getAiTranslateLanguages) | **GET** /ai/translate/languages | 获取AI翻译支持的语言和配置
 *TranslateApi* | [**postAiTranslate**](docs/TranslateApi.md#postAiTranslate) | **POST** /ai/translate | AI智能翻译
+*TranslateApi* | [**postTranslateStream**](docs/TranslateApi.md#postTranslateStream) | **POST** /translate/stream | 流式翻译（中英互译）
 *TranslateApi* | [**postTranslateText**](docs/TranslateApi.md#postTranslateText) | **POST** /translate/text | 多语言文本翻译
 *WebParseApi* | [**getWebTomarkdownAsyncStatus**](docs/WebParseApi.md#getWebTomarkdownAsyncStatus) | **GET** /web/tomarkdown/async/{task_id} | 查询网页转换任务状态和结果
 *WebParseApi* | [**getWebparseExtractimages**](docs/WebParseApi.md#getWebparseExtractimages) | **GET** /webparse/extractimages | 提取网页中的所有图片
@@ -447,6 +448,9 @@ Class | Method | HTTP request | Description
  - [PostTextMd5Verify200Response](docs/PostTextMd5Verify200Response.md)
  - [PostTextMd5Verify400Response](docs/PostTextMd5Verify400Response.md)
  - [PostTextMd5VerifyRequest](docs/PostTextMd5VerifyRequest.md)
+ - [PostTranslateStream400Response](docs/PostTranslateStream400Response.md)
+ - [PostTranslateStream500Response](docs/PostTranslateStream500Response.md)
+ - [PostTranslateStreamRequest](docs/PostTranslateStreamRequest.md)
  - [PostTranslateText200Response](docs/PostTranslateText200Response.md)
  - [PostTranslateText400Response](docs/PostTranslateText400Response.md)
  - [PostTranslateText500Response](docs/PostTranslateText500Response.md)

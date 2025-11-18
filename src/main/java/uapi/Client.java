@@ -487,6 +487,11 @@ public class Client {
             String path = "/ai/translate";
             return request("POST", path, q, null);
         }
+        public Object postTranslateStream(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            String path = "/translate/stream";
+            return request("POST", path, q, null);
+        }
         public Object postTranslateText(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("to_lang")) q.put("to_lang", args.get("to_lang"));

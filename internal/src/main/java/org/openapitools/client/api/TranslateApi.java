@@ -34,6 +34,9 @@ import org.openapitools.client.model.PostAiTranslate401Response;
 import org.openapitools.client.model.PostAiTranslate429Response;
 import org.openapitools.client.model.PostAiTranslate500Response;
 import org.openapitools.client.model.PostAiTranslateRequest;
+import org.openapitools.client.model.PostTranslateStream400Response;
+import org.openapitools.client.model.PostTranslateStream500Response;
+import org.openapitools.client.model.PostTranslateStreamRequest;
 import org.openapitools.client.model.PostTranslateText200Response;
 import org.openapitools.client.model.PostTranslateText400Response;
 import org.openapitools.client.model.PostTranslateText500Response;
@@ -352,6 +355,142 @@ public class TranslateApi {
 
         okhttp3.Call localVarCall = postAiTranslateValidateBeforeCall(targetLang, postAiTranslateRequest, _callback);
         Type localVarReturnType = new TypeToken<PostAiTranslate200Response>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for postTranslateStream
+     * @param postTranslateStreamRequest 包含翻译参数的JSON对象 (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> SSE流式响应。Content-Type为text/event-stream </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> 请求参数错误 </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> 翻译服务错误 </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTranslateStreamCall(@javax.annotation.Nonnull PostTranslateStreamRequest postTranslateStreamRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = postTranslateStreamRequest;
+
+        // create path and map variables
+        String localVarPath = "/translate/stream";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/event-stream",
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] {  };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postTranslateStreamValidateBeforeCall(@javax.annotation.Nonnull PostTranslateStreamRequest postTranslateStreamRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'postTranslateStreamRequest' is set
+        if (postTranslateStreamRequest == null) {
+            throw new ApiException("Missing the required parameter 'postTranslateStreamRequest' when calling postTranslateStream(Async)");
+        }
+
+        return postTranslateStreamCall(postTranslateStreamRequest, _callback);
+
+    }
+
+    /**
+     * 流式翻译（中英互译）
+     * 想让翻译结果像打字机一样逐字显示出来？这个流式翻译接口能实现这种效果。  ## 功能概述 不同于传统翻译API一次性返回完整结果，这个接口会实时地、一个字一个字地把翻译内容推给你（就像ChatGPT回复消息那样），非常适合用在聊天应用、直播字幕等需要即时反馈的场景。  ## 它能做什么 - **中英互译**：支持中文和英文之间的双向翻译 - **自动识别**：不确定源语言？设置为 &#x60;auto&#x60; 让我们自动检测 - **逐字返回**：翻译结果会像打字机一样逐字流式返回，用户体验更流畅 - **音频朗读**：部分翻译结果会附带音频链接，方便朗读  ## 支持的语言 目前专注于中英互译，支持以下选项： - &#x60;中文&#x60;（简体/繁体） - &#x60;英文&#x60; - &#x60;auto&#x60;（自动检测）
+     * @param postTranslateStreamRequest 包含翻译参数的JSON对象 (required)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> SSE流式响应。Content-Type为text/event-stream </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> 请求参数错误 </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> 翻译服务错误 </td><td>  -  </td></tr>
+     </table>
+     */
+    public String postTranslateStream(@javax.annotation.Nonnull PostTranslateStreamRequest postTranslateStreamRequest) throws ApiException {
+        ApiResponse<String> localVarResp = postTranslateStreamWithHttpInfo(postTranslateStreamRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * 流式翻译（中英互译）
+     * 想让翻译结果像打字机一样逐字显示出来？这个流式翻译接口能实现这种效果。  ## 功能概述 不同于传统翻译API一次性返回完整结果，这个接口会实时地、一个字一个字地把翻译内容推给你（就像ChatGPT回复消息那样），非常适合用在聊天应用、直播字幕等需要即时反馈的场景。  ## 它能做什么 - **中英互译**：支持中文和英文之间的双向翻译 - **自动识别**：不确定源语言？设置为 &#x60;auto&#x60; 让我们自动检测 - **逐字返回**：翻译结果会像打字机一样逐字流式返回，用户体验更流畅 - **音频朗读**：部分翻译结果会附带音频链接，方便朗读  ## 支持的语言 目前专注于中英互译，支持以下选项： - &#x60;中文&#x60;（简体/繁体） - &#x60;英文&#x60; - &#x60;auto&#x60;（自动检测）
+     * @param postTranslateStreamRequest 包含翻译参数的JSON对象 (required)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> SSE流式响应。Content-Type为text/event-stream </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> 请求参数错误 </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> 翻译服务错误 </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<String> postTranslateStreamWithHttpInfo(@javax.annotation.Nonnull PostTranslateStreamRequest postTranslateStreamRequest) throws ApiException {
+        okhttp3.Call localVarCall = postTranslateStreamValidateBeforeCall(postTranslateStreamRequest, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * 流式翻译（中英互译） (asynchronously)
+     * 想让翻译结果像打字机一样逐字显示出来？这个流式翻译接口能实现这种效果。  ## 功能概述 不同于传统翻译API一次性返回完整结果，这个接口会实时地、一个字一个字地把翻译内容推给你（就像ChatGPT回复消息那样），非常适合用在聊天应用、直播字幕等需要即时反馈的场景。  ## 它能做什么 - **中英互译**：支持中文和英文之间的双向翻译 - **自动识别**：不确定源语言？设置为 &#x60;auto&#x60; 让我们自动检测 - **逐字返回**：翻译结果会像打字机一样逐字流式返回，用户体验更流畅 - **音频朗读**：部分翻译结果会附带音频链接，方便朗读  ## 支持的语言 目前专注于中英互译，支持以下选项： - &#x60;中文&#x60;（简体/繁体） - &#x60;英文&#x60; - &#x60;auto&#x60;（自动检测）
+     * @param postTranslateStreamRequest 包含翻译参数的JSON对象 (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table border="1">
+       <caption>Response Details</caption>
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> SSE流式响应。Content-Type为text/event-stream </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> 请求参数错误 </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td> 翻译服务错误 </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call postTranslateStreamAsync(@javax.annotation.Nonnull PostTranslateStreamRequest postTranslateStreamRequest, final ApiCallback<String> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postTranslateStreamValidateBeforeCall(postTranslateStreamRequest, _callback);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
