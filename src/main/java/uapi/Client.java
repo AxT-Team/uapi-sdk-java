@@ -33,20 +33,20 @@ public class Client {
         public Object getClipzyGet(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("id")) q.put("id", args.get("id"));
-            String path = "/api/get";
+            String path = "/api/v1/api/get";
             return request("GET", path, q, null);
         }
         public Object getClipzyRaw(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("path".equals("query") && args != null && args.containsKey("id")) q.put("id", args.get("id"));
             if ("query".equals("query") && args != null && args.containsKey("key")) q.put("key", args.get("key"));
-            String path = "/api/raw/{id}";
+            String path = "/api/v1/api/raw/{id}";
             if (args != null && args.containsKey("id")) path = path.replace("{" + "id" + "}", String.valueOf(args.get("id")));
             return request("GET", path, q, null);
         }
         public Object postClipzyStore(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/api/store";
+            String path = "/api/v1/api/store";
             return request("POST", path, q, null);
         }
     }
@@ -55,12 +55,12 @@ public class Client {
         public Object getConvertUnixtime(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("time")) q.put("time", args.get("time"));
-            String path = "/convert/unixtime";
+            String path = "/api/v1/convert/unixtime";
             return request("GET", path, q, null);
         }
         public Object postConvertJson(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/convert/json";
+            String path = "/api/v1/convert/json";
             return request("POST", path, q, null);
         }
     }
@@ -68,7 +68,7 @@ public class Client {
     public class DailyApi {
         public Object getDailyNewsImage(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/daily/news-image";
+            String path = "/api/v1/daily/news-image";
             return request("GET", path, q, null);
         }
     }
@@ -76,25 +76,25 @@ public class Client {
     public class GameApi {
         public Object getGameEpicFree(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/game/epic-free";
+            String path = "/api/v1/game/epic-free";
             return request("GET", path, q, null);
         }
         public Object getGameMinecraftHistoryid(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("uuid")) q.put("uuid", args.get("uuid"));
-            String path = "/game/minecraft/historyid";
+            String path = "/api/v1/game/minecraft/historyid";
             return request("GET", path, q, null);
         }
         public Object getGameMinecraftServerstatus(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("server")) q.put("server", args.get("server"));
-            String path = "/game/minecraft/serverstatus";
+            String path = "/api/v1/game/minecraft/serverstatus";
             return request("GET", path, q, null);
         }
         public Object getGameMinecraftUserinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("username")) q.put("username", args.get("username"));
-            String path = "/game/minecraft/userinfo";
+            String path = "/api/v1/game/minecraft/userinfo";
             return request("GET", path, q, null);
         }
         public Object getGameSteamSummary(Map<String, Object> args) throws Exception {
@@ -103,7 +103,7 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("id")) q.put("id", args.get("id"));
             if ("query".equals("query") && args != null && args.containsKey("id3")) q.put("id3", args.get("id3"));
             if ("query".equals("query") && args != null && args.containsKey("key")) q.put("key", args.get("key"));
-            String path = "/game/steam/summary";
+            String path = "/api/v1/game/steam/summary";
             return request("GET", path, q, null);
         }
     }
@@ -116,19 +116,19 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("s")) q.put("s", args.get("s"));
             if ("query".equals("query") && args != null && args.containsKey("d")) q.put("d", args.get("d"));
             if ("query".equals("query") && args != null && args.containsKey("r")) q.put("r", args.get("r"));
-            String path = "/avatar/gravatar";
+            String path = "/api/v1/avatar/gravatar";
             return request("GET", path, q, null);
         }
         public Object getImageBingDaily(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/image/bing-daily";
+            String path = "/api/v1/image/bing-daily";
             return request("GET", path, q, null);
         }
         public Object getImageMotou(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("qq")) q.put("qq", args.get("qq"));
             if ("query".equals("query") && args != null && args.containsKey("bg_color")) q.put("bg_color", args.get("bg_color"));
-            String path = "/image/motou";
+            String path = "/api/v1/image/motou";
             return request("GET", path, q, null);
         }
         public Object getImageQrcode(Map<String, Object> args) throws Exception {
@@ -136,35 +136,35 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("text")) q.put("text", args.get("text"));
             if ("query".equals("query") && args != null && args.containsKey("size")) q.put("size", args.get("size"));
             if ("query".equals("query") && args != null && args.containsKey("format")) q.put("format", args.get("format"));
-            String path = "/image/qrcode";
+            String path = "/api/v1/image/qrcode";
             return request("GET", path, q, null);
         }
         public Object getImageTobase64(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
-            String path = "/image/tobase64";
+            String path = "/api/v1/image/tobase64";
             return request("GET", path, q, null);
         }
         public Object postImageCompress(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("level")) q.put("level", args.get("level"));
             if ("query".equals("query") && args != null && args.containsKey("format")) q.put("format", args.get("format"));
-            String path = "/image/compress";
+            String path = "/api/v1/image/compress";
             return request("POST", path, q, null);
         }
         public Object postImageFrombase64(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/image/frombase64";
+            String path = "/api/v1/image/frombase64";
             return request("POST", path, q, null);
         }
         public Object postImageMotou(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/image/motou";
+            String path = "/api/v1/image/motou";
             return request("POST", path, q, null);
         }
         public Object postImageSpeechless(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/image/speechless";
+            String path = "/api/v1/image/speechless";
             return request("POST", path, q, null);
         }
         public Object postImageSvg(Map<String, Object> args) throws Exception {
@@ -173,7 +173,7 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("width")) q.put("width", args.get("width"));
             if ("query".equals("query") && args != null && args.containsKey("height")) q.put("height", args.get("height"));
             if ("query".equals("query") && args != null && args.containsKey("quality")) q.put("quality", args.get("quality"));
-            String path = "/image/svg";
+            String path = "/api/v1/image/svg";
             return request("POST", path, q, null);
         }
     }
@@ -183,24 +183,24 @@ public class Client {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("month")) q.put("month", args.get("month"));
             if ("query".equals("query") && args != null && args.containsKey("day")) q.put("day", args.get("day"));
-            String path = "/history/programmer";
+            String path = "/api/v1/history/programmer";
             return request("GET", path, q, null);
         }
         public Object getHistoryProgrammerToday(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/history/programmer/today";
+            String path = "/api/v1/history/programmer/today";
             return request("GET", path, q, null);
         }
         public Object getMiscHotboard(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("type")) q.put("type", args.get("type"));
-            String path = "/misc/hotboard";
+            String path = "/api/v1/misc/hotboard";
             return request("GET", path, q, null);
         }
         public Object getMiscPhoneinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("phone")) q.put("phone", args.get("phone"));
-            String path = "/misc/phoneinfo";
+            String path = "/api/v1/misc/phoneinfo";
             return request("GET", path, q, null);
         }
         public Object getMiscRandomnumber(Map<String, Object> args) throws Exception {
@@ -211,44 +211,44 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("allow_repeat")) q.put("allow_repeat", args.get("allow_repeat"));
             if ("query".equals("query") && args != null && args.containsKey("allow_decimal")) q.put("allow_decimal", args.get("allow_decimal"));
             if ("query".equals("query") && args != null && args.containsKey("decimal_places")) q.put("decimal_places", args.get("decimal_places"));
-            String path = "/misc/randomnumber";
+            String path = "/api/v1/misc/randomnumber";
             return request("GET", path, q, null);
         }
         public Object getMiscTimestamp(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("ts")) q.put("ts", args.get("ts"));
-            String path = "/misc/timestamp";
+            String path = "/api/v1/misc/timestamp";
             return request("GET", path, q, null);
         }
         public Object getMiscTrackingCarriers(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/misc/tracking/carriers";
+            String path = "/api/v1/misc/tracking/carriers";
             return request("GET", path, q, null);
         }
         public Object getMiscTrackingDetect(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("tracking_number")) q.put("tracking_number", args.get("tracking_number"));
-            String path = "/misc/tracking/detect";
+            String path = "/api/v1/misc/tracking/detect";
             return request("GET", path, q, null);
         }
         public Object getMiscTrackingQuery(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("tracking_number")) q.put("tracking_number", args.get("tracking_number"));
             if ("query".equals("query") && args != null && args.containsKey("carrier_code")) q.put("carrier_code", args.get("carrier_code"));
-            String path = "/misc/tracking/query";
+            String path = "/api/v1/misc/tracking/query";
             return request("GET", path, q, null);
         }
         public Object getMiscWeather(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("city")) q.put("city", args.get("city"));
             if ("query".equals("query") && args != null && args.containsKey("adcode")) q.put("adcode", args.get("adcode"));
-            String path = "/misc/weather";
+            String path = "/api/v1/misc/weather";
             return request("GET", path, q, null);
         }
         public Object getMiscWorldtime(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("city")) q.put("city", args.get("city"));
-            String path = "/misc/worldtime";
+            String path = "/api/v1/misc/worldtime";
             return request("GET", path, q, null);
         }
     }
@@ -258,37 +258,37 @@ public class Client {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("domain")) q.put("domain", args.get("domain"));
             if ("query".equals("query") && args != null && args.containsKey("type")) q.put("type", args.get("type"));
-            String path = "/network/dns";
+            String path = "/api/v1/network/dns";
             return request("GET", path, q, null);
         }
         public Object getNetworkIcp(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("domain")) q.put("domain", args.get("domain"));
-            String path = "/network/icp";
+            String path = "/api/v1/network/icp";
             return request("GET", path, q, null);
         }
         public Object getNetworkIpinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("ip")) q.put("ip", args.get("ip"));
             if ("query".equals("query") && args != null && args.containsKey("source")) q.put("source", args.get("source"));
-            String path = "/network/ipinfo";
+            String path = "/api/v1/network/ipinfo";
             return request("GET", path, q, null);
         }
         public Object getNetworkMyip(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("source")) q.put("source", args.get("source"));
-            String path = "/network/myip";
+            String path = "/api/v1/network/myip";
             return request("GET", path, q, null);
         }
         public Object getNetworkPing(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("host")) q.put("host", args.get("host"));
-            String path = "/network/ping";
+            String path = "/api/v1/network/ping";
             return request("GET", path, q, null);
         }
         public Object getNetworkPingmyip(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/network/pingmyip";
+            String path = "/api/v1/network/pingmyip";
             return request("GET", path, q, null);
         }
         public Object getNetworkPortscan(Map<String, Object> args) throws Exception {
@@ -296,26 +296,26 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("host")) q.put("host", args.get("host"));
             if ("query".equals("query") && args != null && args.containsKey("port")) q.put("port", args.get("port"));
             if ("query".equals("query") && args != null && args.containsKey("protocol")) q.put("protocol", args.get("protocol"));
-            String path = "/network/portscan";
+            String path = "/api/v1/network/portscan";
             return request("GET", path, q, null);
         }
         public Object getNetworkUrlstatus(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
-            String path = "/network/urlstatus";
+            String path = "/api/v1/network/urlstatus";
             return request("GET", path, q, null);
         }
         public Object getNetworkWhois(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("domain")) q.put("domain", args.get("domain"));
             if ("query".equals("query") && args != null && args.containsKey("format")) q.put("format", args.get("format"));
-            String path = "/network/whois";
+            String path = "/api/v1/network/whois";
             return request("GET", path, q, null);
         }
         public Object getNetworkWxdomain(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("domain")) q.put("domain", args.get("domain"));
-            String path = "/network/wxdomain";
+            String path = "/api/v1/network/wxdomain";
             return request("GET", path, q, null);
         }
     }
@@ -323,7 +323,7 @@ public class Client {
     public class PoemApi {
         public Object getSaying(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/saying";
+            String path = "/api/v1/saying";
             return request("GET", path, q, null);
         }
     }
@@ -332,26 +332,26 @@ public class Client {
         public Object getAnswerbookAsk(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("question")) q.put("question", args.get("question"));
-            String path = "/answerbook/ask";
+            String path = "/api/v1/answerbook/ask";
             return request("GET", path, q, null);
         }
         public Object getRandomImage(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("category")) q.put("category", args.get("category"));
             if ("query".equals("query") && args != null && args.containsKey("type")) q.put("type", args.get("type"));
-            String path = "/random/image";
+            String path = "/api/v1/random/image";
             return request("GET", path, q, null);
         }
         public Object getRandomString(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("length")) q.put("length", args.get("length"));
             if ("query".equals("query") && args != null && args.containsKey("type")) q.put("type", args.get("type"));
-            String path = "/random/string";
+            String path = "/api/v1/random/string";
             return request("GET", path, q, null);
         }
         public Object postAnswerbookAsk(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/answerbook/ask";
+            String path = "/api/v1/answerbook/ask";
             return request("POST", path, q, null);
         }
     }
@@ -360,7 +360,7 @@ public class Client {
         public Object getGithubRepo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("repo")) q.put("repo", args.get("repo"));
-            String path = "/github/repo";
+            String path = "/api/v1/github/repo";
             return request("GET", path, q, null);
         }
         public Object getSocialBilibiliArchives(Map<String, Object> args) throws Exception {
@@ -370,14 +370,14 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("orderby")) q.put("orderby", args.get("orderby"));
             if ("query".equals("query") && args != null && args.containsKey("ps")) q.put("ps", args.get("ps"));
             if ("query".equals("query") && args != null && args.containsKey("pn")) q.put("pn", args.get("pn"));
-            String path = "/social/bilibili/archives";
+            String path = "/api/v1/social/bilibili/archives";
             return request("GET", path, q, null);
         }
         public Object getSocialBilibiliLiveroom(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("mid")) q.put("mid", args.get("mid"));
             if ("query".equals("query") && args != null && args.containsKey("room_id")) q.put("room_id", args.get("room_id"));
-            String path = "/social/bilibili/liveroom";
+            String path = "/api/v1/social/bilibili/liveroom";
             return request("GET", path, q, null);
         }
         public Object getSocialBilibiliReplies(Map<String, Object> args) throws Exception {
@@ -386,32 +386,32 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("sort")) q.put("sort", args.get("sort"));
             if ("query".equals("query") && args != null && args.containsKey("ps")) q.put("ps", args.get("ps"));
             if ("query".equals("query") && args != null && args.containsKey("pn")) q.put("pn", args.get("pn"));
-            String path = "/social/bilibili/replies";
+            String path = "/api/v1/social/bilibili/replies";
             return request("GET", path, q, null);
         }
         public Object getSocialBilibiliUserinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("uid")) q.put("uid", args.get("uid"));
-            String path = "/social/bilibili/userinfo";
+            String path = "/api/v1/social/bilibili/userinfo";
             return request("GET", path, q, null);
         }
         public Object getSocialBilibiliVideoinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("aid")) q.put("aid", args.get("aid"));
             if ("query".equals("query") && args != null && args.containsKey("bvid")) q.put("bvid", args.get("bvid"));
-            String path = "/social/bilibili/videoinfo";
+            String path = "/api/v1/social/bilibili/videoinfo";
             return request("GET", path, q, null);
         }
         public Object getSocialQqGroupinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("group_id")) q.put("group_id", args.get("group_id"));
-            String path = "/social/qq/groupinfo";
+            String path = "/api/v1/social/qq/groupinfo";
             return request("GET", path, q, null);
         }
         public Object getSocialQqUserinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("qq")) q.put("qq", args.get("qq"));
-            String path = "/social/qq/userinfo";
+            String path = "/api/v1/social/qq/userinfo";
             return request("GET", path, q, null);
         }
     }
@@ -420,13 +420,13 @@ public class Client {
         public Object getStatusRatelimit(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("header".equals("query") && args != null && args.containsKey("Authorization")) q.put("Authorization", args.get("Authorization"));
-            String path = "/status/ratelimit";
+            String path = "/api/v1/status/ratelimit";
             return request("GET", path, q, null);
         }
         public Object getStatusUsage(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("path")) q.put("path", args.get("path"));
-            String path = "/status/usage";
+            String path = "/api/v1/status/usage";
             return request("GET", path, q, null);
         }
     }
@@ -435,42 +435,42 @@ public class Client {
         public Object getTextMd5(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("text")) q.put("text", args.get("text"));
-            String path = "/text/md5";
+            String path = "/api/v1/text/md5";
             return request("GET", path, q, null);
         }
         public Object postTextAesDecrypt(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/text/aes/decrypt";
+            String path = "/api/v1/text/aes/decrypt";
             return request("POST", path, q, null);
         }
         public Object postTextAesEncrypt(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/text/aes/encrypt";
+            String path = "/api/v1/text/aes/encrypt";
             return request("POST", path, q, null);
         }
         public Object postTextAnalyze(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/text/analyze";
+            String path = "/api/v1/text/analyze";
             return request("POST", path, q, null);
         }
         public Object postTextBase64Decode(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/text/base64/decode";
+            String path = "/api/v1/text/base64/decode";
             return request("POST", path, q, null);
         }
         public Object postTextBase64Encode(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/text/base64/encode";
+            String path = "/api/v1/text/base64/encode";
             return request("POST", path, q, null);
         }
         public Object postTextMd5(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/text/md5";
+            String path = "/api/v1/text/md5";
             return request("POST", path, q, null);
         }
         public Object postTextMd5Verify(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/text/md5/verify";
+            String path = "/api/v1/text/md5/verify";
             return request("POST", path, q, null);
         }
     }
@@ -478,24 +478,24 @@ public class Client {
     public class TranslateApi {
         public Object getAiTranslateLanguages(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/ai/translate/languages";
+            String path = "/api/v1/ai/translate/languages";
             return request("GET", path, q, null);
         }
         public Object postAiTranslate(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("target_lang")) q.put("target_lang", args.get("target_lang"));
-            String path = "/ai/translate";
+            String path = "/api/v1/ai/translate";
             return request("POST", path, q, null);
         }
         public Object postTranslateStream(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/translate/stream";
+            String path = "/api/v1/translate/stream";
             return request("POST", path, q, null);
         }
         public Object postTranslateText(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("to_lang")) q.put("to_lang", args.get("to_lang"));
-            String path = "/translate/text";
+            String path = "/api/v1/translate/text";
             return request("POST", path, q, null);
         }
     }
@@ -504,26 +504,26 @@ public class Client {
         public Object getWebTomarkdownAsyncStatus(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("path".equals("query") && args != null && args.containsKey("task_id")) q.put("task_id", args.get("task_id"));
-            String path = "/web/tomarkdown/async/{task_id}";
+            String path = "/api/v1/web/tomarkdown/async/{task_id}";
             if (args != null && args.containsKey("task_id")) path = path.replace("{" + "task_id" + "}", String.valueOf(args.get("task_id")));
             return request("GET", path, q, null);
         }
         public Object getWebparseExtractimages(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
-            String path = "/webparse/extractimages";
+            String path = "/api/v1/webparse/extractimages";
             return request("GET", path, q, null);
         }
         public Object getWebparseMetadata(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
-            String path = "/webparse/metadata";
+            String path = "/api/v1/webparse/metadata";
             return request("GET", path, q, null);
         }
         public Object postWebTomarkdownAsync(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
-            String path = "/web/tomarkdown/async";
+            String path = "/api/v1/web/tomarkdown/async";
             return request("POST", path, q, null);
         }
     }
@@ -532,17 +532,17 @@ public class Client {
         public Object getSensitiveWordAnalyzeQuery(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("keyword")) q.put("keyword", args.get("keyword"));
-            String path = "/sensitive-word/analyze-query";
+            String path = "/api/v1/sensitive-word/analyze-query";
             return request("GET", path, q, null);
         }
         public Object postSensitiveWordAnalyze(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/sensitive-word/analyze";
+            String path = "/api/v1/sensitive-word/analyze";
             return request("POST", path, q, null);
         }
         public Object postSensitiveWordQuickCheck(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/text/profanitycheck";
+            String path = "/api/v1/text/profanitycheck";
             return request("POST", path, q, null);
         }
     }
@@ -550,12 +550,12 @@ public class Client {
     public class ZhiNengSouSuoApi {
         public Object getSearchEngines(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/search/engines";
+            String path = "/api/v1/search/engines";
             return request("GET", path, q, null);
         }
         public Object postSearchAggregate(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
-            String path = "/search/aggregate";
+            String path = "/api/v1/search/aggregate";
             return request("POST", path, q, null);
         }
     }
