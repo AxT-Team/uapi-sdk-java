@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.client.model.GetGameMinecraftHistoryid200ResponseHistoryInner;
+import org.openapitools.client.model.GetGameMinecraftHistoryid200ResponseResultsInner;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,54 +52,167 @@ import java.util.Locale;
 import org.openapitools.client.JSON;
 
 /**
- * GetGameMinecraftHistoryid200Response
+ * 响应结构根据查询参数不同而变化
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetGameMinecraftHistoryid200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
+  public static final String SERIALIZED_NAME_QUERY = "query";
+  @SerializedName(SERIALIZED_NAME_QUERY)
   @javax.annotation.Nullable
-  private Integer code;
+  private String query;
 
-  public static final String SERIALIZED_NAME_HISTORY = "history";
-  @SerializedName(SERIALIZED_NAME_HISTORY)
+  public static final String SERIALIZED_NAME_COUNT = "count";
+  @SerializedName(SERIALIZED_NAME_COUNT)
   @javax.annotation.Nullable
-  private List<GetGameMinecraftHistoryid200ResponseHistoryInner> history = new ArrayList<>();
+  private Integer count;
+
+  public static final String SERIALIZED_NAME_RESULTS = "results";
+  @SerializedName(SERIALIZED_NAME_RESULTS)
+  @javax.annotation.Nullable
+  private List<GetGameMinecraftHistoryid200ResponseResultsInner> results = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   @javax.annotation.Nullable
   private String id;
 
-  public static final String SERIALIZED_NAME_NAME_NUM = "name_num";
-  @SerializedName(SERIALIZED_NAME_NAME_NUM)
-  @javax.annotation.Nullable
-  private Integer nameNum;
-
   public static final String SERIALIZED_NAME_UUID = "uuid";
   @SerializedName(SERIALIZED_NAME_UUID)
   @javax.annotation.Nullable
   private String uuid;
 
+  public static final String SERIALIZED_NAME_NAME_NUM = "name_num";
+  @SerializedName(SERIALIZED_NAME_NAME_NUM)
+  @javax.annotation.Nullable
+  private Integer nameNum;
+
+  public static final String SERIALIZED_NAME_HISTORY = "history";
+  @SerializedName(SERIALIZED_NAME_HISTORY)
+  @javax.annotation.Nullable
+  private List<GetGameMinecraftHistoryid200ResponseHistoryInner> history = new ArrayList<>();
+
   public GetGameMinecraftHistoryid200Response() {
   }
 
-  public GetGameMinecraftHistoryid200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
+  public GetGameMinecraftHistoryid200Response query(@javax.annotation.Nullable String query) {
+    this.query = query;
     return this;
   }
 
   /**
-   * 状态码，200代表成功。
-   * @return code
+   * 【name 查询时返回】查询的用户名。
+   * @return query
    */
   @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
+  public String getQuery() {
+    return query;
   }
 
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
+  public void setQuery(@javax.annotation.Nullable String query) {
+    this.query = query;
+  }
+
+
+  public GetGameMinecraftHistoryid200Response count(@javax.annotation.Nullable Integer count) {
+    this.count = count;
+    return this;
+  }
+
+  /**
+   * 【name 查询时返回】匹配到的用户数量，为 0 时表示未找到。
+   * @return count
+   */
+  @javax.annotation.Nullable
+  public Integer getCount() {
+    return count;
+  }
+
+  public void setCount(@javax.annotation.Nullable Integer count) {
+    this.count = count;
+  }
+
+
+  public GetGameMinecraftHistoryid200Response results(@javax.annotation.Nullable List<GetGameMinecraftHistoryid200ResponseResultsInner> results) {
+    this.results = results;
+    return this;
+  }
+
+  public GetGameMinecraftHistoryid200Response addResultsItem(GetGameMinecraftHistoryid200ResponseResultsInner resultsItem) {
+    if (this.results == null) {
+      this.results = new ArrayList<>();
+    }
+    this.results.add(resultsItem);
+    return this;
+  }
+
+  /**
+   * 【name 查询时返回】匹配用户列表，包含当前用户名或曾用名匹配的所有玩家。
+   * @return results
+   */
+  @javax.annotation.Nullable
+  public List<GetGameMinecraftHistoryid200ResponseResultsInner> getResults() {
+    return results;
+  }
+
+  public void setResults(@javax.annotation.Nullable List<GetGameMinecraftHistoryid200ResponseResultsInner> results) {
+    this.results = results;
+  }
+
+
+  public GetGameMinecraftHistoryid200Response id(@javax.annotation.Nullable String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * 【uuid 查询时返回】玩家当前的用户名。
+   * @return id
+   */
+  @javax.annotation.Nullable
+  public String getId() {
+    return id;
+  }
+
+  public void setId(@javax.annotation.Nullable String id) {
+    this.id = id;
+  }
+
+
+  public GetGameMinecraftHistoryid200Response uuid(@javax.annotation.Nullable String uuid) {
+    this.uuid = uuid;
+    return this;
+  }
+
+  /**
+   * 【uuid 查询时返回】被查询玩家的UUID（带连字符格式）。
+   * @return uuid
+   */
+  @javax.annotation.Nullable
+  public String getUuid() {
+    return uuid;
+  }
+
+  public void setUuid(@javax.annotation.Nullable String uuid) {
+    this.uuid = uuid;
+  }
+
+
+  public GetGameMinecraftHistoryid200Response nameNum(@javax.annotation.Nullable Integer nameNum) {
+    this.nameNum = nameNum;
+    return this;
+  }
+
+  /**
+   * 【uuid 查询时返回】历史名称的总数（包含当前名称）。
+   * @return nameNum
+   */
+  @javax.annotation.Nullable
+  public Integer getNameNum() {
+    return nameNum;
+  }
+
+  public void setNameNum(@javax.annotation.Nullable Integer nameNum) {
+    this.nameNum = nameNum;
   }
 
 
@@ -116,7 +230,7 @@ public class GetGameMinecraftHistoryid200Response {
   }
 
   /**
-   * 一个包含所有历史用户名的数组，按时间倒序排列。
+   * 【uuid 查询时返回】包含所有历史用户名的数组，按时间倒序排列。
    * @return history
    */
   @javax.annotation.Nullable
@@ -126,63 +240,6 @@ public class GetGameMinecraftHistoryid200Response {
 
   public void setHistory(@javax.annotation.Nullable List<GetGameMinecraftHistoryid200ResponseHistoryInner> history) {
     this.history = history;
-  }
-
-
-  public GetGameMinecraftHistoryid200Response id(@javax.annotation.Nullable String id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * 玩家当前的用户名。
-   * @return id
-   */
-  @javax.annotation.Nullable
-  public String getId() {
-    return id;
-  }
-
-  public void setId(@javax.annotation.Nullable String id) {
-    this.id = id;
-  }
-
-
-  public GetGameMinecraftHistoryid200Response nameNum(@javax.annotation.Nullable Integer nameNum) {
-    this.nameNum = nameNum;
-    return this;
-  }
-
-  /**
-   * 历史名称的总数（包含当前名称）。
-   * @return nameNum
-   */
-  @javax.annotation.Nullable
-  public Integer getNameNum() {
-    return nameNum;
-  }
-
-  public void setNameNum(@javax.annotation.Nullable Integer nameNum) {
-    this.nameNum = nameNum;
-  }
-
-
-  public GetGameMinecraftHistoryid200Response uuid(@javax.annotation.Nullable String uuid) {
-    this.uuid = uuid;
-    return this;
-  }
-
-  /**
-   * 被查询玩家的32位无破折号UUID。
-   * @return uuid
-   */
-  @javax.annotation.Nullable
-  public String getUuid() {
-    return uuid;
-  }
-
-  public void setUuid(@javax.annotation.Nullable String uuid) {
-    this.uuid = uuid;
   }
 
 
@@ -196,27 +253,31 @@ public class GetGameMinecraftHistoryid200Response {
       return false;
     }
     GetGameMinecraftHistoryid200Response getGameMinecraftHistoryid200Response = (GetGameMinecraftHistoryid200Response) o;
-    return Objects.equals(this.code, getGameMinecraftHistoryid200Response.code) &&
-        Objects.equals(this.history, getGameMinecraftHistoryid200Response.history) &&
+    return Objects.equals(this.query, getGameMinecraftHistoryid200Response.query) &&
+        Objects.equals(this.count, getGameMinecraftHistoryid200Response.count) &&
+        Objects.equals(this.results, getGameMinecraftHistoryid200Response.results) &&
         Objects.equals(this.id, getGameMinecraftHistoryid200Response.id) &&
+        Objects.equals(this.uuid, getGameMinecraftHistoryid200Response.uuid) &&
         Objects.equals(this.nameNum, getGameMinecraftHistoryid200Response.nameNum) &&
-        Objects.equals(this.uuid, getGameMinecraftHistoryid200Response.uuid);
+        Objects.equals(this.history, getGameMinecraftHistoryid200Response.history);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, history, id, nameNum, uuid);
+    return Objects.hash(query, count, results, id, uuid, nameNum, history);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetGameMinecraftHistoryid200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    history: ").append(toIndentedString(history)).append("\n");
+    sb.append("    query: ").append(toIndentedString(query)).append("\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    results: ").append(toIndentedString(results)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    nameNum: ").append(toIndentedString(nameNum)).append("\n");
     sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
+    sb.append("    nameNum: ").append(toIndentedString(nameNum)).append("\n");
+    sb.append("    history: ").append(toIndentedString(history)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -238,7 +299,7 @@ public class GetGameMinecraftHistoryid200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "history", "id", "name_num", "uuid"));
+    openapiFields = new HashSet<String>(Arrays.asList("query", "count", "results", "id", "uuid", "name_num", "history"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -265,6 +326,29 @@ public class GetGameMinecraftHistoryid200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("query") != null && !jsonObj.get("query").isJsonNull()) && !jsonObj.get("query").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `query` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query").toString()));
+      }
+      if (jsonObj.get("results") != null && !jsonObj.get("results").isJsonNull()) {
+        JsonArray jsonArrayresults = jsonObj.getAsJsonArray("results");
+        if (jsonArrayresults != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("results").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `results` to be an array in the JSON string but got `%s`", jsonObj.get("results").toString()));
+          }
+
+          // validate the optional field `results` (array)
+          for (int i = 0; i < jsonArrayresults.size(); i++) {
+            GetGameMinecraftHistoryid200ResponseResultsInner.validateJsonElement(jsonArrayresults.get(i));
+          };
+        }
+      }
+      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
+      }
+      if ((jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonNull()) && !jsonObj.get("uuid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uuid").toString()));
+      }
       if (jsonObj.get("history") != null && !jsonObj.get("history").isJsonNull()) {
         JsonArray jsonArrayhistory = jsonObj.getAsJsonArray("history");
         if (jsonArrayhistory != null) {
@@ -278,12 +362,6 @@ public class GetGameMinecraftHistoryid200Response {
             GetGameMinecraftHistoryid200ResponseHistoryInner.validateJsonElement(jsonArrayhistory.get(i));
           };
         }
-      }
-      if ((jsonObj.get("id") != null && !jsonObj.get("id").isJsonNull()) && !jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
-      }
-      if ((jsonObj.get("uuid") != null && !jsonObj.get("uuid").isJsonNull()) && !jsonObj.get("uuid").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `uuid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("uuid").toString()));
       }
   }
 

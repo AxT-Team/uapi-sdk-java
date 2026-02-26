@@ -50,13 +50,8 @@ import org.openapitools.client.JSON;
 /**
  * PostImageFrombase64200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostImageFrombase64200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_IMAGE_URL = "image_url";
   @SerializedName(SERIALIZED_NAME_IMAGE_URL)
   @javax.annotation.Nullable
@@ -69,25 +64,6 @@ public class PostImageFrombase64200Response {
 
   public PostImageFrombase64200Response() {
   }
-
-  public PostImageFrombase64200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * 状态码，200代表成功。
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public PostImageFrombase64200Response imageUrl(@javax.annotation.Nullable String imageUrl) {
     this.imageUrl = imageUrl;
@@ -137,21 +113,19 @@ public class PostImageFrombase64200Response {
       return false;
     }
     PostImageFrombase64200Response postImageFrombase64200Response = (PostImageFrombase64200Response) o;
-    return Objects.equals(this.code, postImageFrombase64200Response.code) &&
-        Objects.equals(this.imageUrl, postImageFrombase64200Response.imageUrl) &&
+    return Objects.equals(this.imageUrl, postImageFrombase64200Response.imageUrl) &&
         Objects.equals(this.msg, postImageFrombase64200Response.msg);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, imageUrl, msg);
+    return Objects.hash(imageUrl, msg);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostImageFrombase64200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    msg: ").append(toIndentedString(msg)).append("\n");
     sb.append("}");
@@ -175,7 +149,7 @@ public class PostImageFrombase64200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "image_url", "msg"));
+    openapiFields = new HashSet<String>(Arrays.asList("image_url", "msg"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

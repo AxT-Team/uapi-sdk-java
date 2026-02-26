@@ -51,17 +51,12 @@ import org.openapitools.client.JSON;
 /**
  * GetNetworkPingmyip200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkPingmyip200Response {
   public static final String SERIALIZED_NAME_AVG = "avg";
   @SerializedName(SERIALIZED_NAME_AVG)
   @javax.annotation.Nullable
   private BigDecimal avg;
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
 
   public static final String SERIALIZED_NAME_HOST = "host";
   @SerializedName(SERIALIZED_NAME_HOST)
@@ -107,25 +102,6 @@ public class GetNetworkPingmyip200Response {
 
   public void setAvg(@javax.annotation.Nullable BigDecimal avg) {
     this.avg = avg;
-  }
-
-
-  public GetNetworkPingmyip200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
   }
 
 
@@ -235,7 +211,6 @@ public class GetNetworkPingmyip200Response {
     }
     GetNetworkPingmyip200Response getNetworkPingmyip200Response = (GetNetworkPingmyip200Response) o;
     return Objects.equals(this.avg, getNetworkPingmyip200Response.avg) &&
-        Objects.equals(this.code, getNetworkPingmyip200Response.code) &&
         Objects.equals(this.host, getNetworkPingmyip200Response.host) &&
         Objects.equals(this.ip, getNetworkPingmyip200Response.ip) &&
         Objects.equals(this.location, getNetworkPingmyip200Response.location) &&
@@ -245,7 +220,7 @@ public class GetNetworkPingmyip200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(avg, code, host, ip, location, max, min);
+    return Objects.hash(avg, host, ip, location, max, min);
   }
 
   @Override
@@ -253,7 +228,6 @@ public class GetNetworkPingmyip200Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetNetworkPingmyip200Response {\n");
     sb.append("    avg: ").append(toIndentedString(avg)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    host: ").append(toIndentedString(host)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
@@ -280,7 +254,7 @@ public class GetNetworkPingmyip200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("avg", "code", "host", "ip", "location", "max", "min"));
+    openapiFields = new HashSet<String>(Arrays.asList("avg", "host", "ip", "location", "max", "min"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

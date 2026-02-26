@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * PostSearchAggregate200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostSearchAggregate200Response {
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -168,7 +168,7 @@ public class PostSearchAggregate200Response {
   }
 
   /**
-   * 各搜索引擎的结果数量统计
+   * 各搜索源的结果统计
    * @return sources
    */
   @javax.annotation.Nullable

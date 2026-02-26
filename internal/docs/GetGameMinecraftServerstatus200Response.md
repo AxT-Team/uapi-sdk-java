@@ -7,7 +7,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**code** | **Integer** | 状态码，200代表成功。 |  [optional] |
 |**faviconUrl** | **String** | 服务器图标的 Base64 Data URI。你可以直接在 &#x60;&lt;img&gt;&#x60; 标签的 &#x60;src&#x60; 属性中使用它。 |  [optional] |
 |**ip** | **String** | 服务器解析后的IP地址。 |  [optional] |
 |**maxPlayers** | **Integer** | 服务器配置的最大玩家容量。 |  [optional] |

@@ -50,13 +50,8 @@ import org.openapitools.client.JSON;
 /**
  * GetNetworkPortscan200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkPortscan200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_IP = "ip";
   @SerializedName(SERIALIZED_NAME_IP)
   @javax.annotation.Nullable
@@ -79,25 +74,6 @@ public class GetNetworkPortscan200Response {
 
   public GetNetworkPortscan200Response() {
   }
-
-  public GetNetworkPortscan200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public GetNetworkPortscan200Response ip(@javax.annotation.Nullable String ip) {
     this.ip = ip;
@@ -185,8 +161,7 @@ public class GetNetworkPortscan200Response {
       return false;
     }
     GetNetworkPortscan200Response getNetworkPortscan200Response = (GetNetworkPortscan200Response) o;
-    return Objects.equals(this.code, getNetworkPortscan200Response.code) &&
-        Objects.equals(this.ip, getNetworkPortscan200Response.ip) &&
+    return Objects.equals(this.ip, getNetworkPortscan200Response.ip) &&
         Objects.equals(this.port, getNetworkPortscan200Response.port) &&
         Objects.equals(this.portStatus, getNetworkPortscan200Response.portStatus) &&
         Objects.equals(this.protocol, getNetworkPortscan200Response.protocol);
@@ -194,14 +169,13 @@ public class GetNetworkPortscan200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, ip, port, portStatus, protocol);
+    return Objects.hash(ip, port, portStatus, protocol);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetNetworkPortscan200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    portStatus: ").append(toIndentedString(portStatus)).append("\n");
@@ -227,7 +201,7 @@ public class GetNetworkPortscan200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "ip", "port", "port_status", "protocol"));
+    openapiFields = new HashSet<String>(Arrays.asList("ip", "port", "port_status", "protocol"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

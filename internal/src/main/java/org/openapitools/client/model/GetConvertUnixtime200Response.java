@@ -50,13 +50,8 @@ import org.openapitools.client.JSON;
 /**
  * GetConvertUnixtime200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetConvertUnixtime200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_DATETIME = "datetime";
   @SerializedName(SERIALIZED_NAME_DATETIME)
   @javax.annotation.Nullable
@@ -69,25 +64,6 @@ public class GetConvertUnixtime200Response {
 
   public GetConvertUnixtime200Response() {
   }
-
-  public GetConvertUnixtime200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * 状态码，200代表操作成功。
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public GetConvertUnixtime200Response datetime(@javax.annotation.Nullable String datetime) {
     this.datetime = datetime;
@@ -137,21 +113,19 @@ public class GetConvertUnixtime200Response {
       return false;
     }
     GetConvertUnixtime200Response getConvertUnixtime200Response = (GetConvertUnixtime200Response) o;
-    return Objects.equals(this.code, getConvertUnixtime200Response.code) &&
-        Objects.equals(this.datetime, getConvertUnixtime200Response.datetime) &&
+    return Objects.equals(this.datetime, getConvertUnixtime200Response.datetime) &&
         Objects.equals(this.timestamp, getConvertUnixtime200Response.timestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, datetime, timestamp);
+    return Objects.hash(datetime, timestamp);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetConvertUnixtime200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    datetime: ").append(toIndentedString(datetime)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("}");
@@ -175,7 +149,7 @@ public class GetConvertUnixtime200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "datetime", "timestamp"));
+    openapiFields = new HashSet<String>(Arrays.asList("datetime", "timestamp"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

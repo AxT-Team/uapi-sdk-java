@@ -53,13 +53,8 @@ import org.openapitools.client.JSON;
 /**
  * GetGameEpicFree200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetGameEpicFree200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
@@ -67,25 +62,6 @@ public class GetGameEpicFree200Response {
 
   public GetGameEpicFree200Response() {
   }
-
-  public GetGameEpicFree200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * 状态码，200代表成功。
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public GetGameEpicFree200Response data(@javax.annotation.Nullable List<GetGameEpicFree200ResponseDataInner> data) {
     this.data = data;
@@ -124,20 +100,18 @@ public class GetGameEpicFree200Response {
       return false;
     }
     GetGameEpicFree200Response getGameEpicFree200Response = (GetGameEpicFree200Response) o;
-    return Objects.equals(this.code, getGameEpicFree200Response.code) &&
-        Objects.equals(this.data, getGameEpicFree200Response.data);
+    return Objects.equals(this.data, getGameEpicFree200Response.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, data);
+    return Objects.hash(data);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetGameEpicFree200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -160,7 +134,7 @@ public class GetGameEpicFree200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "data"));
+    openapiFields = new HashSet<String>(Arrays.asList("data"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

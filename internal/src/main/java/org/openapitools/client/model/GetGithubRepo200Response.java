@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.openapitools.client.model.GetGithubRepo200ResponseCollaboratorsInner;
+import org.openapitools.client.model.GetGithubRepo200ResponseLatestRelease;
 import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
@@ -57,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * GetGithubRepo200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetGithubRepo200Response {
   public static final String SERIALIZED_NAME_FULL_NAME = "full_name";
   @SerializedName(SERIALIZED_NAME_FULL_NAME)
@@ -173,6 +174,11 @@ public class GetGithubRepo200Response {
   @SerializedName(SERIALIZED_NAME_MAINTAINERS)
   @javax.annotation.Nullable
   private List<GetGithubRepo200ResponseCollaboratorsInner> maintainers = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_LATEST_RELEASE = "latest_release";
+  @SerializedName(SERIALIZED_NAME_LATEST_RELEASE)
+  @javax.annotation.Nullable
+  private GetGithubRepo200ResponseLatestRelease latestRelease;
 
   public GetGithubRepo200Response() {
   }
@@ -646,6 +652,25 @@ public class GetGithubRepo200Response {
   }
 
 
+  public GetGithubRepo200Response latestRelease(@javax.annotation.Nullable GetGithubRepo200ResponseLatestRelease latestRelease) {
+    this.latestRelease = latestRelease;
+    return this;
+  }
+
+  /**
+   * Get latestRelease
+   * @return latestRelease
+   */
+  @javax.annotation.Nullable
+  public GetGithubRepo200ResponseLatestRelease getLatestRelease() {
+    return latestRelease;
+  }
+
+  public void setLatestRelease(@javax.annotation.Nullable GetGithubRepo200ResponseLatestRelease latestRelease) {
+    this.latestRelease = latestRelease;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -678,7 +703,8 @@ public class GetGithubRepo200Response {
         Objects.equals(this.updatedAt, getGithubRepo200Response.updatedAt) &&
         Objects.equals(this.languages, getGithubRepo200Response.languages) &&
         Objects.equals(this.collaborators, getGithubRepo200Response.collaborators) &&
-        Objects.equals(this.maintainers, getGithubRepo200Response.maintainers);
+        Objects.equals(this.maintainers, getGithubRepo200Response.maintainers) &&
+        Objects.equals(this.latestRelease, getGithubRepo200Response.latestRelease);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -687,7 +713,7 @@ public class GetGithubRepo200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fullName, description, homepage, defaultBranch, primaryBranch, defaultBranchSha, visibility, archived, disabled, fork, language, topics, license, stargazers, forks, openIssues, watchers, pushedAt, createdAt, updatedAt, languages, collaborators, maintainers);
+    return Objects.hash(fullName, description, homepage, defaultBranch, primaryBranch, defaultBranchSha, visibility, archived, disabled, fork, language, topics, license, stargazers, forks, openIssues, watchers, pushedAt, createdAt, updatedAt, languages, collaborators, maintainers, latestRelease);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -724,6 +750,7 @@ public class GetGithubRepo200Response {
     sb.append("    languages: ").append(toIndentedString(languages)).append("\n");
     sb.append("    collaborators: ").append(toIndentedString(collaborators)).append("\n");
     sb.append("    maintainers: ").append(toIndentedString(maintainers)).append("\n");
+    sb.append("    latestRelease: ").append(toIndentedString(latestRelease)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -745,7 +772,7 @@ public class GetGithubRepo200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("full_name", "description", "homepage", "default_branch", "primary_branch", "default_branch_sha", "visibility", "archived", "disabled", "fork", "language", "topics", "license", "stargazers", "forks", "open_issues", "watchers", "pushed_at", "created_at", "updated_at", "languages", "collaborators", "maintainers"));
+    openapiFields = new HashSet<String>(Arrays.asList("full_name", "description", "homepage", "default_branch", "primary_branch", "default_branch_sha", "visibility", "archived", "disabled", "fork", "language", "topics", "license", "stargazers", "forks", "open_issues", "watchers", "pushed_at", "created_at", "updated_at", "languages", "collaborators", "maintainers", "latest_release"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -830,6 +857,10 @@ public class GetGithubRepo200Response {
             GetGithubRepo200ResponseCollaboratorsInner.validateJsonElement(jsonArraymaintainers.get(i));
           };
         }
+      }
+      // validate the optional field `latest_release`
+      if (jsonObj.get("latest_release") != null && !jsonObj.get("latest_release").isJsonNull()) {
+        GetGithubRepo200ResponseLatestRelease.validateJsonElement(jsonObj.get("latest_release"));
       }
   }
 

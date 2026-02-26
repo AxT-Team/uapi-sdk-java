@@ -31,7 +31,6 @@ import org.openapitools.client.model.GetStatusRatelimit200Response;
 import org.openapitools.client.model.GetStatusRatelimit401Response;
 import org.openapitools.client.model.GetStatusUsage200Response;
 import org.openapitools.client.model.GetStatusUsage404Response;
-import org.openapitools.client.model.GetStatusUsage500Response;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -151,7 +150,7 @@ public class StatusApi {
     }
 
     /**
-     * 获取API限流器实时状态
+     * 限流状态
      * 想了解我们API的当前负载情况吗？这个接口为你提供了服务的“心电图”。  ## 功能概述 此接口返回我们后端自适应限流器的实时状态。你可以看到当前并发请求数、并发上限、系统负载、请求接受/拒绝数等核心指标。这对于监控API健康状况和性能表现至关重要。  &gt; [!IMPORTANT] &gt; 此接口为管理接口，需要提供有效的管理员级别API密钥才能访问。  ### 认证方式 请在请求头中添加 &#x60;Authorization: Bearer &lt;你的API密钥&gt;&#x60;。
      * @param authorization Bearer类型的API密钥认证头。例如：&#x60;Bearer sk-xxx&#x60; (required)
      * @return GetStatusRatelimit200Response
@@ -170,7 +169,7 @@ public class StatusApi {
     }
 
     /**
-     * 获取API限流器实时状态
+     * 限流状态
      * 想了解我们API的当前负载情况吗？这个接口为你提供了服务的“心电图”。  ## 功能概述 此接口返回我们后端自适应限流器的实时状态。你可以看到当前并发请求数、并发上限、系统负载、请求接受/拒绝数等核心指标。这对于监控API健康状况和性能表现至关重要。  &gt; [!IMPORTANT] &gt; 此接口为管理接口，需要提供有效的管理员级别API密钥才能访问。  ### 认证方式 请在请求头中添加 &#x60;Authorization: Bearer &lt;你的API密钥&gt;&#x60;。
      * @param authorization Bearer类型的API密钥认证头。例如：&#x60;Bearer sk-xxx&#x60; (required)
      * @return ApiResponse&lt;GetStatusRatelimit200Response&gt;
@@ -190,7 +189,7 @@ public class StatusApi {
     }
 
     /**
-     * 获取API限流器实时状态 (asynchronously)
+     * 限流状态 (asynchronously)
      * 想了解我们API的当前负载情况吗？这个接口为你提供了服务的“心电图”。  ## 功能概述 此接口返回我们后端自适应限流器的实时状态。你可以看到当前并发请求数、并发上限、系统负载、请求接受/拒绝数等核心指标。这对于监控API健康状况和性能表现至关重要。  &gt; [!IMPORTANT] &gt; 此接口为管理接口，需要提供有效的管理员级别API密钥才能访问。  ### 认证方式 请在请求头中添加 &#x60;Authorization: Bearer &lt;你的API密钥&gt;&#x60;。
      * @param authorization Bearer类型的API密钥认证头。例如：&#x60;Bearer sk-xxx&#x60; (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -221,10 +220,8 @@ public class StatusApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> 当查询所有路径时 </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> 未授权 </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> 未找到指定路径的统计数据 </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> 服务器内部错误 </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> 查询某条路径时 </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> 未找到 </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getStatusUsageCall(@javax.annotation.Nullable String path, final ApiCallback _callback) throws ApiException {
@@ -291,10 +288,8 @@ public class StatusApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> 当查询所有路径时 </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> 未授权 </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> 未找到指定路径的统计数据 </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> 服务器内部错误 </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> 查询某条路径时 </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> 未找到 </td><td>  -  </td></tr>
      </table>
      */
     public GetStatusUsage200Response getStatusUsage(@javax.annotation.Nullable String path) throws ApiException {
@@ -312,10 +307,8 @@ public class StatusApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> 当查询所有路径时 </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> 未授权 </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> 未找到指定路径的统计数据 </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> 服务器内部错误 </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> 查询某条路径时 </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> 未找到 </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<GetStatusUsage200Response> getStatusUsageWithHttpInfo(@javax.annotation.Nullable String path) throws ApiException {
@@ -335,10 +328,8 @@ public class StatusApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> 当查询所有路径时 </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> 未授权 </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> 未找到指定路径的统计数据 </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> 服务器内部错误 </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> 查询某条路径时 </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> 未找到 </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call getStatusUsageAsync(@javax.annotation.Nullable String path, final ApiCallback<GetStatusUsage200Response> _callback) throws ApiException {

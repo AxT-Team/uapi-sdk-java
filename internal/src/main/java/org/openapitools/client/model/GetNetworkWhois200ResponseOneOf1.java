@@ -50,13 +50,8 @@ import org.openapitools.client.JSON;
 /**
  * ### JSON格式响应 当 &#x60;format&#x3D;json&#x60; 时，&#x60;whois&#x60; 字段返回结构化的JSON对象。  &gt; [!NOTE] &gt; **注意**：返回的具体字段可能因域名注册局和隐私保护设置而异。某些敏感信息可能会被部分隐藏或标记为 &#x60;REDACTED FOR PRIVACY&#x60;。
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkWhois200ResponseOneOf1 {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_WHOIS = "whois";
   @SerializedName(SERIALIZED_NAME_WHOIS)
   @javax.annotation.Nullable
@@ -64,25 +59,6 @@ public class GetNetworkWhois200ResponseOneOf1 {
 
   public GetNetworkWhois200ResponseOneOf1() {
   }
-
-  public GetNetworkWhois200ResponseOneOf1 code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public GetNetworkWhois200ResponseOneOf1 whois(@javax.annotation.Nullable Object whois) {
     this.whois = whois;
@@ -113,20 +89,18 @@ public class GetNetworkWhois200ResponseOneOf1 {
       return false;
     }
     GetNetworkWhois200ResponseOneOf1 getNetworkWhois200ResponseOneOf1 = (GetNetworkWhois200ResponseOneOf1) o;
-    return Objects.equals(this.code, getNetworkWhois200ResponseOneOf1.code) &&
-        Objects.equals(this.whois, getNetworkWhois200ResponseOneOf1.whois);
+    return Objects.equals(this.whois, getNetworkWhois200ResponseOneOf1.whois);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, whois);
+    return Objects.hash(whois);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetNetworkWhois200ResponseOneOf1 {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    whois: ").append(toIndentedString(whois)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -149,7 +123,7 @@ public class GetNetworkWhois200ResponseOneOf1 {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "whois"));
+    openapiFields = new HashSet<String>(Arrays.asList("whois"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

@@ -137,7 +137,7 @@ public class PoemApi {
     }
 
     /**
-     * 随机获取一句诗词或名言
+     * 一言
      * 想在你的应用里每天展示一句不一样的话，给用户一点小小的惊喜吗？这个“一言”接口就是为此而生。  ## 功能概述 每次调用，它都会从我们精心收集的、包含数千条诗词、动漫台词、名人名言的语料库中，随机返回一条。你可以用它来做网站首页的Slogan、应用的启动语，或者任何需要灵感点缀的地方。
      * @return GetSaying200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -155,7 +155,7 @@ public class PoemApi {
     }
 
     /**
-     * 随机获取一句诗词或名言
+     * 一言
      * 想在你的应用里每天展示一句不一样的话，给用户一点小小的惊喜吗？这个“一言”接口就是为此而生。  ## 功能概述 每次调用，它都会从我们精心收集的、包含数千条诗词、动漫台词、名人名言的语料库中，随机返回一条。你可以用它来做网站首页的Slogan、应用的启动语，或者任何需要灵感点缀的地方。
      * @return ApiResponse&lt;GetSaying200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -174,7 +174,7 @@ public class PoemApi {
     }
 
     /**
-     * 随机获取一句诗词或名言 (asynchronously)
+     * 一言 (asynchronously)
      * 想在你的应用里每天展示一句不一样的话，给用户一点小小的惊喜吗？这个“一言”接口就是为此而生。  ## 功能概述 每次调用，它都会从我们精心收集的、包含数千条诗词、动漫台词、名人名言的语料库中，随机返回一条。你可以用它来做网站首页的Slogan、应用的启动语，或者任何需要灵感点缀的地方。
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

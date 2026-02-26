@@ -5,9 +5,9 @@
 
 ## Properties
 
-| Name | Type | Description | Notes |
+| 参数名 | 参数类型 | 描述 | 备注 |
 |------------ | ------------- | ------------- | -------------|
-|**endpoints** | [**List&lt;EndpointsAggregateEndpointsInner&gt;**](EndpointsAggregateEndpointsInner.md) |  |  [optional] |
+|**endpoints** | [**List<EndpointsAggregateEndpointsInner>**](EndpointsAggregateEndpointsInner.md) |  |  [optional] |
 |**unaggregated** | [**EndpointsAggregateUnaggregated**](EndpointsAggregateUnaggregated.md) |  |  [optional] |
 
 

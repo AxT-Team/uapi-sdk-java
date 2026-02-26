@@ -57,13 +57,8 @@ import org.openapitools.client.JSON;
 /**
  * PostAiTranslate200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostAiTranslate200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   @javax.annotation.Nullable
@@ -101,25 +96,6 @@ public class PostAiTranslate200Response {
 
   public PostAiTranslate200Response() {
   }
-
-  public PostAiTranslate200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public PostAiTranslate200Response message(@javax.annotation.Nullable String message) {
     this.message = message;
@@ -272,8 +248,7 @@ public class PostAiTranslate200Response {
       return false;
     }
     PostAiTranslate200Response postAiTranslate200Response = (PostAiTranslate200Response) o;
-    return Objects.equals(this.code, postAiTranslate200Response.code) &&
-        Objects.equals(this.message, postAiTranslate200Response.message) &&
+    return Objects.equals(this.message, postAiTranslate200Response.message) &&
         Objects.equals(this.isBatch, postAiTranslate200Response.isBatch) &&
         Objects.equals(this.data, postAiTranslate200Response.data) &&
         Objects.equals(this.batchData, postAiTranslate200Response.batchData) &&
@@ -284,14 +259,13 @@ public class PostAiTranslate200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, isBatch, data, batchData, batchSummary, performance, qualityMetrics);
+    return Objects.hash(message, isBatch, data, batchData, batchSummary, performance, qualityMetrics);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostAiTranslate200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    isBatch: ").append(toIndentedString(isBatch)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
@@ -320,7 +294,7 @@ public class PostAiTranslate200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "message", "is_batch", "data", "batch_data", "batch_summary", "performance", "quality_metrics"));
+    openapiFields = new HashSet<String>(Arrays.asList("message", "is_batch", "data", "batch_data", "batch_summary", "performance", "quality_metrics"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

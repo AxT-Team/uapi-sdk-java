@@ -40,6 +40,7 @@ import org.openapitools.client.model.GetGameMinecraftServerstatus502Response;
 import org.openapitools.client.model.GetGameMinecraftUserinfo200Response;
 import org.openapitools.client.model.GetGameMinecraftUserinfo400Response;
 import org.openapitools.client.model.GetGameMinecraftUserinfo404Response;
+import org.openapitools.client.model.GetGameMinecraftUserinfo502Response;
 import org.openapitools.client.model.GetGameSteamSummary200Response;
 import org.openapitools.client.model.GetGameSteamSummary400Response;
 import org.openapitools.client.model.GetGameSteamSummary401Response;
@@ -153,7 +154,7 @@ public class GameApi {
     }
 
     /**
-     * 获取Epic Games免费游戏
+     * Epic 免费游戏
      * 白嫖党的福音来了！想第一时间知道Epic商店本周送了哪些游戏大作吗？  ## 功能概述 这个接口帮你实时追踪Epic Games商店的每周免费游戏活动。无需任何参数，调用后即可获得当前所有免费游戏的完整信息，包括游戏封面、原价、剩余时间等，再也不用担心错过心仪的免费游戏了！  ## 使用场景 - 开发游戏资讯应用或网站 - 制作Epic免费游戏推送机器人 - 为用户提供游戏收藏建议 - 构建个人游戏库管理工具  &gt; [!TIP] &gt; **关于时间格式** &gt; 为了方便不同场景的使用，我们同时提供了可读的时间字符串（如 &#x60;2025/01/10 00:00:00&#x60;）和13位毫秒时间戳。前端显示用字符串，程序逻辑用时间戳
      * @return GetGameEpicFree200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -171,7 +172,7 @@ public class GameApi {
     }
 
     /**
-     * 获取Epic Games免费游戏
+     * Epic 免费游戏
      * 白嫖党的福音来了！想第一时间知道Epic商店本周送了哪些游戏大作吗？  ## 功能概述 这个接口帮你实时追踪Epic Games商店的每周免费游戏活动。无需任何参数，调用后即可获得当前所有免费游戏的完整信息，包括游戏封面、原价、剩余时间等，再也不用担心错过心仪的免费游戏了！  ## 使用场景 - 开发游戏资讯应用或网站 - 制作Epic免费游戏推送机器人 - 为用户提供游戏收藏建议 - 构建个人游戏库管理工具  &gt; [!TIP] &gt; **关于时间格式** &gt; 为了方便不同场景的使用，我们同时提供了可读的时间字符串（如 &#x60;2025/01/10 00:00:00&#x60;）和13位毫秒时间戳。前端显示用字符串，程序逻辑用时间戳
      * @return ApiResponse&lt;GetGameEpicFree200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -190,7 +191,7 @@ public class GameApi {
     }
 
     /**
-     * 获取Epic Games免费游戏 (asynchronously)
+     * Epic 免费游戏 (asynchronously)
      * 白嫖党的福音来了！想第一时间知道Epic商店本周送了哪些游戏大作吗？  ## 功能概述 这个接口帮你实时追踪Epic Games商店的每周免费游戏活动。无需任何参数，调用后即可获得当前所有免费游戏的完整信息，包括游戏封面、原价、剩余时间等，再也不用担心错过心仪的免费游戏了！  ## 使用场景 - 开发游戏资讯应用或网站 - 制作Epic免费游戏推送机器人 - 为用户提供游戏收藏建议 - 构建个人游戏库管理工具  &gt; [!TIP] &gt; **关于时间格式** &gt; 为了方便不同场景的使用，我们同时提供了可读的时间字符串（如 &#x60;2025/01/10 00:00:00&#x60;）和13位毫秒时间戳。前端显示用字符串，程序逻辑用时间戳
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -212,7 +213,8 @@ public class GameApi {
     }
     /**
      * Build call for getGameMinecraftHistoryid
-     * @param uuid 玩家的 Minecraft UUID，请务必使用32位无破折号的格式。 (required)
+     * @param name 玩家的 Minecraft 用户名。使用此参数查询时，会返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家）。 (optional)
+     * @param uuid 玩家的 Minecraft UUID，支持带连字符或不带连字符格式。 (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -220,13 +222,13 @@ public class GameApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> 查询成功！返回该玩家的完整用户名历史记录。 </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> 请求失败。请检查你是否提供了 &#x60;uuid&#x60; 参数，以及它的格式是否为32位无破折号字符串。 </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> 查询成功！根据查询方式返回不同结构： - **uuid 查询**：返回单个用户的历史记录 - **name 查询**：返回匹配用户列表（判断响应中是否有 &#x60;results&#x60; 字段来区分） </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> 请求失败。请检查你是否提供了 &#x60;name&#x60; 或 &#x60;uuid&#x60; 参数中的至少一个。 </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> 用户未找到。我们根据你提供的 UUID 未能找到对应的 Minecraft 玩家。请确认 UUID 是否正确。 </td><td>  -  </td></tr>
-        <tr><td> 502 </td><td> 上游服务错误。在向 Mojang 的官方 API 请求数据时遇到了问题。这可能是他们的服务暂时中断，请稍后重试。 </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> 服务暂时不可用，请稍后重试。 </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGameMinecraftHistoryidCall(@javax.annotation.Nonnull String uuid, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getGameMinecraftHistoryidCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable String uuid, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -250,6 +252,10 @@ public class GameApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (name != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("name", name));
+        }
 
         if (uuid != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("uuid", uuid));
@@ -275,63 +281,61 @@ public class GameApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getGameMinecraftHistoryidValidateBeforeCall(@javax.annotation.Nonnull String uuid, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'uuid' is set
-        if (uuid == null) {
-            throw new ApiException("Missing the required parameter 'uuid' when calling getGameMinecraftHistoryid(Async)");
-        }
-
-        return getGameMinecraftHistoryidCall(uuid, _callback);
+    private okhttp3.Call getGameMinecraftHistoryidValidateBeforeCall(@javax.annotation.Nullable String name, @javax.annotation.Nullable String uuid, final ApiCallback _callback) throws ApiException {
+        return getGameMinecraftHistoryidCall(name, uuid, _callback);
 
     }
 
     /**
-     * 查询Minecraft玩家历史用户名
-     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供一个玩家的 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 &gt; [!NOTE] &gt; **UUID 格式** &gt; 查询时，请务必提供玩家的 **32位无破折号** Minecraft UUID，例如 &#x60;ee9b4ed1aac1491eb7611471be374b80&#x60;。
-     * @param uuid 玩家的 Minecraft UUID，请务必使用32位无破折号的格式。 (required)
+     * 查询 MC 曾用名
+     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供玩家的用户名或 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 &gt; [!NOTE] &gt; **参数说明** &gt; - &#x60;name&#x60; 和 &#x60;uuid&#x60; 二选一 &gt; - UUID 支持带连字符（如 &#x60;ee9b4ed1-aac1-491e-b761-1471be374b80&#x60;）或不带连字符格式  &gt; [!IMPORTANT] &gt; **响应结构差异** &gt; - 使用 &#x60;uuid&#x60; 查询：返回单个用户的历史记录 &gt; - 使用 &#x60;name&#x60; 查询：返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家），需判断响应中是否有 &#x60;results&#x60; 字段来区分两种模式
+     * @param name 玩家的 Minecraft 用户名。使用此参数查询时，会返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家）。 (optional)
+     * @param uuid 玩家的 Minecraft UUID，支持带连字符或不带连字符格式。 (optional)
      * @return GetGameMinecraftHistoryid200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> 查询成功！返回该玩家的完整用户名历史记录。 </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> 请求失败。请检查你是否提供了 &#x60;uuid&#x60; 参数，以及它的格式是否为32位无破折号字符串。 </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> 查询成功！根据查询方式返回不同结构： - **uuid 查询**：返回单个用户的历史记录 - **name 查询**：返回匹配用户列表（判断响应中是否有 &#x60;results&#x60; 字段来区分） </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> 请求失败。请检查你是否提供了 &#x60;name&#x60; 或 &#x60;uuid&#x60; 参数中的至少一个。 </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> 用户未找到。我们根据你提供的 UUID 未能找到对应的 Minecraft 玩家。请确认 UUID 是否正确。 </td><td>  -  </td></tr>
-        <tr><td> 502 </td><td> 上游服务错误。在向 Mojang 的官方 API 请求数据时遇到了问题。这可能是他们的服务暂时中断，请稍后重试。 </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> 服务暂时不可用，请稍后重试。 </td><td>  -  </td></tr>
      </table>
      */
-    public GetGameMinecraftHistoryid200Response getGameMinecraftHistoryid(@javax.annotation.Nonnull String uuid) throws ApiException {
-        ApiResponse<GetGameMinecraftHistoryid200Response> localVarResp = getGameMinecraftHistoryidWithHttpInfo(uuid);
+    public GetGameMinecraftHistoryid200Response getGameMinecraftHistoryid(@javax.annotation.Nullable String name, @javax.annotation.Nullable String uuid) throws ApiException {
+        ApiResponse<GetGameMinecraftHistoryid200Response> localVarResp = getGameMinecraftHistoryidWithHttpInfo(name, uuid);
         return localVarResp.getData();
     }
 
     /**
-     * 查询Minecraft玩家历史用户名
-     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供一个玩家的 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 &gt; [!NOTE] &gt; **UUID 格式** &gt; 查询时，请务必提供玩家的 **32位无破折号** Minecraft UUID，例如 &#x60;ee9b4ed1aac1491eb7611471be374b80&#x60;。
-     * @param uuid 玩家的 Minecraft UUID，请务必使用32位无破折号的格式。 (required)
+     * 查询 MC 曾用名
+     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供玩家的用户名或 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 &gt; [!NOTE] &gt; **参数说明** &gt; - &#x60;name&#x60; 和 &#x60;uuid&#x60; 二选一 &gt; - UUID 支持带连字符（如 &#x60;ee9b4ed1-aac1-491e-b761-1471be374b80&#x60;）或不带连字符格式  &gt; [!IMPORTANT] &gt; **响应结构差异** &gt; - 使用 &#x60;uuid&#x60; 查询：返回单个用户的历史记录 &gt; - 使用 &#x60;name&#x60; 查询：返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家），需判断响应中是否有 &#x60;results&#x60; 字段来区分两种模式
+     * @param name 玩家的 Minecraft 用户名。使用此参数查询时，会返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家）。 (optional)
+     * @param uuid 玩家的 Minecraft UUID，支持带连字符或不带连字符格式。 (optional)
      * @return ApiResponse&lt;GetGameMinecraftHistoryid200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> 查询成功！返回该玩家的完整用户名历史记录。 </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> 请求失败。请检查你是否提供了 &#x60;uuid&#x60; 参数，以及它的格式是否为32位无破折号字符串。 </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> 查询成功！根据查询方式返回不同结构： - **uuid 查询**：返回单个用户的历史记录 - **name 查询**：返回匹配用户列表（判断响应中是否有 &#x60;results&#x60; 字段来区分） </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> 请求失败。请检查你是否提供了 &#x60;name&#x60; 或 &#x60;uuid&#x60; 参数中的至少一个。 </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> 用户未找到。我们根据你提供的 UUID 未能找到对应的 Minecraft 玩家。请确认 UUID 是否正确。 </td><td>  -  </td></tr>
-        <tr><td> 502 </td><td> 上游服务错误。在向 Mojang 的官方 API 请求数据时遇到了问题。这可能是他们的服务暂时中断，请稍后重试。 </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> 服务暂时不可用，请稍后重试。 </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<GetGameMinecraftHistoryid200Response> getGameMinecraftHistoryidWithHttpInfo(@javax.annotation.Nonnull String uuid) throws ApiException {
-        okhttp3.Call localVarCall = getGameMinecraftHistoryidValidateBeforeCall(uuid, null);
+    public ApiResponse<GetGameMinecraftHistoryid200Response> getGameMinecraftHistoryidWithHttpInfo(@javax.annotation.Nullable String name, @javax.annotation.Nullable String uuid) throws ApiException {
+        okhttp3.Call localVarCall = getGameMinecraftHistoryidValidateBeforeCall(name, uuid, null);
         Type localVarReturnType = new TypeToken<GetGameMinecraftHistoryid200Response>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * 查询Minecraft玩家历史用户名 (asynchronously)
-     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供一个玩家的 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 &gt; [!NOTE] &gt; **UUID 格式** &gt; 查询时，请务必提供玩家的 **32位无破折号** Minecraft UUID，例如 &#x60;ee9b4ed1aac1491eb7611471be374b80&#x60;。
-     * @param uuid 玩家的 Minecraft UUID，请务必使用32位无破折号的格式。 (required)
+     * 查询 MC 曾用名 (asynchronously)
+     * 想知道某个大佬以前叫什么名字吗？这个接口可以帮你追溯一个 Minecraft 玩家的“黑历史”！  ## 功能概述 通过提供玩家的用户名或 UUID，你可以获取到该玩家所有曾用名及其变更时间的列表。这对于识别回归的老玩家或者社区管理非常有用。  ## 使用须知 &gt; [!NOTE] &gt; **参数说明** &gt; - &#x60;name&#x60; 和 &#x60;uuid&#x60; 二选一 &gt; - UUID 支持带连字符（如 &#x60;ee9b4ed1-aac1-491e-b761-1471be374b80&#x60;）或不带连字符格式  &gt; [!IMPORTANT] &gt; **响应结构差异** &gt; - 使用 &#x60;uuid&#x60; 查询：返回单个用户的历史记录 &gt; - 使用 &#x60;name&#x60; 查询：返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家），需判断响应中是否有 &#x60;results&#x60; 字段来区分两种模式
+     * @param name 玩家的 Minecraft 用户名。使用此参数查询时，会返回所有匹配用户的列表（包括当前用户名或曾用名匹配的玩家）。 (optional)
+     * @param uuid 玩家的 Minecraft UUID，支持带连字符或不带连字符格式。 (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -339,15 +343,15 @@ public class GameApi {
      <table border="1">
        <caption>Response Details</caption>
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> 查询成功！返回该玩家的完整用户名历史记录。 </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> 请求失败。请检查你是否提供了 &#x60;uuid&#x60; 参数，以及它的格式是否为32位无破折号字符串。 </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> 查询成功！根据查询方式返回不同结构： - **uuid 查询**：返回单个用户的历史记录 - **name 查询**：返回匹配用户列表（判断响应中是否有 &#x60;results&#x60; 字段来区分） </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> 请求失败。请检查你是否提供了 &#x60;name&#x60; 或 &#x60;uuid&#x60; 参数中的至少一个。 </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> 用户未找到。我们根据你提供的 UUID 未能找到对应的 Minecraft 玩家。请确认 UUID 是否正确。 </td><td>  -  </td></tr>
-        <tr><td> 502 </td><td> 上游服务错误。在向 Mojang 的官方 API 请求数据时遇到了问题。这可能是他们的服务暂时中断，请稍后重试。 </td><td>  -  </td></tr>
+        <tr><td> 502 </td><td> 服务暂时不可用，请稍后重试。 </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getGameMinecraftHistoryidAsync(@javax.annotation.Nonnull String uuid, final ApiCallback<GetGameMinecraftHistoryid200Response> _callback) throws ApiException {
+    public okhttp3.Call getGameMinecraftHistoryidAsync(@javax.annotation.Nullable String name, @javax.annotation.Nullable String uuid, final ApiCallback<GetGameMinecraftHistoryid200Response> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getGameMinecraftHistoryidValidateBeforeCall(uuid, _callback);
+        okhttp3.Call localVarCall = getGameMinecraftHistoryidValidateBeforeCall(name, uuid, _callback);
         Type localVarReturnType = new TypeToken<GetGameMinecraftHistoryid200Response>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -428,7 +432,7 @@ public class GameApi {
     }
 
     /**
-     * 查询Minecraft服务器状态
+     * 查询 MC 服务器
      * 想在加入服务器前看看有多少人在线？或者检查一下服务器开没开？用这个接口就对了！  ## 功能概述 你可以通过提供服务器地址（域名或IP），来获取一个 Minecraft Java 版服务器的实时状态。返回信息非常丰富，包括服务器是否在线、当前玩家数、最大玩家数、服务器版本、MOTD（每日消息）以及服务器图标等。
      * @param server Minecraft服务器的地址，可以是域名（如 &#x60;hypixel.net&#x60;）或 &#x60;IP:端口&#x60; 的形式（如 &#x60;mc.example.com:25565&#x60;）。如果省略端口，将默认使用 &#x60;25565&#x60;。 (required)
      * @return GetGameMinecraftServerstatus200Response
@@ -449,7 +453,7 @@ public class GameApi {
     }
 
     /**
-     * 查询Minecraft服务器状态
+     * 查询 MC 服务器
      * 想在加入服务器前看看有多少人在线？或者检查一下服务器开没开？用这个接口就对了！  ## 功能概述 你可以通过提供服务器地址（域名或IP），来获取一个 Minecraft Java 版服务器的实时状态。返回信息非常丰富，包括服务器是否在线、当前玩家数、最大玩家数、服务器版本、MOTD（每日消息）以及服务器图标等。
      * @param server Minecraft服务器的地址，可以是域名（如 &#x60;hypixel.net&#x60;）或 &#x60;IP:端口&#x60; 的形式（如 &#x60;mc.example.com:25565&#x60;）。如果省略端口，将默认使用 &#x60;25565&#x60;。 (required)
      * @return ApiResponse&lt;GetGameMinecraftServerstatus200Response&gt;
@@ -471,7 +475,7 @@ public class GameApi {
     }
 
     /**
-     * 查询Minecraft服务器状态 (asynchronously)
+     * 查询 MC 服务器 (asynchronously)
      * 想在加入服务器前看看有多少人在线？或者检查一下服务器开没开？用这个接口就对了！  ## 功能概述 你可以通过提供服务器地址（域名或IP），来获取一个 Minecraft Java 版服务器的实时状态。返回信息非常丰富，包括服务器是否在线、当前玩家数、最大玩家数、服务器版本、MOTD（每日消息）以及服务器图标等。
      * @param server Minecraft服务器的地址，可以是域名（如 &#x60;hypixel.net&#x60;）或 &#x60;IP:端口&#x60; 的形式（如 &#x60;mc.example.com:25565&#x60;）。如果省略端口，将默认使用 &#x60;25565&#x60;。 (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -570,7 +574,7 @@ public class GameApi {
     }
 
     /**
-     * 查询Minecraft玩家信息
+     * 查询 MC 玩家
      * 只需要一个玩家的用户名，就能快速获取到他的正版皮肤和独一无二的UUID！  ## 功能概述 这是一个基础但非常实用的接口。通过玩家当前的游戏内名称（Username），你可以查询到他对应的UUID（唯一标识符）和当前皮肤的URL地址。这是构建许多其他玩家相关服务的第一步。
      * @param username 玩家的 Minecraft 游戏内名称（正版ID）。 (required)
      * @return GetGameMinecraftUserinfo200Response
@@ -591,7 +595,7 @@ public class GameApi {
     }
 
     /**
-     * 查询Minecraft玩家信息
+     * 查询 MC 玩家
      * 只需要一个玩家的用户名，就能快速获取到他的正版皮肤和独一无二的UUID！  ## 功能概述 这是一个基础但非常实用的接口。通过玩家当前的游戏内名称（Username），你可以查询到他对应的UUID（唯一标识符）和当前皮肤的URL地址。这是构建许多其他玩家相关服务的第一步。
      * @param username 玩家的 Minecraft 游戏内名称（正版ID）。 (required)
      * @return ApiResponse&lt;GetGameMinecraftUserinfo200Response&gt;
@@ -613,7 +617,7 @@ public class GameApi {
     }
 
     /**
-     * 查询Minecraft玩家信息 (asynchronously)
+     * 查询 MC 玩家 (asynchronously)
      * 只需要一个玩家的用户名，就能快速获取到他的正版皮肤和独一无二的UUID！  ## 功能概述 这是一个基础但非常实用的接口。通过玩家当前的游戏内名称（Username），你可以查询到他对应的UUID（唯一标识符）和当前皮肤的URL地址。这是构建许多其他玩家相关服务的第一步。
      * @param username 玩家的 Minecraft 游戏内名称（正版ID）。 (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -723,7 +727,7 @@ public class GameApi {
     }
 
     /**
-     * 获取Steam用户公开摘要
+     * 查询 Steam 用户
      * 想在你的网站或应用中展示用户的 Steam 个人资料？这个接口就是为你准备的。  ## 功能概述 通过一个用户的 Steam 标识（支持多种格式），你可以获取到他公开的个人资料摘要，包括昵称、头像、在线状态、真实姓名（如果公开）和个人资料主页URL等信息。  ## 支持的参数格式 接口现在支持以下几种标识符格式： - **&#x60;steamid&#x60;**: 64位SteamID（如 &#x60;76561197960287930&#x60;） - **&#x60;id&#x60;**: 自定义URL名称（如 &#x60;gabelogannewell&#x60;） - **&#x60;id3&#x60;**: Steam ID3格式（如 &#x60;STEAM_0:0:22202&#x60;） - 完整的个人资料链接 - 好友代码  ## 使用须知  &gt; [!IMPORTANT] &gt; **API Key 安全** &gt; 此接口需要一个 Steam Web API Key。我们强烈建议由后端统一配置和调用，以避免在客户端泄露。当然，你也可以通过 &#x60;key&#x60; 查询参数临时提供一个Key来覆盖后端配置。  在处理响应时，请注意以下数字代码的含义： - **&#x60;personastate&#x60; (用户状态)**: 0-离线, 1-在线, 2-忙碌, 3-离开, 4-打盹, 5-想交易, 6-想玩。 - **&#x60;communityvisibilitystate&#x60; (社区可见性)**: 1-私密, 3-公开 (API通常只能查到这两种状态)。
      * @param steamid 用户的 Steam 标识。可以是以下任意一种格式： - 纯数字的 **SteamID64** - 用户的 **自定义 URL 名称** (Vanity URL) - 完整的 **个人资料链接** (包含 SteamID64 或自定义名称) - 好友代码 (如 &#x60;22202&#x60;) (optional)
      * @param id 用户的 Steam 自定义URL名称（Vanity URL）。例如个人资料链接中 &#x60;/id/&#x60; 后面的部分。 (optional)
@@ -748,7 +752,7 @@ public class GameApi {
     }
 
     /**
-     * 获取Steam用户公开摘要
+     * 查询 Steam 用户
      * 想在你的网站或应用中展示用户的 Steam 个人资料？这个接口就是为你准备的。  ## 功能概述 通过一个用户的 Steam 标识（支持多种格式），你可以获取到他公开的个人资料摘要，包括昵称、头像、在线状态、真实姓名（如果公开）和个人资料主页URL等信息。  ## 支持的参数格式 接口现在支持以下几种标识符格式： - **&#x60;steamid&#x60;**: 64位SteamID（如 &#x60;76561197960287930&#x60;） - **&#x60;id&#x60;**: 自定义URL名称（如 &#x60;gabelogannewell&#x60;） - **&#x60;id3&#x60;**: Steam ID3格式（如 &#x60;STEAM_0:0:22202&#x60;） - 完整的个人资料链接 - 好友代码  ## 使用须知  &gt; [!IMPORTANT] &gt; **API Key 安全** &gt; 此接口需要一个 Steam Web API Key。我们强烈建议由后端统一配置和调用，以避免在客户端泄露。当然，你也可以通过 &#x60;key&#x60; 查询参数临时提供一个Key来覆盖后端配置。  在处理响应时，请注意以下数字代码的含义： - **&#x60;personastate&#x60; (用户状态)**: 0-离线, 1-在线, 2-忙碌, 3-离开, 4-打盹, 5-想交易, 6-想玩。 - **&#x60;communityvisibilitystate&#x60; (社区可见性)**: 1-私密, 3-公开 (API通常只能查到这两种状态)。
      * @param steamid 用户的 Steam 标识。可以是以下任意一种格式： - 纯数字的 **SteamID64** - 用户的 **自定义 URL 名称** (Vanity URL) - 完整的 **个人资料链接** (包含 SteamID64 或自定义名称) - 好友代码 (如 &#x60;22202&#x60;) (optional)
      * @param id 用户的 Steam 自定义URL名称（Vanity URL）。例如个人资料链接中 &#x60;/id/&#x60; 后面的部分。 (optional)
@@ -774,7 +778,7 @@ public class GameApi {
     }
 
     /**
-     * 获取Steam用户公开摘要 (asynchronously)
+     * 查询 Steam 用户 (asynchronously)
      * 想在你的网站或应用中展示用户的 Steam 个人资料？这个接口就是为你准备的。  ## 功能概述 通过一个用户的 Steam 标识（支持多种格式），你可以获取到他公开的个人资料摘要，包括昵称、头像、在线状态、真实姓名（如果公开）和个人资料主页URL等信息。  ## 支持的参数格式 接口现在支持以下几种标识符格式： - **&#x60;steamid&#x60;**: 64位SteamID（如 &#x60;76561197960287930&#x60;） - **&#x60;id&#x60;**: 自定义URL名称（如 &#x60;gabelogannewell&#x60;） - **&#x60;id3&#x60;**: Steam ID3格式（如 &#x60;STEAM_0:0:22202&#x60;） - 完整的个人资料链接 - 好友代码  ## 使用须知  &gt; [!IMPORTANT] &gt; **API Key 安全** &gt; 此接口需要一个 Steam Web API Key。我们强烈建议由后端统一配置和调用，以避免在客户端泄露。当然，你也可以通过 &#x60;key&#x60; 查询参数临时提供一个Key来覆盖后端配置。  在处理响应时，请注意以下数字代码的含义： - **&#x60;personastate&#x60; (用户状态)**: 0-离线, 1-在线, 2-忙碌, 3-离开, 4-打盹, 5-想交易, 6-想玩。 - **&#x60;communityvisibilitystate&#x60; (社区可见性)**: 1-私密, 3-公开 (API通常只能查到这两种状态)。
      * @param steamid 用户的 Steam 标识。可以是以下任意一种格式： - 纯数字的 **SteamID64** - 用户的 **自定义 URL 名称** (Vanity URL) - 完整的 **个人资料链接** (包含 SteamID64 或自定义名称) - 好友代码 (如 &#x60;22202&#x60;) (optional)
      * @param id 用户的 Steam 自定义URL名称（Vanity URL）。例如个人资料链接中 &#x60;/id/&#x60; 后面的部分。 (optional)

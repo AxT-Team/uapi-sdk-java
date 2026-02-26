@@ -155,6 +155,9 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("text")) q.put("text", args.get("text"));
             if ("query".equals("query") && args != null && args.containsKey("size")) q.put("size", args.get("size"));
             if ("query".equals("query") && args != null && args.containsKey("format")) q.put("format", args.get("format"));
+            if ("query".equals("query") && args != null && args.containsKey("transparent")) q.put("transparent", args.get("transparent"));
+            if ("query".equals("query") && args != null && args.containsKey("fgcolor")) q.put("fgcolor", args.get("fgcolor"));
+            if ("query".equals("query") && args != null && args.containsKey("bgcolor")) q.put("bgcolor", args.get("bgcolor"));
             String path = "/api/v1/image/qrcode";
             return request("GET", path, q, body.isEmpty() ? null : body);
         }
@@ -188,6 +191,14 @@ public class Client {
             if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
             if (args != null && args.containsKey("image_url")) body.put("image_url", args.get("image_url"));
             String path = "/api/v1/image/motou";
+            return request("POST", path, q, body.isEmpty() ? null : body);
+        }
+        public Object postImageNsfw(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
+            if (args != null && args.containsKey("url")) body.put("url", args.get("url"));
+            String path = "/api/v1/image/nsfw";
             return request("POST", path, q, body.isEmpty() ? null : body);
         }
         public Object postImageSpeechless(Map<String, Object> args) throws Exception {
@@ -226,11 +237,51 @@ public class Client {
             String path = "/api/v1/history/programmer/today";
             return request("GET", path, q, body.isEmpty() ? null : body);
         }
+        public Object getMiscDistrict(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            if ("query".equals("query") && args != null && args.containsKey("keywords")) q.put("keywords", args.get("keywords"));
+            if ("query".equals("query") && args != null && args.containsKey("adcode")) q.put("adcode", args.get("adcode"));
+            if ("query".equals("query") && args != null && args.containsKey("lat")) q.put("lat", args.get("lat"));
+            if ("query".equals("query") && args != null && args.containsKey("lng")) q.put("lng", args.get("lng"));
+            if ("query".equals("query") && args != null && args.containsKey("level")) q.put("level", args.get("level"));
+            if ("query".equals("query") && args != null && args.containsKey("country")) q.put("country", args.get("country"));
+            if ("query".equals("query") && args != null && args.containsKey("limit")) q.put("limit", args.get("limit"));
+            String path = "/api/v1/misc/district";
+            return request("GET", path, q, body.isEmpty() ? null : body);
+        }
+        public Object getMiscHolidayCalendar(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            if ("query".equals("query") && args != null && args.containsKey("date")) q.put("date", args.get("date"));
+            if ("query".equals("query") && args != null && args.containsKey("month")) q.put("month", args.get("month"));
+            if ("query".equals("query") && args != null && args.containsKey("year")) q.put("year", args.get("year"));
+            if ("query".equals("query") && args != null && args.containsKey("timezone")) q.put("timezone", args.get("timezone"));
+            if ("query".equals("query") && args != null && args.containsKey("holiday_type")) q.put("holiday_type", args.get("holiday_type"));
+            if ("query".equals("query") && args != null && args.containsKey("include_nearby")) q.put("include_nearby", args.get("include_nearby"));
+            if ("query".equals("query") && args != null && args.containsKey("nearby_limit")) q.put("nearby_limit", args.get("nearby_limit"));
+            String path = "/api/v1/misc/holiday-calendar";
+            return request("GET", path, q, body.isEmpty() ? null : body);
+        }
         public Object getMiscHotboard(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             Map<String, Object> body = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("type")) q.put("type", args.get("type"));
+            if ("query".equals("query") && args != null && args.containsKey("time")) q.put("time", args.get("time"));
+            if ("query".equals("query") && args != null && args.containsKey("keyword")) q.put("keyword", args.get("keyword"));
+            if ("query".equals("query") && args != null && args.containsKey("time_start")) q.put("time_start", args.get("time_start"));
+            if ("query".equals("query") && args != null && args.containsKey("time_end")) q.put("time_end", args.get("time_end"));
+            if ("query".equals("query") && args != null && args.containsKey("limit")) q.put("limit", args.get("limit"));
+            if ("query".equals("query") && args != null && args.containsKey("sources")) q.put("sources", args.get("sources"));
             String path = "/api/v1/misc/hotboard";
+            return request("GET", path, q, body.isEmpty() ? null : body);
+        }
+        public Object getMiscLunartime(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            if ("query".equals("query") && args != null && args.containsKey("ts")) q.put("ts", args.get("ts"));
+            if ("query".equals("query") && args != null && args.containsKey("timezone")) q.put("timezone", args.get("timezone"));
+            String path = "/api/v1/misc/lunartime";
             return request("GET", path, q, body.isEmpty() ? null : body);
         }
         public Object getMiscPhoneinfo(Map<String, Object> args) throws Exception {
@@ -277,6 +328,7 @@ public class Client {
             Map<String, Object> body = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("tracking_number")) q.put("tracking_number", args.get("tracking_number"));
             if ("query".equals("query") && args != null && args.containsKey("carrier_code")) q.put("carrier_code", args.get("carrier_code"));
+            if ("query".equals("query") && args != null && args.containsKey("phone")) q.put("phone", args.get("phone"));
             String path = "/api/v1/misc/tracking/query";
             return request("GET", path, q, body.isEmpty() ? null : body);
         }
@@ -286,8 +338,11 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("city")) q.put("city", args.get("city"));
             if ("query".equals("query") && args != null && args.containsKey("adcode")) q.put("adcode", args.get("adcode"));
             if ("query".equals("query") && args != null && args.containsKey("extended")) q.put("extended", args.get("extended"));
-            if ("query".equals("query") && args != null && args.containsKey("indices")) q.put("indices", args.get("indices"));
             if ("query".equals("query") && args != null && args.containsKey("forecast")) q.put("forecast", args.get("forecast"));
+            if ("query".equals("query") && args != null && args.containsKey("hourly")) q.put("hourly", args.get("hourly"));
+            if ("query".equals("query") && args != null && args.containsKey("minutely")) q.put("minutely", args.get("minutely"));
+            if ("query".equals("query") && args != null && args.containsKey("indices")) q.put("indices", args.get("indices"));
+            if ("query".equals("query") && args != null && args.containsKey("lang")) q.put("lang", args.get("lang"));
             String path = "/api/v1/misc/weather";
             return request("GET", path, q, body.isEmpty() ? null : body);
         }

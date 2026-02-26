@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.openapitools.client.model.GetMiscHotboard200ResponseListInner;
+import org.openapitools.client.model.GetMiscHotboard200ResponseResultsInner;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * GetMiscHotboard200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscHotboard200Response {
   public static final String SERIALIZED_NAME_LIST = "list";
   @SerializedName(SERIALIZED_NAME_LIST)
@@ -69,6 +70,31 @@ public class GetMiscHotboard200Response {
   @SerializedName(SERIALIZED_NAME_UPDATE_TIME)
   @javax.annotation.Nullable
   private String updateTime;
+
+  public static final String SERIALIZED_NAME_SNAPSHOT_TIME = "snapshot_time";
+  @SerializedName(SERIALIZED_NAME_SNAPSHOT_TIME)
+  @javax.annotation.Nullable
+  private Integer snapshotTime;
+
+  public static final String SERIALIZED_NAME_KEYWORD = "keyword";
+  @SerializedName(SERIALIZED_NAME_KEYWORD)
+  @javax.annotation.Nullable
+  private String keyword;
+
+  public static final String SERIALIZED_NAME_COUNT = "count";
+  @SerializedName(SERIALIZED_NAME_COUNT)
+  @javax.annotation.Nullable
+  private Integer count;
+
+  public static final String SERIALIZED_NAME_RESULTS = "results";
+  @SerializedName(SERIALIZED_NAME_RESULTS)
+  @javax.annotation.Nullable
+  private List<GetMiscHotboard200ResponseResultsInner> results = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_SOURCES = "sources";
+  @SerializedName(SERIALIZED_NAME_SOURCES)
+  @javax.annotation.Nullable
+  private List<String> sources = new ArrayList<>();
 
   public GetMiscHotboard200Response() {
   }
@@ -138,6 +164,117 @@ public class GetMiscHotboard200Response {
   }
 
 
+  public GetMiscHotboard200Response snapshotTime(@javax.annotation.Nullable Integer snapshotTime) {
+    this.snapshotTime = snapshotTime;
+    return this;
+  }
+
+  /**
+   * 时光机模式返回的快照实际时间戳（毫秒）。
+   * @return snapshotTime
+   */
+  @javax.annotation.Nullable
+  public Integer getSnapshotTime() {
+    return snapshotTime;
+  }
+
+  public void setSnapshotTime(@javax.annotation.Nullable Integer snapshotTime) {
+    this.snapshotTime = snapshotTime;
+  }
+
+
+  public GetMiscHotboard200Response keyword(@javax.annotation.Nullable String keyword) {
+    this.keyword = keyword;
+    return this;
+  }
+
+  /**
+   * 搜索模式返回的搜索关键词。
+   * @return keyword
+   */
+  @javax.annotation.Nullable
+  public String getKeyword() {
+    return keyword;
+  }
+
+  public void setKeyword(@javax.annotation.Nullable String keyword) {
+    this.keyword = keyword;
+  }
+
+
+  public GetMiscHotboard200Response count(@javax.annotation.Nullable Integer count) {
+    this.count = count;
+    return this;
+  }
+
+  /**
+   * 搜索模式返回的结果数量。
+   * @return count
+   */
+  @javax.annotation.Nullable
+  public Integer getCount() {
+    return count;
+  }
+
+  public void setCount(@javax.annotation.Nullable Integer count) {
+    this.count = count;
+  }
+
+
+  public GetMiscHotboard200Response results(@javax.annotation.Nullable List<GetMiscHotboard200ResponseResultsInner> results) {
+    this.results = results;
+    return this;
+  }
+
+  public GetMiscHotboard200Response addResultsItem(GetMiscHotboard200ResponseResultsInner resultsItem) {
+    if (this.results == null) {
+      this.results = new ArrayList<>();
+    }
+    this.results.add(resultsItem);
+    return this;
+  }
+
+  /**
+   * 搜索模式返回的结果数组。
+   * @return results
+   */
+  @javax.annotation.Nullable
+  public List<GetMiscHotboard200ResponseResultsInner> getResults() {
+    return results;
+  }
+
+  public void setResults(@javax.annotation.Nullable List<GetMiscHotboard200ResponseResultsInner> results) {
+    this.results = results;
+  }
+
+
+  public GetMiscHotboard200Response sources(@javax.annotation.Nullable List<String> sources) {
+    this.sources = sources;
+    return this;
+  }
+
+  public GetMiscHotboard200Response addSourcesItem(String sourcesItem) {
+    if (this.sources == null) {
+      this.sources = new ArrayList<>();
+    }
+    this.sources.add(sourcesItem);
+    return this;
+  }
+
+  /**
+   * 数据源列表模式返回的可用历史数据源数组。
+   * @return sources
+   */
+  @javax.annotation.Nullable
+  public List<String> getSources() {
+    return sources;
+  }
+
+  public void setSources(@javax.annotation.Nullable List<String> sources) {
+    this.sources = sources;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -150,12 +287,17 @@ public class GetMiscHotboard200Response {
     GetMiscHotboard200Response getMiscHotboard200Response = (GetMiscHotboard200Response) o;
     return Objects.equals(this._list, getMiscHotboard200Response._list) &&
         Objects.equals(this.type, getMiscHotboard200Response.type) &&
-        Objects.equals(this.updateTime, getMiscHotboard200Response.updateTime);
+        Objects.equals(this.updateTime, getMiscHotboard200Response.updateTime) &&
+        Objects.equals(this.snapshotTime, getMiscHotboard200Response.snapshotTime) &&
+        Objects.equals(this.keyword, getMiscHotboard200Response.keyword) &&
+        Objects.equals(this.count, getMiscHotboard200Response.count) &&
+        Objects.equals(this.results, getMiscHotboard200Response.results) &&
+        Objects.equals(this.sources, getMiscHotboard200Response.sources);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(_list, type, updateTime);
+    return Objects.hash(_list, type, updateTime, snapshotTime, keyword, count, results, sources);
   }
 
   @Override
@@ -165,6 +307,11 @@ public class GetMiscHotboard200Response {
     sb.append("    _list: ").append(toIndentedString(_list)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updateTime: ").append(toIndentedString(updateTime)).append("\n");
+    sb.append("    snapshotTime: ").append(toIndentedString(snapshotTime)).append("\n");
+    sb.append("    keyword: ").append(toIndentedString(keyword)).append("\n");
+    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    results: ").append(toIndentedString(results)).append("\n");
+    sb.append("    sources: ").append(toIndentedString(sources)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -186,7 +333,7 @@ public class GetMiscHotboard200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("list", "type", "update_time"));
+    openapiFields = new HashSet<String>(Arrays.asList("list", "type", "update_time", "snapshot_time", "keyword", "count", "results", "sources"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -232,6 +379,27 @@ public class GetMiscHotboard200Response {
       }
       if ((jsonObj.get("update_time") != null && !jsonObj.get("update_time").isJsonNull()) && !jsonObj.get("update_time").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `update_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("update_time").toString()));
+      }
+      if ((jsonObj.get("keyword") != null && !jsonObj.get("keyword").isJsonNull()) && !jsonObj.get("keyword").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `keyword` to be a primitive type in the JSON string but got `%s`", jsonObj.get("keyword").toString()));
+      }
+      if (jsonObj.get("results") != null && !jsonObj.get("results").isJsonNull()) {
+        JsonArray jsonArrayresults = jsonObj.getAsJsonArray("results");
+        if (jsonArrayresults != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("results").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `results` to be an array in the JSON string but got `%s`", jsonObj.get("results").toString()));
+          }
+
+          // validate the optional field `results` (array)
+          for (int i = 0; i < jsonArrayresults.size(); i++) {
+            GetMiscHotboard200ResponseResultsInner.validateJsonElement(jsonArrayresults.get(i));
+          };
+        }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("sources") != null && !jsonObj.get("sources").isJsonNull() && !jsonObj.get("sources").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sources` to be an array in the JSON string but got `%s`", jsonObj.get("sources").toString()));
       }
   }
 

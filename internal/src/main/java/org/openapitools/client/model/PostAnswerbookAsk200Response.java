@@ -50,13 +50,8 @@ import org.openapitools.client.JSON;
 /**
  * PostAnswerbookAsk200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostAnswerbookAsk200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_QUESTION = "question";
   @SerializedName(SERIALIZED_NAME_QUESTION)
   @javax.annotation.Nullable
@@ -69,25 +64,6 @@ public class PostAnswerbookAsk200Response {
 
   public PostAnswerbookAsk200Response() {
   }
-
-  public PostAnswerbookAsk200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public PostAnswerbookAsk200Response question(@javax.annotation.Nullable String question) {
     this.question = question;
@@ -137,21 +113,19 @@ public class PostAnswerbookAsk200Response {
       return false;
     }
     PostAnswerbookAsk200Response postAnswerbookAsk200Response = (PostAnswerbookAsk200Response) o;
-    return Objects.equals(this.code, postAnswerbookAsk200Response.code) &&
-        Objects.equals(this.question, postAnswerbookAsk200Response.question) &&
+    return Objects.equals(this.question, postAnswerbookAsk200Response.question) &&
         Objects.equals(this.answer, postAnswerbookAsk200Response.answer);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, question, answer);
+    return Objects.hash(question, answer);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostAnswerbookAsk200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    question: ").append(toIndentedString(question)).append("\n");
     sb.append("    answer: ").append(toIndentedString(answer)).append("\n");
     sb.append("}");
@@ -175,7 +149,7 @@ public class PostAnswerbookAsk200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "question", "answer"));
+    openapiFields = new HashSet<String>(Arrays.asList("question", "answer"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * GetMiscHotboard200ResponseListInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscHotboard200ResponseListInner {
   public static final String SERIALIZED_NAME_EXTRA = "extra";
   @SerializedName(SERIALIZED_NAME_EXTRA)
@@ -78,6 +78,11 @@ public class GetMiscHotboard200ResponseListInner {
   @SerializedName(SERIALIZED_NAME_URL)
   @javax.annotation.Nullable
   private String url;
+
+  public static final String SERIALIZED_NAME_COVER = "cover";
+  @SerializedName(SERIALIZED_NAME_COVER)
+  @javax.annotation.Nullable
+  private String cover;
 
   public GetMiscHotboard200ResponseListInner() {
   }
@@ -185,6 +190,25 @@ public class GetMiscHotboard200ResponseListInner {
   }
 
 
+  public GetMiscHotboard200ResponseListInner cover(@javax.annotation.Nullable String cover) {
+    this.cover = cover;
+    return this;
+  }
+
+  /**
+   * 封面图 URL，音乐类热榜返回专辑封面，其他平台无此字段。
+   * @return cover
+   */
+  @javax.annotation.Nullable
+  public String getCover() {
+    return cover;
+  }
+
+  public void setCover(@javax.annotation.Nullable String cover) {
+    this.cover = cover;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -199,12 +223,13 @@ public class GetMiscHotboard200ResponseListInner {
         Objects.equals(this.hotValue, getMiscHotboard200ResponseListInner.hotValue) &&
         Objects.equals(this.index, getMiscHotboard200ResponseListInner.index) &&
         Objects.equals(this.title, getMiscHotboard200ResponseListInner.title) &&
-        Objects.equals(this.url, getMiscHotboard200ResponseListInner.url);
+        Objects.equals(this.url, getMiscHotboard200ResponseListInner.url) &&
+        Objects.equals(this.cover, getMiscHotboard200ResponseListInner.cover);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(extra, hotValue, index, title, url);
+    return Objects.hash(extra, hotValue, index, title, url, cover);
   }
 
   @Override
@@ -216,6 +241,7 @@ public class GetMiscHotboard200ResponseListInner {
     sb.append("    index: ").append(toIndentedString(index)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    cover: ").append(toIndentedString(cover)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -237,7 +263,7 @@ public class GetMiscHotboard200ResponseListInner {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("extra", "hot_value", "index", "title", "url"));
+    openapiFields = new HashSet<String>(Arrays.asList("extra", "hot_value", "index", "title", "url", "cover"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -272,6 +298,9 @@ public class GetMiscHotboard200ResponseListInner {
       }
       if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
+      }
+      if ((jsonObj.get("cover") != null && !jsonObj.get("cover").isJsonNull()) && !jsonObj.get("cover").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `cover` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cover").toString()));
       }
   }
 

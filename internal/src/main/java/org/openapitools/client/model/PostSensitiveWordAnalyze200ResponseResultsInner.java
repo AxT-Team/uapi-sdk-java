@@ -22,9 +22,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,37 +51,137 @@ import org.openapitools.client.JSON;
 /**
  * PostSensitiveWordAnalyze200ResponseResultsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostSensitiveWordAnalyze200ResponseResultsInner {
   public static final String SERIALIZED_NAME_K = "k";
   @SerializedName(SERIALIZED_NAME_K)
   @javax.annotation.Nullable
   private String k;
 
-  public static final String SERIALIZED_NAME_R = "r";
-  @SerializedName(SERIALIZED_NAME_R)
-  @javax.annotation.Nullable
-  private String r;
+  /**
+   * Gets or Sets label
+   */
+  @JsonAdapter(LabelEnum.Adapter.class)
+  public enum LabelEnum {
+    SENSITIVE("sensitive"),
+    
+    NORMAL("normal");
 
-  public static final String SERIALIZED_NAME_S = "s";
-  @SerializedName(SERIALIZED_NAME_S)
-  @javax.annotation.Nullable
-  private List<BigDecimal> s = new ArrayList<>();
+    private String value;
 
-  public static final String SERIALIZED_NAME_V = "v";
-  @SerializedName(SERIALIZED_NAME_V)
-  @javax.annotation.Nullable
-  private List<String> v = new ArrayList<>();
+    LabelEnum(String value) {
+      this.value = value;
+    }
 
-  public static final String SERIALIZED_NAME_T = "t";
-  @SerializedName(SERIALIZED_NAME_T)
-  @javax.annotation.Nullable
-  private List<String> t = new ArrayList<>();
+    public String getValue() {
+      return value;
+    }
 
-  public static final String SERIALIZED_NAME_D = "d";
-  @SerializedName(SERIALIZED_NAME_D)
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static LabelEnum fromValue(String value) {
+      for (LabelEnum b : LabelEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<LabelEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final LabelEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public LabelEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return LabelEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      LabelEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_LABEL = "label";
+  @SerializedName(SERIALIZED_NAME_LABEL)
   @javax.annotation.Nullable
-  private String d;
+  private LabelEnum label;
+
+  /**
+   * Gets or Sets category
+   */
+  @JsonAdapter(CategoryEnum.Adapter.class)
+  public enum CategoryEnum {
+    SAFE("safe"),
+    
+    THREAT("threat"),
+    
+    PORN("porn"),
+    
+    FRAUD("fraud"),
+    
+    INSULT("insult");
+
+    private String value;
+
+    CategoryEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CategoryEnum fromValue(String value) {
+      for (CategoryEnum b : CategoryEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<CategoryEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CategoryEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CategoryEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return CategoryEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      CategoryEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_CATEGORY = "category";
+  @SerializedName(SERIALIZED_NAME_CATEGORY)
+  @javax.annotation.Nullable
+  private CategoryEnum category;
+
+  public static final String SERIALIZED_NAME_CONFIDENCE = "confidence";
+  @SerializedName(SERIALIZED_NAME_CONFIDENCE)
+  @javax.annotation.Nullable
+  private BigDecimal confidence;
 
   public PostSensitiveWordAnalyze200ResponseResultsInner() {
   }
@@ -107,122 +205,62 @@ public class PostSensitiveWordAnalyze200ResponseResultsInner {
   }
 
 
-  public PostSensitiveWordAnalyze200ResponseResultsInner r(@javax.annotation.Nullable String r) {
-    this.r = r;
+  public PostSensitiveWordAnalyze200ResponseResultsInner label(@javax.annotation.Nullable LabelEnum label) {
+    this.label = label;
     return this;
   }
 
   /**
-   * Get r
-   * @return r
+   * Get label
+   * @return label
    */
   @javax.annotation.Nullable
-  public String getR() {
-    return r;
+  public LabelEnum getLabel() {
+    return label;
   }
 
-  public void setR(@javax.annotation.Nullable String r) {
-    this.r = r;
+  public void setLabel(@javax.annotation.Nullable LabelEnum label) {
+    this.label = label;
   }
 
 
-  public PostSensitiveWordAnalyze200ResponseResultsInner s(@javax.annotation.Nullable List<BigDecimal> s) {
-    this.s = s;
-    return this;
-  }
-
-  public PostSensitiveWordAnalyze200ResponseResultsInner addSItem(BigDecimal sItem) {
-    if (this.s == null) {
-      this.s = new ArrayList<>();
-    }
-    this.s.add(sItem);
+  public PostSensitiveWordAnalyze200ResponseResultsInner category(@javax.annotation.Nullable CategoryEnum category) {
+    this.category = category;
     return this;
   }
 
   /**
-   * Get s
-   * @return s
+   * Get category
+   * @return category
    */
   @javax.annotation.Nullable
-  public List<BigDecimal> getS() {
-    return s;
+  public CategoryEnum getCategory() {
+    return category;
   }
 
-  public void setS(@javax.annotation.Nullable List<BigDecimal> s) {
-    this.s = s;
+  public void setCategory(@javax.annotation.Nullable CategoryEnum category) {
+    this.category = category;
   }
 
 
-  public PostSensitiveWordAnalyze200ResponseResultsInner v(@javax.annotation.Nullable List<String> v) {
-    this.v = v;
-    return this;
-  }
-
-  public PostSensitiveWordAnalyze200ResponseResultsInner addVItem(String vItem) {
-    if (this.v == null) {
-      this.v = new ArrayList<>();
-    }
-    this.v.add(vItem);
+  public PostSensitiveWordAnalyze200ResponseResultsInner confidence(@javax.annotation.Nullable BigDecimal confidence) {
+    this.confidence = confidence;
     return this;
   }
 
   /**
-   * Get v
-   * @return v
+   * Get confidence
+   * minimum: 0
+   * maximum: 1
+   * @return confidence
    */
   @javax.annotation.Nullable
-  public List<String> getV() {
-    return v;
+  public BigDecimal getConfidence() {
+    return confidence;
   }
 
-  public void setV(@javax.annotation.Nullable List<String> v) {
-    this.v = v;
-  }
-
-
-  public PostSensitiveWordAnalyze200ResponseResultsInner t(@javax.annotation.Nullable List<String> t) {
-    this.t = t;
-    return this;
-  }
-
-  public PostSensitiveWordAnalyze200ResponseResultsInner addTItem(String tItem) {
-    if (this.t == null) {
-      this.t = new ArrayList<>();
-    }
-    this.t.add(tItem);
-    return this;
-  }
-
-  /**
-   * Get t
-   * @return t
-   */
-  @javax.annotation.Nullable
-  public List<String> getT() {
-    return t;
-  }
-
-  public void setT(@javax.annotation.Nullable List<String> t) {
-    this.t = t;
-  }
-
-
-  public PostSensitiveWordAnalyze200ResponseResultsInner d(@javax.annotation.Nullable String d) {
-    this.d = d;
-    return this;
-  }
-
-  /**
-   * Get d
-   * @return d
-   */
-  @javax.annotation.Nullable
-  public String getD() {
-    return d;
-  }
-
-  public void setD(@javax.annotation.Nullable String d) {
-    this.d = d;
+  public void setConfidence(@javax.annotation.Nullable BigDecimal confidence) {
+    this.confidence = confidence;
   }
 
 
@@ -237,16 +275,14 @@ public class PostSensitiveWordAnalyze200ResponseResultsInner {
     }
     PostSensitiveWordAnalyze200ResponseResultsInner postSensitiveWordAnalyze200ResponseResultsInner = (PostSensitiveWordAnalyze200ResponseResultsInner) o;
     return Objects.equals(this.k, postSensitiveWordAnalyze200ResponseResultsInner.k) &&
-        Objects.equals(this.r, postSensitiveWordAnalyze200ResponseResultsInner.r) &&
-        Objects.equals(this.s, postSensitiveWordAnalyze200ResponseResultsInner.s) &&
-        Objects.equals(this.v, postSensitiveWordAnalyze200ResponseResultsInner.v) &&
-        Objects.equals(this.t, postSensitiveWordAnalyze200ResponseResultsInner.t) &&
-        Objects.equals(this.d, postSensitiveWordAnalyze200ResponseResultsInner.d);
+        Objects.equals(this.label, postSensitiveWordAnalyze200ResponseResultsInner.label) &&
+        Objects.equals(this.category, postSensitiveWordAnalyze200ResponseResultsInner.category) &&
+        Objects.equals(this.confidence, postSensitiveWordAnalyze200ResponseResultsInner.confidence);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(k, r, s, v, t, d);
+    return Objects.hash(k, label, category, confidence);
   }
 
   @Override
@@ -254,11 +290,9 @@ public class PostSensitiveWordAnalyze200ResponseResultsInner {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostSensitiveWordAnalyze200ResponseResultsInner {\n");
     sb.append("    k: ").append(toIndentedString(k)).append("\n");
-    sb.append("    r: ").append(toIndentedString(r)).append("\n");
-    sb.append("    s: ").append(toIndentedString(s)).append("\n");
-    sb.append("    v: ").append(toIndentedString(v)).append("\n");
-    sb.append("    t: ").append(toIndentedString(t)).append("\n");
-    sb.append("    d: ").append(toIndentedString(d)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
+    sb.append("    category: ").append(toIndentedString(category)).append("\n");
+    sb.append("    confidence: ").append(toIndentedString(confidence)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -280,7 +314,7 @@ public class PostSensitiveWordAnalyze200ResponseResultsInner {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("k", "r", "s", "v", "t", "d"));
+    openapiFields = new HashSet<String>(Arrays.asList("k", "label", "category", "confidence"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -310,23 +344,19 @@ public class PostSensitiveWordAnalyze200ResponseResultsInner {
       if ((jsonObj.get("k") != null && !jsonObj.get("k").isJsonNull()) && !jsonObj.get("k").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `k` to be a primitive type in the JSON string but got `%s`", jsonObj.get("k").toString()));
       }
-      if ((jsonObj.get("r") != null && !jsonObj.get("r").isJsonNull()) && !jsonObj.get("r").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `r` to be a primitive type in the JSON string but got `%s`", jsonObj.get("r").toString()));
+      if ((jsonObj.get("label") != null && !jsonObj.get("label").isJsonNull()) && !jsonObj.get("label").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `label` to be a primitive type in the JSON string but got `%s`", jsonObj.get("label").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("s") != null && !jsonObj.get("s").isJsonNull() && !jsonObj.get("s").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `s` to be an array in the JSON string but got `%s`", jsonObj.get("s").toString()));
+      // validate the optional field `label`
+      if (jsonObj.get("label") != null && !jsonObj.get("label").isJsonNull()) {
+        LabelEnum.validateJsonElement(jsonObj.get("label"));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("v") != null && !jsonObj.get("v").isJsonNull() && !jsonObj.get("v").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `v` to be an array in the JSON string but got `%s`", jsonObj.get("v").toString()));
+      if ((jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) && !jsonObj.get("category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("category").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("t") != null && !jsonObj.get("t").isJsonNull() && !jsonObj.get("t").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `t` to be an array in the JSON string but got `%s`", jsonObj.get("t").toString()));
-      }
-      if ((jsonObj.get("d") != null && !jsonObj.get("d").isJsonNull()) && !jsonObj.get("d").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `d` to be a primitive type in the JSON string but got `%s`", jsonObj.get("d").toString()));
+      // validate the optional field `category`
+      if (jsonObj.get("category") != null && !jsonObj.get("category").isJsonNull()) {
+        CategoryEnum.validateJsonElement(jsonObj.get("category"));
       }
   }
 

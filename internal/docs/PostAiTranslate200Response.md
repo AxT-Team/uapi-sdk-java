@@ -7,7 +7,6 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**code** | **Integer** |  |  [optional] |
 |**message** | **String** |  |  [optional] |
 |**isBatch** | **Boolean** | 标识是否为批量翻译请求。 |  [optional] |
 |**data** | [**PostAiTranslate200ResponseData**](PostAiTranslate200ResponseData.md) |  |  [optional] |

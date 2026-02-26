@@ -24,10 +24,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.client.model.EndpointsAggregate;
-import org.openapitools.client.model.EndpointsAggregateEndpointsInner;
-import org.openapitools.client.model.EndpointsAggregateUnaggregated;
-import org.openapitools.client.model.SingleEndpoint;
+import org.openapitools.client.model.GetStatusUsage200ResponseAnyOf;
+import org.openapitools.client.model.GetStatusUsage200ResponseAnyOf1;
+import org.openapitools.client.model.GetStatusUsage200ResponseAnyOfEndpointsInner;
+import org.openapitools.client.model.GetStatusUsage200ResponseAnyOfUnaggregated;
 
 
 
@@ -65,7 +65,7 @@ import com.google.gson.JsonParseException;
 
 import org.openapitools.client.JSON;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetStatusUsage200Response extends AbstractOpenApiSchema {
     private static final Logger log = Logger.getLogger(GetStatusUsage200Response.class.getName());
 
@@ -77,8 +77,8 @@ public class GetStatusUsage200Response extends AbstractOpenApiSchema {
                 return null; // this class only serializes 'GetStatusUsage200Response' and its subtypes
             }
             final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-            final TypeAdapter<EndpointsAggregate> adapterEndpointsAggregate = gson.getDelegateAdapter(this, TypeToken.get(EndpointsAggregate.class));
-            final TypeAdapter<SingleEndpoint> adapterSingleEndpoint = gson.getDelegateAdapter(this, TypeToken.get(SingleEndpoint.class));
+            final TypeAdapter<GetStatusUsage200ResponseAnyOf> adapterGetStatusUsage200ResponseAnyOf = gson.getDelegateAdapter(this, TypeToken.get(GetStatusUsage200ResponseAnyOf.class));
+            final TypeAdapter<GetStatusUsage200ResponseAnyOf1> adapterGetStatusUsage200ResponseAnyOf1 = gson.getDelegateAdapter(this, TypeToken.get(GetStatusUsage200ResponseAnyOf1.class));
 
             return (TypeAdapter<T>) new TypeAdapter<GetStatusUsage200Response>() {
                 @Override
@@ -88,19 +88,19 @@ public class GetStatusUsage200Response extends AbstractOpenApiSchema {
                         return;
                     }
 
-                    // check if the actual instance is of the type `EndpointsAggregate`
-                    if (value.getActualInstance() instanceof EndpointsAggregate) {
-                        JsonElement element = adapterEndpointsAggregate.toJsonTree((EndpointsAggregate)value.getActualInstance());
+                    // check if the actual instance is of the type `GetStatusUsage200ResponseAnyOf`
+                    if (value.getActualInstance() instanceof GetStatusUsage200ResponseAnyOf) {
+                        JsonElement element = adapterGetStatusUsage200ResponseAnyOf.toJsonTree((GetStatusUsage200ResponseAnyOf)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    // check if the actual instance is of the type `SingleEndpoint`
-                    if (value.getActualInstance() instanceof SingleEndpoint) {
-                        JsonElement element = adapterSingleEndpoint.toJsonTree((SingleEndpoint)value.getActualInstance());
+                    // check if the actual instance is of the type `GetStatusUsage200ResponseAnyOf1`
+                    if (value.getActualInstance() instanceof GetStatusUsage200ResponseAnyOf1) {
+                        JsonElement element = adapterGetStatusUsage200ResponseAnyOf1.toJsonTree((GetStatusUsage200ResponseAnyOf1)value.getActualInstance());
                         elementAdapter.write(out, element);
                         return;
                     }
-                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: EndpointsAggregate, SingleEndpoint");
+                    throw new IOException("Failed to serialize as the type doesn't match anyOf schemas: GetStatusUsage200ResponseAnyOf, GetStatusUsage200ResponseAnyOf1");
                 }
 
                 @Override
@@ -111,31 +111,31 @@ public class GetStatusUsage200Response extends AbstractOpenApiSchema {
                     ArrayList<String> errorMessages = new ArrayList<>();
                     TypeAdapter actualAdapter = elementAdapter;
 
-                    // deserialize EndpointsAggregate
+                    // deserialize GetStatusUsage200ResponseAnyOf
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        EndpointsAggregate.validateJsonElement(jsonElement);
-                        actualAdapter = adapterEndpointsAggregate;
+                        GetStatusUsage200ResponseAnyOf.validateJsonElement(jsonElement);
+                        actualAdapter = adapterGetStatusUsage200ResponseAnyOf;
                         GetStatusUsage200Response ret = new GetStatusUsage200Response();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for EndpointsAggregate failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'EndpointsAggregate'", e);
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetStatusUsage200ResponseAnyOf failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'GetStatusUsage200ResponseAnyOf'", e);
                     }
-                    // deserialize SingleEndpoint
+                    // deserialize GetStatusUsage200ResponseAnyOf1
                     try {
                         // validate the JSON object to see if any exception is thrown
-                        SingleEndpoint.validateJsonElement(jsonElement);
-                        actualAdapter = adapterSingleEndpoint;
+                        GetStatusUsage200ResponseAnyOf1.validateJsonElement(jsonElement);
+                        actualAdapter = adapterGetStatusUsage200ResponseAnyOf1;
                         GetStatusUsage200Response ret = new GetStatusUsage200Response();
                         ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
                         return ret;
                     } catch (Exception e) {
                         // deserialization failed, continue
-                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for SingleEndpoint failed with `%s`.", e.getMessage()));
-                        log.log(Level.FINER, "Input data does not match schema 'SingleEndpoint'", e);
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetStatusUsage200ResponseAnyOf1 failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'GetStatusUsage200ResponseAnyOf1'", e);
                     }
 
                     throw new IOException(String.format(Locale.ROOT, "Failed deserialization for GetStatusUsage200Response: no class matches result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
@@ -157,8 +157,8 @@ public class GetStatusUsage200Response extends AbstractOpenApiSchema {
     }
 
     static {
-        schemas.put("EndpointsAggregate", EndpointsAggregate.class);
-        schemas.put("SingleEndpoint", SingleEndpoint.class);
+        schemas.put("GetStatusUsage200ResponseAnyOf", GetStatusUsage200ResponseAnyOf.class);
+        schemas.put("GetStatusUsage200ResponseAnyOf1", GetStatusUsage200ResponseAnyOf1.class);
     }
 
     @Override
@@ -169,30 +169,30 @@ public class GetStatusUsage200Response extends AbstractOpenApiSchema {
     /**
      * Set the instance that matches the anyOf child schema, check
      * the instance parameter is valid against the anyOf child schemas:
-     * EndpointsAggregate, SingleEndpoint
+     * GetStatusUsage200ResponseAnyOf, GetStatusUsage200ResponseAnyOf1
      *
      * It could be an instance of the 'anyOf' schemas.
      */
     @Override
     public void setActualInstance(Object instance) {
-        if (instance instanceof EndpointsAggregate) {
+        if (instance instanceof GetStatusUsage200ResponseAnyOf) {
             super.setActualInstance(instance);
             return;
         }
 
-        if (instance instanceof SingleEndpoint) {
+        if (instance instanceof GetStatusUsage200ResponseAnyOf1) {
             super.setActualInstance(instance);
             return;
         }
 
-        throw new RuntimeException("Invalid instance type. Must be EndpointsAggregate, SingleEndpoint");
+        throw new RuntimeException("Invalid instance type. Must be GetStatusUsage200ResponseAnyOf, GetStatusUsage200ResponseAnyOf1");
     }
 
     /**
      * Get the actual instance, which can be the following:
-     * EndpointsAggregate, SingleEndpoint
+     * GetStatusUsage200ResponseAnyOf, GetStatusUsage200ResponseAnyOf1
      *
-     * @return The actual instance (EndpointsAggregate, SingleEndpoint)
+     * @return The actual instance (GetStatusUsage200ResponseAnyOf, GetStatusUsage200ResponseAnyOf1)
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -201,25 +201,25 @@ public class GetStatusUsage200Response extends AbstractOpenApiSchema {
     }
 
     /**
-     * Get the actual instance of `EndpointsAggregate`. If the actual instance is not `EndpointsAggregate`,
+     * Get the actual instance of `GetStatusUsage200ResponseAnyOf`. If the actual instance is not `GetStatusUsage200ResponseAnyOf`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `EndpointsAggregate`
-     * @throws ClassCastException if the instance is not `EndpointsAggregate`
+     * @return The actual instance of `GetStatusUsage200ResponseAnyOf`
+     * @throws ClassCastException if the instance is not `GetStatusUsage200ResponseAnyOf`
      */
-    public EndpointsAggregate getEndpointsAggregate() throws ClassCastException {
-        return (EndpointsAggregate)super.getActualInstance();
+    public GetStatusUsage200ResponseAnyOf getGetStatusUsage200ResponseAnyOf() throws ClassCastException {
+        return (GetStatusUsage200ResponseAnyOf)super.getActualInstance();
     }
 
     /**
-     * Get the actual instance of `SingleEndpoint`. If the actual instance is not `SingleEndpoint`,
+     * Get the actual instance of `GetStatusUsage200ResponseAnyOf1`. If the actual instance is not `GetStatusUsage200ResponseAnyOf1`,
      * the ClassCastException will be thrown.
      *
-     * @return The actual instance of `SingleEndpoint`
-     * @throws ClassCastException if the instance is not `SingleEndpoint`
+     * @return The actual instance of `GetStatusUsage200ResponseAnyOf1`
+     * @throws ClassCastException if the instance is not `GetStatusUsage200ResponseAnyOf1`
      */
-    public SingleEndpoint getSingleEndpoint() throws ClassCastException {
-        return (SingleEndpoint)super.getActualInstance();
+    public GetStatusUsage200ResponseAnyOf1 getGetStatusUsage200ResponseAnyOf1() throws ClassCastException {
+        return (GetStatusUsage200ResponseAnyOf1)super.getActualInstance();
     }
 
     /**
@@ -231,23 +231,23 @@ public class GetStatusUsage200Response extends AbstractOpenApiSchema {
     public static void validateJsonElement(JsonElement jsonElement) throws IOException {
         // validate anyOf schemas one by one
         ArrayList<String> errorMessages = new ArrayList<>();
-        // validate the json string with EndpointsAggregate
+        // validate the json string with GetStatusUsage200ResponseAnyOf
         try {
-            EndpointsAggregate.validateJsonElement(jsonElement);
+            GetStatusUsage200ResponseAnyOf.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for EndpointsAggregate failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetStatusUsage200ResponseAnyOf failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        // validate the json string with SingleEndpoint
+        // validate the json string with GetStatusUsage200ResponseAnyOf1
         try {
-            SingleEndpoint.validateJsonElement(jsonElement);
+            GetStatusUsage200ResponseAnyOf1.validateJsonElement(jsonElement);
             return;
         } catch (Exception e) {
-            errorMessages.add(String.format(Locale.ROOT, "Deserialization for SingleEndpoint failed with `%s`.", e.getMessage()));
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetStatusUsage200ResponseAnyOf1 failed with `%s`.", e.getMessage()));
             // continue to the next one
         }
-        throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for GetStatusUsage200Response with anyOf schemas: EndpointsAggregate, SingleEndpoint. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
+        throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for GetStatusUsage200Response with anyOf schemas: GetStatusUsage200ResponseAnyOf, GetStatusUsage200ResponseAnyOf1. no class match the result, expected at least 1. Detailed failure message for anyOf schemas: %s. JSON: %s", errorMessages, jsonElement.toString()));
     }
 
     /**

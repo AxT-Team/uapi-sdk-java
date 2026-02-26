@@ -50,17 +50,12 @@ import org.openapitools.client.JSON;
 /**
  * GetImageTobase64200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetImageTobase64200Response {
   public static final String SERIALIZED_NAME_BASE64 = "base64";
   @SerializedName(SERIALIZED_NAME_BASE64)
   @javax.annotation.Nullable
   private String base64;
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
 
   public static final String SERIALIZED_NAME_MSG = "msg";
   @SerializedName(SERIALIZED_NAME_MSG)
@@ -86,25 +81,6 @@ public class GetImageTobase64200Response {
 
   public void setBase64(@javax.annotation.Nullable String base64) {
     this.base64 = base64;
-  }
-
-
-  public GetImageTobase64200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * 状态码，200代表成功。
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
   }
 
 
@@ -138,13 +114,12 @@ public class GetImageTobase64200Response {
     }
     GetImageTobase64200Response getImageTobase64200Response = (GetImageTobase64200Response) o;
     return Objects.equals(this.base64, getImageTobase64200Response.base64) &&
-        Objects.equals(this.code, getImageTobase64200Response.code) &&
         Objects.equals(this.msg, getImageTobase64200Response.msg);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(base64, code, msg);
+    return Objects.hash(base64, msg);
   }
 
   @Override
@@ -152,7 +127,6 @@ public class GetImageTobase64200Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetImageTobase64200Response {\n");
     sb.append("    base64: ").append(toIndentedString(base64)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    msg: ").append(toIndentedString(msg)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -175,7 +149,7 @@ public class GetImageTobase64200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("base64", "code", "msg"));
+    openapiFields = new HashSet<String>(Arrays.asList("base64", "msg"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

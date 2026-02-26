@@ -53,13 +53,8 @@ import org.openapitools.client.JSON;
 /**
  * GetHistoryProgrammerToday200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetHistoryProgrammerToday200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   @javax.annotation.Nullable
@@ -77,25 +72,6 @@ public class GetHistoryProgrammerToday200Response {
 
   public GetHistoryProgrammerToday200Response() {
   }
-
-  public GetHistoryProgrammerToday200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public GetHistoryProgrammerToday200Response message(@javax.annotation.Nullable String message) {
     this.message = message;
@@ -172,22 +148,20 @@ public class GetHistoryProgrammerToday200Response {
       return false;
     }
     GetHistoryProgrammerToday200Response getHistoryProgrammerToday200Response = (GetHistoryProgrammerToday200Response) o;
-    return Objects.equals(this.code, getHistoryProgrammerToday200Response.code) &&
-        Objects.equals(this.message, getHistoryProgrammerToday200Response.message) &&
+    return Objects.equals(this.message, getHistoryProgrammerToday200Response.message) &&
         Objects.equals(this.date, getHistoryProgrammerToday200Response.date) &&
         Objects.equals(this.events, getHistoryProgrammerToday200Response.events);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, date, events);
+    return Objects.hash(message, date, events);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetHistoryProgrammerToday200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    events: ").append(toIndentedString(events)).append("\n");
@@ -212,7 +186,7 @@ public class GetHistoryProgrammerToday200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "message", "date", "events"));
+    openapiFields = new HashSet<String>(Arrays.asList("message", "date", "events"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

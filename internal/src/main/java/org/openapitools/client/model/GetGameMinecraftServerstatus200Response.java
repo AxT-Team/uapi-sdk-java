@@ -50,13 +50,8 @@ import org.openapitools.client.JSON;
 /**
  * GetGameMinecraftServerstatus200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetGameMinecraftServerstatus200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_FAVICON_URL = "favicon_url";
   @SerializedName(SERIALIZED_NAME_FAVICON_URL)
   @javax.annotation.Nullable
@@ -104,25 +99,6 @@ public class GetGameMinecraftServerstatus200Response {
 
   public GetGameMinecraftServerstatus200Response() {
   }
-
-  public GetGameMinecraftServerstatus200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * 状态码，200代表成功。
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public GetGameMinecraftServerstatus200Response faviconUrl(@javax.annotation.Nullable String faviconUrl) {
     this.faviconUrl = faviconUrl;
@@ -305,8 +281,7 @@ public class GetGameMinecraftServerstatus200Response {
       return false;
     }
     GetGameMinecraftServerstatus200Response getGameMinecraftServerstatus200Response = (GetGameMinecraftServerstatus200Response) o;
-    return Objects.equals(this.code, getGameMinecraftServerstatus200Response.code) &&
-        Objects.equals(this.faviconUrl, getGameMinecraftServerstatus200Response.faviconUrl) &&
+    return Objects.equals(this.faviconUrl, getGameMinecraftServerstatus200Response.faviconUrl) &&
         Objects.equals(this.ip, getGameMinecraftServerstatus200Response.ip) &&
         Objects.equals(this.maxPlayers, getGameMinecraftServerstatus200Response.maxPlayers) &&
         Objects.equals(this.motdClean, getGameMinecraftServerstatus200Response.motdClean) &&
@@ -319,14 +294,13 @@ public class GetGameMinecraftServerstatus200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, faviconUrl, ip, maxPlayers, motdClean, motdHtml, online, players, port, version);
+    return Objects.hash(faviconUrl, ip, maxPlayers, motdClean, motdHtml, online, players, port, version);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetGameMinecraftServerstatus200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    faviconUrl: ").append(toIndentedString(faviconUrl)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
     sb.append("    maxPlayers: ").append(toIndentedString(maxPlayers)).append("\n");
@@ -357,7 +331,7 @@ public class GetGameMinecraftServerstatus200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "favicon_url", "ip", "max_players", "motd_clean", "motd_html", "online", "players", "port", "version"));
+    openapiFields = new HashSet<String>(Arrays.asList("favicon_url", "ip", "max_players", "motd_clean", "motd_html", "online", "players", "port", "version"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

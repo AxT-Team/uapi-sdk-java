@@ -30,6 +30,7 @@
 |**languages** | **Map&lt;String, Integer&gt;** |  |  [optional] |
 |**collaborators** | [**List&lt;GetGithubRepo200ResponseCollaboratorsInner&gt;**](GetGithubRepo200ResponseCollaboratorsInner.md) |  |  [optional] |
 |**maintainers** | [**List&lt;GetGithubRepo200ResponseCollaboratorsInner&gt;**](GetGithubRepo200ResponseCollaboratorsInner.md) |  |  [optional] |
+|**latestRelease** | [**GetGithubRepo200ResponseLatestRelease**](GetGithubRepo200ResponseLatestRelease.md) |  |  [optional] |
 
 
 

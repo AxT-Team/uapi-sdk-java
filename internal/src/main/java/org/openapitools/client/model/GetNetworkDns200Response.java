@@ -53,13 +53,8 @@ import org.openapitools.client.JSON;
 /**
  * GetNetworkDns200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkDns200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_DOMAIN = "domain";
   @SerializedName(SERIALIZED_NAME_DOMAIN)
   @javax.annotation.Nullable
@@ -82,25 +77,6 @@ public class GetNetworkDns200Response {
 
   public GetNetworkDns200Response() {
   }
-
-  public GetNetworkDns200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public GetNetworkDns200Response domain(@javax.annotation.Nullable String domain) {
     this.domain = domain;
@@ -196,8 +172,7 @@ public class GetNetworkDns200Response {
       return false;
     }
     GetNetworkDns200Response getNetworkDns200Response = (GetNetworkDns200Response) o;
-    return Objects.equals(this.code, getNetworkDns200Response.code) &&
-        Objects.equals(this.domain, getNetworkDns200Response.domain) &&
+    return Objects.equals(this.domain, getNetworkDns200Response.domain) &&
         Objects.equals(this.error, getNetworkDns200Response.error) &&
         Objects.equals(this.records, getNetworkDns200Response.records) &&
         Objects.equals(this.type, getNetworkDns200Response.type);
@@ -205,14 +180,13 @@ public class GetNetworkDns200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, domain, error, records, type);
+    return Objects.hash(domain, error, records, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetNetworkDns200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    domain: ").append(toIndentedString(domain)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    records: ").append(toIndentedString(records)).append("\n");
@@ -238,7 +212,7 @@ public class GetNetworkDns200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "domain", "error", "records", "type"));
+    openapiFields = new HashSet<String>(Arrays.asList("domain", "error", "records", "type"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

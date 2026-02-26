@@ -8,7 +8,6 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**avg** | **BigDecimal** | 平均延迟(ms) |  [optional] |
-|**code** | **Integer** |  |  [optional] |
 |**host** | **String** |  |  [optional] |
 |**ip** | **String** |  |  [optional] |
 |**location** | **String** |  |  [optional] |

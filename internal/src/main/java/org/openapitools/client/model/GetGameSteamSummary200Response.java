@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * GetGameSteamSummary200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetGameSteamSummary200Response {
   public static final String SERIALIZED_NAME_AVATAR = "avatar";
   @SerializedName(SERIALIZED_NAME_AVATAR)
@@ -66,11 +66,6 @@ public class GetGameSteamSummary200Response {
   @SerializedName(SERIALIZED_NAME_AVATARMEDIUM)
   @javax.annotation.Nullable
   private String avatarmedium;
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
 
   public static final String SERIALIZED_NAME_COMMUNITYVISIBILITYSTATE = "communityvisibilitystate";
   @SerializedName(SERIALIZED_NAME_COMMUNITYVISIBILITYSTATE)
@@ -184,25 +179,6 @@ public class GetGameSteamSummary200Response {
 
   public void setAvatarmedium(@javax.annotation.Nullable String avatarmedium) {
     this.avatarmedium = avatarmedium;
-  }
-
-
-  public GetGameSteamSummary200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * 状态码，200代表成功。
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
   }
 
 
@@ -428,7 +404,6 @@ public class GetGameSteamSummary200Response {
     return Objects.equals(this.avatar, getGameSteamSummary200Response.avatar) &&
         Objects.equals(this.avatarfull, getGameSteamSummary200Response.avatarfull) &&
         Objects.equals(this.avatarmedium, getGameSteamSummary200Response.avatarmedium) &&
-        Objects.equals(this.code, getGameSteamSummary200Response.code) &&
         Objects.equals(this.communityvisibilitystate, getGameSteamSummary200Response.communityvisibilitystate) &&
         Objects.equals(this.loccountrycode, getGameSteamSummary200Response.loccountrycode) &&
         Objects.equals(this.personaname, getGameSteamSummary200Response.personaname) &&
@@ -444,7 +419,7 @@ public class GetGameSteamSummary200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(avatar, avatarfull, avatarmedium, code, communityvisibilitystate, loccountrycode, personaname, personastate, primaryclanid, profilestate, profileurl, realname, steamid, timecreated, timecreatedStr);
+    return Objects.hash(avatar, avatarfull, avatarmedium, communityvisibilitystate, loccountrycode, personaname, personastate, primaryclanid, profilestate, profileurl, realname, steamid, timecreated, timecreatedStr);
   }
 
   @Override
@@ -454,7 +429,6 @@ public class GetGameSteamSummary200Response {
     sb.append("    avatar: ").append(toIndentedString(avatar)).append("\n");
     sb.append("    avatarfull: ").append(toIndentedString(avatarfull)).append("\n");
     sb.append("    avatarmedium: ").append(toIndentedString(avatarmedium)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    communityvisibilitystate: ").append(toIndentedString(communityvisibilitystate)).append("\n");
     sb.append("    loccountrycode: ").append(toIndentedString(loccountrycode)).append("\n");
     sb.append("    personaname: ").append(toIndentedString(personaname)).append("\n");
@@ -487,7 +461,7 @@ public class GetGameSteamSummary200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("avatar", "avatarfull", "avatarmedium", "code", "communityvisibilitystate", "loccountrycode", "personaname", "personastate", "primaryclanid", "profilestate", "profileurl", "realname", "steamid", "timecreated", "timecreated_str"));
+    openapiFields = new HashSet<String>(Arrays.asList("avatar", "avatarfull", "avatarmedium", "communityvisibilitystate", "loccountrycode", "personaname", "personastate", "primaryclanid", "profilestate", "profileurl", "realname", "steamid", "timecreated", "timecreated_str"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

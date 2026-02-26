@@ -50,13 +50,8 @@ import org.openapitools.client.JSON;
 /**
  * PostConvertJson200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostConvertJson200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_CONTENT = "content";
   @SerializedName(SERIALIZED_NAME_CONTENT)
   @javax.annotation.Nullable
@@ -64,25 +59,6 @@ public class PostConvertJson200Response {
 
   public PostConvertJson200Response() {
   }
-
-  public PostConvertJson200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * 状态码，200代表操作成功。
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public PostConvertJson200Response content(@javax.annotation.Nullable String content) {
     this.content = content;
@@ -113,20 +89,18 @@ public class PostConvertJson200Response {
       return false;
     }
     PostConvertJson200Response postConvertJson200Response = (PostConvertJson200Response) o;
-    return Objects.equals(this.code, postConvertJson200Response.code) &&
-        Objects.equals(this.content, postConvertJson200Response.content);
+    return Objects.equals(this.content, postConvertJson200Response.content);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, content);
+    return Objects.hash(content);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostConvertJson200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -149,7 +123,7 @@ public class PostConvertJson200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "content"));
+    openapiFields = new HashSet<String>(Arrays.asList("content"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

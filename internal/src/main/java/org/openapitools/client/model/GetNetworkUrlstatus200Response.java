@@ -22,238 +22,256 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import org.openapitools.client.model.GetNetworkUrlstatus200ResponseOneOf;
+import org.openapitools.client.model.GetNetworkUrlstatus200ResponseOneOf1;
+
+
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Locale;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Locale;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParseException;
 
 import org.openapitools.client.JSON;
 
-/**
- * GetNetworkUrlstatus200Response
- */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class GetNetworkUrlstatus200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+public class GetNetworkUrlstatus200Response extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(GetNetworkUrlstatus200Response.class.getName());
 
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  @javax.annotation.Nullable
-  private Integer status;
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetNetworkUrlstatus200Response.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetNetworkUrlstatus200Response' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetNetworkUrlstatus200ResponseOneOf> adapterGetNetworkUrlstatus200ResponseOneOf = gson.getDelegateAdapter(this, TypeToken.get(GetNetworkUrlstatus200ResponseOneOf.class));
+            final TypeAdapter<GetNetworkUrlstatus200ResponseOneOf1> adapterGetNetworkUrlstatus200ResponseOneOf1 = gson.getDelegateAdapter(this, TypeToken.get(GetNetworkUrlstatus200ResponseOneOf1.class));
 
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  @javax.annotation.Nullable
-  private String url;
+            return (TypeAdapter<T>) new TypeAdapter<GetNetworkUrlstatus200Response>() {
+                @Override
+                public void write(JsonWriter out, GetNetworkUrlstatus200Response value) throws IOException {
+                    if (value == null || value.getActualInstance() == null) {
+                        elementAdapter.write(out, null);
+                        return;
+                    }
 
-  public GetNetworkUrlstatus200Response() {
-  }
+                    // check if the actual instance is of the type `GetNetworkUrlstatus200ResponseOneOf`
+                    if (value.getActualInstance() instanceof GetNetworkUrlstatus200ResponseOneOf) {
+                        JsonElement element = adapterGetNetworkUrlstatus200ResponseOneOf.toJsonTree((GetNetworkUrlstatus200ResponseOneOf)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `GetNetworkUrlstatus200ResponseOneOf1`
+                    if (value.getActualInstance() instanceof GetNetworkUrlstatus200ResponseOneOf1) {
+                        JsonElement element = adapterGetNetworkUrlstatus200ResponseOneOf1.toJsonTree((GetNetworkUrlstatus200ResponseOneOf1)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: GetNetworkUrlstatus200ResponseOneOf, GetNetworkUrlstatus200ResponseOneOf1");
+                }
 
-  public GetNetworkUrlstatus200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
+                @Override
+                public GetNetworkUrlstatus200Response read(JsonReader in) throws IOException {
+                    Object deserialized = null;
+                    JsonElement jsonElement = elementAdapter.read(in);
 
-  /**
-   * Get code
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
+                    int match = 0;
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
+                    // deserialize GetNetworkUrlstatus200ResponseOneOf
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        GetNetworkUrlstatus200ResponseOneOf.validateJsonElement(jsonElement);
+                        actualAdapter = adapterGetNetworkUrlstatus200ResponseOneOf;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'GetNetworkUrlstatus200ResponseOneOf'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetNetworkUrlstatus200ResponseOneOf failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'GetNetworkUrlstatus200ResponseOneOf'", e);
+                    }
+                    // deserialize GetNetworkUrlstatus200ResponseOneOf1
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        GetNetworkUrlstatus200ResponseOneOf1.validateJsonElement(jsonElement);
+                        actualAdapter = adapterGetNetworkUrlstatus200ResponseOneOf1;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'GetNetworkUrlstatus200ResponseOneOf1'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetNetworkUrlstatus200ResponseOneOf1 failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'GetNetworkUrlstatus200ResponseOneOf1'", e);
+                    }
 
+                    if (match == 1) {
+                        GetNetworkUrlstatus200Response ret = new GetNetworkUrlstatus200Response();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    }
 
-  public GetNetworkUrlstatus200Response status(@javax.annotation.Nullable Integer status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * HTTP响应状态码
-   * @return status
-   */
-  @javax.annotation.Nullable
-  public Integer getStatus() {
-    return status;
-  }
-
-  public void setStatus(@javax.annotation.Nullable Integer status) {
-    this.status = status;
-  }
-
-
-  public GetNetworkUrlstatus200Response url(@javax.annotation.Nullable String url) {
-    this.url = url;
-    return this;
-  }
-
-  /**
-   * Get url
-   * @return url
-   */
-  @javax.annotation.Nullable
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(@javax.annotation.Nullable String url) {
-    this.url = url;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    GetNetworkUrlstatus200Response getNetworkUrlstatus200Response = (GetNetworkUrlstatus200Response) o;
-    return Objects.equals(this.code, getNetworkUrlstatus200Response.code) &&
-        Objects.equals(this.status, getNetworkUrlstatus200Response.status) &&
-        Objects.equals(this.url, getNetworkUrlstatus200Response.url);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(code, status, url);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GetNetworkUrlstatus200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "status", "url"));
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(0);
-  }
-
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GetNetworkUrlstatus200Response
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!GetNetworkUrlstatus200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in GetNetworkUrlstatus200Response is not found in the empty JSON string", GetNetworkUrlstatus200Response.openapiRequiredFields.toString()));
+                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for GetNetworkUrlstatus200Response: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                }
+            }.nullSafe();
         }
-      }
+    }
 
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GetNetworkUrlstatus200Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `GetNetworkUrlstatus200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+    // store a list of schema names defined in oneOf
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
+
+    public GetNetworkUrlstatus200Response() {
+        super("oneOf", Boolean.FALSE);
+    }
+
+    public GetNetworkUrlstatus200Response(Object o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    static {
+        schemas.put("GetNetworkUrlstatus200ResponseOneOf", GetNetworkUrlstatus200ResponseOneOf.class);
+        schemas.put("GetNetworkUrlstatus200ResponseOneOf1", GetNetworkUrlstatus200ResponseOneOf1.class);
+    }
+
+    @Override
+    public Map<String, Class<?>> getSchemas() {
+        return GetNetworkUrlstatus200Response.schemas;
+    }
+
+    /**
+     * Set the instance that matches the oneOf child schema, check
+     * the instance parameter is valid against the oneOf child schemas:
+     * GetNetworkUrlstatus200ResponseOneOf, GetNetworkUrlstatus200ResponseOneOf1
+     *
+     * It could be an instance of the 'oneOf' schemas.
+     */
+    @Override
+    public void setActualInstance(Object instance) {
+        if (instance instanceof GetNetworkUrlstatus200ResponseOneOf) {
+            super.setActualInstance(instance);
+            return;
         }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
-      }
-  }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        if (instance instanceof GetNetworkUrlstatus200ResponseOneOf1) {
+            super.setActualInstance(instance);
+            return;
+        }
+
+        throw new RuntimeException("Invalid instance type. Must be GetNetworkUrlstatus200ResponseOneOf, GetNetworkUrlstatus200ResponseOneOf1");
+    }
+
+    /**
+     * Get the actual instance, which can be the following:
+     * GetNetworkUrlstatus200ResponseOneOf, GetNetworkUrlstatus200ResponseOneOf1
+     *
+     * @return The actual instance (GetNetworkUrlstatus200ResponseOneOf, GetNetworkUrlstatus200ResponseOneOf1)
+     */
     @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetNetworkUrlstatus200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetNetworkUrlstatus200Response' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetNetworkUrlstatus200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetNetworkUrlstatus200Response.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<GetNetworkUrlstatus200Response>() {
-           @Override
-           public void write(JsonWriter out, GetNetworkUrlstatus200Response value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public GetNetworkUrlstatus200Response read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+    public Object getActualInstance() {
+        return super.getActualInstance();
     }
-  }
 
-  /**
-   * Create an instance of GetNetworkUrlstatus200Response given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of GetNetworkUrlstatus200Response
-   * @throws IOException if the JSON string is invalid with respect to GetNetworkUrlstatus200Response
-   */
-  public static GetNetworkUrlstatus200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetNetworkUrlstatus200Response.class);
-  }
+    /**
+     * Get the actual instance of `GetNetworkUrlstatus200ResponseOneOf`. If the actual instance is not `GetNetworkUrlstatus200ResponseOneOf`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `GetNetworkUrlstatus200ResponseOneOf`
+     * @throws ClassCastException if the instance is not `GetNetworkUrlstatus200ResponseOneOf`
+     */
+    public GetNetworkUrlstatus200ResponseOneOf getGetNetworkUrlstatus200ResponseOneOf() throws ClassCastException {
+        return (GetNetworkUrlstatus200ResponseOneOf)super.getActualInstance();
+    }
 
-  /**
-   * Convert an instance of GetNetworkUrlstatus200Response to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    /**
+     * Get the actual instance of `GetNetworkUrlstatus200ResponseOneOf1`. If the actual instance is not `GetNetworkUrlstatus200ResponseOneOf1`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `GetNetworkUrlstatus200ResponseOneOf1`
+     * @throws ClassCastException if the instance is not `GetNetworkUrlstatus200ResponseOneOf1`
+     */
+    public GetNetworkUrlstatus200ResponseOneOf1 getGetNetworkUrlstatus200ResponseOneOf1() throws ClassCastException {
+        return (GetNetworkUrlstatus200ResponseOneOf1)super.getActualInstance();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetNetworkUrlstatus200Response
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        // validate oneOf schemas one by one
+        int validCount = 0;
+        ArrayList<String> errorMessages = new ArrayList<>();
+        // validate the json string with GetNetworkUrlstatus200ResponseOneOf
+        try {
+            GetNetworkUrlstatus200ResponseOneOf.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetNetworkUrlstatus200ResponseOneOf failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with GetNetworkUrlstatus200ResponseOneOf1
+        try {
+            GetNetworkUrlstatus200ResponseOneOf1.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetNetworkUrlstatus200ResponseOneOf1 failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        if (validCount != 1) {
+            throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for GetNetworkUrlstatus200Response with oneOf schemas: GetNetworkUrlstatus200ResponseOneOf, GetNetworkUrlstatus200ResponseOneOf1. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+        }
+    }
+
+    /**
+     * Create an instance of GetNetworkUrlstatus200Response given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetNetworkUrlstatus200Response
+     * @throws IOException if the JSON string is invalid with respect to GetNetworkUrlstatus200Response
+     */
+    public static GetNetworkUrlstatus200Response fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetNetworkUrlstatus200Response.class);
+    }
+
+    /**
+     * Convert an instance of GetNetworkUrlstatus200Response to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
 

@@ -50,13 +50,8 @@ import org.openapitools.client.JSON;
 /**
  * GetGameMinecraftUserinfo200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetGameMinecraftUserinfo200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
   public static final String SERIALIZED_NAME_SKIN_URL = "skin_url";
   @SerializedName(SERIALIZED_NAME_SKIN_URL)
   @javax.annotation.Nullable
@@ -74,25 +69,6 @@ public class GetGameMinecraftUserinfo200Response {
 
   public GetGameMinecraftUserinfo200Response() {
   }
-
-  public GetGameMinecraftUserinfo200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * 状态码，200代表成功。
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
 
   public GetGameMinecraftUserinfo200Response skinUrl(@javax.annotation.Nullable String skinUrl) {
     this.skinUrl = skinUrl;
@@ -161,22 +137,20 @@ public class GetGameMinecraftUserinfo200Response {
       return false;
     }
     GetGameMinecraftUserinfo200Response getGameMinecraftUserinfo200Response = (GetGameMinecraftUserinfo200Response) o;
-    return Objects.equals(this.code, getGameMinecraftUserinfo200Response.code) &&
-        Objects.equals(this.skinUrl, getGameMinecraftUserinfo200Response.skinUrl) &&
+    return Objects.equals(this.skinUrl, getGameMinecraftUserinfo200Response.skinUrl) &&
         Objects.equals(this.username, getGameMinecraftUserinfo200Response.username) &&
         Objects.equals(this.uuid, getGameMinecraftUserinfo200Response.uuid);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, skinUrl, username, uuid);
+    return Objects.hash(skinUrl, username, uuid);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetGameMinecraftUserinfo200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    skinUrl: ").append(toIndentedString(skinUrl)).append("\n");
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
@@ -201,7 +175,7 @@ public class GetGameMinecraftUserinfo200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "skin_url", "username", "uuid"));
+    openapiFields = new HashSet<String>(Arrays.asList("skin_url", "username", "uuid"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

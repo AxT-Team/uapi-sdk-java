@@ -10,7 +10,6 @@
 |**avatar** | **String** | 32x32 像素的小尺寸头像URL。 |  [optional] |
 |**avatarfull** | **String** | 184x184 像素的大尺寸头像URL。 |  [optional] |
 |**avatarmedium** | **String** | 64x64 像素的中等尺寸头像URL。 |  [optional] |
-|**code** | **Integer** | 状态码，200代表成功。 |  [optional] |
 |**communityvisibilitystate** | **Integer** | 社区资料的可见性状态: 1&#x3D;私密, 3&#x3D;公开。 |  [optional] |
 |**loccountrycode** | **String** | 用户个人资料中设置的国家代码 (ISO 3166-1)，前提是用户已设置并公开。 |  [optional] |
 |**personaname** | **String** | 玩家的当前昵称。 |  [optional] |

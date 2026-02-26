@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * GetSocialQqGroupinfo200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialQqGroupinfo200Response {
   public static final String SERIALIZED_NAME_GROUP_ID = "group_id";
   @SerializedName(SERIALIZED_NAME_GROUP_ID)
@@ -86,6 +86,61 @@ public class GetSocialQqGroupinfo200Response {
   @SerializedName(SERIALIZED_NAME_LAST_UPDATED)
   @javax.annotation.Nullable
   private String lastUpdated;
+
+  public static final String SERIALIZED_NAME_MEMBER_COUNT = "member_count";
+  @SerializedName(SERIALIZED_NAME_MEMBER_COUNT)
+  @javax.annotation.Nullable
+  private Integer memberCount;
+
+  public static final String SERIALIZED_NAME_MAX_MEMBER_COUNT = "max_member_count";
+  @SerializedName(SERIALIZED_NAME_MAX_MEMBER_COUNT)
+  @javax.annotation.Nullable
+  private Integer maxMemberCount;
+
+  public static final String SERIALIZED_NAME_ACTIVE_MEMBER_NUM = "active_member_num";
+  @SerializedName(SERIALIZED_NAME_ACTIVE_MEMBER_NUM)
+  @javax.annotation.Nullable
+  private Integer activeMemberNum;
+
+  public static final String SERIALIZED_NAME_OWNER_UIN = "owner_uin";
+  @SerializedName(SERIALIZED_NAME_OWNER_UIN)
+  @javax.annotation.Nullable
+  private String ownerUin;
+
+  public static final String SERIALIZED_NAME_OWNER_UID = "owner_uid";
+  @SerializedName(SERIALIZED_NAME_OWNER_UID)
+  @javax.annotation.Nullable
+  private String ownerUid;
+
+  public static final String SERIALIZED_NAME_CREATE_TIME = "create_time";
+  @SerializedName(SERIALIZED_NAME_CREATE_TIME)
+  @javax.annotation.Nullable
+  private Integer createTime;
+
+  public static final String SERIALIZED_NAME_CREATE_TIME_STR = "create_time_str";
+  @SerializedName(SERIALIZED_NAME_CREATE_TIME_STR)
+  @javax.annotation.Nullable
+  private String createTimeStr;
+
+  public static final String SERIALIZED_NAME_GROUP_GRADE = "group_grade";
+  @SerializedName(SERIALIZED_NAME_GROUP_GRADE)
+  @javax.annotation.Nullable
+  private Integer groupGrade;
+
+  public static final String SERIALIZED_NAME_GROUP_MEMO = "group_memo";
+  @SerializedName(SERIALIZED_NAME_GROUP_MEMO)
+  @javax.annotation.Nullable
+  private String groupMemo;
+
+  public static final String SERIALIZED_NAME_CERT_TYPE = "cert_type";
+  @SerializedName(SERIALIZED_NAME_CERT_TYPE)
+  @javax.annotation.Nullable
+  private Integer certType;
+
+  public static final String SERIALIZED_NAME_CERT_TEXT = "cert_text";
+  @SerializedName(SERIALIZED_NAME_CERT_TEXT)
+  @javax.annotation.Nullable
+  private String certText;
 
   public GetSocialQqGroupinfo200Response() {
   }
@@ -223,6 +278,215 @@ public class GetSocialQqGroupinfo200Response {
   }
 
 
+  public GetSocialQqGroupinfo200Response memberCount(@javax.annotation.Nullable Integer memberCount) {
+    this.memberCount = memberCount;
+    return this;
+  }
+
+  /**
+   * 当前成员数
+   * @return memberCount
+   */
+  @javax.annotation.Nullable
+  public Integer getMemberCount() {
+    return memberCount;
+  }
+
+  public void setMemberCount(@javax.annotation.Nullable Integer memberCount) {
+    this.memberCount = memberCount;
+  }
+
+
+  public GetSocialQqGroupinfo200Response maxMemberCount(@javax.annotation.Nullable Integer maxMemberCount) {
+    this.maxMemberCount = maxMemberCount;
+    return this;
+  }
+
+  /**
+   * 最大成员数
+   * @return maxMemberCount
+   */
+  @javax.annotation.Nullable
+  public Integer getMaxMemberCount() {
+    return maxMemberCount;
+  }
+
+  public void setMaxMemberCount(@javax.annotation.Nullable Integer maxMemberCount) {
+    this.maxMemberCount = maxMemberCount;
+  }
+
+
+  public GetSocialQqGroupinfo200Response activeMemberNum(@javax.annotation.Nullable Integer activeMemberNum) {
+    this.activeMemberNum = activeMemberNum;
+    return this;
+  }
+
+  /**
+   * 活跃成员数（可选，部分群有此数据）
+   * @return activeMemberNum
+   */
+  @javax.annotation.Nullable
+  public Integer getActiveMemberNum() {
+    return activeMemberNum;
+  }
+
+  public void setActiveMemberNum(@javax.annotation.Nullable Integer activeMemberNum) {
+    this.activeMemberNum = activeMemberNum;
+  }
+
+
+  public GetSocialQqGroupinfo200Response ownerUin(@javax.annotation.Nullable String ownerUin) {
+    this.ownerUin = ownerUin;
+    return this;
+  }
+
+  /**
+   * 群主QQ号（可选）
+   * @return ownerUin
+   */
+  @javax.annotation.Nullable
+  public String getOwnerUin() {
+    return ownerUin;
+  }
+
+  public void setOwnerUin(@javax.annotation.Nullable String ownerUin) {
+    this.ownerUin = ownerUin;
+  }
+
+
+  public GetSocialQqGroupinfo200Response ownerUid(@javax.annotation.Nullable String ownerUid) {
+    this.ownerUid = ownerUid;
+    return this;
+  }
+
+  /**
+   * 群主UID（可选）
+   * @return ownerUid
+   */
+  @javax.annotation.Nullable
+  public String getOwnerUid() {
+    return ownerUid;
+  }
+
+  public void setOwnerUid(@javax.annotation.Nullable String ownerUid) {
+    this.ownerUid = ownerUid;
+  }
+
+
+  public GetSocialQqGroupinfo200Response createTime(@javax.annotation.Nullable Integer createTime) {
+    this.createTime = createTime;
+    return this;
+  }
+
+  /**
+   * 建群时间戳（Unix时间戳，可选）
+   * @return createTime
+   */
+  @javax.annotation.Nullable
+  public Integer getCreateTime() {
+    return createTime;
+  }
+
+  public void setCreateTime(@javax.annotation.Nullable Integer createTime) {
+    this.createTime = createTime;
+  }
+
+
+  public GetSocialQqGroupinfo200Response createTimeStr(@javax.annotation.Nullable String createTimeStr) {
+    this.createTimeStr = createTimeStr;
+    return this;
+  }
+
+  /**
+   * 建群时间格式化字符串（可选）
+   * @return createTimeStr
+   */
+  @javax.annotation.Nullable
+  public String getCreateTimeStr() {
+    return createTimeStr;
+  }
+
+  public void setCreateTimeStr(@javax.annotation.Nullable String createTimeStr) {
+    this.createTimeStr = createTimeStr;
+  }
+
+
+  public GetSocialQqGroupinfo200Response groupGrade(@javax.annotation.Nullable Integer groupGrade) {
+    this.groupGrade = groupGrade;
+    return this;
+  }
+
+  /**
+   * 群等级（可选）
+   * @return groupGrade
+   */
+  @javax.annotation.Nullable
+  public Integer getGroupGrade() {
+    return groupGrade;
+  }
+
+  public void setGroupGrade(@javax.annotation.Nullable Integer groupGrade) {
+    this.groupGrade = groupGrade;
+  }
+
+
+  public GetSocialQqGroupinfo200Response groupMemo(@javax.annotation.Nullable String groupMemo) {
+    this.groupMemo = groupMemo;
+    return this;
+  }
+
+  /**
+   * 群公告/简介（可选）
+   * @return groupMemo
+   */
+  @javax.annotation.Nullable
+  public String getGroupMemo() {
+    return groupMemo;
+  }
+
+  public void setGroupMemo(@javax.annotation.Nullable String groupMemo) {
+    this.groupMemo = groupMemo;
+  }
+
+
+  public GetSocialQqGroupinfo200Response certType(@javax.annotation.Nullable Integer certType) {
+    this.certType = certType;
+    return this;
+  }
+
+  /**
+   * 认证类型（0&#x3D;未认证，可选）
+   * @return certType
+   */
+  @javax.annotation.Nullable
+  public Integer getCertType() {
+    return certType;
+  }
+
+  public void setCertType(@javax.annotation.Nullable Integer certType) {
+    this.certType = certType;
+  }
+
+
+  public GetSocialQqGroupinfo200Response certText(@javax.annotation.Nullable String certText) {
+    this.certText = certText;
+    return this;
+  }
+
+  /**
+   * 认证说明文本（可选）
+   * @return certText
+   */
+  @javax.annotation.Nullable
+  public String getCertText() {
+    return certText;
+  }
+
+  public void setCertText(@javax.annotation.Nullable String certText) {
+    this.certText = certText;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -239,12 +503,23 @@ public class GetSocialQqGroupinfo200Response {
         Objects.equals(this.description, getSocialQqGroupinfo200Response.description) &&
         Objects.equals(this.tag, getSocialQqGroupinfo200Response.tag) &&
         Objects.equals(this.joinUrl, getSocialQqGroupinfo200Response.joinUrl) &&
-        Objects.equals(this.lastUpdated, getSocialQqGroupinfo200Response.lastUpdated);
+        Objects.equals(this.lastUpdated, getSocialQqGroupinfo200Response.lastUpdated) &&
+        Objects.equals(this.memberCount, getSocialQqGroupinfo200Response.memberCount) &&
+        Objects.equals(this.maxMemberCount, getSocialQqGroupinfo200Response.maxMemberCount) &&
+        Objects.equals(this.activeMemberNum, getSocialQqGroupinfo200Response.activeMemberNum) &&
+        Objects.equals(this.ownerUin, getSocialQqGroupinfo200Response.ownerUin) &&
+        Objects.equals(this.ownerUid, getSocialQqGroupinfo200Response.ownerUid) &&
+        Objects.equals(this.createTime, getSocialQqGroupinfo200Response.createTime) &&
+        Objects.equals(this.createTimeStr, getSocialQqGroupinfo200Response.createTimeStr) &&
+        Objects.equals(this.groupGrade, getSocialQqGroupinfo200Response.groupGrade) &&
+        Objects.equals(this.groupMemo, getSocialQqGroupinfo200Response.groupMemo) &&
+        Objects.equals(this.certType, getSocialQqGroupinfo200Response.certType) &&
+        Objects.equals(this.certText, getSocialQqGroupinfo200Response.certText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(groupId, groupName, avatarUrl, description, tag, joinUrl, lastUpdated);
+    return Objects.hash(groupId, groupName, avatarUrl, description, tag, joinUrl, lastUpdated, memberCount, maxMemberCount, activeMemberNum, ownerUin, ownerUid, createTime, createTimeStr, groupGrade, groupMemo, certType, certText);
   }
 
   @Override
@@ -258,6 +533,17 @@ public class GetSocialQqGroupinfo200Response {
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("    joinUrl: ").append(toIndentedString(joinUrl)).append("\n");
     sb.append("    lastUpdated: ").append(toIndentedString(lastUpdated)).append("\n");
+    sb.append("    memberCount: ").append(toIndentedString(memberCount)).append("\n");
+    sb.append("    maxMemberCount: ").append(toIndentedString(maxMemberCount)).append("\n");
+    sb.append("    activeMemberNum: ").append(toIndentedString(activeMemberNum)).append("\n");
+    sb.append("    ownerUin: ").append(toIndentedString(ownerUin)).append("\n");
+    sb.append("    ownerUid: ").append(toIndentedString(ownerUid)).append("\n");
+    sb.append("    createTime: ").append(toIndentedString(createTime)).append("\n");
+    sb.append("    createTimeStr: ").append(toIndentedString(createTimeStr)).append("\n");
+    sb.append("    groupGrade: ").append(toIndentedString(groupGrade)).append("\n");
+    sb.append("    groupMemo: ").append(toIndentedString(groupMemo)).append("\n");
+    sb.append("    certType: ").append(toIndentedString(certType)).append("\n");
+    sb.append("    certText: ").append(toIndentedString(certText)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -279,7 +565,7 @@ public class GetSocialQqGroupinfo200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("group_id", "group_name", "avatar_url", "description", "tag", "join_url", "last_updated"));
+    openapiFields = new HashSet<String>(Arrays.asList("group_id", "group_name", "avatar_url", "description", "tag", "join_url", "last_updated", "member_count", "max_member_count", "active_member_num", "owner_uin", "owner_uid", "create_time", "create_time_str", "group_grade", "group_memo", "cert_type", "cert_text"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -326,6 +612,21 @@ public class GetSocialQqGroupinfo200Response {
       }
       if ((jsonObj.get("last_updated") != null && !jsonObj.get("last_updated").isJsonNull()) && !jsonObj.get("last_updated").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `last_updated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("last_updated").toString()));
+      }
+      if ((jsonObj.get("owner_uin") != null && !jsonObj.get("owner_uin").isJsonNull()) && !jsonObj.get("owner_uin").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `owner_uin` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner_uin").toString()));
+      }
+      if ((jsonObj.get("owner_uid") != null && !jsonObj.get("owner_uid").isJsonNull()) && !jsonObj.get("owner_uid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `owner_uid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("owner_uid").toString()));
+      }
+      if ((jsonObj.get("create_time_str") != null && !jsonObj.get("create_time_str").isJsonNull()) && !jsonObj.get("create_time_str").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `create_time_str` to be a primitive type in the JSON string but got `%s`", jsonObj.get("create_time_str").toString()));
+      }
+      if ((jsonObj.get("group_memo") != null && !jsonObj.get("group_memo").isJsonNull()) && !jsonObj.get("group_memo").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `group_memo` to be a primitive type in the JSON string but got `%s`", jsonObj.get("group_memo").toString()));
+      }
+      if ((jsonObj.get("cert_text") != null && !jsonObj.get("cert_text").isJsonNull()) && !jsonObj.get("cert_text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `cert_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cert_text").toString()));
       }
   }
 

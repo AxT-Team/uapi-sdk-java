@@ -1,6 +1,6 @@
 # uapi-sdk-java
 
-![Banner](https://raw.githubusercontent.com/uapis/uapi-sdk-java/main/banner.png)
+![Banner](https://raw.githubusercontent.com/AxT-Team/uapi-sdk-java/main/banner.png)
 
 [![Java](https://img.shields.io/badge/Java-17+-EA2D2F?style=flat-square&logo=openjdk&logoColor=white)](https://adoptium.net/)
 [![Docs](https://img.shields.io/badge/Docs-uapis.cn-2EAE5D?style=flat-square)](https://uapis.cn/)

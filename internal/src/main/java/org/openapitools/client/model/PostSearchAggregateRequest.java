@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * PostSearchAggregateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostSearchAggregateRequest {
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
@@ -75,7 +75,125 @@ public class PostSearchAggregateRequest {
   public static final String SERIALIZED_NAME_TIMEOUT_MS = "timeout_ms";
   @SerializedName(SERIALIZED_NAME_TIMEOUT_MS)
   @javax.annotation.Nullable
-  private Integer timeoutMs = 3000;
+  private Integer timeoutMs = 8000;
+
+  /**
+   * 排序方式
+   */
+  @JsonAdapter(SortEnum.Adapter.class)
+  public enum SortEnum {
+    RELEVANCE("relevance"),
+    
+    DATE("date");
+
+    private String value;
+
+    SortEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SortEnum fromValue(String value) {
+      for (SortEnum b : SortEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<SortEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SortEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SortEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return SortEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      SortEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_SORT = "sort";
+  @SerializedName(SERIALIZED_NAME_SORT)
+  @javax.annotation.Nullable
+  private SortEnum sort = SortEnum.RELEVANCE;
+
+  /**
+   * 时间范围过滤
+   */
+  @JsonAdapter(TimeRangeEnum.Adapter.class)
+  public enum TimeRangeEnum {
+    DAY("day"),
+    
+    WEEK("week"),
+    
+    MONTH("month"),
+    
+    YEAR("year");
+
+    private String value;
+
+    TimeRangeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TimeRangeEnum fromValue(String value) {
+      for (TimeRangeEnum b : TimeRangeEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<TimeRangeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TimeRangeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TimeRangeEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return TimeRangeEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      TimeRangeEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_TIME_RANGE = "time_range";
+  @SerializedName(SERIALIZED_NAME_TIME_RANGE)
+  @javax.annotation.Nullable
+  private TimeRangeEnum timeRange;
 
   public PostSearchAggregateRequest() {
   }
@@ -175,6 +293,44 @@ public class PostSearchAggregateRequest {
   }
 
 
+  public PostSearchAggregateRequest sort(@javax.annotation.Nullable SortEnum sort) {
+    this.sort = sort;
+    return this;
+  }
+
+  /**
+   * 排序方式
+   * @return sort
+   */
+  @javax.annotation.Nullable
+  public SortEnum getSort() {
+    return sort;
+  }
+
+  public void setSort(@javax.annotation.Nullable SortEnum sort) {
+    this.sort = sort;
+  }
+
+
+  public PostSearchAggregateRequest timeRange(@javax.annotation.Nullable TimeRangeEnum timeRange) {
+    this.timeRange = timeRange;
+    return this;
+  }
+
+  /**
+   * 时间范围过滤
+   * @return timeRange
+   */
+  @javax.annotation.Nullable
+  public TimeRangeEnum getTimeRange() {
+    return timeRange;
+  }
+
+  public void setTimeRange(@javax.annotation.Nullable TimeRangeEnum timeRange) {
+    this.timeRange = timeRange;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -189,12 +345,14 @@ public class PostSearchAggregateRequest {
         Objects.equals(this.site, postSearchAggregateRequest.site) &&
         Objects.equals(this.filetype, postSearchAggregateRequest.filetype) &&
         Objects.equals(this.fetchFull, postSearchAggregateRequest.fetchFull) &&
-        Objects.equals(this.timeoutMs, postSearchAggregateRequest.timeoutMs);
+        Objects.equals(this.timeoutMs, postSearchAggregateRequest.timeoutMs) &&
+        Objects.equals(this.sort, postSearchAggregateRequest.sort) &&
+        Objects.equals(this.timeRange, postSearchAggregateRequest.timeRange);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(query, site, filetype, fetchFull, timeoutMs);
+    return Objects.hash(query, site, filetype, fetchFull, timeoutMs, sort, timeRange);
   }
 
   @Override
@@ -206,6 +364,8 @@ public class PostSearchAggregateRequest {
     sb.append("    filetype: ").append(toIndentedString(filetype)).append("\n");
     sb.append("    fetchFull: ").append(toIndentedString(fetchFull)).append("\n");
     sb.append("    timeoutMs: ").append(toIndentedString(timeoutMs)).append("\n");
+    sb.append("    sort: ").append(toIndentedString(sort)).append("\n");
+    sb.append("    timeRange: ").append(toIndentedString(timeRange)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -227,7 +387,7 @@ public class PostSearchAggregateRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("query", "site", "filetype", "fetch_full", "timeout_ms"));
+    openapiFields = new HashSet<String>(Arrays.asList("query", "site", "filetype", "fetch_full", "timeout_ms", "sort", "time_range"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(Arrays.asList("query"));
@@ -269,6 +429,20 @@ public class PostSearchAggregateRequest {
       }
       if ((jsonObj.get("filetype") != null && !jsonObj.get("filetype").isJsonNull()) && !jsonObj.get("filetype").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `filetype` to be a primitive type in the JSON string but got `%s`", jsonObj.get("filetype").toString()));
+      }
+      if ((jsonObj.get("sort") != null && !jsonObj.get("sort").isJsonNull()) && !jsonObj.get("sort").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sort` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sort").toString()));
+      }
+      // validate the optional field `sort`
+      if (jsonObj.get("sort") != null && !jsonObj.get("sort").isJsonNull()) {
+        SortEnum.validateJsonElement(jsonObj.get("sort"));
+      }
+      if ((jsonObj.get("time_range") != null && !jsonObj.get("time_range").isJsonNull()) && !jsonObj.get("time_range").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `time_range` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time_range").toString()));
+      }
+      // validate the optional field `time_range`
+      if (jsonObj.get("time_range") != null && !jsonObj.get("time_range").isJsonNull()) {
+        TimeRangeEnum.validateJsonElement(jsonObj.get("time_range"));
       }
   }
 

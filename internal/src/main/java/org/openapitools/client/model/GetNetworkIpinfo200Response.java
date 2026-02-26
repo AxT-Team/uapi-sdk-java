@@ -51,176 +51,60 @@ import org.openapitools.client.JSON;
 /**
  * GetNetworkIpinfo200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkIpinfo200Response {
-  public static final String SERIALIZED_NAME_ASN = "asn";
-  @SerializedName(SERIALIZED_NAME_ASN)
-  @javax.annotation.Nullable
-  private String asn;
-
-  public static final String SERIALIZED_NAME_BEGINIP = "beginip";
-  @SerializedName(SERIALIZED_NAME_BEGINIP)
-  @javax.annotation.Nullable
-  private String beginip;
-
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  @javax.annotation.Nullable
-  private Integer code;
-
-  public static final String SERIALIZED_NAME_ENDIP = "endip";
-  @SerializedName(SERIALIZED_NAME_ENDIP)
-  @javax.annotation.Nullable
-  private String endip;
-
   public static final String SERIALIZED_NAME_IP = "ip";
   @SerializedName(SERIALIZED_NAME_IP)
   @javax.annotation.Nullable
   private String ip;
-
-  public static final String SERIALIZED_NAME_ISP = "isp";
-  @SerializedName(SERIALIZED_NAME_ISP)
-  @javax.annotation.Nullable
-  private String isp;
-
-  public static final String SERIALIZED_NAME_LATITUDE = "latitude";
-  @SerializedName(SERIALIZED_NAME_LATITUDE)
-  @javax.annotation.Nullable
-  private BigDecimal latitude;
-
-  public static final String SERIALIZED_NAME_LLC = "llc";
-  @SerializedName(SERIALIZED_NAME_LLC)
-  @javax.annotation.Nullable
-  private String llc;
-
-  public static final String SERIALIZED_NAME_LONGITUDE = "longitude";
-  @SerializedName(SERIALIZED_NAME_LONGITUDE)
-  @javax.annotation.Nullable
-  private BigDecimal longitude;
 
   public static final String SERIALIZED_NAME_REGION = "region";
   @SerializedName(SERIALIZED_NAME_REGION)
   @javax.annotation.Nullable
   private String region;
 
+  public static final String SERIALIZED_NAME_ISP = "isp";
+  @SerializedName(SERIALIZED_NAME_ISP)
+  @javax.annotation.Nullable
+  private String isp;
+
+  public static final String SERIALIZED_NAME_LLC = "llc";
+  @SerializedName(SERIALIZED_NAME_LLC)
+  @javax.annotation.Nullable
+  private String llc;
+
+  public static final String SERIALIZED_NAME_ASN = "asn";
+  @SerializedName(SERIALIZED_NAME_ASN)
+  @javax.annotation.Nullable
+  private String asn;
+
+  public static final String SERIALIZED_NAME_LATITUDE = "latitude";
+  @SerializedName(SERIALIZED_NAME_LATITUDE)
+  @javax.annotation.Nullable
+  private BigDecimal latitude;
+
+  public static final String SERIALIZED_NAME_LONGITUDE = "longitude";
+  @SerializedName(SERIALIZED_NAME_LONGITUDE)
+  @javax.annotation.Nullable
+  private BigDecimal longitude;
+
+  public static final String SERIALIZED_NAME_BEGINIP = "beginip";
+  @SerializedName(SERIALIZED_NAME_BEGINIP)
+  @javax.annotation.Nullable
+  private String beginip;
+
+  public static final String SERIALIZED_NAME_ENDIP = "endip";
+  @SerializedName(SERIALIZED_NAME_ENDIP)
+  @javax.annotation.Nullable
+  private String endip;
+
   public static final String SERIALIZED_NAME_DISTRICT = "district";
   @SerializedName(SERIALIZED_NAME_DISTRICT)
   @javax.annotation.Nullable
   private String district;
 
-  public static final String SERIALIZED_NAME_AREA_CODE = "area_code";
-  @SerializedName(SERIALIZED_NAME_AREA_CODE)
-  @javax.annotation.Nullable
-  private String areaCode;
-
-  public static final String SERIALIZED_NAME_CITY_CODE = "city_code";
-  @SerializedName(SERIALIZED_NAME_CITY_CODE)
-  @javax.annotation.Nullable
-  private String cityCode;
-
-  public static final String SERIALIZED_NAME_ZIP_CODE = "zip_code";
-  @SerializedName(SERIALIZED_NAME_ZIP_CODE)
-  @javax.annotation.Nullable
-  private String zipCode;
-
-  public static final String SERIALIZED_NAME_TIME_ZONE = "time_zone";
-  @SerializedName(SERIALIZED_NAME_TIME_ZONE)
-  @javax.annotation.Nullable
-  private String timeZone;
-
-  public static final String SERIALIZED_NAME_SCENES = "scenes";
-  @SerializedName(SERIALIZED_NAME_SCENES)
-  @javax.annotation.Nullable
-  private String scenes;
-
-  public static final String SERIALIZED_NAME_ELEVATION = "elevation";
-  @SerializedName(SERIALIZED_NAME_ELEVATION)
-  @javax.annotation.Nullable
-  private String elevation;
-
-  public static final String SERIALIZED_NAME_WEATHER_STATION = "weather_station";
-  @SerializedName(SERIALIZED_NAME_WEATHER_STATION)
-  @javax.annotation.Nullable
-  private String weatherStation;
-
   public GetNetworkIpinfo200Response() {
   }
-
-  public GetNetworkIpinfo200Response asn(@javax.annotation.Nullable String asn) {
-    this.asn = asn;
-    return this;
-  }
-
-  /**
-   * 自治系统编号 (由GeoLite2或商业版提供)
-   * @return asn
-   */
-  @javax.annotation.Nullable
-  public String getAsn() {
-    return asn;
-  }
-
-  public void setAsn(@javax.annotation.Nullable String asn) {
-    this.asn = asn;
-  }
-
-
-  public GetNetworkIpinfo200Response beginip(@javax.annotation.Nullable String beginip) {
-    this.beginip = beginip;
-    return this;
-  }
-
-  /**
-   * IP范围起始 (仅在默认查询中提供)
-   * @return beginip
-   */
-  @javax.annotation.Nullable
-  public String getBeginip() {
-    return beginip;
-  }
-
-  public void setBeginip(@javax.annotation.Nullable String beginip) {
-    this.beginip = beginip;
-  }
-
-
-  public GetNetworkIpinfo200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-    return this;
-  }
-
-  /**
-   * Get code
-   * @return code
-   */
-  @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
-  }
-
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
-  }
-
-
-  public GetNetworkIpinfo200Response endip(@javax.annotation.Nullable String endip) {
-    this.endip = endip;
-    return this;
-  }
-
-  /**
-   * IP范围结束 (仅在默认查询中提供)
-   * @return endip
-   */
-  @javax.annotation.Nullable
-  public String getEndip() {
-    return endip;
-  }
-
-  public void setEndip(@javax.annotation.Nullable String endip) {
-    this.endip = endip;
-  }
-
 
   public GetNetworkIpinfo200Response ip(@javax.annotation.Nullable String ip) {
     this.ip = ip;
@@ -228,7 +112,7 @@ public class GetNetworkIpinfo200Response {
   }
 
   /**
-   * Get ip
+   * 查询的IP地址
    * @return ip
    */
   @javax.annotation.Nullable
@@ -241,89 +125,13 @@ public class GetNetworkIpinfo200Response {
   }
 
 
-  public GetNetworkIpinfo200Response isp(@javax.annotation.Nullable String isp) {
-    this.isp = isp;
-    return this;
-  }
-
-  /**
-   * 运营商
-   * @return isp
-   */
-  @javax.annotation.Nullable
-  public String getIsp() {
-    return isp;
-  }
-
-  public void setIsp(@javax.annotation.Nullable String isp) {
-    this.isp = isp;
-  }
-
-
-  public GetNetworkIpinfo200Response latitude(@javax.annotation.Nullable BigDecimal latitude) {
-    this.latitude = latitude;
-    return this;
-  }
-
-  /**
-   * Get latitude
-   * @return latitude
-   */
-  @javax.annotation.Nullable
-  public BigDecimal getLatitude() {
-    return latitude;
-  }
-
-  public void setLatitude(@javax.annotation.Nullable BigDecimal latitude) {
-    this.latitude = latitude;
-  }
-
-
-  public GetNetworkIpinfo200Response llc(@javax.annotation.Nullable String llc) {
-    this.llc = llc;
-    return this;
-  }
-
-  /**
-   * 归属
-   * @return llc
-   */
-  @javax.annotation.Nullable
-  public String getLlc() {
-    return llc;
-  }
-
-  public void setLlc(@javax.annotation.Nullable String llc) {
-    this.llc = llc;
-  }
-
-
-  public GetNetworkIpinfo200Response longitude(@javax.annotation.Nullable BigDecimal longitude) {
-    this.longitude = longitude;
-    return this;
-  }
-
-  /**
-   * Get longitude
-   * @return longitude
-   */
-  @javax.annotation.Nullable
-  public BigDecimal getLongitude() {
-    return longitude;
-  }
-
-  public void setLongitude(@javax.annotation.Nullable BigDecimal longitude) {
-    this.longitude = longitude;
-  }
-
-
   public GetNetworkIpinfo200Response region(@javax.annotation.Nullable String region) {
     this.region = region;
     return this;
   }
 
   /**
-   * 格式：国家 省份 城市
+   * 地理位置，格式：国家 省份 城市
    * @return region
    */
   @javax.annotation.Nullable
@@ -336,13 +144,146 @@ public class GetNetworkIpinfo200Response {
   }
 
 
+  public GetNetworkIpinfo200Response isp(@javax.annotation.Nullable String isp) {
+    this.isp = isp;
+    return this;
+  }
+
+  /**
+   * 运营商名称
+   * @return isp
+   */
+  @javax.annotation.Nullable
+  public String getIsp() {
+    return isp;
+  }
+
+  public void setIsp(@javax.annotation.Nullable String isp) {
+    this.isp = isp;
+  }
+
+
+  public GetNetworkIpinfo200Response llc(@javax.annotation.Nullable String llc) {
+    this.llc = llc;
+    return this;
+  }
+
+  /**
+   * 归属机构
+   * @return llc
+   */
+  @javax.annotation.Nullable
+  public String getLlc() {
+    return llc;
+  }
+
+  public void setLlc(@javax.annotation.Nullable String llc) {
+    this.llc = llc;
+  }
+
+
+  public GetNetworkIpinfo200Response asn(@javax.annotation.Nullable String asn) {
+    this.asn = asn;
+    return this;
+  }
+
+  /**
+   * 自治系统编号
+   * @return asn
+   */
+  @javax.annotation.Nullable
+  public String getAsn() {
+    return asn;
+  }
+
+  public void setAsn(@javax.annotation.Nullable String asn) {
+    this.asn = asn;
+  }
+
+
+  public GetNetworkIpinfo200Response latitude(@javax.annotation.Nullable BigDecimal latitude) {
+    this.latitude = latitude;
+    return this;
+  }
+
+  /**
+   * 纬度
+   * @return latitude
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getLatitude() {
+    return latitude;
+  }
+
+  public void setLatitude(@javax.annotation.Nullable BigDecimal latitude) {
+    this.latitude = latitude;
+  }
+
+
+  public GetNetworkIpinfo200Response longitude(@javax.annotation.Nullable BigDecimal longitude) {
+    this.longitude = longitude;
+    return this;
+  }
+
+  /**
+   * 经度
+   * @return longitude
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(@javax.annotation.Nullable BigDecimal longitude) {
+    this.longitude = longitude;
+  }
+
+
+  public GetNetworkIpinfo200Response beginip(@javax.annotation.Nullable String beginip) {
+    this.beginip = beginip;
+    return this;
+  }
+
+  /**
+   * IP段起始地址（标准查询）
+   * @return beginip
+   */
+  @javax.annotation.Nullable
+  public String getBeginip() {
+    return beginip;
+  }
+
+  public void setBeginip(@javax.annotation.Nullable String beginip) {
+    this.beginip = beginip;
+  }
+
+
+  public GetNetworkIpinfo200Response endip(@javax.annotation.Nullable String endip) {
+    this.endip = endip;
+    return this;
+  }
+
+  /**
+   * IP段结束地址（标准查询）
+   * @return endip
+   */
+  @javax.annotation.Nullable
+  public String getEndip() {
+    return endip;
+  }
+
+  public void setEndip(@javax.annotation.Nullable String endip) {
+    this.endip = endip;
+  }
+
+
   public GetNetworkIpinfo200Response district(@javax.annotation.Nullable String district) {
     this.district = district;
     return this;
   }
 
   /**
-   * 行政区 (仅在商业查询中提供)
+   * 行政区（商业查询）
    * @return district
    */
   @javax.annotation.Nullable
@@ -352,139 +293,6 @@ public class GetNetworkIpinfo200Response {
 
   public void setDistrict(@javax.annotation.Nullable String district) {
     this.district = district;
-  }
-
-
-  public GetNetworkIpinfo200Response areaCode(@javax.annotation.Nullable String areaCode) {
-    this.areaCode = areaCode;
-    return this;
-  }
-
-  /**
-   * 行政区划代码 (仅在商业查询中提供)
-   * @return areaCode
-   */
-  @javax.annotation.Nullable
-  public String getAreaCode() {
-    return areaCode;
-  }
-
-  public void setAreaCode(@javax.annotation.Nullable String areaCode) {
-    this.areaCode = areaCode;
-  }
-
-
-  public GetNetworkIpinfo200Response cityCode(@javax.annotation.Nullable String cityCode) {
-    this.cityCode = cityCode;
-    return this;
-  }
-
-  /**
-   * 城市区号 (仅在商业查询中提供)
-   * @return cityCode
-   */
-  @javax.annotation.Nullable
-  public String getCityCode() {
-    return cityCode;
-  }
-
-  public void setCityCode(@javax.annotation.Nullable String cityCode) {
-    this.cityCode = cityCode;
-  }
-
-
-  public GetNetworkIpinfo200Response zipCode(@javax.annotation.Nullable String zipCode) {
-    this.zipCode = zipCode;
-    return this;
-  }
-
-  /**
-   * 邮政编码 (仅在商业查询中提供)
-   * @return zipCode
-   */
-  @javax.annotation.Nullable
-  public String getZipCode() {
-    return zipCode;
-  }
-
-  public void setZipCode(@javax.annotation.Nullable String zipCode) {
-    this.zipCode = zipCode;
-  }
-
-
-  public GetNetworkIpinfo200Response timeZone(@javax.annotation.Nullable String timeZone) {
-    this.timeZone = timeZone;
-    return this;
-  }
-
-  /**
-   * 时区 (仅在商业查询中提供)
-   * @return timeZone
-   */
-  @javax.annotation.Nullable
-  public String getTimeZone() {
-    return timeZone;
-  }
-
-  public void setTimeZone(@javax.annotation.Nullable String timeZone) {
-    this.timeZone = timeZone;
-  }
-
-
-  public GetNetworkIpinfo200Response scenes(@javax.annotation.Nullable String scenes) {
-    this.scenes = scenes;
-    return this;
-  }
-
-  /**
-   * 应用场景 (仅在商业查询中提供)
-   * @return scenes
-   */
-  @javax.annotation.Nullable
-  public String getScenes() {
-    return scenes;
-  }
-
-  public void setScenes(@javax.annotation.Nullable String scenes) {
-    this.scenes = scenes;
-  }
-
-
-  public GetNetworkIpinfo200Response elevation(@javax.annotation.Nullable String elevation) {
-    this.elevation = elevation;
-    return this;
-  }
-
-  /**
-   * 海拔（米）(仅在商业查询中提供)
-   * @return elevation
-   */
-  @javax.annotation.Nullable
-  public String getElevation() {
-    return elevation;
-  }
-
-  public void setElevation(@javax.annotation.Nullable String elevation) {
-    this.elevation = elevation;
-  }
-
-
-  public GetNetworkIpinfo200Response weatherStation(@javax.annotation.Nullable String weatherStation) {
-    this.weatherStation = weatherStation;
-    return this;
-  }
-
-  /**
-   * 气象站代码 (仅在商业查询中提供)
-   * @return weatherStation
-   */
-  @javax.annotation.Nullable
-  public String getWeatherStation() {
-    return weatherStation;
-  }
-
-  public void setWeatherStation(@javax.annotation.Nullable String weatherStation) {
-    this.weatherStation = weatherStation;
   }
 
 
@@ -498,53 +306,37 @@ public class GetNetworkIpinfo200Response {
       return false;
     }
     GetNetworkIpinfo200Response getNetworkIpinfo200Response = (GetNetworkIpinfo200Response) o;
-    return Objects.equals(this.asn, getNetworkIpinfo200Response.asn) &&
-        Objects.equals(this.beginip, getNetworkIpinfo200Response.beginip) &&
-        Objects.equals(this.code, getNetworkIpinfo200Response.code) &&
-        Objects.equals(this.endip, getNetworkIpinfo200Response.endip) &&
-        Objects.equals(this.ip, getNetworkIpinfo200Response.ip) &&
-        Objects.equals(this.isp, getNetworkIpinfo200Response.isp) &&
-        Objects.equals(this.latitude, getNetworkIpinfo200Response.latitude) &&
-        Objects.equals(this.llc, getNetworkIpinfo200Response.llc) &&
-        Objects.equals(this.longitude, getNetworkIpinfo200Response.longitude) &&
+    return Objects.equals(this.ip, getNetworkIpinfo200Response.ip) &&
         Objects.equals(this.region, getNetworkIpinfo200Response.region) &&
-        Objects.equals(this.district, getNetworkIpinfo200Response.district) &&
-        Objects.equals(this.areaCode, getNetworkIpinfo200Response.areaCode) &&
-        Objects.equals(this.cityCode, getNetworkIpinfo200Response.cityCode) &&
-        Objects.equals(this.zipCode, getNetworkIpinfo200Response.zipCode) &&
-        Objects.equals(this.timeZone, getNetworkIpinfo200Response.timeZone) &&
-        Objects.equals(this.scenes, getNetworkIpinfo200Response.scenes) &&
-        Objects.equals(this.elevation, getNetworkIpinfo200Response.elevation) &&
-        Objects.equals(this.weatherStation, getNetworkIpinfo200Response.weatherStation);
+        Objects.equals(this.isp, getNetworkIpinfo200Response.isp) &&
+        Objects.equals(this.llc, getNetworkIpinfo200Response.llc) &&
+        Objects.equals(this.asn, getNetworkIpinfo200Response.asn) &&
+        Objects.equals(this.latitude, getNetworkIpinfo200Response.latitude) &&
+        Objects.equals(this.longitude, getNetworkIpinfo200Response.longitude) &&
+        Objects.equals(this.beginip, getNetworkIpinfo200Response.beginip) &&
+        Objects.equals(this.endip, getNetworkIpinfo200Response.endip) &&
+        Objects.equals(this.district, getNetworkIpinfo200Response.district);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(asn, beginip, code, endip, ip, isp, latitude, llc, longitude, region, district, areaCode, cityCode, zipCode, timeZone, scenes, elevation, weatherStation);
+    return Objects.hash(ip, region, isp, llc, asn, latitude, longitude, beginip, endip, district);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetNetworkIpinfo200Response {\n");
-    sb.append("    asn: ").append(toIndentedString(asn)).append("\n");
-    sb.append("    beginip: ").append(toIndentedString(beginip)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    endip: ").append(toIndentedString(endip)).append("\n");
     sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
-    sb.append("    isp: ").append(toIndentedString(isp)).append("\n");
-    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
-    sb.append("    llc: ").append(toIndentedString(llc)).append("\n");
-    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
+    sb.append("    isp: ").append(toIndentedString(isp)).append("\n");
+    sb.append("    llc: ").append(toIndentedString(llc)).append("\n");
+    sb.append("    asn: ").append(toIndentedString(asn)).append("\n");
+    sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
+    sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
+    sb.append("    beginip: ").append(toIndentedString(beginip)).append("\n");
+    sb.append("    endip: ").append(toIndentedString(endip)).append("\n");
     sb.append("    district: ").append(toIndentedString(district)).append("\n");
-    sb.append("    areaCode: ").append(toIndentedString(areaCode)).append("\n");
-    sb.append("    cityCode: ").append(toIndentedString(cityCode)).append("\n");
-    sb.append("    zipCode: ").append(toIndentedString(zipCode)).append("\n");
-    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
-    sb.append("    scenes: ").append(toIndentedString(scenes)).append("\n");
-    sb.append("    elevation: ").append(toIndentedString(elevation)).append("\n");
-    sb.append("    weatherStation: ").append(toIndentedString(weatherStation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -566,7 +358,7 @@ public class GetNetworkIpinfo200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("asn", "beginip", "code", "endip", "ip", "isp", "latitude", "llc", "longitude", "region", "district", "area_code", "city_code", "zip_code", "time_zone", "scenes", "elevation", "weather_station"));
+    openapiFields = new HashSet<String>(Arrays.asList("ip", "region", "isp", "llc", "asn", "latitude", "longitude", "beginip", "endip", "district"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -593,6 +385,18 @@ public class GetNetworkIpinfo200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("ip") != null && !jsonObj.get("ip").isJsonNull()) && !jsonObj.get("ip").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ip").toString()));
+      }
+      if ((jsonObj.get("region") != null && !jsonObj.get("region").isJsonNull()) && !jsonObj.get("region").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("region").toString()));
+      }
+      if ((jsonObj.get("isp") != null && !jsonObj.get("isp").isJsonNull()) && !jsonObj.get("isp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `isp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("isp").toString()));
+      }
+      if ((jsonObj.get("llc") != null && !jsonObj.get("llc").isJsonNull()) && !jsonObj.get("llc").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `llc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("llc").toString()));
+      }
       if ((jsonObj.get("asn") != null && !jsonObj.get("asn").isJsonNull()) && !jsonObj.get("asn").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `asn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("asn").toString()));
       }
@@ -602,41 +406,8 @@ public class GetNetworkIpinfo200Response {
       if ((jsonObj.get("endip") != null && !jsonObj.get("endip").isJsonNull()) && !jsonObj.get("endip").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `endip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endip").toString()));
       }
-      if ((jsonObj.get("ip") != null && !jsonObj.get("ip").isJsonNull()) && !jsonObj.get("ip").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ip").toString()));
-      }
-      if ((jsonObj.get("isp") != null && !jsonObj.get("isp").isJsonNull()) && !jsonObj.get("isp").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `isp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("isp").toString()));
-      }
-      if ((jsonObj.get("llc") != null && !jsonObj.get("llc").isJsonNull()) && !jsonObj.get("llc").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `llc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("llc").toString()));
-      }
-      if ((jsonObj.get("region") != null && !jsonObj.get("region").isJsonNull()) && !jsonObj.get("region").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `region` to be a primitive type in the JSON string but got `%s`", jsonObj.get("region").toString()));
-      }
       if ((jsonObj.get("district") != null && !jsonObj.get("district").isJsonNull()) && !jsonObj.get("district").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `district` to be a primitive type in the JSON string but got `%s`", jsonObj.get("district").toString()));
-      }
-      if ((jsonObj.get("area_code") != null && !jsonObj.get("area_code").isJsonNull()) && !jsonObj.get("area_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `area_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("area_code").toString()));
-      }
-      if ((jsonObj.get("city_code") != null && !jsonObj.get("city_code").isJsonNull()) && !jsonObj.get("city_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `city_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("city_code").toString()));
-      }
-      if ((jsonObj.get("zip_code") != null && !jsonObj.get("zip_code").isJsonNull()) && !jsonObj.get("zip_code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `zip_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("zip_code").toString()));
-      }
-      if ((jsonObj.get("time_zone") != null && !jsonObj.get("time_zone").isJsonNull()) && !jsonObj.get("time_zone").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `time_zone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time_zone").toString()));
-      }
-      if ((jsonObj.get("scenes") != null && !jsonObj.get("scenes").isJsonNull()) && !jsonObj.get("scenes").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `scenes` to be a primitive type in the JSON string but got `%s`", jsonObj.get("scenes").toString()));
-      }
-      if ((jsonObj.get("elevation") != null && !jsonObj.get("elevation").isJsonNull()) && !jsonObj.get("elevation").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `elevation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("elevation").toString()));
-      }
-      if ((jsonObj.get("weather_station") != null && !jsonObj.get("weather_station").isJsonNull()) && !jsonObj.get("weather_station").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `weather_station` to be a primitive type in the JSON string but got `%s`", jsonObj.get("weather_station").toString()));
       }
   }
 

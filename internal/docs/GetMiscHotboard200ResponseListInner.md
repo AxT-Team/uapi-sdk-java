@@ -12,6 +12,7 @@
 |**index** | **Integer** |  |  [optional] |
 |**title** | **String** |  |  [optional] |
 |**url** | **String** |  |  [optional] |
+|**cover** | **String** | 封面图 URL，音乐类热榜返回专辑封面，其他平台无此字段。 |  [optional] |
 
 
 

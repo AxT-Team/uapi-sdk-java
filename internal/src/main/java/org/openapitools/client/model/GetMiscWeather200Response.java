@@ -21,7 +21,15 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.openapitools.client.model.GetMiscWeather200ResponseAirPollutants;
+import org.openapitools.client.model.GetMiscWeather200ResponseForecastInner;
+import org.openapitools.client.model.GetMiscWeather200ResponseHourlyForecastInner;
+import org.openapitools.client.model.GetMiscWeather200ResponseLifeIndices;
+import org.openapitools.client.model.GetMiscWeather200ResponseMinutelyPrecip;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,42 +58,32 @@ import org.openapitools.client.JSON;
 /**
  * GetMiscWeather200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscWeather200Response {
-  public static final String SERIALIZED_NAME_ADCODE = "adcode";
-  @SerializedName(SERIALIZED_NAME_ADCODE)
+  public static final String SERIALIZED_NAME_PROVINCE = "province";
+  @SerializedName(SERIALIZED_NAME_PROVINCE)
   @javax.annotation.Nullable
-  private String adcode;
+  private String province;
 
   public static final String SERIALIZED_NAME_CITY = "city";
   @SerializedName(SERIALIZED_NAME_CITY)
   @javax.annotation.Nullable
   private String city;
 
-  public static final String SERIALIZED_NAME_HUMIDITY = "humidity";
-  @SerializedName(SERIALIZED_NAME_HUMIDITY)
+  public static final String SERIALIZED_NAME_ADCODE = "adcode";
+  @SerializedName(SERIALIZED_NAME_ADCODE)
   @javax.annotation.Nullable
-  private Integer humidity;
-
-  public static final String SERIALIZED_NAME_PROVINCE = "province";
-  @SerializedName(SERIALIZED_NAME_PROVINCE)
-  @javax.annotation.Nullable
-  private String province;
-
-  public static final String SERIALIZED_NAME_REPORT_TIME = "report_time";
-  @SerializedName(SERIALIZED_NAME_REPORT_TIME)
-  @javax.annotation.Nullable
-  private String reportTime;
-
-  public static final String SERIALIZED_NAME_TEMPERATURE = "temperature";
-  @SerializedName(SERIALIZED_NAME_TEMPERATURE)
-  @javax.annotation.Nullable
-  private Integer temperature;
+  private String adcode;
 
   public static final String SERIALIZED_NAME_WEATHER = "weather";
   @SerializedName(SERIALIZED_NAME_WEATHER)
   @javax.annotation.Nullable
   private String weather;
+
+  public static final String SERIALIZED_NAME_TEMPERATURE = "temperature";
+  @SerializedName(SERIALIZED_NAME_TEMPERATURE)
+  @javax.annotation.Nullable
+  private BigDecimal temperature;
 
   public static final String SERIALIZED_NAME_WIND_DIRECTION = "wind_direction";
   @SerializedName(SERIALIZED_NAME_WIND_DIRECTION)
@@ -97,65 +95,103 @@ public class GetMiscWeather200Response {
   @javax.annotation.Nullable
   private String windPower;
 
+  public static final String SERIALIZED_NAME_HUMIDITY = "humidity";
+  @SerializedName(SERIALIZED_NAME_HUMIDITY)
+  @javax.annotation.Nullable
+  private BigDecimal humidity;
+
+  public static final String SERIALIZED_NAME_REPORT_TIME = "report_time";
+  @SerializedName(SERIALIZED_NAME_REPORT_TIME)
+  @javax.annotation.Nullable
+  private String reportTime;
+
+  public static final String SERIALIZED_NAME_FEELS_LIKE = "feels_like";
+  @SerializedName(SERIALIZED_NAME_FEELS_LIKE)
+  @javax.annotation.Nullable
+  private BigDecimal feelsLike;
+
+  public static final String SERIALIZED_NAME_VISIBILITY = "visibility";
+  @SerializedName(SERIALIZED_NAME_VISIBILITY)
+  @javax.annotation.Nullable
+  private BigDecimal visibility;
+
+  public static final String SERIALIZED_NAME_PRESSURE = "pressure";
+  @SerializedName(SERIALIZED_NAME_PRESSURE)
+  @javax.annotation.Nullable
+  private BigDecimal pressure;
+
+  public static final String SERIALIZED_NAME_UV = "uv";
+  @SerializedName(SERIALIZED_NAME_UV)
+  @javax.annotation.Nullable
+  private BigDecimal uv;
+
+  public static final String SERIALIZED_NAME_PRECIPITATION = "precipitation";
+  @SerializedName(SERIALIZED_NAME_PRECIPITATION)
+  @javax.annotation.Nullable
+  private BigDecimal precipitation;
+
+  public static final String SERIALIZED_NAME_CLOUD = "cloud";
+  @SerializedName(SERIALIZED_NAME_CLOUD)
+  @javax.annotation.Nullable
+  private BigDecimal cloud;
+
+  public static final String SERIALIZED_NAME_AQI = "aqi";
+  @SerializedName(SERIALIZED_NAME_AQI)
+  @javax.annotation.Nullable
+  private BigDecimal aqi;
+
+  public static final String SERIALIZED_NAME_AQI_LEVEL = "aqi_level";
+  @SerializedName(SERIALIZED_NAME_AQI_LEVEL)
+  @javax.annotation.Nullable
+  private BigDecimal aqiLevel;
+
+  public static final String SERIALIZED_NAME_AQI_CATEGORY = "aqi_category";
+  @SerializedName(SERIALIZED_NAME_AQI_CATEGORY)
+  @javax.annotation.Nullable
+  private String aqiCategory;
+
+  public static final String SERIALIZED_NAME_AQI_PRIMARY = "aqi_primary";
+  @SerializedName(SERIALIZED_NAME_AQI_PRIMARY)
+  @javax.annotation.Nullable
+  private String aqiPrimary;
+
+  public static final String SERIALIZED_NAME_AIR_POLLUTANTS = "air_pollutants";
+  @SerializedName(SERIALIZED_NAME_AIR_POLLUTANTS)
+  @javax.annotation.Nullable
+  private GetMiscWeather200ResponseAirPollutants airPollutants;
+
+  public static final String SERIALIZED_NAME_TEMP_MAX = "temp_max";
+  @SerializedName(SERIALIZED_NAME_TEMP_MAX)
+  @javax.annotation.Nullable
+  private BigDecimal tempMax;
+
+  public static final String SERIALIZED_NAME_TEMP_MIN = "temp_min";
+  @SerializedName(SERIALIZED_NAME_TEMP_MIN)
+  @javax.annotation.Nullable
+  private BigDecimal tempMin;
+
+  public static final String SERIALIZED_NAME_FORECAST = "forecast";
+  @SerializedName(SERIALIZED_NAME_FORECAST)
+  @javax.annotation.Nullable
+  private List<GetMiscWeather200ResponseForecastInner> forecast = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_HOURLY_FORECAST = "hourly_forecast";
+  @SerializedName(SERIALIZED_NAME_HOURLY_FORECAST)
+  @javax.annotation.Nullable
+  private List<GetMiscWeather200ResponseHourlyForecastInner> hourlyForecast = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_MINUTELY_PRECIP = "minutely_precip";
+  @SerializedName(SERIALIZED_NAME_MINUTELY_PRECIP)
+  @javax.annotation.Nullable
+  private GetMiscWeather200ResponseMinutelyPrecip minutelyPrecip;
+
+  public static final String SERIALIZED_NAME_LIFE_INDICES = "life_indices";
+  @SerializedName(SERIALIZED_NAME_LIFE_INDICES)
+  @javax.annotation.Nullable
+  private GetMiscWeather200ResponseLifeIndices lifeIndices;
+
   public GetMiscWeather200Response() {
   }
-
-  public GetMiscWeather200Response adcode(@javax.annotation.Nullable String adcode) {
-    this.adcode = adcode;
-    return this;
-  }
-
-  /**
-   * Get adcode
-   * @return adcode
-   */
-  @javax.annotation.Nullable
-  public String getAdcode() {
-    return adcode;
-  }
-
-  public void setAdcode(@javax.annotation.Nullable String adcode) {
-    this.adcode = adcode;
-  }
-
-
-  public GetMiscWeather200Response city(@javax.annotation.Nullable String city) {
-    this.city = city;
-    return this;
-  }
-
-  /**
-   * Get city
-   * @return city
-   */
-  @javax.annotation.Nullable
-  public String getCity() {
-    return city;
-  }
-
-  public void setCity(@javax.annotation.Nullable String city) {
-    this.city = city;
-  }
-
-
-  public GetMiscWeather200Response humidity(@javax.annotation.Nullable Integer humidity) {
-    this.humidity = humidity;
-    return this;
-  }
-
-  /**
-   * Get humidity
-   * @return humidity
-   */
-  @javax.annotation.Nullable
-  public Integer getHumidity() {
-    return humidity;
-  }
-
-  public void setHumidity(@javax.annotation.Nullable Integer humidity) {
-    this.humidity = humidity;
-  }
-
 
   public GetMiscWeather200Response province(@javax.annotation.Nullable String province) {
     this.province = province;
@@ -163,7 +199,7 @@ public class GetMiscWeather200Response {
   }
 
   /**
-   * Get province
+   * 省份
    * @return province
    */
   @javax.annotation.Nullable
@@ -176,41 +212,41 @@ public class GetMiscWeather200Response {
   }
 
 
-  public GetMiscWeather200Response reportTime(@javax.annotation.Nullable String reportTime) {
-    this.reportTime = reportTime;
+  public GetMiscWeather200Response city(@javax.annotation.Nullable String city) {
+    this.city = city;
     return this;
   }
 
   /**
-   * Get reportTime
-   * @return reportTime
+   * 城市名
+   * @return city
    */
   @javax.annotation.Nullable
-  public String getReportTime() {
-    return reportTime;
+  public String getCity() {
+    return city;
   }
 
-  public void setReportTime(@javax.annotation.Nullable String reportTime) {
-    this.reportTime = reportTime;
+  public void setCity(@javax.annotation.Nullable String city) {
+    this.city = city;
   }
 
 
-  public GetMiscWeather200Response temperature(@javax.annotation.Nullable Integer temperature) {
-    this.temperature = temperature;
+  public GetMiscWeather200Response adcode(@javax.annotation.Nullable String adcode) {
+    this.adcode = adcode;
     return this;
   }
 
   /**
-   * Get temperature
-   * @return temperature
+   * 行政区划代码（部分数据源可能为空）
+   * @return adcode
    */
   @javax.annotation.Nullable
-  public Integer getTemperature() {
-    return temperature;
+  public String getAdcode() {
+    return adcode;
   }
 
-  public void setTemperature(@javax.annotation.Nullable Integer temperature) {
-    this.temperature = temperature;
+  public void setAdcode(@javax.annotation.Nullable String adcode) {
+    this.adcode = adcode;
   }
 
 
@@ -220,7 +256,7 @@ public class GetMiscWeather200Response {
   }
 
   /**
-   * Get weather
+   * 天气状况描述。默认返回中文，传 &#x60;lang&#x3D;en&#x60; 时返回英文。非固定枚举。
    * @return weather
    */
   @javax.annotation.Nullable
@@ -233,13 +269,32 @@ public class GetMiscWeather200Response {
   }
 
 
+  public GetMiscWeather200Response temperature(@javax.annotation.Nullable BigDecimal temperature) {
+    this.temperature = temperature;
+    return this;
+  }
+
+  /**
+   * 当前温度 °C
+   * @return temperature
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getTemperature() {
+    return temperature;
+  }
+
+  public void setTemperature(@javax.annotation.Nullable BigDecimal temperature) {
+    this.temperature = temperature;
+  }
+
+
   public GetMiscWeather200Response windDirection(@javax.annotation.Nullable String windDirection) {
     this.windDirection = windDirection;
     return this;
   }
 
   /**
-   * Get windDirection
+   * 风向
    * @return windDirection
    */
   @javax.annotation.Nullable
@@ -258,7 +313,7 @@ public class GetMiscWeather200Response {
   }
 
   /**
-   * Get windPower
+   * 风力等级
    * @return windPower
    */
   @javax.annotation.Nullable
@@ -268,6 +323,383 @@ public class GetMiscWeather200Response {
 
   public void setWindPower(@javax.annotation.Nullable String windPower) {
     this.windPower = windPower;
+  }
+
+
+  public GetMiscWeather200Response humidity(@javax.annotation.Nullable BigDecimal humidity) {
+    this.humidity = humidity;
+    return this;
+  }
+
+  /**
+   * 相对湿度 %
+   * @return humidity
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getHumidity() {
+    return humidity;
+  }
+
+  public void setHumidity(@javax.annotation.Nullable BigDecimal humidity) {
+    this.humidity = humidity;
+  }
+
+
+  public GetMiscWeather200Response reportTime(@javax.annotation.Nullable String reportTime) {
+    this.reportTime = reportTime;
+    return this;
+  }
+
+  /**
+   * 数据更新时间
+   * @return reportTime
+   */
+  @javax.annotation.Nullable
+  public String getReportTime() {
+    return reportTime;
+  }
+
+  public void setReportTime(@javax.annotation.Nullable String reportTime) {
+    this.reportTime = reportTime;
+  }
+
+
+  public GetMiscWeather200Response feelsLike(@javax.annotation.Nullable BigDecimal feelsLike) {
+    this.feelsLike = feelsLike;
+    return this;
+  }
+
+  /**
+   * 体感温度 °C（extended&#x3D;true 时返回）
+   * @return feelsLike
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getFeelsLike() {
+    return feelsLike;
+  }
+
+  public void setFeelsLike(@javax.annotation.Nullable BigDecimal feelsLike) {
+    this.feelsLike = feelsLike;
+  }
+
+
+  public GetMiscWeather200Response visibility(@javax.annotation.Nullable BigDecimal visibility) {
+    this.visibility = visibility;
+    return this;
+  }
+
+  /**
+   * 能见度 km（extended&#x3D;true 时返回）
+   * @return visibility
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getVisibility() {
+    return visibility;
+  }
+
+  public void setVisibility(@javax.annotation.Nullable BigDecimal visibility) {
+    this.visibility = visibility;
+  }
+
+
+  public GetMiscWeather200Response pressure(@javax.annotation.Nullable BigDecimal pressure) {
+    this.pressure = pressure;
+    return this;
+  }
+
+  /**
+   * 气压 hPa（extended&#x3D;true 时返回）
+   * @return pressure
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getPressure() {
+    return pressure;
+  }
+
+  public void setPressure(@javax.annotation.Nullable BigDecimal pressure) {
+    this.pressure = pressure;
+  }
+
+
+  public GetMiscWeather200Response uv(@javax.annotation.Nullable BigDecimal uv) {
+    this.uv = uv;
+    return this;
+  }
+
+  /**
+   * 紫外线指数（extended&#x3D;true 时返回）
+   * @return uv
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getUv() {
+    return uv;
+  }
+
+  public void setUv(@javax.annotation.Nullable BigDecimal uv) {
+    this.uv = uv;
+  }
+
+
+  public GetMiscWeather200Response precipitation(@javax.annotation.Nullable BigDecimal precipitation) {
+    this.precipitation = precipitation;
+    return this;
+  }
+
+  /**
+   * 当前降水量 mm（extended&#x3D;true 时返回）
+   * @return precipitation
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getPrecipitation() {
+    return precipitation;
+  }
+
+  public void setPrecipitation(@javax.annotation.Nullable BigDecimal precipitation) {
+    this.precipitation = precipitation;
+  }
+
+
+  public GetMiscWeather200Response cloud(@javax.annotation.Nullable BigDecimal cloud) {
+    this.cloud = cloud;
+    return this;
+  }
+
+  /**
+   * 云量 %（extended&#x3D;true 时返回）
+   * @return cloud
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getCloud() {
+    return cloud;
+  }
+
+  public void setCloud(@javax.annotation.Nullable BigDecimal cloud) {
+    this.cloud = cloud;
+  }
+
+
+  public GetMiscWeather200Response aqi(@javax.annotation.Nullable BigDecimal aqi) {
+    this.aqi = aqi;
+    return this;
+  }
+
+  /**
+   * 空气质量指数 0-500（extended&#x3D;true 时返回）
+   * @return aqi
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getAqi() {
+    return aqi;
+  }
+
+  public void setAqi(@javax.annotation.Nullable BigDecimal aqi) {
+    this.aqi = aqi;
+  }
+
+
+  public GetMiscWeather200Response aqiLevel(@javax.annotation.Nullable BigDecimal aqiLevel) {
+    this.aqiLevel = aqiLevel;
+    return this;
+  }
+
+  /**
+   * AQI 等级 1-6（extended&#x3D;true 时返回）
+   * @return aqiLevel
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getAqiLevel() {
+    return aqiLevel;
+  }
+
+  public void setAqiLevel(@javax.annotation.Nullable BigDecimal aqiLevel) {
+    this.aqiLevel = aqiLevel;
+  }
+
+
+  public GetMiscWeather200Response aqiCategory(@javax.annotation.Nullable String aqiCategory) {
+    this.aqiCategory = aqiCategory;
+    return this;
+  }
+
+  /**
+   * AQI 等级描述（优/良/轻度污染/中度污染/重度污染/严重污染）（extended&#x3D;true 时返回）
+   * @return aqiCategory
+   */
+  @javax.annotation.Nullable
+  public String getAqiCategory() {
+    return aqiCategory;
+  }
+
+  public void setAqiCategory(@javax.annotation.Nullable String aqiCategory) {
+    this.aqiCategory = aqiCategory;
+  }
+
+
+  public GetMiscWeather200Response aqiPrimary(@javax.annotation.Nullable String aqiPrimary) {
+    this.aqiPrimary = aqiPrimary;
+    return this;
+  }
+
+  /**
+   * 主要污染物（如 PM2.5、PM10、O3 等）（extended&#x3D;true 时返回）
+   * @return aqiPrimary
+   */
+  @javax.annotation.Nullable
+  public String getAqiPrimary() {
+    return aqiPrimary;
+  }
+
+  public void setAqiPrimary(@javax.annotation.Nullable String aqiPrimary) {
+    this.aqiPrimary = aqiPrimary;
+  }
+
+
+  public GetMiscWeather200Response airPollutants(@javax.annotation.Nullable GetMiscWeather200ResponseAirPollutants airPollutants) {
+    this.airPollutants = airPollutants;
+    return this;
+  }
+
+  /**
+   * Get airPollutants
+   * @return airPollutants
+   */
+  @javax.annotation.Nullable
+  public GetMiscWeather200ResponseAirPollutants getAirPollutants() {
+    return airPollutants;
+  }
+
+  public void setAirPollutants(@javax.annotation.Nullable GetMiscWeather200ResponseAirPollutants airPollutants) {
+    this.airPollutants = airPollutants;
+  }
+
+
+  public GetMiscWeather200Response tempMax(@javax.annotation.Nullable BigDecimal tempMax) {
+    this.tempMax = tempMax;
+    return this;
+  }
+
+  /**
+   * 当天最高温 °C（forecast&#x3D;true 时返回）
+   * @return tempMax
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getTempMax() {
+    return tempMax;
+  }
+
+  public void setTempMax(@javax.annotation.Nullable BigDecimal tempMax) {
+    this.tempMax = tempMax;
+  }
+
+
+  public GetMiscWeather200Response tempMin(@javax.annotation.Nullable BigDecimal tempMin) {
+    this.tempMin = tempMin;
+    return this;
+  }
+
+  /**
+   * 当天最低温 °C（forecast&#x3D;true 时返回）
+   * @return tempMin
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getTempMin() {
+    return tempMin;
+  }
+
+  public void setTempMin(@javax.annotation.Nullable BigDecimal tempMin) {
+    this.tempMin = tempMin;
+  }
+
+
+  public GetMiscWeather200Response forecast(@javax.annotation.Nullable List<GetMiscWeather200ResponseForecastInner> forecast) {
+    this.forecast = forecast;
+    return this;
+  }
+
+  public GetMiscWeather200Response addForecastItem(GetMiscWeather200ResponseForecastInner forecastItem) {
+    if (this.forecast == null) {
+      this.forecast = new ArrayList<>();
+    }
+    this.forecast.add(forecastItem);
+    return this;
+  }
+
+  /**
+   * 多天天气预报，最多7天（forecast&#x3D;true 时返回）
+   * @return forecast
+   */
+  @javax.annotation.Nullable
+  public List<GetMiscWeather200ResponseForecastInner> getForecast() {
+    return forecast;
+  }
+
+  public void setForecast(@javax.annotation.Nullable List<GetMiscWeather200ResponseForecastInner> forecast) {
+    this.forecast = forecast;
+  }
+
+
+  public GetMiscWeather200Response hourlyForecast(@javax.annotation.Nullable List<GetMiscWeather200ResponseHourlyForecastInner> hourlyForecast) {
+    this.hourlyForecast = hourlyForecast;
+    return this;
+  }
+
+  public GetMiscWeather200Response addHourlyForecastItem(GetMiscWeather200ResponseHourlyForecastInner hourlyForecastItem) {
+    if (this.hourlyForecast == null) {
+      this.hourlyForecast = new ArrayList<>();
+    }
+    this.hourlyForecast.add(hourlyForecastItem);
+    return this;
+  }
+
+  /**
+   * 逐小时预报，最多24小时（hourly&#x3D;true 时返回）
+   * @return hourlyForecast
+   */
+  @javax.annotation.Nullable
+  public List<GetMiscWeather200ResponseHourlyForecastInner> getHourlyForecast() {
+    return hourlyForecast;
+  }
+
+  public void setHourlyForecast(@javax.annotation.Nullable List<GetMiscWeather200ResponseHourlyForecastInner> hourlyForecast) {
+    this.hourlyForecast = hourlyForecast;
+  }
+
+
+  public GetMiscWeather200Response minutelyPrecip(@javax.annotation.Nullable GetMiscWeather200ResponseMinutelyPrecip minutelyPrecip) {
+    this.minutelyPrecip = minutelyPrecip;
+    return this;
+  }
+
+  /**
+   * Get minutelyPrecip
+   * @return minutelyPrecip
+   */
+  @javax.annotation.Nullable
+  public GetMiscWeather200ResponseMinutelyPrecip getMinutelyPrecip() {
+    return minutelyPrecip;
+  }
+
+  public void setMinutelyPrecip(@javax.annotation.Nullable GetMiscWeather200ResponseMinutelyPrecip minutelyPrecip) {
+    this.minutelyPrecip = minutelyPrecip;
+  }
+
+
+  public GetMiscWeather200Response lifeIndices(@javax.annotation.Nullable GetMiscWeather200ResponseLifeIndices lifeIndices) {
+    this.lifeIndices = lifeIndices;
+    return this;
+  }
+
+  /**
+   * Get lifeIndices
+   * @return lifeIndices
+   */
+  @javax.annotation.Nullable
+  public GetMiscWeather200ResponseLifeIndices getLifeIndices() {
+    return lifeIndices;
+  }
+
+  public void setLifeIndices(@javax.annotation.Nullable GetMiscWeather200ResponseLifeIndices lifeIndices) {
+    this.lifeIndices = lifeIndices;
   }
 
 
@@ -281,35 +713,69 @@ public class GetMiscWeather200Response {
       return false;
     }
     GetMiscWeather200Response getMiscWeather200Response = (GetMiscWeather200Response) o;
-    return Objects.equals(this.adcode, getMiscWeather200Response.adcode) &&
+    return Objects.equals(this.province, getMiscWeather200Response.province) &&
         Objects.equals(this.city, getMiscWeather200Response.city) &&
-        Objects.equals(this.humidity, getMiscWeather200Response.humidity) &&
-        Objects.equals(this.province, getMiscWeather200Response.province) &&
-        Objects.equals(this.reportTime, getMiscWeather200Response.reportTime) &&
-        Objects.equals(this.temperature, getMiscWeather200Response.temperature) &&
+        Objects.equals(this.adcode, getMiscWeather200Response.adcode) &&
         Objects.equals(this.weather, getMiscWeather200Response.weather) &&
+        Objects.equals(this.temperature, getMiscWeather200Response.temperature) &&
         Objects.equals(this.windDirection, getMiscWeather200Response.windDirection) &&
-        Objects.equals(this.windPower, getMiscWeather200Response.windPower);
+        Objects.equals(this.windPower, getMiscWeather200Response.windPower) &&
+        Objects.equals(this.humidity, getMiscWeather200Response.humidity) &&
+        Objects.equals(this.reportTime, getMiscWeather200Response.reportTime) &&
+        Objects.equals(this.feelsLike, getMiscWeather200Response.feelsLike) &&
+        Objects.equals(this.visibility, getMiscWeather200Response.visibility) &&
+        Objects.equals(this.pressure, getMiscWeather200Response.pressure) &&
+        Objects.equals(this.uv, getMiscWeather200Response.uv) &&
+        Objects.equals(this.precipitation, getMiscWeather200Response.precipitation) &&
+        Objects.equals(this.cloud, getMiscWeather200Response.cloud) &&
+        Objects.equals(this.aqi, getMiscWeather200Response.aqi) &&
+        Objects.equals(this.aqiLevel, getMiscWeather200Response.aqiLevel) &&
+        Objects.equals(this.aqiCategory, getMiscWeather200Response.aqiCategory) &&
+        Objects.equals(this.aqiPrimary, getMiscWeather200Response.aqiPrimary) &&
+        Objects.equals(this.airPollutants, getMiscWeather200Response.airPollutants) &&
+        Objects.equals(this.tempMax, getMiscWeather200Response.tempMax) &&
+        Objects.equals(this.tempMin, getMiscWeather200Response.tempMin) &&
+        Objects.equals(this.forecast, getMiscWeather200Response.forecast) &&
+        Objects.equals(this.hourlyForecast, getMiscWeather200Response.hourlyForecast) &&
+        Objects.equals(this.minutelyPrecip, getMiscWeather200Response.minutelyPrecip) &&
+        Objects.equals(this.lifeIndices, getMiscWeather200Response.lifeIndices);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(adcode, city, humidity, province, reportTime, temperature, weather, windDirection, windPower);
+    return Objects.hash(province, city, adcode, weather, temperature, windDirection, windPower, humidity, reportTime, feelsLike, visibility, pressure, uv, precipitation, cloud, aqi, aqiLevel, aqiCategory, aqiPrimary, airPollutants, tempMax, tempMin, forecast, hourlyForecast, minutelyPrecip, lifeIndices);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetMiscWeather200Response {\n");
-    sb.append("    adcode: ").append(toIndentedString(adcode)).append("\n");
-    sb.append("    city: ").append(toIndentedString(city)).append("\n");
-    sb.append("    humidity: ").append(toIndentedString(humidity)).append("\n");
     sb.append("    province: ").append(toIndentedString(province)).append("\n");
-    sb.append("    reportTime: ").append(toIndentedString(reportTime)).append("\n");
-    sb.append("    temperature: ").append(toIndentedString(temperature)).append("\n");
+    sb.append("    city: ").append(toIndentedString(city)).append("\n");
+    sb.append("    adcode: ").append(toIndentedString(adcode)).append("\n");
     sb.append("    weather: ").append(toIndentedString(weather)).append("\n");
+    sb.append("    temperature: ").append(toIndentedString(temperature)).append("\n");
     sb.append("    windDirection: ").append(toIndentedString(windDirection)).append("\n");
     sb.append("    windPower: ").append(toIndentedString(windPower)).append("\n");
+    sb.append("    humidity: ").append(toIndentedString(humidity)).append("\n");
+    sb.append("    reportTime: ").append(toIndentedString(reportTime)).append("\n");
+    sb.append("    feelsLike: ").append(toIndentedString(feelsLike)).append("\n");
+    sb.append("    visibility: ").append(toIndentedString(visibility)).append("\n");
+    sb.append("    pressure: ").append(toIndentedString(pressure)).append("\n");
+    sb.append("    uv: ").append(toIndentedString(uv)).append("\n");
+    sb.append("    precipitation: ").append(toIndentedString(precipitation)).append("\n");
+    sb.append("    cloud: ").append(toIndentedString(cloud)).append("\n");
+    sb.append("    aqi: ").append(toIndentedString(aqi)).append("\n");
+    sb.append("    aqiLevel: ").append(toIndentedString(aqiLevel)).append("\n");
+    sb.append("    aqiCategory: ").append(toIndentedString(aqiCategory)).append("\n");
+    sb.append("    aqiPrimary: ").append(toIndentedString(aqiPrimary)).append("\n");
+    sb.append("    airPollutants: ").append(toIndentedString(airPollutants)).append("\n");
+    sb.append("    tempMax: ").append(toIndentedString(tempMax)).append("\n");
+    sb.append("    tempMin: ").append(toIndentedString(tempMin)).append("\n");
+    sb.append("    forecast: ").append(toIndentedString(forecast)).append("\n");
+    sb.append("    hourlyForecast: ").append(toIndentedString(hourlyForecast)).append("\n");
+    sb.append("    minutelyPrecip: ").append(toIndentedString(minutelyPrecip)).append("\n");
+    sb.append("    lifeIndices: ").append(toIndentedString(lifeIndices)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -331,7 +797,7 @@ public class GetMiscWeather200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("adcode", "city", "humidity", "province", "report_time", "temperature", "weather", "wind_direction", "wind_power"));
+    openapiFields = new HashSet<String>(Arrays.asList("province", "city", "adcode", "weather", "temperature", "wind_direction", "wind_power", "humidity", "report_time", "feels_like", "visibility", "pressure", "uv", "precipitation", "cloud", "aqi", "aqi_level", "aqi_category", "aqi_primary", "air_pollutants", "temp_max", "temp_min", "forecast", "hourly_forecast", "minutely_precip", "life_indices"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -358,17 +824,14 @@ public class GetMiscWeather200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("adcode") != null && !jsonObj.get("adcode").isJsonNull()) && !jsonObj.get("adcode").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `adcode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adcode").toString()));
+      if ((jsonObj.get("province") != null && !jsonObj.get("province").isJsonNull()) && !jsonObj.get("province").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `province` to be a primitive type in the JSON string but got `%s`", jsonObj.get("province").toString()));
       }
       if ((jsonObj.get("city") != null && !jsonObj.get("city").isJsonNull()) && !jsonObj.get("city").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `city` to be a primitive type in the JSON string but got `%s`", jsonObj.get("city").toString()));
       }
-      if ((jsonObj.get("province") != null && !jsonObj.get("province").isJsonNull()) && !jsonObj.get("province").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `province` to be a primitive type in the JSON string but got `%s`", jsonObj.get("province").toString()));
-      }
-      if ((jsonObj.get("report_time") != null && !jsonObj.get("report_time").isJsonNull()) && !jsonObj.get("report_time").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `report_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("report_time").toString()));
+      if ((jsonObj.get("adcode") != null && !jsonObj.get("adcode").isJsonNull()) && !jsonObj.get("adcode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `adcode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adcode").toString()));
       }
       if ((jsonObj.get("weather") != null && !jsonObj.get("weather").isJsonNull()) && !jsonObj.get("weather").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `weather` to be a primitive type in the JSON string but got `%s`", jsonObj.get("weather").toString()));
@@ -378,6 +841,55 @@ public class GetMiscWeather200Response {
       }
       if ((jsonObj.get("wind_power") != null && !jsonObj.get("wind_power").isJsonNull()) && !jsonObj.get("wind_power").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `wind_power` to be a primitive type in the JSON string but got `%s`", jsonObj.get("wind_power").toString()));
+      }
+      if ((jsonObj.get("report_time") != null && !jsonObj.get("report_time").isJsonNull()) && !jsonObj.get("report_time").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `report_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("report_time").toString()));
+      }
+      if ((jsonObj.get("aqi_category") != null && !jsonObj.get("aqi_category").isJsonNull()) && !jsonObj.get("aqi_category").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `aqi_category` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aqi_category").toString()));
+      }
+      if ((jsonObj.get("aqi_primary") != null && !jsonObj.get("aqi_primary").isJsonNull()) && !jsonObj.get("aqi_primary").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `aqi_primary` to be a primitive type in the JSON string but got `%s`", jsonObj.get("aqi_primary").toString()));
+      }
+      // validate the optional field `air_pollutants`
+      if (jsonObj.get("air_pollutants") != null && !jsonObj.get("air_pollutants").isJsonNull()) {
+        GetMiscWeather200ResponseAirPollutants.validateJsonElement(jsonObj.get("air_pollutants"));
+      }
+      if (jsonObj.get("forecast") != null && !jsonObj.get("forecast").isJsonNull()) {
+        JsonArray jsonArrayforecast = jsonObj.getAsJsonArray("forecast");
+        if (jsonArrayforecast != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("forecast").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `forecast` to be an array in the JSON string but got `%s`", jsonObj.get("forecast").toString()));
+          }
+
+          // validate the optional field `forecast` (array)
+          for (int i = 0; i < jsonArrayforecast.size(); i++) {
+            GetMiscWeather200ResponseForecastInner.validateJsonElement(jsonArrayforecast.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("hourly_forecast") != null && !jsonObj.get("hourly_forecast").isJsonNull()) {
+        JsonArray jsonArrayhourlyForecast = jsonObj.getAsJsonArray("hourly_forecast");
+        if (jsonArrayhourlyForecast != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("hourly_forecast").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `hourly_forecast` to be an array in the JSON string but got `%s`", jsonObj.get("hourly_forecast").toString()));
+          }
+
+          // validate the optional field `hourly_forecast` (array)
+          for (int i = 0; i < jsonArrayhourlyForecast.size(); i++) {
+            GetMiscWeather200ResponseHourlyForecastInner.validateJsonElement(jsonArrayhourlyForecast.get(i));
+          };
+        }
+      }
+      // validate the optional field `minutely_precip`
+      if (jsonObj.get("minutely_precip") != null && !jsonObj.get("minutely_precip").isJsonNull()) {
+        GetMiscWeather200ResponseMinutelyPrecip.validateJsonElement(jsonObj.get("minutely_precip"));
+      }
+      // validate the optional field `life_indices`
+      if (jsonObj.get("life_indices") != null && !jsonObj.get("life_indices").isJsonNull()) {
+        GetMiscWeather200ResponseLifeIndices.validateJsonElement(jsonObj.get("life_indices"));
       }
   }
 

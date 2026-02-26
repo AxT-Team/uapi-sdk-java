@@ -50,80 +50,32 @@ import org.openapitools.client.JSON;
 /**
  * GetSocialQqGroupinfo404Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2025-11-18T19:07:22.504751100+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialQqGroupinfo404Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
+  public static final String SERIALIZED_NAME_ERROR = "error";
+  @SerializedName(SERIALIZED_NAME_ERROR)
   @javax.annotation.Nullable
-  private String code;
-
-  public static final String SERIALIZED_NAME_DETAILS = "details";
-  @SerializedName(SERIALIZED_NAME_DETAILS)
-  @javax.annotation.Nullable
-  private Object details;
-
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
-  @javax.annotation.Nullable
-  private String message;
+  private String error;
 
   public GetSocialQqGroupinfo404Response() {
   }
 
-  public GetSocialQqGroupinfo404Response code(@javax.annotation.Nullable String code) {
-    this.code = code;
+  public GetSocialQqGroupinfo404Response error(@javax.annotation.Nullable String error) {
+    this.error = error;
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * Get error
+   * @return error
    */
   @javax.annotation.Nullable
-  public String getCode() {
-    return code;
+  public String getError() {
+    return error;
   }
 
-  public void setCode(@javax.annotation.Nullable String code) {
-    this.code = code;
-  }
-
-
-  public GetSocialQqGroupinfo404Response details(@javax.annotation.Nullable Object details) {
-    this.details = details;
-    return this;
-  }
-
-  /**
-   * Get details
-   * @return details
-   */
-  @javax.annotation.Nullable
-  public Object getDetails() {
-    return details;
-  }
-
-  public void setDetails(@javax.annotation.Nullable Object details) {
-    this.details = details;
-  }
-
-
-  public GetSocialQqGroupinfo404Response message(@javax.annotation.Nullable String message) {
-    this.message = message;
-    return this;
-  }
-
-  /**
-   * Get message
-   * @return message
-   */
-  @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public void setError(@javax.annotation.Nullable String error) {
+    this.error = error;
   }
 
 
@@ -137,23 +89,19 @@ public class GetSocialQqGroupinfo404Response {
       return false;
     }
     GetSocialQqGroupinfo404Response getSocialQqGroupinfo404Response = (GetSocialQqGroupinfo404Response) o;
-    return Objects.equals(this.code, getSocialQqGroupinfo404Response.code) &&
-        Objects.equals(this.details, getSocialQqGroupinfo404Response.details) &&
-        Objects.equals(this.message, getSocialQqGroupinfo404Response.message);
+    return Objects.equals(this.error, getSocialQqGroupinfo404Response.error);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, details, message);
+    return Objects.hash(error);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetSocialQqGroupinfo404Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    details: ").append(toIndentedString(details)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -175,7 +123,7 @@ public class GetSocialQqGroupinfo404Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "details", "message"));
+    openapiFields = new HashSet<String>(Arrays.asList("error"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -202,11 +150,8 @@ public class GetSocialQqGroupinfo404Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
-      }
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      if ((jsonObj.get("error") != null && !jsonObj.get("error").isJsonNull()) && !jsonObj.get("error").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `error` to be a primitive type in the JSON string but got `%s`", jsonObj.get("error").toString()));
       }
   }
 
