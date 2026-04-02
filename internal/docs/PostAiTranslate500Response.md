@@ -10,7 +10,6 @@
 |**code** | **Integer** |  |  [optional] |
 |**message** | **String** |  |  [optional] |
 |**error** | **String** |  |  [optional] |
-|**isBatch** | **Boolean** |  |  [optional] |
 
 
 

@@ -7,6 +7,7 @@ uapi\Client$MinGanCiShiBieApi.class
 uapi\UapiException$InvalidParams.class
 uapi\UapiException$UnsupportedCarrier.class
 uapi\UapiException$NoTrackingData.class
+uapi\UapiException$RateLimitPolicyEntry.class
 uapi\Client$RandomApi.class
 uapi\UapiException$ApiError.class
 uapi\Client$ClipzyZaiXianJianTieBanApi.class
@@ -17,7 +18,9 @@ uapi\Client$MiscApi.class
 uapi\Client$TranslateApi.class
 uapi\UapiException$InvalidParameter.class
 uapi\Client$ImageApi.class
+uapi\UapiException$ResponseMeta.class
 uapi\UapiException$UnsupportedFormat.class
+uapi\UapiException$RateLimitStateEntry.class
 uapi\UapiException$RequestEntityTooLarge.class
 uapi\UapiException$Unauthorized.class
 uapi\Client$PoemApi.class
@@ -26,9 +29,12 @@ uapi\UapiException$FileRequired.class
 uapi\UapiException$PhoneInfoFailed.class
 uapi\Client.class
 uapi\UapiException$RecognitionFailed.class
+uapi\UapiException$StructuredItem.class
 uapi\Client$NetworkApi.class
 uapi\Client$SocialApi.class
 uapi\UapiException$NotFound.class
+uapi\UapiException$VisitorMonthlyQuotaExhausted.class
+uapi\UapiException$InsufficientCredits.class
 uapi\UapiException$FileOpenError.class
 uapi\Client$GameApi.class
 uapi\UapiException$AvatarNotFound.class

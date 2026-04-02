@@ -21,8 +21,14 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.client.model.GetMiscHolidayCalendar200ResponseData;
+import java.util.List;
+import org.openapitools.client.model.GetMiscHolidayCalendar200ResponseDaysInner;
+import org.openapitools.client.model.GetMiscHolidayCalendar200ResponseHolidaysInner;
+import org.openapitools.client.model.GetMiscHolidayCalendar200ResponseNearby;
+import org.openapitools.client.model.GetMiscHolidayCalendar200ResponseQuery;
+import org.openapitools.client.model.GetMiscHolidayCalendar200ResponseSummary;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,80 +57,168 @@ import org.openapitools.client.JSON;
 /**
  * GetMiscHolidayCalendar200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscHolidayCalendar200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
+  public static final String SERIALIZED_NAME_MODE = "mode";
+  @SerializedName(SERIALIZED_NAME_MODE)
   @javax.annotation.Nullable
-  private Integer code;
+  private String mode;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  public static final String SERIALIZED_NAME_QUERY = "query";
+  @SerializedName(SERIALIZED_NAME_QUERY)
   @javax.annotation.Nullable
-  private String message;
+  private GetMiscHolidayCalendar200ResponseQuery query;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
+  public static final String SERIALIZED_NAME_SUMMARY = "summary";
+  @SerializedName(SERIALIZED_NAME_SUMMARY)
   @javax.annotation.Nullable
-  private GetMiscHolidayCalendar200ResponseData data;
+  private GetMiscHolidayCalendar200ResponseSummary summary;
+
+  public static final String SERIALIZED_NAME_DAYS = "days";
+  @SerializedName(SERIALIZED_NAME_DAYS)
+  @javax.annotation.Nullable
+  private List<GetMiscHolidayCalendar200ResponseDaysInner> days = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_HOLIDAYS = "holidays";
+  @SerializedName(SERIALIZED_NAME_HOLIDAYS)
+  @javax.annotation.Nullable
+  private List<GetMiscHolidayCalendar200ResponseHolidaysInner> holidays = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_NEARBY = "nearby";
+  @SerializedName(SERIALIZED_NAME_NEARBY)
+  @javax.annotation.Nullable
+  private GetMiscHolidayCalendar200ResponseNearby nearby;
 
   public GetMiscHolidayCalendar200Response() {
   }
 
-  public GetMiscHolidayCalendar200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
+  public GetMiscHolidayCalendar200Response mode(@javax.annotation.Nullable String mode) {
+    this.mode = mode;
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * 查询模式：day、month、year。
+   * @return mode
    */
   @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
+  public String getMode() {
+    return mode;
   }
 
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
+  public void setMode(@javax.annotation.Nullable String mode) {
+    this.mode = mode;
   }
 
 
-  public GetMiscHolidayCalendar200Response message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public GetMiscHolidayCalendar200Response query(@javax.annotation.Nullable GetMiscHolidayCalendar200ResponseQuery query) {
+    this.query = query;
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * Get query
+   * @return query
    */
   @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  public GetMiscHolidayCalendar200ResponseQuery getQuery() {
+    return query;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public void setQuery(@javax.annotation.Nullable GetMiscHolidayCalendar200ResponseQuery query) {
+    this.query = query;
   }
 
 
-  public GetMiscHolidayCalendar200Response data(@javax.annotation.Nullable GetMiscHolidayCalendar200ResponseData data) {
-    this.data = data;
+  public GetMiscHolidayCalendar200Response summary(@javax.annotation.Nullable GetMiscHolidayCalendar200ResponseSummary summary) {
+    this.summary = summary;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * Get summary
+   * @return summary
    */
   @javax.annotation.Nullable
-  public GetMiscHolidayCalendar200ResponseData getData() {
-    return data;
+  public GetMiscHolidayCalendar200ResponseSummary getSummary() {
+    return summary;
   }
 
-  public void setData(@javax.annotation.Nullable GetMiscHolidayCalendar200ResponseData data) {
-    this.data = data;
+  public void setSummary(@javax.annotation.Nullable GetMiscHolidayCalendar200ResponseSummary summary) {
+    this.summary = summary;
+  }
+
+
+  public GetMiscHolidayCalendar200Response days(@javax.annotation.Nullable List<GetMiscHolidayCalendar200ResponseDaysInner> days) {
+    this.days = days;
+    return this;
+  }
+
+  public GetMiscHolidayCalendar200Response addDaysItem(GetMiscHolidayCalendar200ResponseDaysInner daysItem) {
+    if (this.days == null) {
+      this.days = new ArrayList<>();
+    }
+    this.days.add(daysItem);
+    return this;
+  }
+
+  /**
+   * 日期明细列表。
+   * @return days
+   */
+  @javax.annotation.Nullable
+  public List<GetMiscHolidayCalendar200ResponseDaysInner> getDays() {
+    return days;
+  }
+
+  public void setDays(@javax.annotation.Nullable List<GetMiscHolidayCalendar200ResponseDaysInner> days) {
+    this.days = days;
+  }
+
+
+  public GetMiscHolidayCalendar200Response holidays(@javax.annotation.Nullable List<GetMiscHolidayCalendar200ResponseHolidaysInner> holidays) {
+    this.holidays = holidays;
+    return this;
+  }
+
+  public GetMiscHolidayCalendar200Response addHolidaysItem(GetMiscHolidayCalendar200ResponseHolidaysInner holidaysItem) {
+    if (this.holidays == null) {
+      this.holidays = new ArrayList<>();
+    }
+    this.holidays.add(holidaysItem);
+    return this;
+  }
+
+  /**
+   * 节日事件列表。
+   * @return holidays
+   */
+  @javax.annotation.Nullable
+  public List<GetMiscHolidayCalendar200ResponseHolidaysInner> getHolidays() {
+    return holidays;
+  }
+
+  public void setHolidays(@javax.annotation.Nullable List<GetMiscHolidayCalendar200ResponseHolidaysInner> holidays) {
+    this.holidays = holidays;
+  }
+
+
+  public GetMiscHolidayCalendar200Response nearby(@javax.annotation.Nullable GetMiscHolidayCalendar200ResponseNearby nearby) {
+    this.nearby = nearby;
+    return this;
+  }
+
+  /**
+   * Get nearby
+   * @return nearby
+   */
+  @javax.annotation.Nullable
+  public GetMiscHolidayCalendar200ResponseNearby getNearby() {
+    return nearby;
+  }
+
+  public void setNearby(@javax.annotation.Nullable GetMiscHolidayCalendar200ResponseNearby nearby) {
+    this.nearby = nearby;
   }
 
 
@@ -138,23 +232,29 @@ public class GetMiscHolidayCalendar200Response {
       return false;
     }
     GetMiscHolidayCalendar200Response getMiscHolidayCalendar200Response = (GetMiscHolidayCalendar200Response) o;
-    return Objects.equals(this.code, getMiscHolidayCalendar200Response.code) &&
-        Objects.equals(this.message, getMiscHolidayCalendar200Response.message) &&
-        Objects.equals(this.data, getMiscHolidayCalendar200Response.data);
+    return Objects.equals(this.mode, getMiscHolidayCalendar200Response.mode) &&
+        Objects.equals(this.query, getMiscHolidayCalendar200Response.query) &&
+        Objects.equals(this.summary, getMiscHolidayCalendar200Response.summary) &&
+        Objects.equals(this.days, getMiscHolidayCalendar200Response.days) &&
+        Objects.equals(this.holidays, getMiscHolidayCalendar200Response.holidays) &&
+        Objects.equals(this.nearby, getMiscHolidayCalendar200Response.nearby);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, data);
+    return Objects.hash(mode, query, summary, days, holidays, nearby);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetMiscHolidayCalendar200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
+    sb.append("    query: ").append(toIndentedString(query)).append("\n");
+    sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
+    sb.append("    days: ").append(toIndentedString(days)).append("\n");
+    sb.append("    holidays: ").append(toIndentedString(holidays)).append("\n");
+    sb.append("    nearby: ").append(toIndentedString(nearby)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,7 +276,7 @@ public class GetMiscHolidayCalendar200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "message", "data"));
+    openapiFields = new HashSet<String>(Arrays.asList("mode", "query", "summary", "days", "holidays", "nearby"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -203,12 +303,48 @@ public class GetMiscHolidayCalendar200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      if ((jsonObj.get("mode") != null && !jsonObj.get("mode").isJsonNull()) && !jsonObj.get("mode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `mode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("mode").toString()));
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        GetMiscHolidayCalendar200ResponseData.validateJsonElement(jsonObj.get("data"));
+      // validate the optional field `query`
+      if (jsonObj.get("query") != null && !jsonObj.get("query").isJsonNull()) {
+        GetMiscHolidayCalendar200ResponseQuery.validateJsonElement(jsonObj.get("query"));
+      }
+      // validate the optional field `summary`
+      if (jsonObj.get("summary") != null && !jsonObj.get("summary").isJsonNull()) {
+        GetMiscHolidayCalendar200ResponseSummary.validateJsonElement(jsonObj.get("summary"));
+      }
+      if (jsonObj.get("days") != null && !jsonObj.get("days").isJsonNull()) {
+        JsonArray jsonArraydays = jsonObj.getAsJsonArray("days");
+        if (jsonArraydays != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("days").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `days` to be an array in the JSON string but got `%s`", jsonObj.get("days").toString()));
+          }
+
+          // validate the optional field `days` (array)
+          for (int i = 0; i < jsonArraydays.size(); i++) {
+            GetMiscHolidayCalendar200ResponseDaysInner.validateJsonElement(jsonArraydays.get(i));
+          };
+        }
+      }
+      if (jsonObj.get("holidays") != null && !jsonObj.get("holidays").isJsonNull()) {
+        JsonArray jsonArrayholidays = jsonObj.getAsJsonArray("holidays");
+        if (jsonArrayholidays != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("holidays").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `holidays` to be an array in the JSON string but got `%s`", jsonObj.get("holidays").toString()));
+          }
+
+          // validate the optional field `holidays` (array)
+          for (int i = 0; i < jsonArrayholidays.size(); i++) {
+            GetMiscHolidayCalendar200ResponseHolidaysInner.validateJsonElement(jsonArrayholidays.get(i));
+          };
+        }
+      }
+      // validate the optional field `nearby`
+      if (jsonObj.get("nearby") != null && !jsonObj.get("nearby").isJsonNull()) {
+        GetMiscHolidayCalendar200ResponseNearby.validateJsonElement(jsonObj.get("nearby"));
       }
   }
 

@@ -11,8 +11,11 @@ public class Client {
     private final String baseUrl;
     private final String token;
     private final OkHttpClient http = new OkHttpClient();
+    private volatile UapiException.ResponseMeta lastResponseMeta;
 
     public Client(String baseUrl, String token) { this.baseUrl = baseUrl; this.token = token; }
+
+    public UapiException.ResponseMeta getLastResponseMeta() { return lastResponseMeta; }
 
     private Object request(String method, String path, Map<String, Object> params, Object body) throws UapiException, IOException {
         HttpUrl.Builder url = HttpUrl.parse(baseUrl + path).newBuilder();
@@ -24,7 +27,8 @@ public class Client {
         Response resp = http.newCall(req.build()).execute();
         String ct = resp.header("content-type", "");
         String text = resp.body() == null ? "" : resp.body().string();
-        if (!resp.isSuccessful()) throw UapiException.map(resp.code(), text);
+        lastResponseMeta = UapiException.extractMeta(resp.headers());
+        if (!resp.isSuccessful()) throw UapiException.map(resp.code(), text, resp.headers());
         if (ct.contains("application/json")) return new Gson().fromJson(text, Object.class);
         return text;
     }
@@ -676,13 +680,10 @@ public class Client {
             Map<String, Object> body = new HashMap<>();
             if ("query".equals("query") && args != null && args.containsKey("target_lang")) q.put("target_lang", args.get("target_lang"));
             if (args != null && args.containsKey("context")) body.put("context", args.get("context"));
-            if (args != null && args.containsKey("fast_mode")) body.put("fast_mode", args.get("fast_mode"));
-            if (args != null && args.containsKey("max_concurrency")) body.put("max_concurrency", args.get("max_concurrency"));
             if (args != null && args.containsKey("preserve_format")) body.put("preserve_format", args.get("preserve_format"));
             if (args != null && args.containsKey("source_lang")) body.put("source_lang", args.get("source_lang"));
             if (args != null && args.containsKey("style")) body.put("style", args.get("style"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
-            if (args != null && args.containsKey("texts")) body.put("texts", args.get("texts"));
             String path = "/api/v1/ai/translate";
             return request("POST", path, q, body.isEmpty() ? null : body);
         }

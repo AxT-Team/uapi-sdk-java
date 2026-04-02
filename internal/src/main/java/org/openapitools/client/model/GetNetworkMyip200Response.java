@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetNetworkMyip200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkMyip200Response {
   public static final String SERIALIZED_NAME_IP = "ip";
   @SerializedName(SERIALIZED_NAME_IP)
@@ -102,6 +102,11 @@ public class GetNetworkMyip200Response {
   @SerializedName(SERIALIZED_NAME_DISTRICT)
   @javax.annotation.Nullable
   private String district;
+
+  public static final String SERIALIZED_NAME_TIME_ZONE = "time_zone";
+  @SerializedName(SERIALIZED_NAME_TIME_ZONE)
+  @javax.annotation.Nullable
+  private String timeZone;
 
   public GetNetworkMyip200Response() {
   }
@@ -283,7 +288,7 @@ public class GetNetworkMyip200Response {
   }
 
   /**
-   * 行政区（商业查询）
+   * 行政区。仅 &#x60;source&#x3D;commercial&#x60; 时可能返回。
    * @return district
    */
   @javax.annotation.Nullable
@@ -293,6 +298,25 @@ public class GetNetworkMyip200Response {
 
   public void setDistrict(@javax.annotation.Nullable String district) {
     this.district = district;
+  }
+
+
+  public GetNetworkMyip200Response timeZone(@javax.annotation.Nullable String timeZone) {
+    this.timeZone = timeZone;
+    return this;
+  }
+
+  /**
+   * 时区名称。仅 &#x60;source&#x3D;commercial&#x60; 时可能返回。
+   * @return timeZone
+   */
+  @javax.annotation.Nullable
+  public String getTimeZone() {
+    return timeZone;
+  }
+
+  public void setTimeZone(@javax.annotation.Nullable String timeZone) {
+    this.timeZone = timeZone;
   }
 
 
@@ -315,12 +339,13 @@ public class GetNetworkMyip200Response {
         Objects.equals(this.longitude, getNetworkMyip200Response.longitude) &&
         Objects.equals(this.beginip, getNetworkMyip200Response.beginip) &&
         Objects.equals(this.endip, getNetworkMyip200Response.endip) &&
-        Objects.equals(this.district, getNetworkMyip200Response.district);
+        Objects.equals(this.district, getNetworkMyip200Response.district) &&
+        Objects.equals(this.timeZone, getNetworkMyip200Response.timeZone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ip, region, isp, llc, asn, latitude, longitude, beginip, endip, district);
+    return Objects.hash(ip, region, isp, llc, asn, latitude, longitude, beginip, endip, district, timeZone);
   }
 
   @Override
@@ -337,6 +362,7 @@ public class GetNetworkMyip200Response {
     sb.append("    beginip: ").append(toIndentedString(beginip)).append("\n");
     sb.append("    endip: ").append(toIndentedString(endip)).append("\n");
     sb.append("    district: ").append(toIndentedString(district)).append("\n");
+    sb.append("    timeZone: ").append(toIndentedString(timeZone)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -358,7 +384,7 @@ public class GetNetworkMyip200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("ip", "region", "isp", "llc", "asn", "latitude", "longitude", "beginip", "endip", "district"));
+    openapiFields = new HashSet<String>(Arrays.asList("ip", "region", "isp", "llc", "asn", "latitude", "longitude", "beginip", "endip", "district", "time_zone"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -408,6 +434,9 @@ public class GetNetworkMyip200Response {
       }
       if ((jsonObj.get("district") != null && !jsonObj.get("district").isJsonNull()) && !jsonObj.get("district").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `district` to be a primitive type in the JSON string but got `%s`", jsonObj.get("district").toString()));
+      }
+      if ((jsonObj.get("time_zone") != null && !jsonObj.get("time_zone").isJsonNull()) && !jsonObj.get("time_zone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `time_zone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("time_zone").toString()));
       }
   }
 

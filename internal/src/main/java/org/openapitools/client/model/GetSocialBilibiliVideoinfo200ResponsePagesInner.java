@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * GetSocialBilibiliVideoinfo200ResponsePagesInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialBilibiliVideoinfo200ResponsePagesInner {
   public static final String SERIALIZED_NAME_CID = "cid";
   @SerializedName(SERIALIZED_NAME_CID)
@@ -68,10 +69,30 @@ public class GetSocialBilibiliVideoinfo200ResponsePagesInner {
   @javax.annotation.Nullable
   private String part;
 
+  public static final String SERIALIZED_NAME_FROM = "from";
+  @SerializedName(SERIALIZED_NAME_FROM)
+  @javax.annotation.Nullable
+  private String from;
+
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
   @javax.annotation.Nullable
   private BigDecimal duration;
+
+  public static final String SERIALIZED_NAME_VID = "vid";
+  @SerializedName(SERIALIZED_NAME_VID)
+  @javax.annotation.Nullable
+  private String vid;
+
+  public static final String SERIALIZED_NAME_WEBLINK = "weblink";
+  @SerializedName(SERIALIZED_NAME_WEBLINK)
+  @javax.annotation.Nullable
+  private String weblink;
+
+  public static final String SERIALIZED_NAME_DIMENSION = "dimension";
+  @SerializedName(SERIALIZED_NAME_DIMENSION)
+  @javax.annotation.Nullable
+  private GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension dimension;
 
   public GetSocialBilibiliVideoinfo200ResponsePagesInner() {
   }
@@ -133,6 +154,25 @@ public class GetSocialBilibiliVideoinfo200ResponsePagesInner {
   }
 
 
+  public GetSocialBilibiliVideoinfo200ResponsePagesInner from(@javax.annotation.Nullable String from) {
+    this.from = from;
+    return this;
+  }
+
+  /**
+   * 视频来源。
+   * @return from
+   */
+  @javax.annotation.Nullable
+  public String getFrom() {
+    return from;
+  }
+
+  public void setFrom(@javax.annotation.Nullable String from) {
+    this.from = from;
+  }
+
+
   public GetSocialBilibiliVideoinfo200ResponsePagesInner duration(@javax.annotation.Nullable BigDecimal duration) {
     this.duration = duration;
     return this;
@@ -152,6 +192,63 @@ public class GetSocialBilibiliVideoinfo200ResponsePagesInner {
   }
 
 
+  public GetSocialBilibiliVideoinfo200ResponsePagesInner vid(@javax.annotation.Nullable String vid) {
+    this.vid = vid;
+    return this;
+  }
+
+  /**
+   * 外部视频源 ID，通常为空。
+   * @return vid
+   */
+  @javax.annotation.Nullable
+  public String getVid() {
+    return vid;
+  }
+
+  public void setVid(@javax.annotation.Nullable String vid) {
+    this.vid = vid;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200ResponsePagesInner weblink(@javax.annotation.Nullable String weblink) {
+    this.weblink = weblink;
+    return this;
+  }
+
+  /**
+   * 外链地址，通常为空。
+   * @return weblink
+   */
+  @javax.annotation.Nullable
+  public String getWeblink() {
+    return weblink;
+  }
+
+  public void setWeblink(@javax.annotation.Nullable String weblink) {
+    this.weblink = weblink;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200ResponsePagesInner dimension(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension dimension) {
+    this.dimension = dimension;
+    return this;
+  }
+
+  /**
+   * Get dimension
+   * @return dimension
+   */
+  @javax.annotation.Nullable
+  public GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension getDimension() {
+    return dimension;
+  }
+
+  public void setDimension(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension dimension) {
+    this.dimension = dimension;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -165,12 +262,16 @@ public class GetSocialBilibiliVideoinfo200ResponsePagesInner {
     return Objects.equals(this.cid, getSocialBilibiliVideoinfo200ResponsePagesInner.cid) &&
         Objects.equals(this.page, getSocialBilibiliVideoinfo200ResponsePagesInner.page) &&
         Objects.equals(this.part, getSocialBilibiliVideoinfo200ResponsePagesInner.part) &&
-        Objects.equals(this.duration, getSocialBilibiliVideoinfo200ResponsePagesInner.duration);
+        Objects.equals(this.from, getSocialBilibiliVideoinfo200ResponsePagesInner.from) &&
+        Objects.equals(this.duration, getSocialBilibiliVideoinfo200ResponsePagesInner.duration) &&
+        Objects.equals(this.vid, getSocialBilibiliVideoinfo200ResponsePagesInner.vid) &&
+        Objects.equals(this.weblink, getSocialBilibiliVideoinfo200ResponsePagesInner.weblink) &&
+        Objects.equals(this.dimension, getSocialBilibiliVideoinfo200ResponsePagesInner.dimension);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cid, page, part, duration);
+    return Objects.hash(cid, page, part, from, duration, vid, weblink, dimension);
   }
 
   @Override
@@ -180,7 +281,11 @@ public class GetSocialBilibiliVideoinfo200ResponsePagesInner {
     sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
     sb.append("    page: ").append(toIndentedString(page)).append("\n");
     sb.append("    part: ").append(toIndentedString(part)).append("\n");
+    sb.append("    from: ").append(toIndentedString(from)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    vid: ").append(toIndentedString(vid)).append("\n");
+    sb.append("    weblink: ").append(toIndentedString(weblink)).append("\n");
+    sb.append("    dimension: ").append(toIndentedString(dimension)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -202,7 +307,7 @@ public class GetSocialBilibiliVideoinfo200ResponsePagesInner {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("cid", "page", "part", "duration"));
+    openapiFields = new HashSet<String>(Arrays.asList("cid", "page", "part", "from", "duration", "vid", "weblink", "dimension"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -231,6 +336,19 @@ public class GetSocialBilibiliVideoinfo200ResponsePagesInner {
         JsonObject jsonObj = jsonElement.getAsJsonObject();
       if ((jsonObj.get("part") != null && !jsonObj.get("part").isJsonNull()) && !jsonObj.get("part").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `part` to be a primitive type in the JSON string but got `%s`", jsonObj.get("part").toString()));
+      }
+      if ((jsonObj.get("from") != null && !jsonObj.get("from").isJsonNull()) && !jsonObj.get("from").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `from` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from").toString()));
+      }
+      if ((jsonObj.get("vid") != null && !jsonObj.get("vid").isJsonNull()) && !jsonObj.get("vid").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `vid` to be a primitive type in the JSON string but got `%s`", jsonObj.get("vid").toString()));
+      }
+      if ((jsonObj.get("weblink") != null && !jsonObj.get("weblink").isJsonNull()) && !jsonObj.get("weblink").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `weblink` to be a primitive type in the JSON string but got `%s`", jsonObj.get("weblink").toString()));
+      }
+      // validate the optional field `dimension`
+      if (jsonObj.get("dimension") != null && !jsonObj.get("dimension").isJsonNull()) {
+        GetSocialBilibiliVideoinfo200ResponsePagesInnerDimension.validateJsonElement(jsonObj.get("dimension"));
       }
   }
 

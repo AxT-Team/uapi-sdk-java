@@ -50,128 +50,22 @@ import org.openapitools.client.JSON;
 /**
  * PostTranslateStreamRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostTranslateStreamRequest {
   public static final String SERIALIZED_NAME_QUERY = "query";
   @SerializedName(SERIALIZED_NAME_QUERY)
   @javax.annotation.Nonnull
   private String query;
 
-  /**
-   * 目标语言，支持：中文、英文
-   */
-  @JsonAdapter(ToLangEnum.Adapter.class)
-  public enum ToLangEnum {
-    u("中文"),
-    
-    u2("英文");
-
-    private String value;
-
-    ToLangEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ToLangEnum fromValue(String value) {
-      for (ToLangEnum b : ToLangEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<ToLangEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ToLangEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ToLangEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return ToLangEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      ToLangEnum.fromValue(value);
-    }
-  }
-
   public static final String SERIALIZED_NAME_TO_LANG = "to_lang";
   @SerializedName(SERIALIZED_NAME_TO_LANG)
   @javax.annotation.Nonnull
-  private ToLangEnum toLang;
-
-  /**
-   * 源语言，支持：中文、英文、auto（自动检测）。默认为auto
-   */
-  @JsonAdapter(FromLangEnum.Adapter.class)
-  public enum FromLangEnum {
-    u("中文"),
-    
-    u2("英文"),
-    
-    AUTO("auto");
-
-    private String value;
-
-    FromLangEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static FromLangEnum fromValue(String value) {
-      for (FromLangEnum b : FromLangEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<FromLangEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final FromLangEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public FromLangEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return FromLangEnum.fromValue(value);
-      }
-    }
-
-    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      String value = jsonElement.getAsString();
-      FromLangEnum.fromValue(value);
-    }
-  }
+  private String toLang;
 
   public static final String SERIALIZED_NAME_FROM_LANG = "from_lang";
   @SerializedName(SERIALIZED_NAME_FROM_LANG)
   @javax.annotation.Nullable
-  private FromLangEnum fromLang = FromLangEnum.AUTO;
+  private String fromLang = "auto";
 
   public static final String SERIALIZED_NAME_TONE = "tone";
   @SerializedName(SERIALIZED_NAME_TONE)
@@ -200,7 +94,7 @@ public class PostTranslateStreamRequest {
   }
 
 
-  public PostTranslateStreamRequest toLang(@javax.annotation.Nonnull ToLangEnum toLang) {
+  public PostTranslateStreamRequest toLang(@javax.annotation.Nonnull String toLang) {
     this.toLang = toLang;
     return this;
   }
@@ -210,16 +104,16 @@ public class PostTranslateStreamRequest {
    * @return toLang
    */
   @javax.annotation.Nonnull
-  public ToLangEnum getToLang() {
+  public String getToLang() {
     return toLang;
   }
 
-  public void setToLang(@javax.annotation.Nonnull ToLangEnum toLang) {
+  public void setToLang(@javax.annotation.Nonnull String toLang) {
     this.toLang = toLang;
   }
 
 
-  public PostTranslateStreamRequest fromLang(@javax.annotation.Nullable FromLangEnum fromLang) {
+  public PostTranslateStreamRequest fromLang(@javax.annotation.Nullable String fromLang) {
     this.fromLang = fromLang;
     return this;
   }
@@ -229,11 +123,11 @@ public class PostTranslateStreamRequest {
    * @return fromLang
    */
   @javax.annotation.Nullable
-  public FromLangEnum getFromLang() {
+  public String getFromLang() {
     return fromLang;
   }
 
-  public void setFromLang(@javax.annotation.Nullable FromLangEnum fromLang) {
+  public void setFromLang(@javax.annotation.Nullable String fromLang) {
     this.fromLang = fromLang;
   }
 
@@ -347,14 +241,8 @@ public class PostTranslateStreamRequest {
       if (!jsonObj.get("to_lang").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `to_lang` to be a primitive type in the JSON string but got `%s`", jsonObj.get("to_lang").toString()));
       }
-      // validate the required field `to_lang`
-      ToLangEnum.validateJsonElement(jsonObj.get("to_lang"));
       if ((jsonObj.get("from_lang") != null && !jsonObj.get("from_lang").isJsonNull()) && !jsonObj.get("from_lang").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `from_lang` to be a primitive type in the JSON string but got `%s`", jsonObj.get("from_lang").toString()));
-      }
-      // validate the optional field `from_lang`
-      if (jsonObj.get("from_lang") != null && !jsonObj.get("from_lang").isJsonNull()) {
-        FromLangEnum.validateJsonElement(jsonObj.get("from_lang"));
       }
       if ((jsonObj.get("tone") != null && !jsonObj.get("tone").isJsonNull()) && !jsonObj.get("tone").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tone").toString()));

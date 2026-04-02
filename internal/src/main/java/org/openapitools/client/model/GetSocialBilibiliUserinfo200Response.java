@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import org.openapitools.client.model.GetSocialBilibiliUserinfo200ResponseData;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,80 +50,320 @@ import org.openapitools.client.JSON;
 /**
  * GetSocialBilibiliUserinfo200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialBilibiliUserinfo200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
+  public static final String SERIALIZED_NAME_MID = "mid";
+  @SerializedName(SERIALIZED_NAME_MID)
   @javax.annotation.Nullable
-  private Integer code;
+  private Integer mid;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
   @javax.annotation.Nullable
-  private GetSocialBilibiliUserinfo200ResponseData data;
+  private String name;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  public static final String SERIALIZED_NAME_SEX = "sex";
+  @SerializedName(SERIALIZED_NAME_SEX)
   @javax.annotation.Nullable
-  private String message;
+  private String sex;
+
+  public static final String SERIALIZED_NAME_FACE = "face";
+  @SerializedName(SERIALIZED_NAME_FACE)
+  @javax.annotation.Nullable
+  private String face;
+
+  public static final String SERIALIZED_NAME_SIGN = "sign";
+  @SerializedName(SERIALIZED_NAME_SIGN)
+  @javax.annotation.Nullable
+  private String sign;
+
+  public static final String SERIALIZED_NAME_LEVEL = "level";
+  @SerializedName(SERIALIZED_NAME_LEVEL)
+  @javax.annotation.Nullable
+  private Integer level;
+
+  public static final String SERIALIZED_NAME_BIRTHDAY = "birthday";
+  @SerializedName(SERIALIZED_NAME_BIRTHDAY)
+  @javax.annotation.Nullable
+  private String birthday;
+
+  public static final String SERIALIZED_NAME_VIP_TYPE = "vip_type";
+  @SerializedName(SERIALIZED_NAME_VIP_TYPE)
+  @javax.annotation.Nullable
+  private Integer vipType;
+
+  public static final String SERIALIZED_NAME_VIP_STATUS = "vip_status";
+  @SerializedName(SERIALIZED_NAME_VIP_STATUS)
+  @javax.annotation.Nullable
+  private Integer vipStatus;
+
+  public static final String SERIALIZED_NAME_FOLLOWING = "following";
+  @SerializedName(SERIALIZED_NAME_FOLLOWING)
+  @javax.annotation.Nullable
+  private Integer following;
+
+  public static final String SERIALIZED_NAME_FOLLOWER = "follower";
+  @SerializedName(SERIALIZED_NAME_FOLLOWER)
+  @javax.annotation.Nullable
+  private Integer follower;
+
+  public static final String SERIALIZED_NAME_ARCHIVE_COUNT = "archive_count";
+  @SerializedName(SERIALIZED_NAME_ARCHIVE_COUNT)
+  @javax.annotation.Nullable
+  private Integer archiveCount;
+
+  public static final String SERIALIZED_NAME_ARTICLE_COUNT = "article_count";
+  @SerializedName(SERIALIZED_NAME_ARTICLE_COUNT)
+  @javax.annotation.Nullable
+  private Integer articleCount;
 
   public GetSocialBilibiliUserinfo200Response() {
   }
 
-  public GetSocialBilibiliUserinfo200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
+  public GetSocialBilibiliUserinfo200Response mid(@javax.annotation.Nullable Integer mid) {
+    this.mid = mid;
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * Get mid
+   * @return mid
    */
   @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
+  public Integer getMid() {
+    return mid;
   }
 
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
+  public void setMid(@javax.annotation.Nullable Integer mid) {
+    this.mid = mid;
   }
 
 
-  public GetSocialBilibiliUserinfo200Response data(@javax.annotation.Nullable GetSocialBilibiliUserinfo200ResponseData data) {
-    this.data = data;
+  public GetSocialBilibiliUserinfo200Response name(@javax.annotation.Nullable String name) {
+    this.name = name;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * Get name
+   * @return name
    */
   @javax.annotation.Nullable
-  public GetSocialBilibiliUserinfo200ResponseData getData() {
-    return data;
+  public String getName() {
+    return name;
   }
 
-  public void setData(@javax.annotation.Nullable GetSocialBilibiliUserinfo200ResponseData data) {
-    this.data = data;
+  public void setName(@javax.annotation.Nullable String name) {
+    this.name = name;
   }
 
 
-  public GetSocialBilibiliUserinfo200Response message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public GetSocialBilibiliUserinfo200Response sex(@javax.annotation.Nullable String sex) {
+    this.sex = sex;
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * Get sex
+   * @return sex
    */
   @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  public String getSex() {
+    return sex;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public void setSex(@javax.annotation.Nullable String sex) {
+    this.sex = sex;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response face(@javax.annotation.Nullable String face) {
+    this.face = face;
+    return this;
+  }
+
+  /**
+   * Get face
+   * @return face
+   */
+  @javax.annotation.Nullable
+  public String getFace() {
+    return face;
+  }
+
+  public void setFace(@javax.annotation.Nullable String face) {
+    this.face = face;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response sign(@javax.annotation.Nullable String sign) {
+    this.sign = sign;
+    return this;
+  }
+
+  /**
+   * Get sign
+   * @return sign
+   */
+  @javax.annotation.Nullable
+  public String getSign() {
+    return sign;
+  }
+
+  public void setSign(@javax.annotation.Nullable String sign) {
+    this.sign = sign;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response level(@javax.annotation.Nullable Integer level) {
+    this.level = level;
+    return this;
+  }
+
+  /**
+   * Get level
+   * @return level
+   */
+  @javax.annotation.Nullable
+  public Integer getLevel() {
+    return level;
+  }
+
+  public void setLevel(@javax.annotation.Nullable Integer level) {
+    this.level = level;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response birthday(@javax.annotation.Nullable String birthday) {
+    this.birthday = birthday;
+    return this;
+  }
+
+  /**
+   * Get birthday
+   * @return birthday
+   */
+  @javax.annotation.Nullable
+  public String getBirthday() {
+    return birthday;
+  }
+
+  public void setBirthday(@javax.annotation.Nullable String birthday) {
+    this.birthday = birthday;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response vipType(@javax.annotation.Nullable Integer vipType) {
+    this.vipType = vipType;
+    return this;
+  }
+
+  /**
+   * Get vipType
+   * @return vipType
+   */
+  @javax.annotation.Nullable
+  public Integer getVipType() {
+    return vipType;
+  }
+
+  public void setVipType(@javax.annotation.Nullable Integer vipType) {
+    this.vipType = vipType;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response vipStatus(@javax.annotation.Nullable Integer vipStatus) {
+    this.vipStatus = vipStatus;
+    return this;
+  }
+
+  /**
+   * Get vipStatus
+   * @return vipStatus
+   */
+  @javax.annotation.Nullable
+  public Integer getVipStatus() {
+    return vipStatus;
+  }
+
+  public void setVipStatus(@javax.annotation.Nullable Integer vipStatus) {
+    this.vipStatus = vipStatus;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response following(@javax.annotation.Nullable Integer following) {
+    this.following = following;
+    return this;
+  }
+
+  /**
+   * Get following
+   * @return following
+   */
+  @javax.annotation.Nullable
+  public Integer getFollowing() {
+    return following;
+  }
+
+  public void setFollowing(@javax.annotation.Nullable Integer following) {
+    this.following = following;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response follower(@javax.annotation.Nullable Integer follower) {
+    this.follower = follower;
+    return this;
+  }
+
+  /**
+   * Get follower
+   * @return follower
+   */
+  @javax.annotation.Nullable
+  public Integer getFollower() {
+    return follower;
+  }
+
+  public void setFollower(@javax.annotation.Nullable Integer follower) {
+    this.follower = follower;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response archiveCount(@javax.annotation.Nullable Integer archiveCount) {
+    this.archiveCount = archiveCount;
+    return this;
+  }
+
+  /**
+   * Get archiveCount
+   * @return archiveCount
+   */
+  @javax.annotation.Nullable
+  public Integer getArchiveCount() {
+    return archiveCount;
+  }
+
+  public void setArchiveCount(@javax.annotation.Nullable Integer archiveCount) {
+    this.archiveCount = archiveCount;
+  }
+
+
+  public GetSocialBilibiliUserinfo200Response articleCount(@javax.annotation.Nullable Integer articleCount) {
+    this.articleCount = articleCount;
+    return this;
+  }
+
+  /**
+   * Get articleCount
+   * @return articleCount
+   */
+  @javax.annotation.Nullable
+  public Integer getArticleCount() {
+    return articleCount;
+  }
+
+  public void setArticleCount(@javax.annotation.Nullable Integer articleCount) {
+    this.articleCount = articleCount;
   }
 
 
@@ -138,23 +377,43 @@ public class GetSocialBilibiliUserinfo200Response {
       return false;
     }
     GetSocialBilibiliUserinfo200Response getSocialBilibiliUserinfo200Response = (GetSocialBilibiliUserinfo200Response) o;
-    return Objects.equals(this.code, getSocialBilibiliUserinfo200Response.code) &&
-        Objects.equals(this.data, getSocialBilibiliUserinfo200Response.data) &&
-        Objects.equals(this.message, getSocialBilibiliUserinfo200Response.message);
+    return Objects.equals(this.mid, getSocialBilibiliUserinfo200Response.mid) &&
+        Objects.equals(this.name, getSocialBilibiliUserinfo200Response.name) &&
+        Objects.equals(this.sex, getSocialBilibiliUserinfo200Response.sex) &&
+        Objects.equals(this.face, getSocialBilibiliUserinfo200Response.face) &&
+        Objects.equals(this.sign, getSocialBilibiliUserinfo200Response.sign) &&
+        Objects.equals(this.level, getSocialBilibiliUserinfo200Response.level) &&
+        Objects.equals(this.birthday, getSocialBilibiliUserinfo200Response.birthday) &&
+        Objects.equals(this.vipType, getSocialBilibiliUserinfo200Response.vipType) &&
+        Objects.equals(this.vipStatus, getSocialBilibiliUserinfo200Response.vipStatus) &&
+        Objects.equals(this.following, getSocialBilibiliUserinfo200Response.following) &&
+        Objects.equals(this.follower, getSocialBilibiliUserinfo200Response.follower) &&
+        Objects.equals(this.archiveCount, getSocialBilibiliUserinfo200Response.archiveCount) &&
+        Objects.equals(this.articleCount, getSocialBilibiliUserinfo200Response.articleCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, data, message);
+    return Objects.hash(mid, name, sex, face, sign, level, birthday, vipType, vipStatus, following, follower, archiveCount, articleCount);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetSocialBilibiliUserinfo200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    mid: ").append(toIndentedString(mid)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    sex: ").append(toIndentedString(sex)).append("\n");
+    sb.append("    face: ").append(toIndentedString(face)).append("\n");
+    sb.append("    sign: ").append(toIndentedString(sign)).append("\n");
+    sb.append("    level: ").append(toIndentedString(level)).append("\n");
+    sb.append("    birthday: ").append(toIndentedString(birthday)).append("\n");
+    sb.append("    vipType: ").append(toIndentedString(vipType)).append("\n");
+    sb.append("    vipStatus: ").append(toIndentedString(vipStatus)).append("\n");
+    sb.append("    following: ").append(toIndentedString(following)).append("\n");
+    sb.append("    follower: ").append(toIndentedString(follower)).append("\n");
+    sb.append("    archiveCount: ").append(toIndentedString(archiveCount)).append("\n");
+    sb.append("    articleCount: ").append(toIndentedString(articleCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,7 +435,7 @@ public class GetSocialBilibiliUserinfo200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "data", "message"));
+    openapiFields = new HashSet<String>(Arrays.asList("mid", "name", "sex", "face", "sign", "level", "birthday", "vip_type", "vip_status", "following", "follower", "archive_count", "article_count"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -203,12 +462,20 @@ public class GetSocialBilibiliUserinfo200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        GetSocialBilibiliUserinfo200ResponseData.validateJsonElement(jsonObj.get("data"));
+      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      if ((jsonObj.get("sex") != null && !jsonObj.get("sex").isJsonNull()) && !jsonObj.get("sex").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sex` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sex").toString()));
+      }
+      if ((jsonObj.get("face") != null && !jsonObj.get("face").isJsonNull()) && !jsonObj.get("face").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `face` to be a primitive type in the JSON string but got `%s`", jsonObj.get("face").toString()));
+      }
+      if ((jsonObj.get("sign") != null && !jsonObj.get("sign").isJsonNull()) && !jsonObj.get("sign").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sign` to be a primitive type in the JSON string but got `%s`", jsonObj.get("sign").toString()));
+      }
+      if ((jsonObj.get("birthday") != null && !jsonObj.get("birthday").isJsonNull()) && !jsonObj.get("birthday").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `birthday` to be a primitive type in the JSON string but got `%s`", jsonObj.get("birthday").toString()));
       }
   }
 

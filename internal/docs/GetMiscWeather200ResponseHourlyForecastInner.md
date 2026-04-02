@@ -21,7 +21,7 @@
 |**dewPoint** | **BigDecimal** | 露点温度 °C（可选） |  [optional] |
 |**visibility** | **BigDecimal** | 能见度 km（可选） |  [optional] |
 |**pop** | **BigDecimal** | 降水概率 %（可选） |  [optional] |
-|**uvIndex** | **BigDecimal** | 紫外线指数（可选） |  [optional] |
+|**uvIndex** | **BigDecimal** | 紫外线指数（可选，国内城市通常不返回） |  [optional] |
 
 
 

@@ -505,7 +505,7 @@ public class RandomApi {
     }
     /**
      * Build call for postAnswerbookAsk
-     * @param postAnswerbookAskRequest 包含问题的JSON对象 (required)
+     * @param postAnswerbookAskRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -577,7 +577,7 @@ public class RandomApi {
     /**
      * 答案之书 (POST)
      * 通过POST请求向答案之书提问并获得神秘答案。  ## 功能概述 与GET方式相同，但通过JSON请求体发送问题，适合在需要发送较长问题或希望避免URL编码问题的场景中使用。  ## 请求体格式 请求体必须是有效的JSON格式，包含question字段。
-     * @param postAnswerbookAskRequest 包含问题的JSON对象 (required)
+     * @param postAnswerbookAskRequest  (required)
      * @return PostAnswerbookAsk200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -597,7 +597,7 @@ public class RandomApi {
     /**
      * 答案之书 (POST)
      * 通过POST请求向答案之书提问并获得神秘答案。  ## 功能概述 与GET方式相同，但通过JSON请求体发送问题，适合在需要发送较长问题或希望避免URL编码问题的场景中使用。  ## 请求体格式 请求体必须是有效的JSON格式，包含question字段。
-     * @param postAnswerbookAskRequest 包含问题的JSON对象 (required)
+     * @param postAnswerbookAskRequest  (required)
      * @return ApiResponse&lt;PostAnswerbookAsk200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -618,7 +618,7 @@ public class RandomApi {
     /**
      * 答案之书 (POST) (asynchronously)
      * 通过POST请求向答案之书提问并获得神秘答案。  ## 功能概述 与GET方式相同，但通过JSON请求体发送问题，适合在需要发送较长问题或希望避免URL编码问题的场景中使用。  ## 请求体格式 请求体必须是有效的JSON格式，包含question字段。
-     * @param postAnswerbookAskRequest 包含问题的JSON对象 (required)
+     * @param postAnswerbookAskRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

@@ -50,17 +50,12 @@ import org.openapitools.client.JSON;
 /**
  * PostAiTranslate200ResponsePerformance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostAiTranslate200ResponsePerformance {
   public static final String SERIALIZED_NAME_PROCESSING_TIME_MS = "processing_time_ms";
   @SerializedName(SERIALIZED_NAME_PROCESSING_TIME_MS)
   @javax.annotation.Nullable
   private Integer processingTimeMs;
-
-  public static final String SERIALIZED_NAME_CACHE_HIT = "cache_hit";
-  @SerializedName(SERIALIZED_NAME_CACHE_HIT)
-  @javax.annotation.Nullable
-  private Boolean cacheHit;
 
   public PostAiTranslate200ResponsePerformance() {
   }
@@ -84,25 +79,6 @@ public class PostAiTranslate200ResponsePerformance {
   }
 
 
-  public PostAiTranslate200ResponsePerformance cacheHit(@javax.annotation.Nullable Boolean cacheHit) {
-    this.cacheHit = cacheHit;
-    return this;
-  }
-
-  /**
-   * Get cacheHit
-   * @return cacheHit
-   */
-  @javax.annotation.Nullable
-  public Boolean getCacheHit() {
-    return cacheHit;
-  }
-
-  public void setCacheHit(@javax.annotation.Nullable Boolean cacheHit) {
-    this.cacheHit = cacheHit;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -113,13 +89,12 @@ public class PostAiTranslate200ResponsePerformance {
       return false;
     }
     PostAiTranslate200ResponsePerformance postAiTranslate200ResponsePerformance = (PostAiTranslate200ResponsePerformance) o;
-    return Objects.equals(this.processingTimeMs, postAiTranslate200ResponsePerformance.processingTimeMs) &&
-        Objects.equals(this.cacheHit, postAiTranslate200ResponsePerformance.cacheHit);
+    return Objects.equals(this.processingTimeMs, postAiTranslate200ResponsePerformance.processingTimeMs);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(processingTimeMs, cacheHit);
+    return Objects.hash(processingTimeMs);
   }
 
   @Override
@@ -127,7 +102,6 @@ public class PostAiTranslate200ResponsePerformance {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostAiTranslate200ResponsePerformance {\n");
     sb.append("    processingTimeMs: ").append(toIndentedString(processingTimeMs)).append("\n");
-    sb.append("    cacheHit: ").append(toIndentedString(cacheHit)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -149,7 +123,7 @@ public class PostAiTranslate200ResponsePerformance {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("processing_time_ms", "cache_hit"));
+    openapiFields = new HashSet<String>(Arrays.asList("processing_time_ms"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

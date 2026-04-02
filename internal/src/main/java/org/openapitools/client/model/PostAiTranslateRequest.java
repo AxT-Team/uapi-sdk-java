@@ -21,9 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,17 +50,12 @@ import org.openapitools.client.JSON;
 /**
  * PostAiTranslateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostAiTranslateRequest {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   private String text;
-
-  public static final String SERIALIZED_NAME_TEXTS = "texts";
-  @SerializedName(SERIALIZED_NAME_TEXTS)
-  @javax.annotation.Nullable
-  private List<String> texts = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SOURCE_LANG = "source_lang";
   @SerializedName(SERIALIZED_NAME_SOURCE_LANG)
@@ -206,62 +199,25 @@ public class PostAiTranslateRequest {
   @javax.annotation.Nullable
   private Boolean preserveFormat = true;
 
-  public static final String SERIALIZED_NAME_FAST_MODE = "fast_mode";
-  @SerializedName(SERIALIZED_NAME_FAST_MODE)
-  @javax.annotation.Nullable
-  private Boolean fastMode = false;
-
-  public static final String SERIALIZED_NAME_MAX_CONCURRENCY = "max_concurrency";
-  @SerializedName(SERIALIZED_NAME_MAX_CONCURRENCY)
-  @javax.annotation.Nullable
-  private Integer maxConcurrency = 3;
-
   public PostAiTranslateRequest() {
   }
 
-  public PostAiTranslateRequest text(@javax.annotation.Nullable String text) {
+  public PostAiTranslateRequest text(@javax.annotation.Nonnull String text) {
     this.text = text;
     return this;
   }
 
   /**
-   * 单个翻译时使用的待翻译文本，与texts参数二选一。最大长度10,000字符。
+   * 待翻译的文本内容。最大长度10,000字符。
    * @return text
    */
-  @javax.annotation.Nullable
+  @javax.annotation.Nonnull
   public String getText() {
     return text;
   }
 
-  public void setText(@javax.annotation.Nullable String text) {
+  public void setText(@javax.annotation.Nonnull String text) {
     this.text = text;
-  }
-
-
-  public PostAiTranslateRequest texts(@javax.annotation.Nullable List<String> texts) {
-    this.texts = texts;
-    return this;
-  }
-
-  public PostAiTranslateRequest addTextsItem(String textsItem) {
-    if (this.texts == null) {
-      this.texts = new ArrayList<>();
-    }
-    this.texts.add(textsItem);
-    return this;
-  }
-
-  /**
-   * 批量翻译时使用的待翻译文本列表，与text参数二选一。最多50条，总计最大100,000字符。
-   * @return texts
-   */
-  @javax.annotation.Nullable
-  public List<String> getTexts() {
-    return texts;
-  }
-
-  public void setTexts(@javax.annotation.Nullable List<String> texts) {
-    this.texts = texts;
   }
 
 
@@ -341,46 +297,6 @@ public class PostAiTranslateRequest {
   }
 
 
-  public PostAiTranslateRequest fastMode(@javax.annotation.Nullable Boolean fastMode) {
-    this.fastMode = fastMode;
-    return this;
-  }
-
-  /**
-   * 是否启用快速模式。快速模式响应时间约800ms，准确率95%+；普通模式响应时间约2000ms，准确率98%+。
-   * @return fastMode
-   */
-  @javax.annotation.Nullable
-  public Boolean getFastMode() {
-    return fastMode;
-  }
-
-  public void setFastMode(@javax.annotation.Nullable Boolean fastMode) {
-    this.fastMode = fastMode;
-  }
-
-
-  public PostAiTranslateRequest maxConcurrency(@javax.annotation.Nullable Integer maxConcurrency) {
-    this.maxConcurrency = maxConcurrency;
-    return this;
-  }
-
-  /**
-   * 批量翻译时的最大并发数，范围1-10。仅在批量翻译时有效。
-   * minimum: 1
-   * maximum: 10
-   * @return maxConcurrency
-   */
-  @javax.annotation.Nullable
-  public Integer getMaxConcurrency() {
-    return maxConcurrency;
-  }
-
-  public void setMaxConcurrency(@javax.annotation.Nullable Integer maxConcurrency) {
-    this.maxConcurrency = maxConcurrency;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -392,18 +308,15 @@ public class PostAiTranslateRequest {
     }
     PostAiTranslateRequest postAiTranslateRequest = (PostAiTranslateRequest) o;
     return Objects.equals(this.text, postAiTranslateRequest.text) &&
-        Objects.equals(this.texts, postAiTranslateRequest.texts) &&
         Objects.equals(this.sourceLang, postAiTranslateRequest.sourceLang) &&
         Objects.equals(this.style, postAiTranslateRequest.style) &&
         Objects.equals(this.context, postAiTranslateRequest.context) &&
-        Objects.equals(this.preserveFormat, postAiTranslateRequest.preserveFormat) &&
-        Objects.equals(this.fastMode, postAiTranslateRequest.fastMode) &&
-        Objects.equals(this.maxConcurrency, postAiTranslateRequest.maxConcurrency);
+        Objects.equals(this.preserveFormat, postAiTranslateRequest.preserveFormat);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, texts, sourceLang, style, context, preserveFormat, fastMode, maxConcurrency);
+    return Objects.hash(text, sourceLang, style, context, preserveFormat);
   }
 
   @Override
@@ -411,13 +324,10 @@ public class PostAiTranslateRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostAiTranslateRequest {\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    texts: ").append(toIndentedString(texts)).append("\n");
     sb.append("    sourceLang: ").append(toIndentedString(sourceLang)).append("\n");
     sb.append("    style: ").append(toIndentedString(style)).append("\n");
     sb.append("    context: ").append(toIndentedString(context)).append("\n");
     sb.append("    preserveFormat: ").append(toIndentedString(preserveFormat)).append("\n");
-    sb.append("    fastMode: ").append(toIndentedString(fastMode)).append("\n");
-    sb.append("    maxConcurrency: ").append(toIndentedString(maxConcurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -439,10 +349,10 @@ public class PostAiTranslateRequest {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("text", "texts", "source_lang", "style", "context", "preserve_format", "fast_mode", "max_concurrency"));
+    openapiFields = new HashSet<String>(Arrays.asList("text", "source_lang", "style", "context", "preserve_format"));
 
     // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(0);
+    openapiRequiredFields = new HashSet<String>(Arrays.asList("text"));
   }
 
   /**
@@ -465,13 +375,16 @@ public class PostAiTranslateRequest {
           throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `PostAiTranslateRequest` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
         }
       }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("text") != null && !jsonObj.get("text").isJsonNull()) && !jsonObj.get("text").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
+
+      // check to make sure all required properties/fields are present in the JSON string
+      for (String requiredField : PostAiTranslateRequest.openapiRequiredFields) {
+        if (jsonElement.getAsJsonObject().get(requiredField) == null) {
+          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field `%s` is not found in the JSON string: %s", requiredField, jsonElement.toString()));
+        }
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("texts") != null && !jsonObj.get("texts").isJsonNull() && !jsonObj.get("texts").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `texts` to be an array in the JSON string but got `%s`", jsonObj.get("texts").toString()));
+        JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if (!jsonObj.get("text").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("text").toString()));
       }
       if ((jsonObj.get("source_lang") != null && !jsonObj.get("source_lang").isJsonNull()) && !jsonObj.get("source_lang").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `source_lang` to be a primitive type in the JSON string but got `%s`", jsonObj.get("source_lang").toString()));

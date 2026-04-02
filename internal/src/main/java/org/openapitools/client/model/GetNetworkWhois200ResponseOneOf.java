@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * ### 文本格式响应 当 &#x60;format&#x3D;text&#x60; 或未指定时，&#x60;whois&#x60; 字段包含原始的WHOIS查询文本。这保留了最完整的信息，适合需要自行解析或展示原始数据的场景。
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkWhois200ResponseOneOf {
   public static final String SERIALIZED_NAME_WHOIS = "whois";
   @SerializedName(SERIALIZED_NAME_WHOIS)

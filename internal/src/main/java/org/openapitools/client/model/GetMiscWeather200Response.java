@@ -58,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * GetMiscWeather200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscWeather200Response {
   public static final String SERIALIZED_NAME_PROVINCE = "province";
   @SerializedName(SERIALIZED_NAME_PROVINCE)
@@ -70,6 +70,11 @@ public class GetMiscWeather200Response {
   @javax.annotation.Nullable
   private String city;
 
+  public static final String SERIALIZED_NAME_DISTRICT = "district";
+  @SerializedName(SERIALIZED_NAME_DISTRICT)
+  @javax.annotation.Nullable
+  private String district;
+
   public static final String SERIALIZED_NAME_ADCODE = "adcode";
   @SerializedName(SERIALIZED_NAME_ADCODE)
   @javax.annotation.Nullable
@@ -79,6 +84,945 @@ public class GetMiscWeather200Response {
   @SerializedName(SERIALIZED_NAME_WEATHER)
   @javax.annotation.Nullable
   private String weather;
+
+  /**
+   * 天气图标代码。请从[天气图标代码表](#enum-list)中查看所有可能的值。
+   */
+  @JsonAdapter(WeatherIconEnum.Adapter.class)
+  public enum WeatherIconEnum {
+    _100("100"),
+    
+    _101("101"),
+    
+    _102("102"),
+    
+    _103("103"),
+    
+    _104("104"),
+    
+    _150("150"),
+    
+    _151("151"),
+    
+    _152("152"),
+    
+    _153("153"),
+    
+    _300("300"),
+    
+    _301("301"),
+    
+    _302("302"),
+    
+    _303("303"),
+    
+    _304("304"),
+    
+    _305("305"),
+    
+    _306("306"),
+    
+    _307("307"),
+    
+    _308("308"),
+    
+    _309("309"),
+    
+    _310("310"),
+    
+    _311("311"),
+    
+    _312("312"),
+    
+    _313("313"),
+    
+    _314("314"),
+    
+    _315("315"),
+    
+    _316("316"),
+    
+    _317("317"),
+    
+    _318("318"),
+    
+    _350("350"),
+    
+    _351("351"),
+    
+    _399("399"),
+    
+    _400("400"),
+    
+    _401("401"),
+    
+    _402("402"),
+    
+    _403("403"),
+    
+    _404("404"),
+    
+    _405("405"),
+    
+    _406("406"),
+    
+    _407("407"),
+    
+    _408("408"),
+    
+    _409("409"),
+    
+    _410("410"),
+    
+    _456("456"),
+    
+    _457("457"),
+    
+    _499("499"),
+    
+    _500("500"),
+    
+    _501("501"),
+    
+    _502("502"),
+    
+    _503("503"),
+    
+    _504("504"),
+    
+    _507("507"),
+    
+    _508("508"),
+    
+    _509("509"),
+    
+    _510("510"),
+    
+    _511("511"),
+    
+    _512("512"),
+    
+    _513("513"),
+    
+    _514("514"),
+    
+    _515("515"),
+    
+    _800("800"),
+    
+    _801("801"),
+    
+    _802("802"),
+    
+    _803("803"),
+    
+    _804("804"),
+    
+    _805("805"),
+    
+    _806("806"),
+    
+    _807("807"),
+    
+    _900("900"),
+    
+    _901("901"),
+    
+    _999("999"),
+    
+    _1001("1001"),
+    
+    _1002("1002"),
+    
+    _1003("1003"),
+    
+    _1004("1004"),
+    
+    _1005("1005"),
+    
+    _1006("1006"),
+    
+    _1007("1007"),
+    
+    _1008("1008"),
+    
+    _1009("1009"),
+    
+    _1010("1010"),
+    
+    _1011("1011"),
+    
+    _1012("1012"),
+    
+    _1013("1013"),
+    
+    _1014("1014"),
+    
+    _1015("1015"),
+    
+    _1016("1016"),
+    
+    _1017("1017"),
+    
+    _1018("1018"),
+    
+    _1019("1019"),
+    
+    _1020("1020"),
+    
+    _1021("1021"),
+    
+    _1022("1022"),
+    
+    _1023("1023"),
+    
+    _1024("1024"),
+    
+    _1025("1025"),
+    
+    _1026("1026"),
+    
+    _1027("1027"),
+    
+    _1028("1028"),
+    
+    _1029("1029"),
+    
+    _1030("1030"),
+    
+    _1031("1031"),
+    
+    _1032("1032"),
+    
+    _1033("1033"),
+    
+    _1034("1034"),
+    
+    _1035("1035"),
+    
+    _1036("1036"),
+    
+    _1037("1037"),
+    
+    _1038("1038"),
+    
+    _1039("1039"),
+    
+    _1040("1040"),
+    
+    _1041("1041"),
+    
+    _1042("1042"),
+    
+    _1043("1043"),
+    
+    _1044("1044"),
+    
+    _1045("1045"),
+    
+    _1046("1046"),
+    
+    _1047("1047"),
+    
+    _1048("1048"),
+    
+    _1049("1049"),
+    
+    _1050("1050"),
+    
+    _1051("1051"),
+    
+    _1052("1052"),
+    
+    _1053("1053"),
+    
+    _1054("1054"),
+    
+    _1055("1055"),
+    
+    _1056("1056"),
+    
+    _1057("1057"),
+    
+    _1058("1058"),
+    
+    _1059("1059"),
+    
+    _1060("1060"),
+    
+    _1061("1061"),
+    
+    _1062("1062"),
+    
+    _1063("1063"),
+    
+    _1064("1064"),
+    
+    _1065("1065"),
+    
+    _1066("1066"),
+    
+    _1067("1067"),
+    
+    _1068("1068"),
+    
+    _1069("1069"),
+    
+    _1071("1071"),
+    
+    _1072("1072"),
+    
+    _1073("1073"),
+    
+    _1074("1074"),
+    
+    _1075("1075"),
+    
+    _1076("1076"),
+    
+    _1077("1077"),
+    
+    _1078("1078"),
+    
+    _1079("1079"),
+    
+    _1080("1080"),
+    
+    _1081("1081"),
+    
+    _1082("1082"),
+    
+    _1084("1084"),
+    
+    _1085("1085"),
+    
+    _1086("1086"),
+    
+    _1087("1087"),
+    
+    _1088("1088"),
+    
+    _1089("1089"),
+    
+    _1201("1201"),
+    
+    _1202("1202"),
+    
+    _1203("1203"),
+    
+    _1204("1204"),
+    
+    _1205("1205"),
+    
+    _1206("1206"),
+    
+    _1207("1207"),
+    
+    _1208("1208"),
+    
+    _1209("1209"),
+    
+    _1210("1210"),
+    
+    _1211("1211"),
+    
+    _1212("1212"),
+    
+    _1213("1213"),
+    
+    _1214("1214"),
+    
+    _1215("1215"),
+    
+    _1216("1216"),
+    
+    _1217("1217"),
+    
+    _1218("1218"),
+    
+    _1219("1219"),
+    
+    _1221("1221"),
+    
+    _1241("1241"),
+    
+    _1242("1242"),
+    
+    _1243("1243"),
+    
+    _1244("1244"),
+    
+    _1245("1245"),
+    
+    _1246("1246"),
+    
+    _1247("1247"),
+    
+    _1248("1248"),
+    
+    _1249("1249"),
+    
+    _1250("1250"),
+    
+    _1251("1251"),
+    
+    _1271("1271"),
+    
+    _1272("1272"),
+    
+    _1273("1273"),
+    
+    _1274("1274"),
+    
+    _1601("1601"),
+    
+    _1602("1602"),
+    
+    _1603("1603"),
+    
+    _1604("1604"),
+    
+    _1605("1605"),
+    
+    _1606("1606"),
+    
+    _1607("1607"),
+    
+    _1608("1608"),
+    
+    _1609("1609"),
+    
+    _1610("1610"),
+    
+    _1701("1701"),
+    
+    _1702("1702"),
+    
+    _1703("1703"),
+    
+    _1704("1704"),
+    
+    _1705("1705"),
+    
+    _1706("1706"),
+    
+    _1707("1707"),
+    
+    _1708("1708"),
+    
+    _1709("1709"),
+    
+    _1710("1710"),
+    
+    _1801("1801"),
+    
+    _1802("1802"),
+    
+    _1803("1803"),
+    
+    _1804("1804"),
+    
+    _1805("1805"),
+    
+    _2001("2001"),
+    
+    _2002("2002"),
+    
+    _2003("2003"),
+    
+    _2004("2004"),
+    
+    _2005("2005"),
+    
+    _2006("2006"),
+    
+    _2007("2007"),
+    
+    _2029("2029"),
+    
+    _2030("2030"),
+    
+    _2031("2031"),
+    
+    _2032("2032"),
+    
+    _2033("2033"),
+    
+    _2050("2050"),
+    
+    _2051("2051"),
+    
+    _2052("2052"),
+    
+    _2053("2053"),
+    
+    _2054("2054"),
+    
+    _2070("2070"),
+    
+    _2071("2071"),
+    
+    _2072("2072"),
+    
+    _2073("2073"),
+    
+    _2074("2074"),
+    
+    _2075("2075"),
+    
+    _2076("2076"),
+    
+    _2077("2077"),
+    
+    _2078("2078"),
+    
+    _2079("2079"),
+    
+    _2080("2080"),
+    
+    _2081("2081"),
+    
+    _2082("2082"),
+    
+    _2083("2083"),
+    
+    _2084("2084"),
+    
+    _2085("2085"),
+    
+    _2100("2100"),
+    
+    _2101("2101"),
+    
+    _2102("2102"),
+    
+    _2103("2103"),
+    
+    _2104("2104"),
+    
+    _2105("2105"),
+    
+    _2106("2106"),
+    
+    _2107("2107"),
+    
+    _2108("2108"),
+    
+    _2109("2109"),
+    
+    _2111("2111"),
+    
+    _2120("2120"),
+    
+    _2121("2121"),
+    
+    _2122("2122"),
+    
+    _2123("2123"),
+    
+    _2124("2124"),
+    
+    _2125("2125"),
+    
+    _2126("2126"),
+    
+    _2127("2127"),
+    
+    _2128("2128"),
+    
+    _2129("2129"),
+    
+    _2130("2130"),
+    
+    _2131("2131"),
+    
+    _2132("2132"),
+    
+    _2133("2133"),
+    
+    _2134("2134"),
+    
+    _2135("2135"),
+    
+    _2150("2150"),
+    
+    _2151("2151"),
+    
+    _2152("2152"),
+    
+    _2153("2153"),
+    
+    _2154("2154"),
+    
+    _2155("2155"),
+    
+    _2156("2156"),
+    
+    _2157("2157"),
+    
+    _2158("2158"),
+    
+    _2159("2159"),
+    
+    _2160("2160"),
+    
+    _2161("2161"),
+    
+    _2162("2162"),
+    
+    _2163("2163"),
+    
+    _2164("2164"),
+    
+    _2165("2165"),
+    
+    _2166("2166"),
+    
+    _2167("2167"),
+    
+    _2190("2190"),
+    
+    _2191("2191"),
+    
+    _2192("2192"),
+    
+    _2193("2193"),
+    
+    _2200("2200"),
+    
+    _2201("2201"),
+    
+    _2202("2202"),
+    
+    _2203("2203"),
+    
+    _2204("2204"),
+    
+    _2205("2205"),
+    
+    _2207("2207"),
+    
+    _2208("2208"),
+    
+    _2209("2209"),
+    
+    _2210("2210"),
+    
+    _2211("2211"),
+    
+    _2212("2212"),
+    
+    _2213("2213"),
+    
+    _2214("2214"),
+    
+    _2215("2215"),
+    
+    _2216("2216"),
+    
+    _2217("2217"),
+    
+    _2218("2218"),
+    
+    _2300("2300"),
+    
+    _2301("2301"),
+    
+    _2302("2302"),
+    
+    _2303("2303"),
+    
+    _2304("2304"),
+    
+    _2305("2305"),
+    
+    _2306("2306"),
+    
+    _2307("2307"),
+    
+    _2308("2308"),
+    
+    _2309("2309"),
+    
+    _2311("2311"),
+    
+    _2312("2312"),
+    
+    _2313("2313"),
+    
+    _2314("2314"),
+    
+    _2315("2315"),
+    
+    _2316("2316"),
+    
+    _2317("2317"),
+    
+    _2318("2318"),
+    
+    _2319("2319"),
+    
+    _2320("2320"),
+    
+    _2321("2321"),
+    
+    _2322("2322"),
+    
+    _2323("2323"),
+    
+    _2324("2324"),
+    
+    _2325("2325"),
+    
+    _2326("2326"),
+    
+    _2327("2327"),
+    
+    _2328("2328"),
+    
+    _2330("2330"),
+    
+    _2331("2331"),
+    
+    _2332("2332"),
+    
+    _2333("2333"),
+    
+    _2341("2341"),
+    
+    _2343("2343"),
+    
+    _2345("2345"),
+    
+    _2346("2346"),
+    
+    _2348("2348"),
+    
+    _2349("2349"),
+    
+    _2350("2350"),
+    
+    _2351("2351"),
+    
+    _2352("2352"),
+    
+    _2353("2353"),
+    
+    _2354("2354"),
+    
+    _2355("2355"),
+    
+    _2356("2356"),
+    
+    _2357("2357"),
+    
+    _2358("2358"),
+    
+    _2359("2359"),
+    
+    _2360("2360"),
+    
+    _2361("2361"),
+    
+    _2362("2362"),
+    
+    _2363("2363"),
+    
+    _2364("2364"),
+    
+    _2365("2365"),
+    
+    _2366("2366"),
+    
+    _2367("2367"),
+    
+    _2368("2368"),
+    
+    _2369("2369"),
+    
+    _2370("2370"),
+    
+    _2371("2371"),
+    
+    _2372("2372"),
+    
+    _2373("2373"),
+    
+    _2374("2374"),
+    
+    _2375("2375"),
+    
+    _2376("2376"),
+    
+    _2377("2377"),
+    
+    _2378("2378"),
+    
+    _2379("2379"),
+    
+    _2380("2380"),
+    
+    _2381("2381"),
+    
+    _2382("2382"),
+    
+    _2383("2383"),
+    
+    _2384("2384"),
+    
+    _2385("2385"),
+    
+    _2386("2386"),
+    
+    _2387("2387"),
+    
+    _2388("2388"),
+    
+    _2389("2389"),
+    
+    _2390("2390"),
+    
+    _2391("2391"),
+    
+    _2392("2392"),
+    
+    _2393("2393"),
+    
+    _2394("2394"),
+    
+    _2395("2395"),
+    
+    _2396("2396"),
+    
+    _2397("2397"),
+    
+    _2398("2398"),
+    
+    _2399("2399"),
+    
+    _2400("2400"),
+    
+    _2409("2409"),
+    
+    _2411("2411"),
+    
+    _2412("2412"),
+    
+    _2413("2413"),
+    
+    _2414("2414"),
+    
+    _2415("2415"),
+    
+    _2416("2416"),
+    
+    _2417("2417"),
+    
+    _2418("2418"),
+    
+    _2419("2419"),
+    
+    _2420("2420"),
+    
+    _2421("2421"),
+    
+    _2422("2422"),
+    
+    _2423("2423"),
+    
+    _2424("2424"),
+    
+    _2425("2425"),
+    
+    _2426("2426"),
+    
+    _2501("2501"),
+    
+    _2502("2502"),
+    
+    _2521("2521"),
+    
+    _2522("2522"),
+    
+    _2523("2523"),
+    
+    _2524("2524"),
+    
+    _2525("2525"),
+    
+    _2526("2526"),
+    
+    _2527("2527"),
+    
+    _2528("2528"),
+    
+    _2529("2529"),
+    
+    _2530("2530"),
+    
+    _2531("2531"),
+    
+    _2532("2532"),
+    
+    _2550("2550"),
+    
+    _2551("2551"),
+    
+    _2552("2552"),
+    
+    _2553("2553"),
+    
+    _2554("2554"),
+    
+    _9999("9999");
+
+    private String value;
+
+    WeatherIconEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static WeatherIconEnum fromValue(String value) {
+      for (WeatherIconEnum b : WeatherIconEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<WeatherIconEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final WeatherIconEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public WeatherIconEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return WeatherIconEnum.fromValue(value);
+      }
+    }
+
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+      String value = jsonElement.getAsString();
+      WeatherIconEnum.fromValue(value);
+    }
+  }
+
+  public static final String SERIALIZED_NAME_WEATHER_ICON = "weather_icon";
+  @SerializedName(SERIALIZED_NAME_WEATHER_ICON)
+  @javax.annotation.Nullable
+  private WeatherIconEnum weatherIcon;
 
   public static final String SERIALIZED_NAME_TEMPERATURE = "temperature";
   @SerializedName(SERIALIZED_NAME_TEMPERATURE)
@@ -231,6 +1175,25 @@ public class GetMiscWeather200Response {
   }
 
 
+  public GetMiscWeather200Response district(@javax.annotation.Nullable String district) {
+    this.district = district;
+    return this;
+  }
+
+  /**
+   * 区县或更细一级的行政区名称。自动按 IP 定位时更常见。
+   * @return district
+   */
+  @javax.annotation.Nullable
+  public String getDistrict() {
+    return district;
+  }
+
+  public void setDistrict(@javax.annotation.Nullable String district) {
+    this.district = district;
+  }
+
+
   public GetMiscWeather200Response adcode(@javax.annotation.Nullable String adcode) {
     this.adcode = adcode;
     return this;
@@ -266,6 +1229,25 @@ public class GetMiscWeather200Response {
 
   public void setWeather(@javax.annotation.Nullable String weather) {
     this.weather = weather;
+  }
+
+
+  public GetMiscWeather200Response weatherIcon(@javax.annotation.Nullable WeatherIconEnum weatherIcon) {
+    this.weatherIcon = weatherIcon;
+    return this;
+  }
+
+  /**
+   * 天气图标代码。请从[天气图标代码表](#enum-list)中查看所有可能的值。
+   * @return weatherIcon
+   */
+  @javax.annotation.Nullable
+  public WeatherIconEnum getWeatherIcon() {
+    return weatherIcon;
+  }
+
+  public void setWeatherIcon(@javax.annotation.Nullable WeatherIconEnum weatherIcon) {
+    this.weatherIcon = weatherIcon;
   }
 
 
@@ -715,8 +1697,10 @@ public class GetMiscWeather200Response {
     GetMiscWeather200Response getMiscWeather200Response = (GetMiscWeather200Response) o;
     return Objects.equals(this.province, getMiscWeather200Response.province) &&
         Objects.equals(this.city, getMiscWeather200Response.city) &&
+        Objects.equals(this.district, getMiscWeather200Response.district) &&
         Objects.equals(this.adcode, getMiscWeather200Response.adcode) &&
         Objects.equals(this.weather, getMiscWeather200Response.weather) &&
+        Objects.equals(this.weatherIcon, getMiscWeather200Response.weatherIcon) &&
         Objects.equals(this.temperature, getMiscWeather200Response.temperature) &&
         Objects.equals(this.windDirection, getMiscWeather200Response.windDirection) &&
         Objects.equals(this.windPower, getMiscWeather200Response.windPower) &&
@@ -743,7 +1727,7 @@ public class GetMiscWeather200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(province, city, adcode, weather, temperature, windDirection, windPower, humidity, reportTime, feelsLike, visibility, pressure, uv, precipitation, cloud, aqi, aqiLevel, aqiCategory, aqiPrimary, airPollutants, tempMax, tempMin, forecast, hourlyForecast, minutelyPrecip, lifeIndices);
+    return Objects.hash(province, city, district, adcode, weather, weatherIcon, temperature, windDirection, windPower, humidity, reportTime, feelsLike, visibility, pressure, uv, precipitation, cloud, aqi, aqiLevel, aqiCategory, aqiPrimary, airPollutants, tempMax, tempMin, forecast, hourlyForecast, minutelyPrecip, lifeIndices);
   }
 
   @Override
@@ -752,8 +1736,10 @@ public class GetMiscWeather200Response {
     sb.append("class GetMiscWeather200Response {\n");
     sb.append("    province: ").append(toIndentedString(province)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
+    sb.append("    district: ").append(toIndentedString(district)).append("\n");
     sb.append("    adcode: ").append(toIndentedString(adcode)).append("\n");
     sb.append("    weather: ").append(toIndentedString(weather)).append("\n");
+    sb.append("    weatherIcon: ").append(toIndentedString(weatherIcon)).append("\n");
     sb.append("    temperature: ").append(toIndentedString(temperature)).append("\n");
     sb.append("    windDirection: ").append(toIndentedString(windDirection)).append("\n");
     sb.append("    windPower: ").append(toIndentedString(windPower)).append("\n");
@@ -797,7 +1783,7 @@ public class GetMiscWeather200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("province", "city", "adcode", "weather", "temperature", "wind_direction", "wind_power", "humidity", "report_time", "feels_like", "visibility", "pressure", "uv", "precipitation", "cloud", "aqi", "aqi_level", "aqi_category", "aqi_primary", "air_pollutants", "temp_max", "temp_min", "forecast", "hourly_forecast", "minutely_precip", "life_indices"));
+    openapiFields = new HashSet<String>(Arrays.asList("province", "city", "district", "adcode", "weather", "weather_icon", "temperature", "wind_direction", "wind_power", "humidity", "report_time", "feels_like", "visibility", "pressure", "uv", "precipitation", "cloud", "aqi", "aqi_level", "aqi_category", "aqi_primary", "air_pollutants", "temp_max", "temp_min", "forecast", "hourly_forecast", "minutely_precip", "life_indices"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -830,11 +1816,21 @@ public class GetMiscWeather200Response {
       if ((jsonObj.get("city") != null && !jsonObj.get("city").isJsonNull()) && !jsonObj.get("city").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `city` to be a primitive type in the JSON string but got `%s`", jsonObj.get("city").toString()));
       }
+      if ((jsonObj.get("district") != null && !jsonObj.get("district").isJsonNull()) && !jsonObj.get("district").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `district` to be a primitive type in the JSON string but got `%s`", jsonObj.get("district").toString()));
+      }
       if ((jsonObj.get("adcode") != null && !jsonObj.get("adcode").isJsonNull()) && !jsonObj.get("adcode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `adcode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("adcode").toString()));
       }
       if ((jsonObj.get("weather") != null && !jsonObj.get("weather").isJsonNull()) && !jsonObj.get("weather").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `weather` to be a primitive type in the JSON string but got `%s`", jsonObj.get("weather").toString()));
+      }
+      if ((jsonObj.get("weather_icon") != null && !jsonObj.get("weather_icon").isJsonNull()) && !jsonObj.get("weather_icon").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `weather_icon` to be a primitive type in the JSON string but got `%s`", jsonObj.get("weather_icon").toString()));
+      }
+      // validate the optional field `weather_icon`
+      if (jsonObj.get("weather_icon") != null && !jsonObj.get("weather_icon").isJsonNull()) {
+        WeatherIconEnum.validateJsonElement(jsonObj.get("weather_icon"));
       }
       if ((jsonObj.get("wind_direction") != null && !jsonObj.get("wind_direction").isJsonNull()) && !jsonObj.get("wind_direction").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `wind_direction` to be a primitive type in the JSON string but got `%s`", jsonObj.get("wind_direction").toString()));

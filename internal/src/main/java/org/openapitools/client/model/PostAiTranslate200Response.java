@@ -21,14 +21,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.openapitools.client.model.PostAiTranslate200ResponseBatchDataInner;
-import org.openapitools.client.model.PostAiTranslate200ResponseBatchSummary;
 import org.openapitools.client.model.PostAiTranslate200ResponseData;
 import org.openapitools.client.model.PostAiTranslate200ResponsePerformance;
-import org.openapitools.client.model.PostAiTranslate200ResponseQualityMetrics;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,42 +52,27 @@ import org.openapitools.client.JSON;
 /**
  * PostAiTranslate200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostAiTranslate200Response {
   public static final String SERIALIZED_NAME_MESSAGE = "message";
   @SerializedName(SERIALIZED_NAME_MESSAGE)
   @javax.annotation.Nullable
   private String message;
 
-  public static final String SERIALIZED_NAME_IS_BATCH = "is_batch";
-  @SerializedName(SERIALIZED_NAME_IS_BATCH)
-  @javax.annotation.Nullable
-  private Boolean isBatch;
-
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
   @javax.annotation.Nullable
   private PostAiTranslate200ResponseData data;
-
-  public static final String SERIALIZED_NAME_BATCH_DATA = "batch_data";
-  @SerializedName(SERIALIZED_NAME_BATCH_DATA)
-  @javax.annotation.Nullable
-  private List<PostAiTranslate200ResponseBatchDataInner> batchData = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_BATCH_SUMMARY = "batch_summary";
-  @SerializedName(SERIALIZED_NAME_BATCH_SUMMARY)
-  @javax.annotation.Nullable
-  private PostAiTranslate200ResponseBatchSummary batchSummary;
 
   public static final String SERIALIZED_NAME_PERFORMANCE = "performance";
   @SerializedName(SERIALIZED_NAME_PERFORMANCE)
   @javax.annotation.Nullable
   private PostAiTranslate200ResponsePerformance performance;
 
-  public static final String SERIALIZED_NAME_QUALITY_METRICS = "quality_metrics";
-  @SerializedName(SERIALIZED_NAME_QUALITY_METRICS)
+  public static final String SERIALIZED_NAME_IS_BATCH = "is_batch";
+  @SerializedName(SERIALIZED_NAME_IS_BATCH)
   @javax.annotation.Nullable
-  private PostAiTranslate200ResponseQualityMetrics qualityMetrics;
+  private Boolean isBatch;
 
   public PostAiTranslate200Response() {
   }
@@ -116,25 +96,6 @@ public class PostAiTranslate200Response {
   }
 
 
-  public PostAiTranslate200Response isBatch(@javax.annotation.Nullable Boolean isBatch) {
-    this.isBatch = isBatch;
-    return this;
-  }
-
-  /**
-   * 标识是否为批量翻译请求。
-   * @return isBatch
-   */
-  @javax.annotation.Nullable
-  public Boolean getIsBatch() {
-    return isBatch;
-  }
-
-  public void setIsBatch(@javax.annotation.Nullable Boolean isBatch) {
-    this.isBatch = isBatch;
-  }
-
-
   public PostAiTranslate200Response data(@javax.annotation.Nullable PostAiTranslate200ResponseData data) {
     this.data = data;
     return this;
@@ -151,52 +112,6 @@ public class PostAiTranslate200Response {
 
   public void setData(@javax.annotation.Nullable PostAiTranslate200ResponseData data) {
     this.data = data;
-  }
-
-
-  public PostAiTranslate200Response batchData(@javax.annotation.Nullable List<PostAiTranslate200ResponseBatchDataInner> batchData) {
-    this.batchData = batchData;
-    return this;
-  }
-
-  public PostAiTranslate200Response addBatchDataItem(PostAiTranslate200ResponseBatchDataInner batchDataItem) {
-    if (this.batchData == null) {
-      this.batchData = new ArrayList<>();
-    }
-    this.batchData.add(batchDataItem);
-    return this;
-  }
-
-  /**
-   * 批量翻译结果列表，仅在批量翻译时返回。
-   * @return batchData
-   */
-  @javax.annotation.Nullable
-  public List<PostAiTranslate200ResponseBatchDataInner> getBatchData() {
-    return batchData;
-  }
-
-  public void setBatchData(@javax.annotation.Nullable List<PostAiTranslate200ResponseBatchDataInner> batchData) {
-    this.batchData = batchData;
-  }
-
-
-  public PostAiTranslate200Response batchSummary(@javax.annotation.Nullable PostAiTranslate200ResponseBatchSummary batchSummary) {
-    this.batchSummary = batchSummary;
-    return this;
-  }
-
-  /**
-   * Get batchSummary
-   * @return batchSummary
-   */
-  @javax.annotation.Nullable
-  public PostAiTranslate200ResponseBatchSummary getBatchSummary() {
-    return batchSummary;
-  }
-
-  public void setBatchSummary(@javax.annotation.Nullable PostAiTranslate200ResponseBatchSummary batchSummary) {
-    this.batchSummary = batchSummary;
   }
 
 
@@ -219,22 +134,22 @@ public class PostAiTranslate200Response {
   }
 
 
-  public PostAiTranslate200Response qualityMetrics(@javax.annotation.Nullable PostAiTranslate200ResponseQualityMetrics qualityMetrics) {
-    this.qualityMetrics = qualityMetrics;
+  public PostAiTranslate200Response isBatch(@javax.annotation.Nullable Boolean isBatch) {
+    this.isBatch = isBatch;
     return this;
   }
 
   /**
-   * Get qualityMetrics
-   * @return qualityMetrics
+   * 是否为批量翻译请求。
+   * @return isBatch
    */
   @javax.annotation.Nullable
-  public PostAiTranslate200ResponseQualityMetrics getQualityMetrics() {
-    return qualityMetrics;
+  public Boolean getIsBatch() {
+    return isBatch;
   }
 
-  public void setQualityMetrics(@javax.annotation.Nullable PostAiTranslate200ResponseQualityMetrics qualityMetrics) {
-    this.qualityMetrics = qualityMetrics;
+  public void setIsBatch(@javax.annotation.Nullable Boolean isBatch) {
+    this.isBatch = isBatch;
   }
 
 
@@ -249,17 +164,14 @@ public class PostAiTranslate200Response {
     }
     PostAiTranslate200Response postAiTranslate200Response = (PostAiTranslate200Response) o;
     return Objects.equals(this.message, postAiTranslate200Response.message) &&
-        Objects.equals(this.isBatch, postAiTranslate200Response.isBatch) &&
         Objects.equals(this.data, postAiTranslate200Response.data) &&
-        Objects.equals(this.batchData, postAiTranslate200Response.batchData) &&
-        Objects.equals(this.batchSummary, postAiTranslate200Response.batchSummary) &&
         Objects.equals(this.performance, postAiTranslate200Response.performance) &&
-        Objects.equals(this.qualityMetrics, postAiTranslate200Response.qualityMetrics);
+        Objects.equals(this.isBatch, postAiTranslate200Response.isBatch);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, isBatch, data, batchData, batchSummary, performance, qualityMetrics);
+    return Objects.hash(message, data, performance, isBatch);
   }
 
   @Override
@@ -267,12 +179,9 @@ public class PostAiTranslate200Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostAiTranslate200Response {\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    isBatch: ").append(toIndentedString(isBatch)).append("\n");
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
-    sb.append("    batchData: ").append(toIndentedString(batchData)).append("\n");
-    sb.append("    batchSummary: ").append(toIndentedString(batchSummary)).append("\n");
     sb.append("    performance: ").append(toIndentedString(performance)).append("\n");
-    sb.append("    qualityMetrics: ").append(toIndentedString(qualityMetrics)).append("\n");
+    sb.append("    isBatch: ").append(toIndentedString(isBatch)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -294,7 +203,7 @@ public class PostAiTranslate200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("message", "is_batch", "data", "batch_data", "batch_summary", "performance", "quality_metrics"));
+    openapiFields = new HashSet<String>(Arrays.asList("message", "data", "performance", "is_batch"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -328,31 +237,9 @@ public class PostAiTranslate200Response {
       if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
         PostAiTranslate200ResponseData.validateJsonElement(jsonObj.get("data"));
       }
-      if (jsonObj.get("batch_data") != null && !jsonObj.get("batch_data").isJsonNull()) {
-        JsonArray jsonArraybatchData = jsonObj.getAsJsonArray("batch_data");
-        if (jsonArraybatchData != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("batch_data").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `batch_data` to be an array in the JSON string but got `%s`", jsonObj.get("batch_data").toString()));
-          }
-
-          // validate the optional field `batch_data` (array)
-          for (int i = 0; i < jsonArraybatchData.size(); i++) {
-            PostAiTranslate200ResponseBatchDataInner.validateJsonElement(jsonArraybatchData.get(i));
-          };
-        }
-      }
-      // validate the optional field `batch_summary`
-      if (jsonObj.get("batch_summary") != null && !jsonObj.get("batch_summary").isJsonNull()) {
-        PostAiTranslate200ResponseBatchSummary.validateJsonElement(jsonObj.get("batch_summary"));
-      }
       // validate the optional field `performance`
       if (jsonObj.get("performance") != null && !jsonObj.get("performance").isJsonNull()) {
         PostAiTranslate200ResponsePerformance.validateJsonElement(jsonObj.get("performance"));
-      }
-      // validate the optional field `quality_metrics`
-      if (jsonObj.get("quality_metrics") != null && !jsonObj.get("quality_metrics").isJsonNull()) {
-        PostAiTranslate200ResponseQualityMetrics.validateJsonElement(jsonObj.get("quality_metrics"));
       }
   }
 

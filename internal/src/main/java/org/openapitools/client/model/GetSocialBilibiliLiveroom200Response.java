@@ -25,6 +25,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.client.model.GetSocialBilibiliLiveroom200ResponseNewPendants;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +55,7 @@ import org.openapitools.client.JSON;
 /**
  * GetSocialBilibiliLiveroom200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialBilibiliLiveroom200Response {
   public static final String SERIALIZED_NAME_UID = "uid";
   @SerializedName(SERIALIZED_NAME_UID)
@@ -80,6 +82,11 @@ public class GetSocialBilibiliLiveroom200Response {
   @javax.annotation.Nullable
   private BigDecimal online;
 
+  public static final String SERIALIZED_NAME_IS_PORTRAIT = "is_portrait";
+  @SerializedName(SERIALIZED_NAME_IS_PORTRAIT)
+  @javax.annotation.Nullable
+  private Boolean isPortrait;
+
   public static final String SERIALIZED_NAME_LIVE_STATUS = "live_status";
   @SerializedName(SERIALIZED_NAME_LIVE_STATUS)
   @javax.annotation.Nullable
@@ -94,6 +101,11 @@ public class GetSocialBilibiliLiveroom200Response {
   @SerializedName(SERIALIZED_NAME_PARENT_AREA_NAME)
   @javax.annotation.Nullable
   private String parentAreaName;
+
+  public static final String SERIALIZED_NAME_PARENT_AREA_ID = "parent_area_id";
+  @SerializedName(SERIALIZED_NAME_PARENT_AREA_ID)
+  @javax.annotation.Nullable
+  private BigDecimal parentAreaId;
 
   public static final String SERIALIZED_NAME_AREA_NAME = "area_name";
   @SerializedName(SERIALIZED_NAME_AREA_NAME)
@@ -125,6 +137,11 @@ public class GetSocialBilibiliLiveroom200Response {
   @javax.annotation.Nullable
   private String liveTime;
 
+  public static final String SERIALIZED_NAME_KEYFRAME = "keyframe";
+  @SerializedName(SERIALIZED_NAME_KEYFRAME)
+  @javax.annotation.Nullable
+  private String keyframe;
+
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   @javax.annotation.Nullable
@@ -138,7 +155,7 @@ public class GetSocialBilibiliLiveroom200Response {
   public static final String SERIALIZED_NAME_NEW_PENDANTS = "new_pendants";
   @SerializedName(SERIALIZED_NAME_NEW_PENDANTS)
   @javax.annotation.Nullable
-  private Object newPendants;
+  private GetSocialBilibiliLiveroom200ResponseNewPendants newPendants;
 
   public GetSocialBilibiliLiveroom200Response() {
   }
@@ -225,7 +242,7 @@ public class GetSocialBilibiliLiveroom200Response {
   }
 
   /**
-   * 直播间当前的人气值。注意这不是真实在线人数。
+   * 直播间当前的人气值（对应你文档里的 PopularValue，不代表真实在线人数）。
    * @return online
    */
   @javax.annotation.Nullable
@@ -235,6 +252,25 @@ public class GetSocialBilibiliLiveroom200Response {
 
   public void setOnline(@javax.annotation.Nullable BigDecimal online) {
     this.online = online;
+  }
+
+
+  public GetSocialBilibiliLiveroom200Response isPortrait(@javax.annotation.Nullable Boolean isPortrait) {
+    this.isPortrait = isPortrait;
+    return this;
+  }
+
+  /**
+   * 是否为竖屏直播。
+   * @return isPortrait
+   */
+  @javax.annotation.Nullable
+  public Boolean getIsPortrait() {
+    return isPortrait;
+  }
+
+  public void setIsPortrait(@javax.annotation.Nullable Boolean isPortrait) {
+    this.isPortrait = isPortrait;
   }
 
 
@@ -292,6 +328,25 @@ public class GetSocialBilibiliLiveroom200Response {
 
   public void setParentAreaName(@javax.annotation.Nullable String parentAreaName) {
     this.parentAreaName = parentAreaName;
+  }
+
+
+  public GetSocialBilibiliLiveroom200Response parentAreaId(@javax.annotation.Nullable BigDecimal parentAreaId) {
+    this.parentAreaId = parentAreaId;
+    return this;
+  }
+
+  /**
+   * 父分区 ID。
+   * @return parentAreaId
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getParentAreaId() {
+    return parentAreaId;
+  }
+
+  public void setParentAreaId(@javax.annotation.Nullable BigDecimal parentAreaId) {
+    this.parentAreaId = parentAreaId;
   }
 
 
@@ -409,6 +464,25 @@ public class GetSocialBilibiliLiveroom200Response {
   }
 
 
+  public GetSocialBilibiliLiveroom200Response keyframe(@javax.annotation.Nullable String keyframe) {
+    this.keyframe = keyframe;
+    return this;
+  }
+
+  /**
+   * 关键帧封面图链接。
+   * @return keyframe
+   */
+  @javax.annotation.Nullable
+  public String getKeyframe() {
+    return keyframe;
+  }
+
+  public void setKeyframe(@javax.annotation.Nullable String keyframe) {
+    this.keyframe = keyframe;
+  }
+
+
   public GetSocialBilibiliLiveroom200Response tags(@javax.annotation.Nullable String tags) {
     this.tags = tags;
     return this;
@@ -455,21 +529,21 @@ public class GetSocialBilibiliLiveroom200Response {
   }
 
 
-  public GetSocialBilibiliLiveroom200Response newPendants(@javax.annotation.Nullable Object newPendants) {
+  public GetSocialBilibiliLiveroom200Response newPendants(@javax.annotation.Nullable GetSocialBilibiliLiveroom200ResponseNewPendants newPendants) {
     this.newPendants = newPendants;
     return this;
   }
 
   /**
-   * 主播佩戴的头像框、大航海等级等信息，结构可能比较复杂。
+   * Get newPendants
    * @return newPendants
    */
   @javax.annotation.Nullable
-  public Object getNewPendants() {
+  public GetSocialBilibiliLiveroom200ResponseNewPendants getNewPendants() {
     return newPendants;
   }
 
-  public void setNewPendants(@javax.annotation.Nullable Object newPendants) {
+  public void setNewPendants(@javax.annotation.Nullable GetSocialBilibiliLiveroom200ResponseNewPendants newPendants) {
     this.newPendants = newPendants;
   }
 
@@ -489,23 +563,37 @@ public class GetSocialBilibiliLiveroom200Response {
         Objects.equals(this.shortId, getSocialBilibiliLiveroom200Response.shortId) &&
         Objects.equals(this.attention, getSocialBilibiliLiveroom200Response.attention) &&
         Objects.equals(this.online, getSocialBilibiliLiveroom200Response.online) &&
+        Objects.equals(this.isPortrait, getSocialBilibiliLiveroom200Response.isPortrait) &&
         Objects.equals(this.liveStatus, getSocialBilibiliLiveroom200Response.liveStatus) &&
         Objects.equals(this.areaId, getSocialBilibiliLiveroom200Response.areaId) &&
         Objects.equals(this.parentAreaName, getSocialBilibiliLiveroom200Response.parentAreaName) &&
+        Objects.equals(this.parentAreaId, getSocialBilibiliLiveroom200Response.parentAreaId) &&
         Objects.equals(this.areaName, getSocialBilibiliLiveroom200Response.areaName) &&
         Objects.equals(this.background, getSocialBilibiliLiveroom200Response.background) &&
         Objects.equals(this.title, getSocialBilibiliLiveroom200Response.title) &&
         Objects.equals(this.userCover, getSocialBilibiliLiveroom200Response.userCover) &&
         Objects.equals(this.description, getSocialBilibiliLiveroom200Response.description) &&
         Objects.equals(this.liveTime, getSocialBilibiliLiveroom200Response.liveTime) &&
+        Objects.equals(this.keyframe, getSocialBilibiliLiveroom200Response.keyframe) &&
         Objects.equals(this.tags, getSocialBilibiliLiveroom200Response.tags) &&
         Objects.equals(this.hotWords, getSocialBilibiliLiveroom200Response.hotWords) &&
         Objects.equals(this.newPendants, getSocialBilibiliLiveroom200Response.newPendants);
   }
 
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(uid, roomId, shortId, attention, online, liveStatus, areaId, parentAreaName, areaName, background, title, userCover, description, liveTime, tags, hotWords, newPendants);
+    return Objects.hash(uid, roomId, shortId, attention, online, isPortrait, liveStatus, areaId, parentAreaName, parentAreaId, areaName, background, title, userCover, description, liveTime, keyframe, tags, hotWords, newPendants);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -517,15 +605,18 @@ public class GetSocialBilibiliLiveroom200Response {
     sb.append("    shortId: ").append(toIndentedString(shortId)).append("\n");
     sb.append("    attention: ").append(toIndentedString(attention)).append("\n");
     sb.append("    online: ").append(toIndentedString(online)).append("\n");
+    sb.append("    isPortrait: ").append(toIndentedString(isPortrait)).append("\n");
     sb.append("    liveStatus: ").append(toIndentedString(liveStatus)).append("\n");
     sb.append("    areaId: ").append(toIndentedString(areaId)).append("\n");
     sb.append("    parentAreaName: ").append(toIndentedString(parentAreaName)).append("\n");
+    sb.append("    parentAreaId: ").append(toIndentedString(parentAreaId)).append("\n");
     sb.append("    areaName: ").append(toIndentedString(areaName)).append("\n");
     sb.append("    background: ").append(toIndentedString(background)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    userCover: ").append(toIndentedString(userCover)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    liveTime: ").append(toIndentedString(liveTime)).append("\n");
+    sb.append("    keyframe: ").append(toIndentedString(keyframe)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    hotWords: ").append(toIndentedString(hotWords)).append("\n");
     sb.append("    newPendants: ").append(toIndentedString(newPendants)).append("\n");
@@ -550,7 +641,7 @@ public class GetSocialBilibiliLiveroom200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("uid", "room_id", "short_id", "attention", "online", "live_status", "area_id", "parent_area_name", "area_name", "background", "title", "user_cover", "description", "live_time", "tags", "hot_words", "new_pendants"));
+    openapiFields = new HashSet<String>(Arrays.asList("uid", "room_id", "short_id", "attention", "online", "is_portrait", "live_status", "area_id", "parent_area_name", "parent_area_id", "area_name", "background", "title", "user_cover", "description", "live_time", "keyframe", "tags", "hot_words", "new_pendants"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -598,12 +689,19 @@ public class GetSocialBilibiliLiveroom200Response {
       if ((jsonObj.get("live_time") != null && !jsonObj.get("live_time").isJsonNull()) && !jsonObj.get("live_time").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `live_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("live_time").toString()));
       }
+      if ((jsonObj.get("keyframe") != null && !jsonObj.get("keyframe").isJsonNull()) && !jsonObj.get("keyframe").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `keyframe` to be a primitive type in the JSON string but got `%s`", jsonObj.get("keyframe").toString()));
+      }
       if ((jsonObj.get("tags") != null && !jsonObj.get("tags").isJsonNull()) && !jsonObj.get("tags").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tags` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tags").toString()));
       }
       // ensure the optional json data is an array if present
       if (jsonObj.get("hot_words") != null && !jsonObj.get("hot_words").isJsonNull() && !jsonObj.get("hot_words").isJsonArray()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `hot_words` to be an array in the JSON string but got `%s`", jsonObj.get("hot_words").toString()));
+      }
+      // validate the optional field `new_pendants`
+      if (jsonObj.get("new_pendants") != null && !jsonObj.get("new_pendants").isJsonNull()) {
+        GetSocialBilibiliLiveroom200ResponseNewPendants.validateJsonElement(jsonObj.get("new_pendants"));
       }
   }
 

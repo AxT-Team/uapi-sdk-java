@@ -21,8 +21,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.client.model.GetMiscTrackingDetect200ResponseData;
+import java.util.List;
+import org.openapitools.client.model.GetMiscTrackingDetect200ResponseAlternativesInner;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,80 +53,112 @@ import org.openapitools.client.JSON;
 /**
  * GetMiscTrackingDetect200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscTrackingDetect200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
+  public static final String SERIALIZED_NAME_TRACKING_NUMBER = "tracking_number";
+  @SerializedName(SERIALIZED_NAME_TRACKING_NUMBER)
   @javax.annotation.Nullable
-  private String code;
+  private String trackingNumber;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  public static final String SERIALIZED_NAME_CARRIER_CODE = "carrier_code";
+  @SerializedName(SERIALIZED_NAME_CARRIER_CODE)
   @javax.annotation.Nullable
-  private String message;
+  private String carrierCode;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
+  public static final String SERIALIZED_NAME_CARRIER_NAME = "carrier_name";
+  @SerializedName(SERIALIZED_NAME_CARRIER_NAME)
   @javax.annotation.Nullable
-  private GetMiscTrackingDetect200ResponseData data;
+  private String carrierName;
+
+  public static final String SERIALIZED_NAME_ALTERNATIVES = "alternatives";
+  @SerializedName(SERIALIZED_NAME_ALTERNATIVES)
+  @javax.annotation.Nullable
+  private List<GetMiscTrackingDetect200ResponseAlternativesInner> alternatives = new ArrayList<>();
 
   public GetMiscTrackingDetect200Response() {
   }
 
-  public GetMiscTrackingDetect200Response code(@javax.annotation.Nullable String code) {
-    this.code = code;
+  public GetMiscTrackingDetect200Response trackingNumber(@javax.annotation.Nullable String trackingNumber) {
+    this.trackingNumber = trackingNumber;
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * 查询的快递单号
+   * @return trackingNumber
    */
   @javax.annotation.Nullable
-  public String getCode() {
-    return code;
+  public String getTrackingNumber() {
+    return trackingNumber;
   }
 
-  public void setCode(@javax.annotation.Nullable String code) {
-    this.code = code;
+  public void setTrackingNumber(@javax.annotation.Nullable String trackingNumber) {
+    this.trackingNumber = trackingNumber;
   }
 
 
-  public GetMiscTrackingDetect200Response message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public GetMiscTrackingDetect200Response carrierCode(@javax.annotation.Nullable String carrierCode) {
+    this.carrierCode = carrierCode;
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * 识别出的快递公司编码
+   * @return carrierCode
    */
   @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  public String getCarrierCode() {
+    return carrierCode;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public void setCarrierCode(@javax.annotation.Nullable String carrierCode) {
+    this.carrierCode = carrierCode;
   }
 
 
-  public GetMiscTrackingDetect200Response data(@javax.annotation.Nullable GetMiscTrackingDetect200ResponseData data) {
-    this.data = data;
+  public GetMiscTrackingDetect200Response carrierName(@javax.annotation.Nullable String carrierName) {
+    this.carrierName = carrierName;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * 识别出的快递公司名称
+   * @return carrierName
    */
   @javax.annotation.Nullable
-  public GetMiscTrackingDetect200ResponseData getData() {
-    return data;
+  public String getCarrierName() {
+    return carrierName;
   }
 
-  public void setData(@javax.annotation.Nullable GetMiscTrackingDetect200ResponseData data) {
-    this.data = data;
+  public void setCarrierName(@javax.annotation.Nullable String carrierName) {
+    this.carrierName = carrierName;
+  }
+
+
+  public GetMiscTrackingDetect200Response alternatives(@javax.annotation.Nullable List<GetMiscTrackingDetect200ResponseAlternativesInner> alternatives) {
+    this.alternatives = alternatives;
+    return this;
+  }
+
+  public GetMiscTrackingDetect200Response addAlternativesItem(GetMiscTrackingDetect200ResponseAlternativesInner alternativesItem) {
+    if (this.alternatives == null) {
+      this.alternatives = new ArrayList<>();
+    }
+    this.alternatives.add(alternativesItem);
+    return this;
+  }
+
+  /**
+   * 其他可能的快递公司列表。如果没有备选项，会返回空数组。
+   * @return alternatives
+   */
+  @javax.annotation.Nullable
+  public List<GetMiscTrackingDetect200ResponseAlternativesInner> getAlternatives() {
+    return alternatives;
+  }
+
+  public void setAlternatives(@javax.annotation.Nullable List<GetMiscTrackingDetect200ResponseAlternativesInner> alternatives) {
+    this.alternatives = alternatives;
   }
 
 
@@ -138,23 +172,25 @@ public class GetMiscTrackingDetect200Response {
       return false;
     }
     GetMiscTrackingDetect200Response getMiscTrackingDetect200Response = (GetMiscTrackingDetect200Response) o;
-    return Objects.equals(this.code, getMiscTrackingDetect200Response.code) &&
-        Objects.equals(this.message, getMiscTrackingDetect200Response.message) &&
-        Objects.equals(this.data, getMiscTrackingDetect200Response.data);
+    return Objects.equals(this.trackingNumber, getMiscTrackingDetect200Response.trackingNumber) &&
+        Objects.equals(this.carrierCode, getMiscTrackingDetect200Response.carrierCode) &&
+        Objects.equals(this.carrierName, getMiscTrackingDetect200Response.carrierName) &&
+        Objects.equals(this.alternatives, getMiscTrackingDetect200Response.alternatives);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, data);
+    return Objects.hash(trackingNumber, carrierCode, carrierName, alternatives);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetMiscTrackingDetect200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    trackingNumber: ").append(toIndentedString(trackingNumber)).append("\n");
+    sb.append("    carrierCode: ").append(toIndentedString(carrierCode)).append("\n");
+    sb.append("    carrierName: ").append(toIndentedString(carrierName)).append("\n");
+    sb.append("    alternatives: ").append(toIndentedString(alternatives)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,7 +212,7 @@ public class GetMiscTrackingDetect200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "message", "data"));
+    openapiFields = new HashSet<String>(Arrays.asList("tracking_number", "carrier_code", "carrier_name", "alternatives"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -203,15 +239,28 @@ public class GetMiscTrackingDetect200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
+      if ((jsonObj.get("tracking_number") != null && !jsonObj.get("tracking_number").isJsonNull()) && !jsonObj.get("tracking_number").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `tracking_number` to be a primitive type in the JSON string but got `%s`", jsonObj.get("tracking_number").toString()));
       }
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      if ((jsonObj.get("carrier_code") != null && !jsonObj.get("carrier_code").isJsonNull()) && !jsonObj.get("carrier_code").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `carrier_code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("carrier_code").toString()));
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        GetMiscTrackingDetect200ResponseData.validateJsonElement(jsonObj.get("data"));
+      if ((jsonObj.get("carrier_name") != null && !jsonObj.get("carrier_name").isJsonNull()) && !jsonObj.get("carrier_name").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `carrier_name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("carrier_name").toString()));
+      }
+      if (jsonObj.get("alternatives") != null && !jsonObj.get("alternatives").isJsonNull()) {
+        JsonArray jsonArrayalternatives = jsonObj.getAsJsonArray("alternatives");
+        if (jsonArrayalternatives != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("alternatives").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `alternatives` to be an array in the JSON string but got `%s`", jsonObj.get("alternatives").toString()));
+          }
+
+          // validate the optional field `alternatives` (array)
+          for (int i = 0; i < jsonArrayalternatives.size(); i++) {
+            GetMiscTrackingDetect200ResponseAlternativesInner.validateJsonElement(jsonArrayalternatives.get(i));
+          };
+        }
       }
   }
 

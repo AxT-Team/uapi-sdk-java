@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * PostTextMd5VerifyRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostTextMd5VerifyRequest {
   public static final String SERIALIZED_NAME_HASH = "hash";
   @SerializedName(SERIALIZED_NAME_HASH)
@@ -71,7 +71,7 @@ public class PostTextMd5VerifyRequest {
   }
 
   /**
-   * Get hash
+   * 用于比对的 MD5 哈希值（32 位小写十六进制字符串）。
    * @return hash
    */
   @javax.annotation.Nonnull
@@ -90,7 +90,7 @@ public class PostTextMd5VerifyRequest {
   }
 
   /**
-   * Get text
+   * 待校验的原始文本，会先计算其 MD5 再与 hash 进行比对。
    * @return text
    */
   @javax.annotation.Nonnull

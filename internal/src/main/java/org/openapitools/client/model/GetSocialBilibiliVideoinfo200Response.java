@@ -25,9 +25,17 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponseDescV2Inner;
+import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponseDimension;
+import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponseHonorReply;
 import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponseOwner;
 import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponsePagesInner;
+import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponseRights;
+import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponseStaffInner;
 import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponseStat;
+import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponseSubtitle;
+import org.openapitools.client.model.GetSocialBilibiliVideoinfo200ResponseUgcSeason;
+import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,7 +64,7 @@ import org.openapitools.client.JSON;
 /**
  * GetSocialBilibiliVideoinfo200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialBilibiliVideoinfo200Response {
   public static final String SERIALIZED_NAME_BVID = "bvid";
   @SerializedName(SERIALIZED_NAME_BVID)
@@ -72,6 +80,11 @@ public class GetSocialBilibiliVideoinfo200Response {
   @SerializedName(SERIALIZED_NAME_VIDEOS)
   @javax.annotation.Nullable
   private BigDecimal videos;
+
+  public static final String SERIALIZED_NAME_TID = "tid";
+  @SerializedName(SERIALIZED_NAME_TID)
+  @javax.annotation.Nullable
+  private BigDecimal tid;
 
   public static final String SERIALIZED_NAME_TNAME = "tname";
   @SerializedName(SERIALIZED_NAME_TNAME)
@@ -108,10 +121,25 @@ public class GetSocialBilibiliVideoinfo200Response {
   @javax.annotation.Nullable
   private String desc;
 
+  public static final String SERIALIZED_NAME_DESC_V2 = "desc_v2";
+  @SerializedName(SERIALIZED_NAME_DESC_V2)
+  @javax.annotation.Nullable
+  private List<GetSocialBilibiliVideoinfo200ResponseDescV2Inner> descV2 = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_STATE = "state";
+  @SerializedName(SERIALIZED_NAME_STATE)
+  @javax.annotation.Nullable
+  private BigDecimal state;
+
   public static final String SERIALIZED_NAME_DURATION = "duration";
   @SerializedName(SERIALIZED_NAME_DURATION)
   @javax.annotation.Nullable
   private BigDecimal duration;
+
+  public static final String SERIALIZED_NAME_RIGHTS = "rights";
+  @SerializedName(SERIALIZED_NAME_RIGHTS)
+  @javax.annotation.Nullable
+  private GetSocialBilibiliVideoinfo200ResponseRights rights;
 
   public static final String SERIALIZED_NAME_OWNER = "owner";
   @SerializedName(SERIALIZED_NAME_OWNER)
@@ -123,10 +151,60 @@ public class GetSocialBilibiliVideoinfo200Response {
   @javax.annotation.Nullable
   private GetSocialBilibiliVideoinfo200ResponseStat stat;
 
+  public static final String SERIALIZED_NAME_DYNAMIC = "dynamic";
+  @SerializedName(SERIALIZED_NAME_DYNAMIC)
+  @javax.annotation.Nullable
+  private String dynamic;
+
+  public static final String SERIALIZED_NAME_CID = "cid";
+  @SerializedName(SERIALIZED_NAME_CID)
+  @javax.annotation.Nullable
+  private BigDecimal cid;
+
+  public static final String SERIALIZED_NAME_DIMENSION = "dimension";
+  @SerializedName(SERIALIZED_NAME_DIMENSION)
+  @javax.annotation.Nullable
+  private GetSocialBilibiliVideoinfo200ResponseDimension dimension;
+
+  public static final String SERIALIZED_NAME_NO_CACHE = "no_cache";
+  @SerializedName(SERIALIZED_NAME_NO_CACHE)
+  @javax.annotation.Nullable
+  private Boolean noCache;
+
   public static final String SERIALIZED_NAME_PAGES = "pages";
   @SerializedName(SERIALIZED_NAME_PAGES)
   @javax.annotation.Nullable
   private List<GetSocialBilibiliVideoinfo200ResponsePagesInner> pages = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_SUBTITLE = "subtitle";
+  @SerializedName(SERIALIZED_NAME_SUBTITLE)
+  @javax.annotation.Nullable
+  private GetSocialBilibiliVideoinfo200ResponseSubtitle subtitle;
+
+  public static final String SERIALIZED_NAME_STAFF = "staff";
+  @SerializedName(SERIALIZED_NAME_STAFF)
+  @javax.annotation.Nullable
+  private List<GetSocialBilibiliVideoinfo200ResponseStaffInner> staff = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_UGC_SEASON = "ugc_season";
+  @SerializedName(SERIALIZED_NAME_UGC_SEASON)
+  @javax.annotation.Nullable
+  private GetSocialBilibiliVideoinfo200ResponseUgcSeason ugcSeason;
+
+  public static final String SERIALIZED_NAME_IS_CHARGEABLE_SEASON = "is_chargeable_season";
+  @SerializedName(SERIALIZED_NAME_IS_CHARGEABLE_SEASON)
+  @javax.annotation.Nullable
+  private Boolean isChargeableSeason;
+
+  public static final String SERIALIZED_NAME_IS_STORY = "is_story";
+  @SerializedName(SERIALIZED_NAME_IS_STORY)
+  @javax.annotation.Nullable
+  private Boolean isStory;
+
+  public static final String SERIALIZED_NAME_HONOR_REPLY = "honor_reply";
+  @SerializedName(SERIALIZED_NAME_HONOR_REPLY)
+  @javax.annotation.Nullable
+  private GetSocialBilibiliVideoinfo200ResponseHonorReply honorReply;
 
   public GetSocialBilibiliVideoinfo200Response() {
   }
@@ -185,6 +263,25 @@ public class GetSocialBilibiliVideoinfo200Response {
 
   public void setVideos(@javax.annotation.Nullable BigDecimal videos) {
     this.videos = videos;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response tid(@javax.annotation.Nullable BigDecimal tid) {
+    this.tid = tid;
+    return this;
+  }
+
+  /**
+   * 视频所属的子分区 ID。
+   * @return tid
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getTid() {
+    return tid;
+  }
+
+  public void setTid(@javax.annotation.Nullable BigDecimal tid) {
+    this.tid = tid;
   }
 
 
@@ -321,6 +418,52 @@ public class GetSocialBilibiliVideoinfo200Response {
   }
 
 
+  public GetSocialBilibiliVideoinfo200Response descV2(@javax.annotation.Nullable List<GetSocialBilibiliVideoinfo200ResponseDescV2Inner> descV2) {
+    this.descV2 = descV2;
+    return this;
+  }
+
+  public GetSocialBilibiliVideoinfo200Response addDescV2Item(GetSocialBilibiliVideoinfo200ResponseDescV2Inner descV2Item) {
+    if (this.descV2 == null) {
+      this.descV2 = new ArrayList<>();
+    }
+    this.descV2.add(descV2Item);
+    return this;
+  }
+
+  /**
+   * 结构化简介片段。
+   * @return descV2
+   */
+  @javax.annotation.Nullable
+  public List<GetSocialBilibiliVideoinfo200ResponseDescV2Inner> getDescV2() {
+    return descV2;
+  }
+
+  public void setDescV2(@javax.annotation.Nullable List<GetSocialBilibiliVideoinfo200ResponseDescV2Inner> descV2) {
+    this.descV2 = descV2;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response state(@javax.annotation.Nullable BigDecimal state) {
+    this.state = state;
+    return this;
+  }
+
+  /**
+   * 视频状态码。
+   * @return state
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getState() {
+    return state;
+  }
+
+  public void setState(@javax.annotation.Nullable BigDecimal state) {
+    this.state = state;
+  }
+
+
   public GetSocialBilibiliVideoinfo200Response duration(@javax.annotation.Nullable BigDecimal duration) {
     this.duration = duration;
     return this;
@@ -337,6 +480,25 @@ public class GetSocialBilibiliVideoinfo200Response {
 
   public void setDuration(@javax.annotation.Nullable BigDecimal duration) {
     this.duration = duration;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response rights(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseRights rights) {
+    this.rights = rights;
+    return this;
+  }
+
+  /**
+   * Get rights
+   * @return rights
+   */
+  @javax.annotation.Nullable
+  public GetSocialBilibiliVideoinfo200ResponseRights getRights() {
+    return rights;
+  }
+
+  public void setRights(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseRights rights) {
+    this.rights = rights;
   }
 
 
@@ -378,6 +540,82 @@ public class GetSocialBilibiliVideoinfo200Response {
   }
 
 
+  public GetSocialBilibiliVideoinfo200Response dynamic(@javax.annotation.Nullable String dynamic) {
+    this.dynamic = dynamic;
+    return this;
+  }
+
+  /**
+   * 投稿时附带的动态文字。
+   * @return dynamic
+   */
+  @javax.annotation.Nullable
+  public String getDynamic() {
+    return dynamic;
+  }
+
+  public void setDynamic(@javax.annotation.Nullable String dynamic) {
+    this.dynamic = dynamic;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response cid(@javax.annotation.Nullable BigDecimal cid) {
+    this.cid = cid;
+    return this;
+  }
+
+  /**
+   * 主分P的 CID（弹幕 ID）。
+   * @return cid
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getCid() {
+    return cid;
+  }
+
+  public void setCid(@javax.annotation.Nullable BigDecimal cid) {
+    this.cid = cid;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response dimension(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseDimension dimension) {
+    this.dimension = dimension;
+    return this;
+  }
+
+  /**
+   * Get dimension
+   * @return dimension
+   */
+  @javax.annotation.Nullable
+  public GetSocialBilibiliVideoinfo200ResponseDimension getDimension() {
+    return dimension;
+  }
+
+  public void setDimension(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseDimension dimension) {
+    this.dimension = dimension;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response noCache(@javax.annotation.Nullable Boolean noCache) {
+    this.noCache = noCache;
+    return this;
+  }
+
+  /**
+   * 不缓存标记。
+   * @return noCache
+   */
+  @javax.annotation.Nullable
+  public Boolean getNoCache() {
+    return noCache;
+  }
+
+  public void setNoCache(@javax.annotation.Nullable Boolean noCache) {
+    this.noCache = noCache;
+  }
+
+
   public GetSocialBilibiliVideoinfo200Response pages(@javax.annotation.Nullable List<GetSocialBilibiliVideoinfo200ResponsePagesInner> pages) {
     this.pages = pages;
     return this;
@@ -405,6 +643,128 @@ public class GetSocialBilibiliVideoinfo200Response {
   }
 
 
+  public GetSocialBilibiliVideoinfo200Response subtitle(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseSubtitle subtitle) {
+    this.subtitle = subtitle;
+    return this;
+  }
+
+  /**
+   * Get subtitle
+   * @return subtitle
+   */
+  @javax.annotation.Nullable
+  public GetSocialBilibiliVideoinfo200ResponseSubtitle getSubtitle() {
+    return subtitle;
+  }
+
+  public void setSubtitle(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseSubtitle subtitle) {
+    this.subtitle = subtitle;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response staff(@javax.annotation.Nullable List<GetSocialBilibiliVideoinfo200ResponseStaffInner> staff) {
+    this.staff = staff;
+    return this;
+  }
+
+  public GetSocialBilibiliVideoinfo200Response addStaffItem(GetSocialBilibiliVideoinfo200ResponseStaffInner staffItem) {
+    if (this.staff == null) {
+      this.staff = new ArrayList<>();
+    }
+    this.staff.add(staffItem);
+    return this;
+  }
+
+  /**
+   * 联合投稿成员列表。
+   * @return staff
+   */
+  @javax.annotation.Nullable
+  public List<GetSocialBilibiliVideoinfo200ResponseStaffInner> getStaff() {
+    return staff;
+  }
+
+  public void setStaff(@javax.annotation.Nullable List<GetSocialBilibiliVideoinfo200ResponseStaffInner> staff) {
+    this.staff = staff;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response ugcSeason(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseUgcSeason ugcSeason) {
+    this.ugcSeason = ugcSeason;
+    return this;
+  }
+
+  /**
+   * Get ugcSeason
+   * @return ugcSeason
+   */
+  @javax.annotation.Nullable
+  public GetSocialBilibiliVideoinfo200ResponseUgcSeason getUgcSeason() {
+    return ugcSeason;
+  }
+
+  public void setUgcSeason(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseUgcSeason ugcSeason) {
+    this.ugcSeason = ugcSeason;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response isChargeableSeason(@javax.annotation.Nullable Boolean isChargeableSeason) {
+    this.isChargeableSeason = isChargeableSeason;
+    return this;
+  }
+
+  /**
+   * 是否为付费合集。
+   * @return isChargeableSeason
+   */
+  @javax.annotation.Nullable
+  public Boolean getIsChargeableSeason() {
+    return isChargeableSeason;
+  }
+
+  public void setIsChargeableSeason(@javax.annotation.Nullable Boolean isChargeableSeason) {
+    this.isChargeableSeason = isChargeableSeason;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response isStory(@javax.annotation.Nullable Boolean isStory) {
+    this.isStory = isStory;
+    return this;
+  }
+
+  /**
+   * 是否为剧情类视频。
+   * @return isStory
+   */
+  @javax.annotation.Nullable
+  public Boolean getIsStory() {
+    return isStory;
+  }
+
+  public void setIsStory(@javax.annotation.Nullable Boolean isStory) {
+    this.isStory = isStory;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200Response honorReply(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseHonorReply honorReply) {
+    this.honorReply = honorReply;
+    return this;
+  }
+
+  /**
+   * Get honorReply
+   * @return honorReply
+   */
+  @javax.annotation.Nullable
+  public GetSocialBilibiliVideoinfo200ResponseHonorReply getHonorReply() {
+    return honorReply;
+  }
+
+  public void setHonorReply(@javax.annotation.Nullable GetSocialBilibiliVideoinfo200ResponseHonorReply honorReply) {
+    this.honorReply = honorReply;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -418,6 +778,7 @@ public class GetSocialBilibiliVideoinfo200Response {
     return Objects.equals(this.bvid, getSocialBilibiliVideoinfo200Response.bvid) &&
         Objects.equals(this.aid, getSocialBilibiliVideoinfo200Response.aid) &&
         Objects.equals(this.videos, getSocialBilibiliVideoinfo200Response.videos) &&
+        Objects.equals(this.tid, getSocialBilibiliVideoinfo200Response.tid) &&
         Objects.equals(this.tname, getSocialBilibiliVideoinfo200Response.tname) &&
         Objects.equals(this.copyright, getSocialBilibiliVideoinfo200Response.copyright) &&
         Objects.equals(this.pic, getSocialBilibiliVideoinfo200Response.pic) &&
@@ -425,15 +786,39 @@ public class GetSocialBilibiliVideoinfo200Response {
         Objects.equals(this.pubdate, getSocialBilibiliVideoinfo200Response.pubdate) &&
         Objects.equals(this.ctime, getSocialBilibiliVideoinfo200Response.ctime) &&
         Objects.equals(this.desc, getSocialBilibiliVideoinfo200Response.desc) &&
+        Objects.equals(this.descV2, getSocialBilibiliVideoinfo200Response.descV2) &&
+        Objects.equals(this.state, getSocialBilibiliVideoinfo200Response.state) &&
         Objects.equals(this.duration, getSocialBilibiliVideoinfo200Response.duration) &&
+        Objects.equals(this.rights, getSocialBilibiliVideoinfo200Response.rights) &&
         Objects.equals(this.owner, getSocialBilibiliVideoinfo200Response.owner) &&
         Objects.equals(this.stat, getSocialBilibiliVideoinfo200Response.stat) &&
-        Objects.equals(this.pages, getSocialBilibiliVideoinfo200Response.pages);
+        Objects.equals(this.dynamic, getSocialBilibiliVideoinfo200Response.dynamic) &&
+        Objects.equals(this.cid, getSocialBilibiliVideoinfo200Response.cid) &&
+        Objects.equals(this.dimension, getSocialBilibiliVideoinfo200Response.dimension) &&
+        Objects.equals(this.noCache, getSocialBilibiliVideoinfo200Response.noCache) &&
+        Objects.equals(this.pages, getSocialBilibiliVideoinfo200Response.pages) &&
+        Objects.equals(this.subtitle, getSocialBilibiliVideoinfo200Response.subtitle) &&
+        Objects.equals(this.staff, getSocialBilibiliVideoinfo200Response.staff) &&
+        Objects.equals(this.ugcSeason, getSocialBilibiliVideoinfo200Response.ugcSeason) &&
+        Objects.equals(this.isChargeableSeason, getSocialBilibiliVideoinfo200Response.isChargeableSeason) &&
+        Objects.equals(this.isStory, getSocialBilibiliVideoinfo200Response.isStory) &&
+        Objects.equals(this.honorReply, getSocialBilibiliVideoinfo200Response.honorReply);
+  }
+
+  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
+    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bvid, aid, videos, tname, copyright, pic, title, pubdate, ctime, desc, duration, owner, stat, pages);
+    return Objects.hash(bvid, aid, videos, tid, tname, copyright, pic, title, pubdate, ctime, desc, descV2, state, duration, rights, owner, stat, dynamic, cid, dimension, noCache, pages, subtitle, staff, ugcSeason, isChargeableSeason, isStory, honorReply);
+  }
+
+  private static <T> int hashCodeNullable(JsonNullable<T> a) {
+    if (a == null) {
+      return 1;
+    }
+    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -443,6 +828,7 @@ public class GetSocialBilibiliVideoinfo200Response {
     sb.append("    bvid: ").append(toIndentedString(bvid)).append("\n");
     sb.append("    aid: ").append(toIndentedString(aid)).append("\n");
     sb.append("    videos: ").append(toIndentedString(videos)).append("\n");
+    sb.append("    tid: ").append(toIndentedString(tid)).append("\n");
     sb.append("    tname: ").append(toIndentedString(tname)).append("\n");
     sb.append("    copyright: ").append(toIndentedString(copyright)).append("\n");
     sb.append("    pic: ").append(toIndentedString(pic)).append("\n");
@@ -450,10 +836,23 @@ public class GetSocialBilibiliVideoinfo200Response {
     sb.append("    pubdate: ").append(toIndentedString(pubdate)).append("\n");
     sb.append("    ctime: ").append(toIndentedString(ctime)).append("\n");
     sb.append("    desc: ").append(toIndentedString(desc)).append("\n");
+    sb.append("    descV2: ").append(toIndentedString(descV2)).append("\n");
+    sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    duration: ").append(toIndentedString(duration)).append("\n");
+    sb.append("    rights: ").append(toIndentedString(rights)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    stat: ").append(toIndentedString(stat)).append("\n");
+    sb.append("    dynamic: ").append(toIndentedString(dynamic)).append("\n");
+    sb.append("    cid: ").append(toIndentedString(cid)).append("\n");
+    sb.append("    dimension: ").append(toIndentedString(dimension)).append("\n");
+    sb.append("    noCache: ").append(toIndentedString(noCache)).append("\n");
     sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
+    sb.append("    subtitle: ").append(toIndentedString(subtitle)).append("\n");
+    sb.append("    staff: ").append(toIndentedString(staff)).append("\n");
+    sb.append("    ugcSeason: ").append(toIndentedString(ugcSeason)).append("\n");
+    sb.append("    isChargeableSeason: ").append(toIndentedString(isChargeableSeason)).append("\n");
+    sb.append("    isStory: ").append(toIndentedString(isStory)).append("\n");
+    sb.append("    honorReply: ").append(toIndentedString(honorReply)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -475,7 +874,7 @@ public class GetSocialBilibiliVideoinfo200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("bvid", "aid", "videos", "tname", "copyright", "pic", "title", "pubdate", "ctime", "desc", "duration", "owner", "stat", "pages"));
+    openapiFields = new HashSet<String>(Arrays.asList("bvid", "aid", "videos", "tid", "tname", "copyright", "pic", "title", "pubdate", "ctime", "desc", "desc_v2", "state", "duration", "rights", "owner", "stat", "dynamic", "cid", "dimension", "no_cache", "pages", "subtitle", "staff", "ugc_season", "is_chargeable_season", "is_story", "honor_reply"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -517,6 +916,24 @@ public class GetSocialBilibiliVideoinfo200Response {
       if ((jsonObj.get("desc") != null && !jsonObj.get("desc").isJsonNull()) && !jsonObj.get("desc").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `desc` to be a primitive type in the JSON string but got `%s`", jsonObj.get("desc").toString()));
       }
+      if (jsonObj.get("desc_v2") != null && !jsonObj.get("desc_v2").isJsonNull()) {
+        JsonArray jsonArraydescV2 = jsonObj.getAsJsonArray("desc_v2");
+        if (jsonArraydescV2 != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("desc_v2").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `desc_v2` to be an array in the JSON string but got `%s`", jsonObj.get("desc_v2").toString()));
+          }
+
+          // validate the optional field `desc_v2` (array)
+          for (int i = 0; i < jsonArraydescV2.size(); i++) {
+            GetSocialBilibiliVideoinfo200ResponseDescV2Inner.validateJsonElement(jsonArraydescV2.get(i));
+          };
+        }
+      }
+      // validate the optional field `rights`
+      if (jsonObj.get("rights") != null && !jsonObj.get("rights").isJsonNull()) {
+        GetSocialBilibiliVideoinfo200ResponseRights.validateJsonElement(jsonObj.get("rights"));
+      }
       // validate the optional field `owner`
       if (jsonObj.get("owner") != null && !jsonObj.get("owner").isJsonNull()) {
         GetSocialBilibiliVideoinfo200ResponseOwner.validateJsonElement(jsonObj.get("owner"));
@@ -524,6 +941,13 @@ public class GetSocialBilibiliVideoinfo200Response {
       // validate the optional field `stat`
       if (jsonObj.get("stat") != null && !jsonObj.get("stat").isJsonNull()) {
         GetSocialBilibiliVideoinfo200ResponseStat.validateJsonElement(jsonObj.get("stat"));
+      }
+      if ((jsonObj.get("dynamic") != null && !jsonObj.get("dynamic").isJsonNull()) && !jsonObj.get("dynamic").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `dynamic` to be a primitive type in the JSON string but got `%s`", jsonObj.get("dynamic").toString()));
+      }
+      // validate the optional field `dimension`
+      if (jsonObj.get("dimension") != null && !jsonObj.get("dimension").isJsonNull()) {
+        GetSocialBilibiliVideoinfo200ResponseDimension.validateJsonElement(jsonObj.get("dimension"));
       }
       if (jsonObj.get("pages") != null && !jsonObj.get("pages").isJsonNull()) {
         JsonArray jsonArraypages = jsonObj.getAsJsonArray("pages");
@@ -538,6 +962,32 @@ public class GetSocialBilibiliVideoinfo200Response {
             GetSocialBilibiliVideoinfo200ResponsePagesInner.validateJsonElement(jsonArraypages.get(i));
           };
         }
+      }
+      // validate the optional field `subtitle`
+      if (jsonObj.get("subtitle") != null && !jsonObj.get("subtitle").isJsonNull()) {
+        GetSocialBilibiliVideoinfo200ResponseSubtitle.validateJsonElement(jsonObj.get("subtitle"));
+      }
+      if (jsonObj.get("staff") != null && !jsonObj.get("staff").isJsonNull()) {
+        JsonArray jsonArraystaff = jsonObj.getAsJsonArray("staff");
+        if (jsonArraystaff != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("staff").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `staff` to be an array in the JSON string but got `%s`", jsonObj.get("staff").toString()));
+          }
+
+          // validate the optional field `staff` (array)
+          for (int i = 0; i < jsonArraystaff.size(); i++) {
+            GetSocialBilibiliVideoinfo200ResponseStaffInner.validateJsonElement(jsonArraystaff.get(i));
+          };
+        }
+      }
+      // validate the optional field `ugc_season`
+      if (jsonObj.get("ugc_season") != null && !jsonObj.get("ugc_season").isJsonNull()) {
+        GetSocialBilibiliVideoinfo200ResponseUgcSeason.validateJsonElement(jsonObj.get("ugc_season"));
+      }
+      // validate the optional field `honor_reply`
+      if (jsonObj.get("honor_reply") != null && !jsonObj.get("honor_reply").isJsonNull()) {
+        GetSocialBilibiliVideoinfo200ResponseHonorReply.validateJsonElement(jsonObj.get("honor_reply"));
       }
   }
 

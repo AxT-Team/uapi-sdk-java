@@ -16,7 +16,8 @@
 |**longitude** | **BigDecimal** | 经度 |  [optional] |
 |**beginip** | **String** | IP段起始地址（标准查询） |  [optional] |
 |**endip** | **String** | IP段结束地址（标准查询） |  [optional] |
-|**district** | **String** | 行政区（商业查询） |  [optional] |
+|**district** | **String** | 行政区。仅 &#x60;source&#x3D;commercial&#x60; 时可能返回。 |  [optional] |
+|**timeZone** | **String** | 时区名称。仅 &#x60;source&#x3D;commercial&#x60; 时可能返回。 |  [optional] |
 
 
 

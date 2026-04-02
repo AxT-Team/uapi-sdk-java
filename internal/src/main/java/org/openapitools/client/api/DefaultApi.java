@@ -206,7 +206,7 @@ public class DefaultApi {
     }
     /**
      * Build call for getSensitiveWordAnalyzeQuery
-     * @param keyword 要分析的关键词，最长50字符。 (required)
+     * @param keyword 要分析的关键词，最长1,000字符。 (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -281,7 +281,7 @@ public class DefaultApi {
     /**
      * 敏感词分析 (GET)
      * 通过URL查询参数分析单个关键词，便于GET请求调用。
-     * @param keyword 要分析的关键词，最长50字符。 (required)
+     * @param keyword 要分析的关键词，最长1,000字符。 (required)
      * @return PostSensitiveWordAnalyze200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -301,7 +301,7 @@ public class DefaultApi {
     /**
      * 敏感词分析 (GET)
      * 通过URL查询参数分析单个关键词，便于GET请求调用。
-     * @param keyword 要分析的关键词，最长50字符。 (required)
+     * @param keyword 要分析的关键词，最长1,000字符。 (required)
      * @return ApiResponse&lt;PostSensitiveWordAnalyze200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -322,7 +322,7 @@ public class DefaultApi {
     /**
      * 敏感词分析 (GET) (asynchronously)
      * 通过URL查询参数分析单个关键词，便于GET请求调用。
-     * @param keyword 要分析的关键词，最长50字符。 (required)
+     * @param keyword 要分析的关键词，最长1,000字符。 (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -344,7 +344,7 @@ public class DefaultApi {
     }
     /**
      * Build call for postSearchAggregate
-     * @param postSearchAggregateRequest 包含搜索参数的JSON对象 (required)
+     * @param postSearchAggregateRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -417,8 +417,8 @@ public class DefaultApi {
 
     /**
      * 智能搜索
-     * 想在你的应用中集成搜索功能？我们提供了一个强大的搜索引擎API，让你可以轻松实现实时网页搜索。  ## 功能概述  UAPI Pro Search 是一个智能搜索引擎，采用机器学习算法对搜索结果进行智能排序，确保最相关的内容排在前面。你可以用它搜索任何关键词，也可以限定在特定网站或特定文件类型中搜索。  - **实时网页搜索**: 毫秒级响应，快速返回搜索结果 - **智能排序**: 采用机器学习回归排序算法，结果更精准 - **时间排序**: 支持按发布时间排序，获取最新内容 - **时间范围过滤**: 支持按天/周/月/年过滤结果 - **站内搜索**: 支持 &#x60;site:&#x60; 操作符，在指定网站内搜索 - **文件类型过滤**: 支持 &#x60;filetype:&#x60; 操作符，快速找到 PDF、Word 等特定格式文件  &gt; [!VIP] &gt; 本API目前处于**限时免费**阶段，我们鼓励开发者集成和测试。未来，它将转为付费API，为用户提供更稳定和强大的服务。       
-     * @param postSearchAggregateRequest 包含搜索参数的JSON对象 (required)
+     * 想在你的应用中集成搜索功能？我们提供了一个强大的搜索引擎API，让你可以轻松实现实时网页搜索。  ## 功能概述  UAPI Pro Search 是一个智能搜索引擎，采用机器学习算法对搜索结果进行智能排序，确保最相关的内容排在前面。你可以用它搜索任何关键词，也可以限定在特定网站或特定文件类型中搜索。  - **实时网页搜索**: 毫秒级响应，快速返回搜索结果 - **智能排序**: 采用机器学习回归排序算法，结果更精准 - **时间排序**: 支持按发布时间排序，获取最新内容 - **时间范围过滤**: 支持按天/周/月/年过滤结果 - **站内搜索**: 支持 &#x60;site:&#x60; 操作符，在指定网站内搜索 - **文件类型过滤**: 支持 &#x60;filetype:&#x60; 操作符，快速找到 PDF、Word 等特定格式文件       
+     * @param postSearchAggregateRequest  (required)
      * @return PostSearchAggregate200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -439,8 +439,8 @@ public class DefaultApi {
 
     /**
      * 智能搜索
-     * 想在你的应用中集成搜索功能？我们提供了一个强大的搜索引擎API，让你可以轻松实现实时网页搜索。  ## 功能概述  UAPI Pro Search 是一个智能搜索引擎，采用机器学习算法对搜索结果进行智能排序，确保最相关的内容排在前面。你可以用它搜索任何关键词，也可以限定在特定网站或特定文件类型中搜索。  - **实时网页搜索**: 毫秒级响应，快速返回搜索结果 - **智能排序**: 采用机器学习回归排序算法，结果更精准 - **时间排序**: 支持按发布时间排序，获取最新内容 - **时间范围过滤**: 支持按天/周/月/年过滤结果 - **站内搜索**: 支持 &#x60;site:&#x60; 操作符，在指定网站内搜索 - **文件类型过滤**: 支持 &#x60;filetype:&#x60; 操作符，快速找到 PDF、Word 等特定格式文件  &gt; [!VIP] &gt; 本API目前处于**限时免费**阶段，我们鼓励开发者集成和测试。未来，它将转为付费API，为用户提供更稳定和强大的服务。       
-     * @param postSearchAggregateRequest 包含搜索参数的JSON对象 (required)
+     * 想在你的应用中集成搜索功能？我们提供了一个强大的搜索引擎API，让你可以轻松实现实时网页搜索。  ## 功能概述  UAPI Pro Search 是一个智能搜索引擎，采用机器学习算法对搜索结果进行智能排序，确保最相关的内容排在前面。你可以用它搜索任何关键词，也可以限定在特定网站或特定文件类型中搜索。  - **实时网页搜索**: 毫秒级响应，快速返回搜索结果 - **智能排序**: 采用机器学习回归排序算法，结果更精准 - **时间排序**: 支持按发布时间排序，获取最新内容 - **时间范围过滤**: 支持按天/周/月/年过滤结果 - **站内搜索**: 支持 &#x60;site:&#x60; 操作符，在指定网站内搜索 - **文件类型过滤**: 支持 &#x60;filetype:&#x60; 操作符，快速找到 PDF、Word 等特定格式文件       
+     * @param postSearchAggregateRequest  (required)
      * @return ApiResponse&lt;PostSearchAggregate200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -462,8 +462,8 @@ public class DefaultApi {
 
     /**
      * 智能搜索 (asynchronously)
-     * 想在你的应用中集成搜索功能？我们提供了一个强大的搜索引擎API，让你可以轻松实现实时网页搜索。  ## 功能概述  UAPI Pro Search 是一个智能搜索引擎，采用机器学习算法对搜索结果进行智能排序，确保最相关的内容排在前面。你可以用它搜索任何关键词，也可以限定在特定网站或特定文件类型中搜索。  - **实时网页搜索**: 毫秒级响应，快速返回搜索结果 - **智能排序**: 采用机器学习回归排序算法，结果更精准 - **时间排序**: 支持按发布时间排序，获取最新内容 - **时间范围过滤**: 支持按天/周/月/年过滤结果 - **站内搜索**: 支持 &#x60;site:&#x60; 操作符，在指定网站内搜索 - **文件类型过滤**: 支持 &#x60;filetype:&#x60; 操作符，快速找到 PDF、Word 等特定格式文件  &gt; [!VIP] &gt; 本API目前处于**限时免费**阶段，我们鼓励开发者集成和测试。未来，它将转为付费API，为用户提供更稳定和强大的服务。       
-     * @param postSearchAggregateRequest 包含搜索参数的JSON对象 (required)
+     * 想在你的应用中集成搜索功能？我们提供了一个强大的搜索引擎API，让你可以轻松实现实时网页搜索。  ## 功能概述  UAPI Pro Search 是一个智能搜索引擎，采用机器学习算法对搜索结果进行智能排序，确保最相关的内容排在前面。你可以用它搜索任何关键词，也可以限定在特定网站或特定文件类型中搜索。  - **实时网页搜索**: 毫秒级响应，快速返回搜索结果 - **智能排序**: 采用机器学习回归排序算法，结果更精准 - **时间排序**: 支持按发布时间排序，获取最新内容 - **时间范围过滤**: 支持按天/周/月/年过滤结果 - **站内搜索**: 支持 &#x60;site:&#x60; 操作符，在指定网站内搜索 - **文件类型过滤**: 支持 &#x60;filetype:&#x60; 操作符，快速找到 PDF、Word 等特定格式文件       
+     * @param postSearchAggregateRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -487,7 +487,7 @@ public class DefaultApi {
     }
     /**
      * Build call for postSensitiveWordAnalyze
-     * @param postSensitiveWordAnalyzeRequest 包含待检测文本 &#39;keywords&#39; 的JSON对象 (required)
+     * @param postSensitiveWordAnalyzeRequest 包含待检测关键词列表 &#x60;keywords&#x60; 的 JSON 对象。单条关键词最多 1,000 字符，总字符数最多 20,000。 (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -559,8 +559,8 @@ public class DefaultApi {
 
     /**
      * 分析敏感词
-     * 分析单个或多个关键词的敏感程度，返回标准化风险标签与置信度结果。  &gt; [!VIP] &gt; 本API基于先进的分析模型，提供三级缓存策略和并发处理能力。  ## 功能概述  - **模型驱动**: 使用先进的分析模型进行语义分析。 - **高性能**: 采用三级缓存策略（持久化存储 → 统一缓存 → 模型分析），确保高频请求的响应速度。 - **并发支持**: 支持批量并发处理，单次最多可分析100个关键词。 - **标准标签**: 返回 &#x60;label&#x60; 字段，明确区分 &#x60;sensitive&#x60; 与 &#x60;normal&#x60;。 - **分类清晰**: 返回 &#x60;category&#x60; 字段，用于标识具体风险类别。 - **置信度输出**: 返回 &#x60;confidence&#x60; 字段，范围为0.0到1.0。  ## 响应字段说明  | 字段 | 类型 | 说明 | |------|------|------| | &#x60;results&#x60; | array | 分析结果对象的数组。 | | &#x60;results[].k&#x60; | string | 您在请求中提供的原始关键词。 | | &#x60;results[].label&#x60; | string | 核心判断字段：&#x60;sensitive&#x60;(敏感)、&#x60;normal&#x60;(正常)。 | | &#x60;results[].category&#x60; | string | 风险分类：&#x60;safe&#x60;(安全)、&#x60;threat&#x60;(威胁)、&#x60;porn&#x60;(色情)、&#x60;fraud&#x60;(欺诈)、&#x60;insult&#x60;(辱骂)。 | | &#x60;results[].confidence&#x60; | number | 当前分类的置信度，范围0.0到1.0。 | | &#x60;total&#x60; | integer | 本次请求成功分析的关键词总数。 |       
-     * @param postSensitiveWordAnalyzeRequest 包含待检测文本 &#39;keywords&#39; 的JSON对象 (required)
+     * 分析单个或多个关键词的敏感程度，返回标准化风险标签与置信度结果。  ## 功能概述  - **模型驱动**: 使用先进的分析模型进行语义分析。 - **高性能**: 采用三级缓存策略（持久化存储 → 统一缓存 → 模型分析），确保高频请求的响应速度。 - **并发支持**: 支持批量并发处理，单次最多可分析100个关键词。 - **输入限制**: 单条关键词最多 1,000 字符，总字符数最多 20,000。 - **标准标签**: 返回 &#x60;label&#x60; 字段，明确区分 &#x60;sensitive&#x60; 与 &#x60;normal&#x60;。 - **分类清晰**: 返回 &#x60;category&#x60; 字段，用于标识具体风险类别。 - **置信度输出**: 返回 &#x60;confidence&#x60; 字段，范围为0.0到1.0。  ## 响应字段说明  | 字段 | 类型 | 说明 | |------|------|------| | &#x60;results&#x60; | array | 分析结果对象的数组。 | | &#x60;results[].k&#x60; | string | 您在请求中提供的原始关键词。 | | &#x60;results[].label&#x60; | string | 核心判断字段：&#x60;sensitive&#x60;(敏感)、&#x60;normal&#x60;(正常)。 | | &#x60;results[].category&#x60; | string | 风险分类：&#x60;safe&#x60;(安全)、&#x60;threat&#x60;(威胁)、&#x60;porn&#x60;(色情)、&#x60;fraud&#x60;(欺诈)、&#x60;insult&#x60;(辱骂)。 | | &#x60;results[].confidence&#x60; | number | 当前分类的置信度，范围0.0到1.0。 | | &#x60;total&#x60; | integer | 本次请求成功分析的关键词总数。 |       
+     * @param postSensitiveWordAnalyzeRequest 包含待检测关键词列表 &#x60;keywords&#x60; 的 JSON 对象。单条关键词最多 1,000 字符，总字符数最多 20,000。 (required)
      * @return PostSensitiveWordAnalyze200Response
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -580,8 +580,8 @@ public class DefaultApi {
 
     /**
      * 分析敏感词
-     * 分析单个或多个关键词的敏感程度，返回标准化风险标签与置信度结果。  &gt; [!VIP] &gt; 本API基于先进的分析模型，提供三级缓存策略和并发处理能力。  ## 功能概述  - **模型驱动**: 使用先进的分析模型进行语义分析。 - **高性能**: 采用三级缓存策略（持久化存储 → 统一缓存 → 模型分析），确保高频请求的响应速度。 - **并发支持**: 支持批量并发处理，单次最多可分析100个关键词。 - **标准标签**: 返回 &#x60;label&#x60; 字段，明确区分 &#x60;sensitive&#x60; 与 &#x60;normal&#x60;。 - **分类清晰**: 返回 &#x60;category&#x60; 字段，用于标识具体风险类别。 - **置信度输出**: 返回 &#x60;confidence&#x60; 字段，范围为0.0到1.0。  ## 响应字段说明  | 字段 | 类型 | 说明 | |------|------|------| | &#x60;results&#x60; | array | 分析结果对象的数组。 | | &#x60;results[].k&#x60; | string | 您在请求中提供的原始关键词。 | | &#x60;results[].label&#x60; | string | 核心判断字段：&#x60;sensitive&#x60;(敏感)、&#x60;normal&#x60;(正常)。 | | &#x60;results[].category&#x60; | string | 风险分类：&#x60;safe&#x60;(安全)、&#x60;threat&#x60;(威胁)、&#x60;porn&#x60;(色情)、&#x60;fraud&#x60;(欺诈)、&#x60;insult&#x60;(辱骂)。 | | &#x60;results[].confidence&#x60; | number | 当前分类的置信度，范围0.0到1.0。 | | &#x60;total&#x60; | integer | 本次请求成功分析的关键词总数。 |       
-     * @param postSensitiveWordAnalyzeRequest 包含待检测文本 &#39;keywords&#39; 的JSON对象 (required)
+     * 分析单个或多个关键词的敏感程度，返回标准化风险标签与置信度结果。  ## 功能概述  - **模型驱动**: 使用先进的分析模型进行语义分析。 - **高性能**: 采用三级缓存策略（持久化存储 → 统一缓存 → 模型分析），确保高频请求的响应速度。 - **并发支持**: 支持批量并发处理，单次最多可分析100个关键词。 - **输入限制**: 单条关键词最多 1,000 字符，总字符数最多 20,000。 - **标准标签**: 返回 &#x60;label&#x60; 字段，明确区分 &#x60;sensitive&#x60; 与 &#x60;normal&#x60;。 - **分类清晰**: 返回 &#x60;category&#x60; 字段，用于标识具体风险类别。 - **置信度输出**: 返回 &#x60;confidence&#x60; 字段，范围为0.0到1.0。  ## 响应字段说明  | 字段 | 类型 | 说明 | |------|------|------| | &#x60;results&#x60; | array | 分析结果对象的数组。 | | &#x60;results[].k&#x60; | string | 您在请求中提供的原始关键词。 | | &#x60;results[].label&#x60; | string | 核心判断字段：&#x60;sensitive&#x60;(敏感)、&#x60;normal&#x60;(正常)。 | | &#x60;results[].category&#x60; | string | 风险分类：&#x60;safe&#x60;(安全)、&#x60;threat&#x60;(威胁)、&#x60;porn&#x60;(色情)、&#x60;fraud&#x60;(欺诈)、&#x60;insult&#x60;(辱骂)。 | | &#x60;results[].confidence&#x60; | number | 当前分类的置信度，范围0.0到1.0。 | | &#x60;total&#x60; | integer | 本次请求成功分析的关键词总数。 |       
+     * @param postSensitiveWordAnalyzeRequest 包含待检测关键词列表 &#x60;keywords&#x60; 的 JSON 对象。单条关键词最多 1,000 字符，总字符数最多 20,000。 (required)
      * @return ApiResponse&lt;PostSensitiveWordAnalyze200Response&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -602,8 +602,8 @@ public class DefaultApi {
 
     /**
      * 分析敏感词 (asynchronously)
-     * 分析单个或多个关键词的敏感程度，返回标准化风险标签与置信度结果。  &gt; [!VIP] &gt; 本API基于先进的分析模型，提供三级缓存策略和并发处理能力。  ## 功能概述  - **模型驱动**: 使用先进的分析模型进行语义分析。 - **高性能**: 采用三级缓存策略（持久化存储 → 统一缓存 → 模型分析），确保高频请求的响应速度。 - **并发支持**: 支持批量并发处理，单次最多可分析100个关键词。 - **标准标签**: 返回 &#x60;label&#x60; 字段，明确区分 &#x60;sensitive&#x60; 与 &#x60;normal&#x60;。 - **分类清晰**: 返回 &#x60;category&#x60; 字段，用于标识具体风险类别。 - **置信度输出**: 返回 &#x60;confidence&#x60; 字段，范围为0.0到1.0。  ## 响应字段说明  | 字段 | 类型 | 说明 | |------|------|------| | &#x60;results&#x60; | array | 分析结果对象的数组。 | | &#x60;results[].k&#x60; | string | 您在请求中提供的原始关键词。 | | &#x60;results[].label&#x60; | string | 核心判断字段：&#x60;sensitive&#x60;(敏感)、&#x60;normal&#x60;(正常)。 | | &#x60;results[].category&#x60; | string | 风险分类：&#x60;safe&#x60;(安全)、&#x60;threat&#x60;(威胁)、&#x60;porn&#x60;(色情)、&#x60;fraud&#x60;(欺诈)、&#x60;insult&#x60;(辱骂)。 | | &#x60;results[].confidence&#x60; | number | 当前分类的置信度，范围0.0到1.0。 | | &#x60;total&#x60; | integer | 本次请求成功分析的关键词总数。 |       
-     * @param postSensitiveWordAnalyzeRequest 包含待检测文本 &#39;keywords&#39; 的JSON对象 (required)
+     * 分析单个或多个关键词的敏感程度，返回标准化风险标签与置信度结果。  ## 功能概述  - **模型驱动**: 使用先进的分析模型进行语义分析。 - **高性能**: 采用三级缓存策略（持久化存储 → 统一缓存 → 模型分析），确保高频请求的响应速度。 - **并发支持**: 支持批量并发处理，单次最多可分析100个关键词。 - **输入限制**: 单条关键词最多 1,000 字符，总字符数最多 20,000。 - **标准标签**: 返回 &#x60;label&#x60; 字段，明确区分 &#x60;sensitive&#x60; 与 &#x60;normal&#x60;。 - **分类清晰**: 返回 &#x60;category&#x60; 字段，用于标识具体风险类别。 - **置信度输出**: 返回 &#x60;confidence&#x60; 字段，范围为0.0到1.0。  ## 响应字段说明  | 字段 | 类型 | 说明 | |------|------|------| | &#x60;results&#x60; | array | 分析结果对象的数组。 | | &#x60;results[].k&#x60; | string | 您在请求中提供的原始关键词。 | | &#x60;results[].label&#x60; | string | 核心判断字段：&#x60;sensitive&#x60;(敏感)、&#x60;normal&#x60;(正常)。 | | &#x60;results[].category&#x60; | string | 风险分类：&#x60;safe&#x60;(安全)、&#x60;threat&#x60;(威胁)、&#x60;porn&#x60;(色情)、&#x60;fraud&#x60;(欺诈)、&#x60;insult&#x60;(辱骂)。 | | &#x60;results[].confidence&#x60; | number | 当前分类的置信度，范围0.0到1.0。 | | &#x60;total&#x60; | integer | 本次请求成功分析的关键词总数。 |       
+     * @param postSensitiveWordAnalyzeRequest 包含待检测关键词列表 &#x60;keywords&#x60; 的 JSON 对象。单条关键词最多 1,000 字符，总字符数最多 20,000。 (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

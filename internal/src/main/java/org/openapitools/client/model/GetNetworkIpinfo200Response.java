@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetNetworkIpinfo200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkIpinfo200Response {
   public static final String SERIALIZED_NAME_IP = "ip";
   @SerializedName(SERIALIZED_NAME_IP)
@@ -97,11 +97,6 @@ public class GetNetworkIpinfo200Response {
   @SerializedName(SERIALIZED_NAME_ENDIP)
   @javax.annotation.Nullable
   private String endip;
-
-  public static final String SERIALIZED_NAME_DISTRICT = "district";
-  @SerializedName(SERIALIZED_NAME_DISTRICT)
-  @javax.annotation.Nullable
-  private String district;
 
   public GetNetworkIpinfo200Response() {
   }
@@ -277,25 +272,6 @@ public class GetNetworkIpinfo200Response {
   }
 
 
-  public GetNetworkIpinfo200Response district(@javax.annotation.Nullable String district) {
-    this.district = district;
-    return this;
-  }
-
-  /**
-   * 行政区（商业查询）
-   * @return district
-   */
-  @javax.annotation.Nullable
-  public String getDistrict() {
-    return district;
-  }
-
-  public void setDistrict(@javax.annotation.Nullable String district) {
-    this.district = district;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -314,13 +290,12 @@ public class GetNetworkIpinfo200Response {
         Objects.equals(this.latitude, getNetworkIpinfo200Response.latitude) &&
         Objects.equals(this.longitude, getNetworkIpinfo200Response.longitude) &&
         Objects.equals(this.beginip, getNetworkIpinfo200Response.beginip) &&
-        Objects.equals(this.endip, getNetworkIpinfo200Response.endip) &&
-        Objects.equals(this.district, getNetworkIpinfo200Response.district);
+        Objects.equals(this.endip, getNetworkIpinfo200Response.endip);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ip, region, isp, llc, asn, latitude, longitude, beginip, endip, district);
+    return Objects.hash(ip, region, isp, llc, asn, latitude, longitude, beginip, endip);
   }
 
   @Override
@@ -336,7 +311,6 @@ public class GetNetworkIpinfo200Response {
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("    beginip: ").append(toIndentedString(beginip)).append("\n");
     sb.append("    endip: ").append(toIndentedString(endip)).append("\n");
-    sb.append("    district: ").append(toIndentedString(district)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -358,7 +332,7 @@ public class GetNetworkIpinfo200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("ip", "region", "isp", "llc", "asn", "latitude", "longitude", "beginip", "endip", "district"));
+    openapiFields = new HashSet<String>(Arrays.asList("ip", "region", "isp", "llc", "asn", "latitude", "longitude", "beginip", "endip"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -405,9 +379,6 @@ public class GetNetworkIpinfo200Response {
       }
       if ((jsonObj.get("endip") != null && !jsonObj.get("endip").isJsonNull()) && !jsonObj.get("endip").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `endip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("endip").toString()));
-      }
-      if ((jsonObj.get("district") != null && !jsonObj.get("district").isJsonNull()) && !jsonObj.get("district").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `district` to be a primitive type in the JSON string but got `%s`", jsonObj.get("district").toString()));
       }
   }
 

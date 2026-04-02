@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
-import org.openapitools.client.model.GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,54 +50,25 @@ import org.openapitools.client.JSON;
 /**
  * GetAiTranslateLanguages200ResponsePerformance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetAiTranslateLanguages200ResponsePerformance {
-  public static final String SERIALIZED_NAME_FAST_MODE_AVAILABLE = "fast_mode_available";
-  @SerializedName(SERIALIZED_NAME_FAST_MODE_AVAILABLE)
-  @javax.annotation.Nullable
-  private Boolean fastModeAvailable;
-
   public static final String SERIALIZED_NAME_BATCH_TRANSLATION_AVAILABLE = "batch_translation_available";
   @SerializedName(SERIALIZED_NAME_BATCH_TRANSLATION_AVAILABLE)
   @javax.annotation.Nullable
   private Boolean batchTranslationAvailable;
-
-  public static final String SERIALIZED_NAME_MAX_TEXT_LENGTH = "max_text_length";
-  @SerializedName(SERIALIZED_NAME_MAX_TEXT_LENGTH)
-  @javax.annotation.Nullable
-  private Integer maxTextLength;
 
   public static final String SERIALIZED_NAME_MAX_BATCH_SIZE = "max_batch_size";
   @SerializedName(SERIALIZED_NAME_MAX_BATCH_SIZE)
   @javax.annotation.Nullable
   private Integer maxBatchSize;
 
-  public static final String SERIALIZED_NAME_TYPICAL_RESPONSE_TIME_MS = "typical_response_time_ms";
-  @SerializedName(SERIALIZED_NAME_TYPICAL_RESPONSE_TIME_MS)
+  public static final String SERIALIZED_NAME_MAX_TEXT_LENGTH = "max_text_length";
+  @SerializedName(SERIALIZED_NAME_MAX_TEXT_LENGTH)
   @javax.annotation.Nullable
-  private GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs typicalResponseTimeMs;
+  private Integer maxTextLength;
 
   public GetAiTranslateLanguages200ResponsePerformance() {
   }
-
-  public GetAiTranslateLanguages200ResponsePerformance fastModeAvailable(@javax.annotation.Nullable Boolean fastModeAvailable) {
-    this.fastModeAvailable = fastModeAvailable;
-    return this;
-  }
-
-  /**
-   * Get fastModeAvailable
-   * @return fastModeAvailable
-   */
-  @javax.annotation.Nullable
-  public Boolean getFastModeAvailable() {
-    return fastModeAvailable;
-  }
-
-  public void setFastModeAvailable(@javax.annotation.Nullable Boolean fastModeAvailable) {
-    this.fastModeAvailable = fastModeAvailable;
-  }
-
 
   public GetAiTranslateLanguages200ResponsePerformance batchTranslationAvailable(@javax.annotation.Nullable Boolean batchTranslationAvailable) {
     this.batchTranslationAvailable = batchTranslationAvailable;
@@ -116,25 +86,6 @@ public class GetAiTranslateLanguages200ResponsePerformance {
 
   public void setBatchTranslationAvailable(@javax.annotation.Nullable Boolean batchTranslationAvailable) {
     this.batchTranslationAvailable = batchTranslationAvailable;
-  }
-
-
-  public GetAiTranslateLanguages200ResponsePerformance maxTextLength(@javax.annotation.Nullable Integer maxTextLength) {
-    this.maxTextLength = maxTextLength;
-    return this;
-  }
-
-  /**
-   * Get maxTextLength
-   * @return maxTextLength
-   */
-  @javax.annotation.Nullable
-  public Integer getMaxTextLength() {
-    return maxTextLength;
-  }
-
-  public void setMaxTextLength(@javax.annotation.Nullable Integer maxTextLength) {
-    this.maxTextLength = maxTextLength;
   }
 
 
@@ -157,22 +108,22 @@ public class GetAiTranslateLanguages200ResponsePerformance {
   }
 
 
-  public GetAiTranslateLanguages200ResponsePerformance typicalResponseTimeMs(@javax.annotation.Nullable GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs typicalResponseTimeMs) {
-    this.typicalResponseTimeMs = typicalResponseTimeMs;
+  public GetAiTranslateLanguages200ResponsePerformance maxTextLength(@javax.annotation.Nullable Integer maxTextLength) {
+    this.maxTextLength = maxTextLength;
     return this;
   }
 
   /**
-   * Get typicalResponseTimeMs
-   * @return typicalResponseTimeMs
+   * Get maxTextLength
+   * @return maxTextLength
    */
   @javax.annotation.Nullable
-  public GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs getTypicalResponseTimeMs() {
-    return typicalResponseTimeMs;
+  public Integer getMaxTextLength() {
+    return maxTextLength;
   }
 
-  public void setTypicalResponseTimeMs(@javax.annotation.Nullable GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs typicalResponseTimeMs) {
-    this.typicalResponseTimeMs = typicalResponseTimeMs;
+  public void setMaxTextLength(@javax.annotation.Nullable Integer maxTextLength) {
+    this.maxTextLength = maxTextLength;
   }
 
 
@@ -186,27 +137,23 @@ public class GetAiTranslateLanguages200ResponsePerformance {
       return false;
     }
     GetAiTranslateLanguages200ResponsePerformance getAiTranslateLanguages200ResponsePerformance = (GetAiTranslateLanguages200ResponsePerformance) o;
-    return Objects.equals(this.fastModeAvailable, getAiTranslateLanguages200ResponsePerformance.fastModeAvailable) &&
-        Objects.equals(this.batchTranslationAvailable, getAiTranslateLanguages200ResponsePerformance.batchTranslationAvailable) &&
-        Objects.equals(this.maxTextLength, getAiTranslateLanguages200ResponsePerformance.maxTextLength) &&
+    return Objects.equals(this.batchTranslationAvailable, getAiTranslateLanguages200ResponsePerformance.batchTranslationAvailable) &&
         Objects.equals(this.maxBatchSize, getAiTranslateLanguages200ResponsePerformance.maxBatchSize) &&
-        Objects.equals(this.typicalResponseTimeMs, getAiTranslateLanguages200ResponsePerformance.typicalResponseTimeMs);
+        Objects.equals(this.maxTextLength, getAiTranslateLanguages200ResponsePerformance.maxTextLength);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fastModeAvailable, batchTranslationAvailable, maxTextLength, maxBatchSize, typicalResponseTimeMs);
+    return Objects.hash(batchTranslationAvailable, maxBatchSize, maxTextLength);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetAiTranslateLanguages200ResponsePerformance {\n");
-    sb.append("    fastModeAvailable: ").append(toIndentedString(fastModeAvailable)).append("\n");
     sb.append("    batchTranslationAvailable: ").append(toIndentedString(batchTranslationAvailable)).append("\n");
-    sb.append("    maxTextLength: ").append(toIndentedString(maxTextLength)).append("\n");
     sb.append("    maxBatchSize: ").append(toIndentedString(maxBatchSize)).append("\n");
-    sb.append("    typicalResponseTimeMs: ").append(toIndentedString(typicalResponseTimeMs)).append("\n");
+    sb.append("    maxTextLength: ").append(toIndentedString(maxTextLength)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -228,7 +175,7 @@ public class GetAiTranslateLanguages200ResponsePerformance {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("fast_mode_available", "batch_translation_available", "max_text_length", "max_batch_size", "typical_response_time_ms"));
+    openapiFields = new HashSet<String>(Arrays.asList("batch_translation_available", "max_batch_size", "max_text_length"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -255,10 +202,6 @@ public class GetAiTranslateLanguages200ResponsePerformance {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // validate the optional field `typical_response_time_ms`
-      if (jsonObj.get("typical_response_time_ms") != null && !jsonObj.get("typical_response_time_ms").isJsonNull()) {
-        GetAiTranslateLanguages200ResponsePerformanceTypicalResponseTimeMs.validateJsonElement(jsonObj.get("typical_response_time_ms"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

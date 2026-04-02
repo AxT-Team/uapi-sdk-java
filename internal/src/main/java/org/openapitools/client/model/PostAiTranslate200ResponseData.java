@@ -21,11 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import org.openapitools.client.model.PostAiTranslate200ResponseDataExplanation;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,61 +48,17 @@ import java.util.Locale;
 import org.openapitools.client.JSON;
 
 /**
- * 单个翻译的详细结果，仅在单个翻译时返回。
+ * 翻译结果的详细信息。
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostAiTranslate200ResponseData {
-  public static final String SERIALIZED_NAME_ORIGINAL_TEXT = "original_text";
-  @SerializedName(SERIALIZED_NAME_ORIGINAL_TEXT)
-  @javax.annotation.Nullable
-  private String originalText;
-
   public static final String SERIALIZED_NAME_TRANSLATED_TEXT = "translated_text";
   @SerializedName(SERIALIZED_NAME_TRANSLATED_TEXT)
   @javax.annotation.Nullable
   private String translatedText;
 
-  public static final String SERIALIZED_NAME_DETECTED_LANG = "detected_lang";
-  @SerializedName(SERIALIZED_NAME_DETECTED_LANG)
-  @javax.annotation.Nullable
-  private String detectedLang;
-
-  public static final String SERIALIZED_NAME_CONFIDENCE_SCORE = "confidence_score";
-  @SerializedName(SERIALIZED_NAME_CONFIDENCE_SCORE)
-  @javax.annotation.Nullable
-  private BigDecimal confidenceScore;
-
-  public static final String SERIALIZED_NAME_ALTERNATIVES = "alternatives";
-  @SerializedName(SERIALIZED_NAME_ALTERNATIVES)
-  @javax.annotation.Nullable
-  private List<String> alternatives = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_EXPLANATION = "explanation";
-  @SerializedName(SERIALIZED_NAME_EXPLANATION)
-  @javax.annotation.Nullable
-  private PostAiTranslate200ResponseDataExplanation explanation;
-
   public PostAiTranslate200ResponseData() {
   }
-
-  public PostAiTranslate200ResponseData originalText(@javax.annotation.Nullable String originalText) {
-    this.originalText = originalText;
-    return this;
-  }
-
-  /**
-   * Get originalText
-   * @return originalText
-   */
-  @javax.annotation.Nullable
-  public String getOriginalText() {
-    return originalText;
-  }
-
-  public void setOriginalText(@javax.annotation.Nullable String originalText) {
-    this.originalText = originalText;
-  }
-
 
   public PostAiTranslate200ResponseData translatedText(@javax.annotation.Nullable String translatedText) {
     this.translatedText = translatedText;
@@ -127,90 +79,6 @@ public class PostAiTranslate200ResponseData {
   }
 
 
-  public PostAiTranslate200ResponseData detectedLang(@javax.annotation.Nullable String detectedLang) {
-    this.detectedLang = detectedLang;
-    return this;
-  }
-
-  /**
-   * Get detectedLang
-   * @return detectedLang
-   */
-  @javax.annotation.Nullable
-  public String getDetectedLang() {
-    return detectedLang;
-  }
-
-  public void setDetectedLang(@javax.annotation.Nullable String detectedLang) {
-    this.detectedLang = detectedLang;
-  }
-
-
-  public PostAiTranslate200ResponseData confidenceScore(@javax.annotation.Nullable BigDecimal confidenceScore) {
-    this.confidenceScore = confidenceScore;
-    return this;
-  }
-
-  /**
-   * Get confidenceScore
-   * @return confidenceScore
-   */
-  @javax.annotation.Nullable
-  public BigDecimal getConfidenceScore() {
-    return confidenceScore;
-  }
-
-  public void setConfidenceScore(@javax.annotation.Nullable BigDecimal confidenceScore) {
-    this.confidenceScore = confidenceScore;
-  }
-
-
-  public PostAiTranslate200ResponseData alternatives(@javax.annotation.Nullable List<String> alternatives) {
-    this.alternatives = alternatives;
-    return this;
-  }
-
-  public PostAiTranslate200ResponseData addAlternativesItem(String alternativesItem) {
-    if (this.alternatives == null) {
-      this.alternatives = new ArrayList<>();
-    }
-    this.alternatives.add(alternativesItem);
-    return this;
-  }
-
-  /**
-   * Get alternatives
-   * @return alternatives
-   */
-  @javax.annotation.Nullable
-  public List<String> getAlternatives() {
-    return alternatives;
-  }
-
-  public void setAlternatives(@javax.annotation.Nullable List<String> alternatives) {
-    this.alternatives = alternatives;
-  }
-
-
-  public PostAiTranslate200ResponseData explanation(@javax.annotation.Nullable PostAiTranslate200ResponseDataExplanation explanation) {
-    this.explanation = explanation;
-    return this;
-  }
-
-  /**
-   * Get explanation
-   * @return explanation
-   */
-  @javax.annotation.Nullable
-  public PostAiTranslate200ResponseDataExplanation getExplanation() {
-    return explanation;
-  }
-
-  public void setExplanation(@javax.annotation.Nullable PostAiTranslate200ResponseDataExplanation explanation) {
-    this.explanation = explanation;
-  }
-
-
 
   @Override
   public boolean equals(Object o) {
@@ -221,29 +89,19 @@ public class PostAiTranslate200ResponseData {
       return false;
     }
     PostAiTranslate200ResponseData postAiTranslate200ResponseData = (PostAiTranslate200ResponseData) o;
-    return Objects.equals(this.originalText, postAiTranslate200ResponseData.originalText) &&
-        Objects.equals(this.translatedText, postAiTranslate200ResponseData.translatedText) &&
-        Objects.equals(this.detectedLang, postAiTranslate200ResponseData.detectedLang) &&
-        Objects.equals(this.confidenceScore, postAiTranslate200ResponseData.confidenceScore) &&
-        Objects.equals(this.alternatives, postAiTranslate200ResponseData.alternatives) &&
-        Objects.equals(this.explanation, postAiTranslate200ResponseData.explanation);
+    return Objects.equals(this.translatedText, postAiTranslate200ResponseData.translatedText);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(originalText, translatedText, detectedLang, confidenceScore, alternatives, explanation);
+    return Objects.hash(translatedText);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostAiTranslate200ResponseData {\n");
-    sb.append("    originalText: ").append(toIndentedString(originalText)).append("\n");
     sb.append("    translatedText: ").append(toIndentedString(translatedText)).append("\n");
-    sb.append("    detectedLang: ").append(toIndentedString(detectedLang)).append("\n");
-    sb.append("    confidenceScore: ").append(toIndentedString(confidenceScore)).append("\n");
-    sb.append("    alternatives: ").append(toIndentedString(alternatives)).append("\n");
-    sb.append("    explanation: ").append(toIndentedString(explanation)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -265,7 +123,7 @@ public class PostAiTranslate200ResponseData {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("original_text", "translated_text", "detected_lang", "confidence_score", "alternatives", "explanation"));
+    openapiFields = new HashSet<String>(Arrays.asList("translated_text"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -292,22 +150,8 @@ public class PostAiTranslate200ResponseData {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("original_text") != null && !jsonObj.get("original_text").isJsonNull()) && !jsonObj.get("original_text").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `original_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("original_text").toString()));
-      }
       if ((jsonObj.get("translated_text") != null && !jsonObj.get("translated_text").isJsonNull()) && !jsonObj.get("translated_text").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `translated_text` to be a primitive type in the JSON string but got `%s`", jsonObj.get("translated_text").toString()));
-      }
-      if ((jsonObj.get("detected_lang") != null && !jsonObj.get("detected_lang").isJsonNull()) && !jsonObj.get("detected_lang").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `detected_lang` to be a primitive type in the JSON string but got `%s`", jsonObj.get("detected_lang").toString()));
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("alternatives") != null && !jsonObj.get("alternatives").isJsonNull() && !jsonObj.get("alternatives").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `alternatives` to be an array in the JSON string but got `%s`", jsonObj.get("alternatives").toString()));
-      }
-      // validate the optional field `explanation`
-      if (jsonObj.get("explanation") != null && !jsonObj.get("explanation").isJsonNull()) {
-        PostAiTranslate200ResponseDataExplanation.validateJsonElement(jsonObj.get("explanation"));
       }
   }
 

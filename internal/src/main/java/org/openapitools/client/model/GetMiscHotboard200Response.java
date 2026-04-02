@@ -24,432 +24,303 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openapitools.client.model.GetMiscHotboard200ResponseListInner;
-import org.openapitools.client.model.GetMiscHotboard200ResponseResultsInner;
+import org.openapitools.client.model.GetMiscHotboard200ResponseOneOf;
+import org.openapitools.client.model.GetMiscHotboard200ResponseOneOf1;
+import org.openapitools.client.model.GetMiscHotboard200ResponseOneOf1ResultsInner;
+import org.openapitools.client.model.GetMiscHotboard200ResponseOneOf2;
+import org.openapitools.client.model.GetMiscHotboard200ResponseOneOfListInner;
+
+
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Locale;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.TypeAdapter;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Locale;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonParseException;
 
 import org.openapitools.client.JSON;
 
-/**
- * GetMiscHotboard200Response
- */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
-public class GetMiscHotboard200Response {
-  public static final String SERIALIZED_NAME_LIST = "list";
-  @SerializedName(SERIALIZED_NAME_LIST)
-  @javax.annotation.Nullable
-  private List<GetMiscHotboard200ResponseListInner> _list = new ArrayList<>();
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+public class GetMiscHotboard200Response extends AbstractOpenApiSchema {
+    private static final Logger log = Logger.getLogger(GetMiscHotboard200Response.class.getName());
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  @javax.annotation.Nullable
-  private String type;
+    public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        @SuppressWarnings("unchecked")
+        @Override
+        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
+            if (!GetMiscHotboard200Response.class.isAssignableFrom(type.getRawType())) {
+                return null; // this class only serializes 'GetMiscHotboard200Response' and its subtypes
+            }
+            final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
+            final TypeAdapter<GetMiscHotboard200ResponseOneOf> adapterGetMiscHotboard200ResponseOneOf = gson.getDelegateAdapter(this, TypeToken.get(GetMiscHotboard200ResponseOneOf.class));
+            final TypeAdapter<GetMiscHotboard200ResponseOneOf1> adapterGetMiscHotboard200ResponseOneOf1 = gson.getDelegateAdapter(this, TypeToken.get(GetMiscHotboard200ResponseOneOf1.class));
+            final TypeAdapter<GetMiscHotboard200ResponseOneOf2> adapterGetMiscHotboard200ResponseOneOf2 = gson.getDelegateAdapter(this, TypeToken.get(GetMiscHotboard200ResponseOneOf2.class));
 
-  public static final String SERIALIZED_NAME_UPDATE_TIME = "update_time";
-  @SerializedName(SERIALIZED_NAME_UPDATE_TIME)
-  @javax.annotation.Nullable
-  private String updateTime;
+            return (TypeAdapter<T>) new TypeAdapter<GetMiscHotboard200Response>() {
+                @Override
+                public void write(JsonWriter out, GetMiscHotboard200Response value) throws IOException {
+                    if (value == null || value.getActualInstance() == null) {
+                        elementAdapter.write(out, null);
+                        return;
+                    }
 
-  public static final String SERIALIZED_NAME_SNAPSHOT_TIME = "snapshot_time";
-  @SerializedName(SERIALIZED_NAME_SNAPSHOT_TIME)
-  @javax.annotation.Nullable
-  private Integer snapshotTime;
+                    // check if the actual instance is of the type `GetMiscHotboard200ResponseOneOf`
+                    if (value.getActualInstance() instanceof GetMiscHotboard200ResponseOneOf) {
+                        JsonElement element = adapterGetMiscHotboard200ResponseOneOf.toJsonTree((GetMiscHotboard200ResponseOneOf)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `GetMiscHotboard200ResponseOneOf1`
+                    if (value.getActualInstance() instanceof GetMiscHotboard200ResponseOneOf1) {
+                        JsonElement element = adapterGetMiscHotboard200ResponseOneOf1.toJsonTree((GetMiscHotboard200ResponseOneOf1)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    // check if the actual instance is of the type `GetMiscHotboard200ResponseOneOf2`
+                    if (value.getActualInstance() instanceof GetMiscHotboard200ResponseOneOf2) {
+                        JsonElement element = adapterGetMiscHotboard200ResponseOneOf2.toJsonTree((GetMiscHotboard200ResponseOneOf2)value.getActualInstance());
+                        elementAdapter.write(out, element);
+                        return;
+                    }
+                    throw new IOException("Failed to serialize as the type doesn't match oneOf schemas: GetMiscHotboard200ResponseOneOf, GetMiscHotboard200ResponseOneOf1, GetMiscHotboard200ResponseOneOf2");
+                }
 
-  public static final String SERIALIZED_NAME_KEYWORD = "keyword";
-  @SerializedName(SERIALIZED_NAME_KEYWORD)
-  @javax.annotation.Nullable
-  private String keyword;
+                @Override
+                public GetMiscHotboard200Response read(JsonReader in) throws IOException {
+                    Object deserialized = null;
+                    JsonElement jsonElement = elementAdapter.read(in);
 
-  public static final String SERIALIZED_NAME_COUNT = "count";
-  @SerializedName(SERIALIZED_NAME_COUNT)
-  @javax.annotation.Nullable
-  private Integer count;
+                    int match = 0;
+                    ArrayList<String> errorMessages = new ArrayList<>();
+                    TypeAdapter actualAdapter = elementAdapter;
 
-  public static final String SERIALIZED_NAME_RESULTS = "results";
-  @SerializedName(SERIALIZED_NAME_RESULTS)
-  @javax.annotation.Nullable
-  private List<GetMiscHotboard200ResponseResultsInner> results = new ArrayList<>();
+                    // deserialize GetMiscHotboard200ResponseOneOf
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        GetMiscHotboard200ResponseOneOf.validateJsonElement(jsonElement);
+                        actualAdapter = adapterGetMiscHotboard200ResponseOneOf;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'GetMiscHotboard200ResponseOneOf'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetMiscHotboard200ResponseOneOf failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'GetMiscHotboard200ResponseOneOf'", e);
+                    }
+                    // deserialize GetMiscHotboard200ResponseOneOf1
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        GetMiscHotboard200ResponseOneOf1.validateJsonElement(jsonElement);
+                        actualAdapter = adapterGetMiscHotboard200ResponseOneOf1;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'GetMiscHotboard200ResponseOneOf1'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetMiscHotboard200ResponseOneOf1 failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'GetMiscHotboard200ResponseOneOf1'", e);
+                    }
+                    // deserialize GetMiscHotboard200ResponseOneOf2
+                    try {
+                        // validate the JSON object to see if any exception is thrown
+                        GetMiscHotboard200ResponseOneOf2.validateJsonElement(jsonElement);
+                        actualAdapter = adapterGetMiscHotboard200ResponseOneOf2;
+                        match++;
+                        log.log(Level.FINER, "Input data matches schema 'GetMiscHotboard200ResponseOneOf2'");
+                    } catch (Exception e) {
+                        // deserialization failed, continue
+                        errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetMiscHotboard200ResponseOneOf2 failed with `%s`.", e.getMessage()));
+                        log.log(Level.FINER, "Input data does not match schema 'GetMiscHotboard200ResponseOneOf2'", e);
+                    }
 
-  public static final String SERIALIZED_NAME_SOURCES = "sources";
-  @SerializedName(SERIALIZED_NAME_SOURCES)
-  @javax.annotation.Nullable
-  private List<String> sources = new ArrayList<>();
+                    if (match == 1) {
+                        GetMiscHotboard200Response ret = new GetMiscHotboard200Response();
+                        ret.setActualInstance(actualAdapter.fromJsonTree(jsonElement));
+                        return ret;
+                    }
 
-  public GetMiscHotboard200Response() {
-  }
-
-  public GetMiscHotboard200Response _list(@javax.annotation.Nullable List<GetMiscHotboard200ResponseListInner> _list) {
-    this._list = _list;
-    return this;
-  }
-
-  public GetMiscHotboard200Response addListItem(GetMiscHotboard200ResponseListInner _listItem) {
-    if (this._list == null) {
-      this._list = new ArrayList<>();
-    }
-    this._list.add(_listItem);
-    return this;
-  }
-
-  /**
-   * 热榜条目列表。
-   * @return _list
-   */
-  @javax.annotation.Nullable
-  public List<GetMiscHotboard200ResponseListInner> getList() {
-    return _list;
-  }
-
-  public void setList(@javax.annotation.Nullable List<GetMiscHotboard200ResponseListInner> _list) {
-    this._list = _list;
-  }
-
-
-  public GetMiscHotboard200Response type(@javax.annotation.Nullable String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   */
-  @javax.annotation.Nullable
-  public String getType() {
-    return type;
-  }
-
-  public void setType(@javax.annotation.Nullable String type) {
-    this.type = type;
-  }
-
-
-  public GetMiscHotboard200Response updateTime(@javax.annotation.Nullable String updateTime) {
-    this.updateTime = updateTime;
-    return this;
-  }
-
-  /**
-   * Get updateTime
-   * @return updateTime
-   */
-  @javax.annotation.Nullable
-  public String getUpdateTime() {
-    return updateTime;
-  }
-
-  public void setUpdateTime(@javax.annotation.Nullable String updateTime) {
-    this.updateTime = updateTime;
-  }
-
-
-  public GetMiscHotboard200Response snapshotTime(@javax.annotation.Nullable Integer snapshotTime) {
-    this.snapshotTime = snapshotTime;
-    return this;
-  }
-
-  /**
-   * 时光机模式返回的快照实际时间戳（毫秒）。
-   * @return snapshotTime
-   */
-  @javax.annotation.Nullable
-  public Integer getSnapshotTime() {
-    return snapshotTime;
-  }
-
-  public void setSnapshotTime(@javax.annotation.Nullable Integer snapshotTime) {
-    this.snapshotTime = snapshotTime;
-  }
-
-
-  public GetMiscHotboard200Response keyword(@javax.annotation.Nullable String keyword) {
-    this.keyword = keyword;
-    return this;
-  }
-
-  /**
-   * 搜索模式返回的搜索关键词。
-   * @return keyword
-   */
-  @javax.annotation.Nullable
-  public String getKeyword() {
-    return keyword;
-  }
-
-  public void setKeyword(@javax.annotation.Nullable String keyword) {
-    this.keyword = keyword;
-  }
-
-
-  public GetMiscHotboard200Response count(@javax.annotation.Nullable Integer count) {
-    this.count = count;
-    return this;
-  }
-
-  /**
-   * 搜索模式返回的结果数量。
-   * @return count
-   */
-  @javax.annotation.Nullable
-  public Integer getCount() {
-    return count;
-  }
-
-  public void setCount(@javax.annotation.Nullable Integer count) {
-    this.count = count;
-  }
-
-
-  public GetMiscHotboard200Response results(@javax.annotation.Nullable List<GetMiscHotboard200ResponseResultsInner> results) {
-    this.results = results;
-    return this;
-  }
-
-  public GetMiscHotboard200Response addResultsItem(GetMiscHotboard200ResponseResultsInner resultsItem) {
-    if (this.results == null) {
-      this.results = new ArrayList<>();
-    }
-    this.results.add(resultsItem);
-    return this;
-  }
-
-  /**
-   * 搜索模式返回的结果数组。
-   * @return results
-   */
-  @javax.annotation.Nullable
-  public List<GetMiscHotboard200ResponseResultsInner> getResults() {
-    return results;
-  }
-
-  public void setResults(@javax.annotation.Nullable List<GetMiscHotboard200ResponseResultsInner> results) {
-    this.results = results;
-  }
-
-
-  public GetMiscHotboard200Response sources(@javax.annotation.Nullable List<String> sources) {
-    this.sources = sources;
-    return this;
-  }
-
-  public GetMiscHotboard200Response addSourcesItem(String sourcesItem) {
-    if (this.sources == null) {
-      this.sources = new ArrayList<>();
-    }
-    this.sources.add(sourcesItem);
-    return this;
-  }
-
-  /**
-   * 数据源列表模式返回的可用历史数据源数组。
-   * @return sources
-   */
-  @javax.annotation.Nullable
-  public List<String> getSources() {
-    return sources;
-  }
-
-  public void setSources(@javax.annotation.Nullable List<String> sources) {
-    this.sources = sources;
-  }
-
-
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    GetMiscHotboard200Response getMiscHotboard200Response = (GetMiscHotboard200Response) o;
-    return Objects.equals(this._list, getMiscHotboard200Response._list) &&
-        Objects.equals(this.type, getMiscHotboard200Response.type) &&
-        Objects.equals(this.updateTime, getMiscHotboard200Response.updateTime) &&
-        Objects.equals(this.snapshotTime, getMiscHotboard200Response.snapshotTime) &&
-        Objects.equals(this.keyword, getMiscHotboard200Response.keyword) &&
-        Objects.equals(this.count, getMiscHotboard200Response.count) &&
-        Objects.equals(this.results, getMiscHotboard200Response.results) &&
-        Objects.equals(this.sources, getMiscHotboard200Response.sources);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(_list, type, updateTime, snapshotTime, keyword, count, results, sources);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class GetMiscHotboard200Response {\n");
-    sb.append("    _list: ").append(toIndentedString(_list)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    updateTime: ").append(toIndentedString(updateTime)).append("\n");
-    sb.append("    snapshotTime: ").append(toIndentedString(snapshotTime)).append("\n");
-    sb.append("    keyword: ").append(toIndentedString(keyword)).append("\n");
-    sb.append("    count: ").append(toIndentedString(count)).append("\n");
-    sb.append("    results: ").append(toIndentedString(results)).append("\n");
-    sb.append("    sources: ").append(toIndentedString(sources)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
-
-
-  public static HashSet<String> openapiFields;
-  public static HashSet<String> openapiRequiredFields;
-
-  static {
-    // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("list", "type", "update_time", "snapshot_time", "keyword", "count", "results", "sources"));
-
-    // a set of required properties/fields (JSON key names)
-    openapiRequiredFields = new HashSet<String>(0);
-  }
-
-  /**
-   * Validates the JSON Element and throws an exception if issues found
-   *
-   * @param jsonElement JSON Element
-   * @throws IOException if the JSON Element is invalid with respect to GetMiscHotboard200Response
-   */
-  public static void validateJsonElement(JsonElement jsonElement) throws IOException {
-      if (jsonElement == null) {
-        if (!GetMiscHotboard200Response.openapiRequiredFields.isEmpty()) { // has required fields but JSON element is null
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The required field(s) %s in GetMiscHotboard200Response is not found in the empty JSON string", GetMiscHotboard200Response.openapiRequiredFields.toString()));
+                    throw new IOException(String.format(Locale.ROOT, "Failed deserialization for GetMiscHotboard200Response: %d classes match result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", match, errorMessages, jsonElement.toString()));
+                }
+            }.nullSafe();
         }
-      }
+    }
 
-      Set<Map.Entry<String, JsonElement>> entries = jsonElement.getAsJsonObject().entrySet();
-      // check to see if the JSON string contains additional fields
-      for (Map.Entry<String, JsonElement> entry : entries) {
-        if (!GetMiscHotboard200Response.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format(Locale.ROOT, "The field `%s` in the JSON string is not defined in the `GetMiscHotboard200Response` properties. JSON: %s", entry.getKey(), jsonElement.toString()));
+    // store a list of schema names defined in oneOf
+    public static final Map<String, Class<?>> schemas = new HashMap<String, Class<?>>();
+
+    public GetMiscHotboard200Response() {
+        super("oneOf", Boolean.FALSE);
+    }
+
+    public GetMiscHotboard200Response(Object o) {
+        super("oneOf", Boolean.FALSE);
+        setActualInstance(o);
+    }
+
+    static {
+        schemas.put("GetMiscHotboard200ResponseOneOf", GetMiscHotboard200ResponseOneOf.class);
+        schemas.put("GetMiscHotboard200ResponseOneOf1", GetMiscHotboard200ResponseOneOf1.class);
+        schemas.put("GetMiscHotboard200ResponseOneOf2", GetMiscHotboard200ResponseOneOf2.class);
+    }
+
+    @Override
+    public Map<String, Class<?>> getSchemas() {
+        return GetMiscHotboard200Response.schemas;
+    }
+
+    /**
+     * Set the instance that matches the oneOf child schema, check
+     * the instance parameter is valid against the oneOf child schemas:
+     * GetMiscHotboard200ResponseOneOf, GetMiscHotboard200ResponseOneOf1, GetMiscHotboard200ResponseOneOf2
+     *
+     * It could be an instance of the 'oneOf' schemas.
+     */
+    @Override
+    public void setActualInstance(Object instance) {
+        if (instance instanceof GetMiscHotboard200ResponseOneOf) {
+            super.setActualInstance(instance);
+            return;
         }
-      }
-        JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if (jsonObj.get("list") != null && !jsonObj.get("list").isJsonNull()) {
-        JsonArray jsonArray_list = jsonObj.getAsJsonArray("list");
-        if (jsonArray_list != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("list").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `list` to be an array in the JSON string but got `%s`", jsonObj.get("list").toString()));
-          }
 
-          // validate the optional field `list` (array)
-          for (int i = 0; i < jsonArray_list.size(); i++) {
-            GetMiscHotboard200ResponseListInner.validateJsonElement(jsonArray_list.get(i));
-          };
+        if (instance instanceof GetMiscHotboard200ResponseOneOf1) {
+            super.setActualInstance(instance);
+            return;
         }
-      }
-      if ((jsonObj.get("type") != null && !jsonObj.get("type").isJsonNull()) && !jsonObj.get("type").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `type` to be a primitive type in the JSON string but got `%s`", jsonObj.get("type").toString()));
-      }
-      if ((jsonObj.get("update_time") != null && !jsonObj.get("update_time").isJsonNull()) && !jsonObj.get("update_time").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `update_time` to be a primitive type in the JSON string but got `%s`", jsonObj.get("update_time").toString()));
-      }
-      if ((jsonObj.get("keyword") != null && !jsonObj.get("keyword").isJsonNull()) && !jsonObj.get("keyword").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `keyword` to be a primitive type in the JSON string but got `%s`", jsonObj.get("keyword").toString()));
-      }
-      if (jsonObj.get("results") != null && !jsonObj.get("results").isJsonNull()) {
-        JsonArray jsonArrayresults = jsonObj.getAsJsonArray("results");
-        if (jsonArrayresults != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("results").isJsonArray()) {
-            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `results` to be an array in the JSON string but got `%s`", jsonObj.get("results").toString()));
-          }
 
-          // validate the optional field `results` (array)
-          for (int i = 0; i < jsonArrayresults.size(); i++) {
-            GetMiscHotboard200ResponseResultsInner.validateJsonElement(jsonArrayresults.get(i));
-          };
+        if (instance instanceof GetMiscHotboard200ResponseOneOf2) {
+            super.setActualInstance(instance);
+            return;
         }
-      }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("sources") != null && !jsonObj.get("sources").isJsonNull() && !jsonObj.get("sources").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `sources` to be an array in the JSON string but got `%s`", jsonObj.get("sources").toString()));
-      }
-  }
 
-  public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
+        throw new RuntimeException("Invalid instance type. Must be GetMiscHotboard200ResponseOneOf, GetMiscHotboard200ResponseOneOf1, GetMiscHotboard200ResponseOneOf2");
+    }
+
+    /**
+     * Get the actual instance, which can be the following:
+     * GetMiscHotboard200ResponseOneOf, GetMiscHotboard200ResponseOneOf1, GetMiscHotboard200ResponseOneOf2
+     *
+     * @return The actual instance (GetMiscHotboard200ResponseOneOf, GetMiscHotboard200ResponseOneOf1, GetMiscHotboard200ResponseOneOf2)
+     */
     @SuppressWarnings("unchecked")
     @Override
-    public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!GetMiscHotboard200Response.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'GetMiscHotboard200Response' and its subtypes
-       }
-       final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<GetMiscHotboard200Response> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(GetMiscHotboard200Response.class));
-
-       return (TypeAdapter<T>) new TypeAdapter<GetMiscHotboard200Response>() {
-           @Override
-           public void write(JsonWriter out, GetMiscHotboard200Response value) throws IOException {
-             JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
-             elementAdapter.write(out, obj);
-           }
-
-           @Override
-           public GetMiscHotboard200Response read(JsonReader in) throws IOException {
-             JsonElement jsonElement = elementAdapter.read(in);
-             validateJsonElement(jsonElement);
-             return thisAdapter.fromJsonTree(jsonElement);
-           }
-
-       }.nullSafe();
+    public Object getActualInstance() {
+        return super.getActualInstance();
     }
-  }
 
-  /**
-   * Create an instance of GetMiscHotboard200Response given an JSON string
-   *
-   * @param jsonString JSON string
-   * @return An instance of GetMiscHotboard200Response
-   * @throws IOException if the JSON string is invalid with respect to GetMiscHotboard200Response
-   */
-  public static GetMiscHotboard200Response fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, GetMiscHotboard200Response.class);
-  }
+    /**
+     * Get the actual instance of `GetMiscHotboard200ResponseOneOf`. If the actual instance is not `GetMiscHotboard200ResponseOneOf`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `GetMiscHotboard200ResponseOneOf`
+     * @throws ClassCastException if the instance is not `GetMiscHotboard200ResponseOneOf`
+     */
+    public GetMiscHotboard200ResponseOneOf getGetMiscHotboard200ResponseOneOf() throws ClassCastException {
+        return (GetMiscHotboard200ResponseOneOf)super.getActualInstance();
+    }
 
-  /**
-   * Convert an instance of GetMiscHotboard200Response to an JSON string
-   *
-   * @return JSON string
-   */
-  public String toJson() {
-    return JSON.getGson().toJson(this);
-  }
+    /**
+     * Get the actual instance of `GetMiscHotboard200ResponseOneOf1`. If the actual instance is not `GetMiscHotboard200ResponseOneOf1`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `GetMiscHotboard200ResponseOneOf1`
+     * @throws ClassCastException if the instance is not `GetMiscHotboard200ResponseOneOf1`
+     */
+    public GetMiscHotboard200ResponseOneOf1 getGetMiscHotboard200ResponseOneOf1() throws ClassCastException {
+        return (GetMiscHotboard200ResponseOneOf1)super.getActualInstance();
+    }
+
+    /**
+     * Get the actual instance of `GetMiscHotboard200ResponseOneOf2`. If the actual instance is not `GetMiscHotboard200ResponseOneOf2`,
+     * the ClassCastException will be thrown.
+     *
+     * @return The actual instance of `GetMiscHotboard200ResponseOneOf2`
+     * @throws ClassCastException if the instance is not `GetMiscHotboard200ResponseOneOf2`
+     */
+    public GetMiscHotboard200ResponseOneOf2 getGetMiscHotboard200ResponseOneOf2() throws ClassCastException {
+        return (GetMiscHotboard200ResponseOneOf2)super.getActualInstance();
+    }
+
+    /**
+     * Validates the JSON Element and throws an exception if issues found
+     *
+     * @param jsonElement JSON Element
+     * @throws IOException if the JSON Element is invalid with respect to GetMiscHotboard200Response
+     */
+    public static void validateJsonElement(JsonElement jsonElement) throws IOException {
+        // validate oneOf schemas one by one
+        int validCount = 0;
+        ArrayList<String> errorMessages = new ArrayList<>();
+        // validate the json string with GetMiscHotboard200ResponseOneOf
+        try {
+            GetMiscHotboard200ResponseOneOf.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetMiscHotboard200ResponseOneOf failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with GetMiscHotboard200ResponseOneOf1
+        try {
+            GetMiscHotboard200ResponseOneOf1.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetMiscHotboard200ResponseOneOf1 failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        // validate the json string with GetMiscHotboard200ResponseOneOf2
+        try {
+            GetMiscHotboard200ResponseOneOf2.validateJsonElement(jsonElement);
+            validCount++;
+        } catch (Exception e) {
+            errorMessages.add(String.format(Locale.ROOT, "Deserialization for GetMiscHotboard200ResponseOneOf2 failed with `%s`.", e.getMessage()));
+            // continue to the next one
+        }
+        if (validCount != 1) {
+            throw new IOException(String.format(Locale.ROOT, "The JSON string is invalid for GetMiscHotboard200Response with oneOf schemas: GetMiscHotboard200ResponseOneOf, GetMiscHotboard200ResponseOneOf1, GetMiscHotboard200ResponseOneOf2. %d class(es) match the result, expected 1. Detailed failure message for oneOf schemas: %s. JSON: %s", validCount, errorMessages, jsonElement.toString()));
+        }
+    }
+
+    /**
+     * Create an instance of GetMiscHotboard200Response given an JSON string
+     *
+     * @param jsonString JSON string
+     * @return An instance of GetMiscHotboard200Response
+     * @throws IOException if the JSON string is invalid with respect to GetMiscHotboard200Response
+     */
+    public static GetMiscHotboard200Response fromJson(String jsonString) throws IOException {
+        return JSON.getGson().fromJson(jsonString, GetMiscHotboard200Response.class);
+    }
+
+    /**
+     * Convert an instance of GetMiscHotboard200Response to an JSON string
+     *
+     * @return JSON string
+     */
+    public String toJson() {
+        return JSON.getGson().toJson(this);
+    }
 }
 

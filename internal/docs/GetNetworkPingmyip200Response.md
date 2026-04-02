@@ -7,12 +7,9 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**avg** | **BigDecimal** | 平均延迟(ms) |  [optional] |
-|**host** | **String** |  |  [optional] |
-|**ip** | **String** |  |  [optional] |
-|**location** | **String** |  |  [optional] |
-|**max** | **BigDecimal** | 最大延迟(ms) |  [optional] |
-|**min** | **BigDecimal** | 最小延迟(ms) |  [optional] |
+|**clientIp** | **String** | 当前客户端的公网 IP 地址。 |  [optional] |
+|**pingSuccessful** | **Boolean** | 是否成功完成对当前客户端 IP 的 Ping。 |  [optional] |
+|**message** | **String** | 操作结果说明。成功时通常会附带平均延迟信息。 |  [optional] |
 
 
 

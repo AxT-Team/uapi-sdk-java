@@ -21,6 +21,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -55,12 +56,17 @@ import org.openapitools.client.JSON;
 /**
  * GetSocialBilibiliReplies200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialBilibiliReplies200Response {
   public static final String SERIALIZED_NAME_PAGE = "page";
   @SerializedName(SERIALIZED_NAME_PAGE)
   @javax.annotation.Nullable
   private GetSocialBilibiliReplies200ResponsePage page;
+
+  public static final String SERIALIZED_NAME_CONFIG = "config";
+  @SerializedName(SERIALIZED_NAME_CONFIG)
+  @javax.annotation.Nullable
+  private Object config;
 
   public static final String SERIALIZED_NAME_HOTS = "hots";
   @SerializedName(SERIALIZED_NAME_HOTS)
@@ -71,6 +77,41 @@ public class GetSocialBilibiliReplies200Response {
   @SerializedName(SERIALIZED_NAME_REPLIES)
   @javax.annotation.Nullable
   private List<GetSocialBilibiliReplies200ResponseRepliesInner> replies = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_UPPER = "upper";
+  @SerializedName(SERIALIZED_NAME_UPPER)
+  @javax.annotation.Nullable
+  private Object upper;
+
+  public static final String SERIALIZED_NAME_TOP = "top";
+  @SerializedName(SERIALIZED_NAME_TOP)
+  @javax.annotation.Nullable
+  private Object top;
+
+  public static final String SERIALIZED_NAME_NOTICE = "notice";
+  @SerializedName(SERIALIZED_NAME_NOTICE)
+  @javax.annotation.Nullable
+  private Object notice;
+
+  public static final String SERIALIZED_NAME_VOTE = "vote";
+  @SerializedName(SERIALIZED_NAME_VOTE)
+  @javax.annotation.Nullable
+  private BigDecimal vote;
+
+  public static final String SERIALIZED_NAME_FOLDER = "folder";
+  @SerializedName(SERIALIZED_NAME_FOLDER)
+  @javax.annotation.Nullable
+  private Object folder;
+
+  public static final String SERIALIZED_NAME_CONTROL = "control";
+  @SerializedName(SERIALIZED_NAME_CONTROL)
+  @javax.annotation.Nullable
+  private Object control;
+
+  public static final String SERIALIZED_NAME_CURSOR = "cursor";
+  @SerializedName(SERIALIZED_NAME_CURSOR)
+  @javax.annotation.Nullable
+  private Object cursor;
 
   public GetSocialBilibiliReplies200Response() {
   }
@@ -91,6 +132,25 @@ public class GetSocialBilibiliReplies200Response {
 
   public void setPage(@javax.annotation.Nullable GetSocialBilibiliReplies200ResponsePage page) {
     this.page = page;
+  }
+
+
+  public GetSocialBilibiliReplies200Response config(@javax.annotation.Nullable Object config) {
+    this.config = config;
+    return this;
+  }
+
+  /**
+   * 评论区配置。不同视频或不同权限下可能为 null。
+   * @return config
+   */
+  @javax.annotation.Nullable
+  public Object getConfig() {
+    return config;
+  }
+
+  public void setConfig(@javax.annotation.Nullable Object config) {
+    this.config = config;
   }
 
 
@@ -148,6 +208,139 @@ public class GetSocialBilibiliReplies200Response {
   }
 
 
+  public GetSocialBilibiliReplies200Response upper(@javax.annotation.Nullable Object upper) {
+    this.upper = upper;
+    return this;
+  }
+
+  /**
+   * UP 主相关信息。无数据时为 null。
+   * @return upper
+   */
+  @javax.annotation.Nullable
+  public Object getUpper() {
+    return upper;
+  }
+
+  public void setUpper(@javax.annotation.Nullable Object upper) {
+    this.upper = upper;
+  }
+
+
+  public GetSocialBilibiliReplies200Response top(@javax.annotation.Nullable Object top) {
+    this.top = top;
+    return this;
+  }
+
+  /**
+   * 置顶评论信息。没有置顶评论时为 null。
+   * @return top
+   */
+  @javax.annotation.Nullable
+  public Object getTop() {
+    return top;
+  }
+
+  public void setTop(@javax.annotation.Nullable Object top) {
+    this.top = top;
+  }
+
+
+  public GetSocialBilibiliReplies200Response notice(@javax.annotation.Nullable Object notice) {
+    this.notice = notice;
+    return this;
+  }
+
+  /**
+   * 评论区公告信息。没有公告时为 null。
+   * @return notice
+   */
+  @javax.annotation.Nullable
+  public Object getNotice() {
+    return notice;
+  }
+
+  public void setNotice(@javax.annotation.Nullable Object notice) {
+    this.notice = notice;
+  }
+
+
+  public GetSocialBilibiliReplies200Response vote(@javax.annotation.Nullable BigDecimal vote) {
+    this.vote = vote;
+    return this;
+  }
+
+  /**
+   * 评论区投票相关状态值。没有投票时通常为 0。
+   * @return vote
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getVote() {
+    return vote;
+  }
+
+  public void setVote(@javax.annotation.Nullable BigDecimal vote) {
+    this.vote = vote;
+  }
+
+
+  public GetSocialBilibiliReplies200Response folder(@javax.annotation.Nullable Object folder) {
+    this.folder = folder;
+    return this;
+  }
+
+  /**
+   * 评论折叠相关信息。没有数据时为 null。
+   * @return folder
+   */
+  @javax.annotation.Nullable
+  public Object getFolder() {
+    return folder;
+  }
+
+  public void setFolder(@javax.annotation.Nullable Object folder) {
+    this.folder = folder;
+  }
+
+
+  public GetSocialBilibiliReplies200Response control(@javax.annotation.Nullable Object control) {
+    this.control = control;
+    return this;
+  }
+
+  /**
+   * 评论区控制信息。没有数据时为 null。
+   * @return control
+   */
+  @javax.annotation.Nullable
+  public Object getControl() {
+    return control;
+  }
+
+  public void setControl(@javax.annotation.Nullable Object control) {
+    this.control = control;
+  }
+
+
+  public GetSocialBilibiliReplies200Response cursor(@javax.annotation.Nullable Object cursor) {
+    this.cursor = cursor;
+    return this;
+  }
+
+  /**
+   * 游标翻页信息。部分场景下为 null。
+   * @return cursor
+   */
+  @javax.annotation.Nullable
+  public Object getCursor() {
+    return cursor;
+  }
+
+  public void setCursor(@javax.annotation.Nullable Object cursor) {
+    this.cursor = cursor;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -159,8 +352,16 @@ public class GetSocialBilibiliReplies200Response {
     }
     GetSocialBilibiliReplies200Response getSocialBilibiliReplies200Response = (GetSocialBilibiliReplies200Response) o;
     return Objects.equals(this.page, getSocialBilibiliReplies200Response.page) &&
+        Objects.equals(this.config, getSocialBilibiliReplies200Response.config) &&
         Objects.equals(this.hots, getSocialBilibiliReplies200Response.hots) &&
-        Objects.equals(this.replies, getSocialBilibiliReplies200Response.replies);
+        Objects.equals(this.replies, getSocialBilibiliReplies200Response.replies) &&
+        Objects.equals(this.upper, getSocialBilibiliReplies200Response.upper) &&
+        Objects.equals(this.top, getSocialBilibiliReplies200Response.top) &&
+        Objects.equals(this.notice, getSocialBilibiliReplies200Response.notice) &&
+        Objects.equals(this.vote, getSocialBilibiliReplies200Response.vote) &&
+        Objects.equals(this.folder, getSocialBilibiliReplies200Response.folder) &&
+        Objects.equals(this.control, getSocialBilibiliReplies200Response.control) &&
+        Objects.equals(this.cursor, getSocialBilibiliReplies200Response.cursor);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -169,7 +370,7 @@ public class GetSocialBilibiliReplies200Response {
 
   @Override
   public int hashCode() {
-    return Objects.hash(page, hots, replies);
+    return Objects.hash(page, config, hots, replies, upper, top, notice, vote, folder, control, cursor);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -184,8 +385,16 @@ public class GetSocialBilibiliReplies200Response {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetSocialBilibiliReplies200Response {\n");
     sb.append("    page: ").append(toIndentedString(page)).append("\n");
+    sb.append("    config: ").append(toIndentedString(config)).append("\n");
     sb.append("    hots: ").append(toIndentedString(hots)).append("\n");
     sb.append("    replies: ").append(toIndentedString(replies)).append("\n");
+    sb.append("    upper: ").append(toIndentedString(upper)).append("\n");
+    sb.append("    top: ").append(toIndentedString(top)).append("\n");
+    sb.append("    notice: ").append(toIndentedString(notice)).append("\n");
+    sb.append("    vote: ").append(toIndentedString(vote)).append("\n");
+    sb.append("    folder: ").append(toIndentedString(folder)).append("\n");
+    sb.append("    control: ").append(toIndentedString(control)).append("\n");
+    sb.append("    cursor: ").append(toIndentedString(cursor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -207,7 +416,7 @@ public class GetSocialBilibiliReplies200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("page", "hots", "replies"));
+    openapiFields = new HashSet<String>(Arrays.asList("page", "config", "hots", "replies", "upper", "top", "notice", "vote", "folder", "control", "cursor"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);

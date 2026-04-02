@@ -58,7 +58,7 @@ import org.openapitools.client.JSON;
 /**
  * GetGithubRepo200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetGithubRepo200Response {
   public static final String SERIALIZED_NAME_FULL_NAME = "full_name";
   @SerializedName(SERIALIZED_NAME_FULL_NAME)
@@ -189,7 +189,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get fullName
+   * 仓库完整名称。
    * @return fullName
    */
   @javax.annotation.Nullable
@@ -208,7 +208,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get description
+   * 仓库简介。
    * @return description
    */
   @javax.annotation.Nullable
@@ -227,7 +227,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get homepage
+   * 仓库主页链接。
    * @return homepage
    */
   @javax.annotation.Nullable
@@ -246,7 +246,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get defaultBranch
+   * 默认分支名称。
    * @return defaultBranch
    */
   @javax.annotation.Nullable
@@ -265,7 +265,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get primaryBranch
+   * 主要分支名称（通常与默认分支一致）。
    * @return primaryBranch
    */
   @javax.annotation.Nullable
@@ -284,7 +284,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get defaultBranchSha
+   * 默认分支最新提交的 SHA 哈希。
    * @return defaultBranchSha
    */
   @javax.annotation.Nullable
@@ -303,7 +303,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get visibility
+   * 仓库可见性，常见值为 &#x60;public&#x60; 或 &#x60;private&#x60;。
    * @return visibility
    */
   @javax.annotation.Nullable
@@ -322,7 +322,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get archived
+   * 仓库是否已归档。
    * @return archived
    */
   @javax.annotation.Nullable
@@ -341,7 +341,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get disabled
+   * 仓库是否被禁用。
    * @return disabled
    */
   @javax.annotation.Nullable
@@ -360,7 +360,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get fork
+   * 是否为 Fork 仓库。
    * @return fork
    */
   @javax.annotation.Nullable
@@ -379,7 +379,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get language
+   * 主要语言。
    * @return language
    */
   @javax.annotation.Nullable
@@ -406,7 +406,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get topics
+   * 话题标签列表。
    * @return topics
    */
   @javax.annotation.Nullable
@@ -425,7 +425,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get license
+   * 开源许可证名称。
    * @return license
    */
   @javax.annotation.Nullable
@@ -444,7 +444,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get stargazers
+   * Star 数。
    * @return stargazers
    */
   @javax.annotation.Nullable
@@ -463,7 +463,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get forks
+   * Fork 数。
    * @return forks
    */
   @javax.annotation.Nullable
@@ -482,7 +482,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get openIssues
+   * 开放 Issue 数。
    * @return openIssues
    */
   @javax.annotation.Nullable
@@ -501,7 +501,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get watchers
+   * 关注者数量（watchers/subscribers）。
    * @return watchers
    */
   @javax.annotation.Nullable
@@ -520,7 +520,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get pushedAt
+   * 最后推送时间（ISO 8601）。
    * @return pushedAt
    */
   @javax.annotation.Nullable
@@ -539,7 +539,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get createdAt
+   * 创建时间（ISO 8601）。
    * @return createdAt
    */
   @javax.annotation.Nullable
@@ -558,7 +558,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get updatedAt
+   * 更新时间（ISO 8601）。
    * @return updatedAt
    */
   @javax.annotation.Nullable
@@ -585,7 +585,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get languages
+   * 语言统计（键为语言名，值为代码字节数）。
    * @return languages
    */
   @javax.annotation.Nullable
@@ -612,7 +612,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get collaborators
+   * 协作者列表。受权限限制时可能为 null 或空数组。
    * @return collaborators
    */
   @javax.annotation.Nullable
@@ -639,7 +639,7 @@ public class GetGithubRepo200Response {
   }
 
   /**
-   * Get maintainers
+   * 维护者列表（根据默认分支近期提交推断）。
    * @return maintainers
    */
   @javax.annotation.Nullable

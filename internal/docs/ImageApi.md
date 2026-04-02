@@ -95,7 +95,7 @@ No authorization required
 
 必应壁纸
 
-每天都想换张新壁纸？让必应的美图点亮你的一天吧！  ## 功能概述 这个接口会获取 Bing 搜索引擎当天全球同步的每日壁纸，并直接以图片形式返回。你可以用它来做应用的启动页、网站背景，或者任何需要每日更新精美图片的地方。  ## 使用须知  &gt; [!NOTE] &gt; **响应格式是图片** &gt; 请注意，此接口成功时直接返回图片二进制数据（通常为 &#x60;image/jpeg&#x60;），而非 JSON 格式。请确保客户端能够正确处理。  我们内置了备用方案：如果从必应官方获取图片失败，系统会尝试返回一张预存的高质量风景图，以保证服务的稳定性。
+每天都想换张新壁纸？让必应的美图点亮你的一天吧！  ## 功能概述 这个接口会获取 Bing 搜索引擎当天全球同步的每日壁纸，并直接以图片形式返回。你可以用它来做应用的启动页、网站背景，或者任何需要每日更新精美图片的地方。  ## 使用须知 此接口成功时直接返回图片二进制数据，通常是 &#x60;image/jpeg&#x60;，不是 JSON 格式。接入时请按图片响应来处理。
 
 ### Example
 ```java
@@ -220,7 +220,7 @@ No authorization required
 
 生成二维码
 
-无论是网址、文本还是联系方式，通通可以变成一个二维码！这是一个非常灵活的二维码生成工具。  ## 功能概述 你提供一段文本内容，我们为你生成对应的二维码图片。你可以自定义尺寸、前景色、背景色，还支持透明背景，并选择不同的返回格式以适应不同场景。  ## 使用须知  &gt; [!IMPORTANT] &gt; **关键参数 &#x60;format&#x60;** &gt; 此参数决定了成功响应的内容类型和结构，请务必根据你的需求选择并正确处理响应： &gt; - **&#x60;image&#x60;** (默认): 直接返回 &#x60;image/png&#x60; 格式的图片二进制数据，适合在 &#x60;&lt;img&gt;&#x60; 标签中直接使用。 &gt; - **&#x60;json&#x60;**: 返回一个包含 Base64 Data URI 的 JSON 对象，适合需要在前端直接嵌入CSS或HTML的场景。 &gt; - **&#x60;json_url&#x60;**: 返回一个包含图片临时URL的JSON对象，适合需要图片链接的场景。  &gt; [!TIP] &gt; **颜色参数说明** &gt; - 颜色参数使用十六进制格式（如 &#x60;#FF0000&#x60;） &gt; - URL 中需要对 &#x60;#&#x60; 进行编码，即 &#x60;%23&#x60;（例如：&#x60;fgcolor&#x3D;%23FF0000&#x60;） &gt; - 当 &#x60;transparent&#x3D;true&#x60; 时，&#x60;bgcolor&#x60; 参数会被忽略
+无论是网址、文本还是联系方式，通通可以变成一个二维码！这是一个非常灵活的二维码生成工具。  ## 功能概述 你提供一段文本内容，我们为你生成对应的二维码图片。你可以自定义尺寸、前景色、背景色，还支持透明背景，并选择不同的返回格式以适应不同场景。
 
 ### Example
 ```java
@@ -443,7 +443,7 @@ public class Example {
     defaultClient.setBasePath("https://uapis.cn/api/v1");
 
     ImageApi apiInstance = new ImageApi(defaultClient);
-    PostImageFrombase64Request postImageFrombase64Request = new PostImageFrombase64Request(); // PostImageFrombase64Request | 一个JSON对象，包含 `imageData` 字段，其值为你想要上传图片的完整Base64 Data URI。
+    PostImageFrombase64Request postImageFrombase64Request = new PostImageFrombase64Request(); // PostImageFrombase64Request | 
     try {
       PostImageFrombase64200Response result = apiInstance.postImageFrombase64(postImageFrombase64Request);
       System.out.println(result);
@@ -462,7 +462,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postImageFrombase64Request** | [**PostImageFrombase64Request**](PostImageFrombase64Request.md)| 一个JSON对象，包含 &#x60;imageData&#x60; 字段，其值为你想要上传图片的完整Base64 Data URI。 | |
+| **postImageFrombase64Request** | [**PostImageFrombase64Request**](PostImageFrombase64Request.md)|  | |
 
 ### Return type
 
@@ -558,7 +558,7 @@ No authorization required
 
 图片敏感检测
 
-这是一个图片内容审核接口，自动识别图片中的违规内容并返回处理建议。  &gt; [!VIP] &gt; 此接口限时免费开放，无需企业认证即可使用。  ## 功能概述 上传图片文件或提供图片URL，接口会自动分析图片内容，返回是否违规、风险等级和处理建议。适合对接到用户上传流程中，实现自动化内容审核。  ## 返回字段说明 - **is_nsfw**: 是否判定为违规内容，&#x60;true&#x60; 表示违规，&#x60;false&#x60; 表示正常 - **nsfw_score**: 违规内容置信度，0-1 之间，越高表示越可能违规 - **normal_score**: 正常内容置信度，0-1 之间，与 nsfw_score 互补 - **suggestion**: 处理建议   - &#x60;pass&#x60;: 内容正常，可以直接放行   - &#x60;review&#x60;: 存在风险，建议转人工复核   - &#x60;block&#x60;: 高风险内容，建议直接拦截 - **risk_level**: 风险等级   - &#x60;low&#x60;: 低风险   - &#x60;medium&#x60;: 中风险   - &#x60;high&#x60;: 高风险 - **label**: 内容标签，&#x60;nsfw&#x60; 或 &#x60;normal&#x60; - **confidence**: 模型对当前判断的整体置信度 - **inference_time_ms**: 模型推理耗时，单位毫秒
+这是一个图片内容审核接口，自动识别图片中的违规内容并返回处理建议。  ## 功能概述 上传图片文件或提供图片URL，接口会自动分析图片内容，返回是否违规、风险等级和处理建议。适合对接到用户上传流程中，实现自动化内容审核。  ## 返回字段说明 - **is_nsfw**: 是否判定为违规内容，&#x60;true&#x60; 表示违规，&#x60;false&#x60; 表示正常 - **nsfw_score**: 违规内容置信度，0-1 之间，越高表示越可能违规 - **normal_score**: 正常内容置信度，0-1 之间，与 nsfw_score 互补 - **suggestion**: 处理建议   - &#x60;pass&#x60;: 内容正常，可以直接放行   - &#x60;review&#x60;: 存在风险，建议转人工复核   - &#x60;block&#x60;: 高风险内容，建议直接拦截 - **risk_level**: 风险等级   - &#x60;low&#x60;: 低风险   - &#x60;medium&#x60;: 中风险   - &#x60;high&#x60;: 高风险 - **label**: 内容标签，&#x60;nsfw&#x60; 或 &#x60;normal&#x60; - **confidence**: 模型对当前判断的整体置信度 - **inference_time_ms**: 模型推理耗时，单位毫秒
 
 ### Example
 ```java

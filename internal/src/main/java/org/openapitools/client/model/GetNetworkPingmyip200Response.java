@@ -21,7 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 import com.google.gson.Gson;
@@ -51,152 +50,80 @@ import org.openapitools.client.JSON;
 /**
  * GetNetworkPingmyip200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkPingmyip200Response {
-  public static final String SERIALIZED_NAME_AVG = "avg";
-  @SerializedName(SERIALIZED_NAME_AVG)
+  public static final String SERIALIZED_NAME_CLIENT_IP = "client_ip";
+  @SerializedName(SERIALIZED_NAME_CLIENT_IP)
   @javax.annotation.Nullable
-  private BigDecimal avg;
+  private String clientIp;
 
-  public static final String SERIALIZED_NAME_HOST = "host";
-  @SerializedName(SERIALIZED_NAME_HOST)
+  public static final String SERIALIZED_NAME_PING_SUCCESSFUL = "ping_successful";
+  @SerializedName(SERIALIZED_NAME_PING_SUCCESSFUL)
   @javax.annotation.Nullable
-  private String host;
+  private Boolean pingSuccessful;
 
-  public static final String SERIALIZED_NAME_IP = "ip";
-  @SerializedName(SERIALIZED_NAME_IP)
+  public static final String SERIALIZED_NAME_MESSAGE = "message";
+  @SerializedName(SERIALIZED_NAME_MESSAGE)
   @javax.annotation.Nullable
-  private String ip;
-
-  public static final String SERIALIZED_NAME_LOCATION = "location";
-  @SerializedName(SERIALIZED_NAME_LOCATION)
-  @javax.annotation.Nullable
-  private String location;
-
-  public static final String SERIALIZED_NAME_MAX = "max";
-  @SerializedName(SERIALIZED_NAME_MAX)
-  @javax.annotation.Nullable
-  private BigDecimal max;
-
-  public static final String SERIALIZED_NAME_MIN = "min";
-  @SerializedName(SERIALIZED_NAME_MIN)
-  @javax.annotation.Nullable
-  private BigDecimal min;
+  private String message;
 
   public GetNetworkPingmyip200Response() {
   }
 
-  public GetNetworkPingmyip200Response avg(@javax.annotation.Nullable BigDecimal avg) {
-    this.avg = avg;
+  public GetNetworkPingmyip200Response clientIp(@javax.annotation.Nullable String clientIp) {
+    this.clientIp = clientIp;
     return this;
   }
 
   /**
-   * 平均延迟(ms)
-   * @return avg
+   * 当前客户端的公网 IP 地址。
+   * @return clientIp
    */
   @javax.annotation.Nullable
-  public BigDecimal getAvg() {
-    return avg;
+  public String getClientIp() {
+    return clientIp;
   }
 
-  public void setAvg(@javax.annotation.Nullable BigDecimal avg) {
-    this.avg = avg;
+  public void setClientIp(@javax.annotation.Nullable String clientIp) {
+    this.clientIp = clientIp;
   }
 
 
-  public GetNetworkPingmyip200Response host(@javax.annotation.Nullable String host) {
-    this.host = host;
+  public GetNetworkPingmyip200Response pingSuccessful(@javax.annotation.Nullable Boolean pingSuccessful) {
+    this.pingSuccessful = pingSuccessful;
     return this;
   }
 
   /**
-   * Get host
-   * @return host
+   * 是否成功完成对当前客户端 IP 的 Ping。
+   * @return pingSuccessful
    */
   @javax.annotation.Nullable
-  public String getHost() {
-    return host;
+  public Boolean getPingSuccessful() {
+    return pingSuccessful;
   }
 
-  public void setHost(@javax.annotation.Nullable String host) {
-    this.host = host;
+  public void setPingSuccessful(@javax.annotation.Nullable Boolean pingSuccessful) {
+    this.pingSuccessful = pingSuccessful;
   }
 
 
-  public GetNetworkPingmyip200Response ip(@javax.annotation.Nullable String ip) {
-    this.ip = ip;
+  public GetNetworkPingmyip200Response message(@javax.annotation.Nullable String message) {
+    this.message = message;
     return this;
   }
 
   /**
-   * Get ip
-   * @return ip
+   * 操作结果说明。成功时通常会附带平均延迟信息。
+   * @return message
    */
   @javax.annotation.Nullable
-  public String getIp() {
-    return ip;
+  public String getMessage() {
+    return message;
   }
 
-  public void setIp(@javax.annotation.Nullable String ip) {
-    this.ip = ip;
-  }
-
-
-  public GetNetworkPingmyip200Response location(@javax.annotation.Nullable String location) {
-    this.location = location;
-    return this;
-  }
-
-  /**
-   * Get location
-   * @return location
-   */
-  @javax.annotation.Nullable
-  public String getLocation() {
-    return location;
-  }
-
-  public void setLocation(@javax.annotation.Nullable String location) {
-    this.location = location;
-  }
-
-
-  public GetNetworkPingmyip200Response max(@javax.annotation.Nullable BigDecimal max) {
-    this.max = max;
-    return this;
-  }
-
-  /**
-   * 最大延迟(ms)
-   * @return max
-   */
-  @javax.annotation.Nullable
-  public BigDecimal getMax() {
-    return max;
-  }
-
-  public void setMax(@javax.annotation.Nullable BigDecimal max) {
-    this.max = max;
-  }
-
-
-  public GetNetworkPingmyip200Response min(@javax.annotation.Nullable BigDecimal min) {
-    this.min = min;
-    return this;
-  }
-
-  /**
-   * 最小延迟(ms)
-   * @return min
-   */
-  @javax.annotation.Nullable
-  public BigDecimal getMin() {
-    return min;
-  }
-
-  public void setMin(@javax.annotation.Nullable BigDecimal min) {
-    this.min = min;
+  public void setMessage(@javax.annotation.Nullable String message) {
+    this.message = message;
   }
 
 
@@ -210,29 +137,23 @@ public class GetNetworkPingmyip200Response {
       return false;
     }
     GetNetworkPingmyip200Response getNetworkPingmyip200Response = (GetNetworkPingmyip200Response) o;
-    return Objects.equals(this.avg, getNetworkPingmyip200Response.avg) &&
-        Objects.equals(this.host, getNetworkPingmyip200Response.host) &&
-        Objects.equals(this.ip, getNetworkPingmyip200Response.ip) &&
-        Objects.equals(this.location, getNetworkPingmyip200Response.location) &&
-        Objects.equals(this.max, getNetworkPingmyip200Response.max) &&
-        Objects.equals(this.min, getNetworkPingmyip200Response.min);
+    return Objects.equals(this.clientIp, getNetworkPingmyip200Response.clientIp) &&
+        Objects.equals(this.pingSuccessful, getNetworkPingmyip200Response.pingSuccessful) &&
+        Objects.equals(this.message, getNetworkPingmyip200Response.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(avg, host, ip, location, max, min);
+    return Objects.hash(clientIp, pingSuccessful, message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetNetworkPingmyip200Response {\n");
-    sb.append("    avg: ").append(toIndentedString(avg)).append("\n");
-    sb.append("    host: ").append(toIndentedString(host)).append("\n");
-    sb.append("    ip: ").append(toIndentedString(ip)).append("\n");
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
-    sb.append("    max: ").append(toIndentedString(max)).append("\n");
-    sb.append("    min: ").append(toIndentedString(min)).append("\n");
+    sb.append("    clientIp: ").append(toIndentedString(clientIp)).append("\n");
+    sb.append("    pingSuccessful: ").append(toIndentedString(pingSuccessful)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -254,7 +175,7 @@ public class GetNetworkPingmyip200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("avg", "host", "ip", "location", "max", "min"));
+    openapiFields = new HashSet<String>(Arrays.asList("client_ip", "ping_successful", "message"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -281,14 +202,11 @@ public class GetNetworkPingmyip200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("host") != null && !jsonObj.get("host").isJsonNull()) && !jsonObj.get("host").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `host` to be a primitive type in the JSON string but got `%s`", jsonObj.get("host").toString()));
+      if ((jsonObj.get("client_ip") != null && !jsonObj.get("client_ip").isJsonNull()) && !jsonObj.get("client_ip").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `client_ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("client_ip").toString()));
       }
-      if ((jsonObj.get("ip") != null && !jsonObj.get("ip").isJsonNull()) && !jsonObj.get("ip").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `ip` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ip").toString()));
-      }
-      if ((jsonObj.get("location") != null && !jsonObj.get("location").isJsonNull()) && !jsonObj.get("location").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `location` to be a primitive type in the JSON string but got `%s`", jsonObj.get("location").toString()));
+      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
       }
   }
 

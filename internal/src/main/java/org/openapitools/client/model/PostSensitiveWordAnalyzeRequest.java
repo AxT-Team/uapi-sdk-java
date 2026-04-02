@@ -52,7 +52,7 @@ import org.openapitools.client.JSON;
 /**
  * PostSensitiveWordAnalyzeRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostSensitiveWordAnalyzeRequest {
   public static final String SERIALIZED_NAME_KEYWORDS = "keywords";
   @SerializedName(SERIALIZED_NAME_KEYWORDS)
@@ -76,7 +76,7 @@ public class PostSensitiveWordAnalyzeRequest {
   }
 
   /**
-   * 要分析的关键词列表，单次最多100个，每个关键词最长50字符。
+   * 要分析的关键词列表，单次最多100个。单条关键词最多1,000字符，总字符数最多20,000。
    * @return keywords
    */
   @javax.annotation.Nonnull

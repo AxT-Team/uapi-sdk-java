@@ -229,7 +229,7 @@ public class Example {
     defaultClient.setBasePath("https://uapis.cn/api/v1");
 
     RandomApi apiInstance = new RandomApi(defaultClient);
-    PostAnswerbookAskRequest postAnswerbookAskRequest = new PostAnswerbookAskRequest(); // PostAnswerbookAskRequest | 包含问题的JSON对象
+    PostAnswerbookAskRequest postAnswerbookAskRequest = new PostAnswerbookAskRequest(); // PostAnswerbookAskRequest | 
     try {
       PostAnswerbookAsk200Response result = apiInstance.postAnswerbookAsk(postAnswerbookAskRequest);
       System.out.println(result);
@@ -248,7 +248,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **postAnswerbookAskRequest** | [**PostAnswerbookAskRequest**](PostAnswerbookAskRequest.md)| 包含问题的JSON对象 | |
+| **postAnswerbookAskRequest** | [**PostAnswerbookAskRequest**](PostAnswerbookAskRequest.md)|  | |
 
 ### Return type
 

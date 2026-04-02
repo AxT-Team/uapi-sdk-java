@@ -51,8 +51,13 @@ import org.openapitools.client.JSON;
 /**
  * 视频的核心数据统计。
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialBilibiliVideoinfo200ResponseStat {
+  public static final String SERIALIZED_NAME_AID = "aid";
+  @SerializedName(SERIALIZED_NAME_AID)
+  @javax.annotation.Nullable
+  private BigDecimal aid;
+
   public static final String SERIALIZED_NAME_VIEW = "view";
   @SerializedName(SERIALIZED_NAME_VIEW)
   @javax.annotation.Nullable
@@ -88,8 +93,52 @@ public class GetSocialBilibiliVideoinfo200ResponseStat {
   @javax.annotation.Nullable
   private BigDecimal like;
 
+  public static final String SERIALIZED_NAME_NOW_RANK = "now_rank";
+  @SerializedName(SERIALIZED_NAME_NOW_RANK)
+  @javax.annotation.Nullable
+  private BigDecimal nowRank;
+
+  public static final String SERIALIZED_NAME_HIS_RANK = "his_rank";
+  @SerializedName(SERIALIZED_NAME_HIS_RANK)
+  @javax.annotation.Nullable
+  private BigDecimal hisRank;
+
+  public static final String SERIALIZED_NAME_DISLIKE = "dislike";
+  @SerializedName(SERIALIZED_NAME_DISLIKE)
+  @javax.annotation.Nullable
+  private BigDecimal dislike;
+
+  public static final String SERIALIZED_NAME_EVALUATION = "evaluation";
+  @SerializedName(SERIALIZED_NAME_EVALUATION)
+  @javax.annotation.Nullable
+  private String evaluation;
+
+  public static final String SERIALIZED_NAME_VT = "vt";
+  @SerializedName(SERIALIZED_NAME_VT)
+  @javax.annotation.Nullable
+  private BigDecimal vt;
+
   public GetSocialBilibiliVideoinfo200ResponseStat() {
   }
+
+  public GetSocialBilibiliVideoinfo200ResponseStat aid(@javax.annotation.Nullable BigDecimal aid) {
+    this.aid = aid;
+    return this;
+  }
+
+  /**
+   * AV 号。
+   * @return aid
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getAid() {
+    return aid;
+  }
+
+  public void setAid(@javax.annotation.Nullable BigDecimal aid) {
+    this.aid = aid;
+  }
+
 
   public GetSocialBilibiliVideoinfo200ResponseStat view(@javax.annotation.Nullable BigDecimal view) {
     this.view = view;
@@ -224,6 +273,101 @@ public class GetSocialBilibiliVideoinfo200ResponseStat {
   }
 
 
+  public GetSocialBilibiliVideoinfo200ResponseStat nowRank(@javax.annotation.Nullable BigDecimal nowRank) {
+    this.nowRank = nowRank;
+    return this;
+  }
+
+  /**
+   * 当前全站/分区排名。
+   * @return nowRank
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getNowRank() {
+    return nowRank;
+  }
+
+  public void setNowRank(@javax.annotation.Nullable BigDecimal nowRank) {
+    this.nowRank = nowRank;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200ResponseStat hisRank(@javax.annotation.Nullable BigDecimal hisRank) {
+    this.hisRank = hisRank;
+    return this;
+  }
+
+  /**
+   * 历史排名。
+   * @return hisRank
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getHisRank() {
+    return hisRank;
+  }
+
+  public void setHisRank(@javax.annotation.Nullable BigDecimal hisRank) {
+    this.hisRank = hisRank;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200ResponseStat dislike(@javax.annotation.Nullable BigDecimal dislike) {
+    this.dislike = dislike;
+    return this;
+  }
+
+  /**
+   * 点踩量（通常为 0）。
+   * @return dislike
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getDislike() {
+    return dislike;
+  }
+
+  public void setDislike(@javax.annotation.Nullable BigDecimal dislike) {
+    this.dislike = dislike;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200ResponseStat evaluation(@javax.annotation.Nullable String evaluation) {
+    this.evaluation = evaluation;
+    return this;
+  }
+
+  /**
+   * 评分/评估文案，通常为空。
+   * @return evaluation
+   */
+  @javax.annotation.Nullable
+  public String getEvaluation() {
+    return evaluation;
+  }
+
+  public void setEvaluation(@javax.annotation.Nullable String evaluation) {
+    this.evaluation = evaluation;
+  }
+
+
+  public GetSocialBilibiliVideoinfo200ResponseStat vt(@javax.annotation.Nullable BigDecimal vt) {
+    this.vt = vt;
+    return this;
+  }
+
+  /**
+   * 视频类型相关历史字段。
+   * @return vt
+   */
+  @javax.annotation.Nullable
+  public BigDecimal getVt() {
+    return vt;
+  }
+
+  public void setVt(@javax.annotation.Nullable BigDecimal vt) {
+    this.vt = vt;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -234,24 +378,31 @@ public class GetSocialBilibiliVideoinfo200ResponseStat {
       return false;
     }
     GetSocialBilibiliVideoinfo200ResponseStat getSocialBilibiliVideoinfo200ResponseStat = (GetSocialBilibiliVideoinfo200ResponseStat) o;
-    return Objects.equals(this.view, getSocialBilibiliVideoinfo200ResponseStat.view) &&
+    return Objects.equals(this.aid, getSocialBilibiliVideoinfo200ResponseStat.aid) &&
+        Objects.equals(this.view, getSocialBilibiliVideoinfo200ResponseStat.view) &&
         Objects.equals(this.danmaku, getSocialBilibiliVideoinfo200ResponseStat.danmaku) &&
         Objects.equals(this.reply, getSocialBilibiliVideoinfo200ResponseStat.reply) &&
         Objects.equals(this.favorite, getSocialBilibiliVideoinfo200ResponseStat.favorite) &&
         Objects.equals(this.coin, getSocialBilibiliVideoinfo200ResponseStat.coin) &&
         Objects.equals(this.share, getSocialBilibiliVideoinfo200ResponseStat.share) &&
-        Objects.equals(this.like, getSocialBilibiliVideoinfo200ResponseStat.like);
+        Objects.equals(this.like, getSocialBilibiliVideoinfo200ResponseStat.like) &&
+        Objects.equals(this.nowRank, getSocialBilibiliVideoinfo200ResponseStat.nowRank) &&
+        Objects.equals(this.hisRank, getSocialBilibiliVideoinfo200ResponseStat.hisRank) &&
+        Objects.equals(this.dislike, getSocialBilibiliVideoinfo200ResponseStat.dislike) &&
+        Objects.equals(this.evaluation, getSocialBilibiliVideoinfo200ResponseStat.evaluation) &&
+        Objects.equals(this.vt, getSocialBilibiliVideoinfo200ResponseStat.vt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(view, danmaku, reply, favorite, coin, share, like);
+    return Objects.hash(aid, view, danmaku, reply, favorite, coin, share, like, nowRank, hisRank, dislike, evaluation, vt);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetSocialBilibiliVideoinfo200ResponseStat {\n");
+    sb.append("    aid: ").append(toIndentedString(aid)).append("\n");
     sb.append("    view: ").append(toIndentedString(view)).append("\n");
     sb.append("    danmaku: ").append(toIndentedString(danmaku)).append("\n");
     sb.append("    reply: ").append(toIndentedString(reply)).append("\n");
@@ -259,6 +410,11 @@ public class GetSocialBilibiliVideoinfo200ResponseStat {
     sb.append("    coin: ").append(toIndentedString(coin)).append("\n");
     sb.append("    share: ").append(toIndentedString(share)).append("\n");
     sb.append("    like: ").append(toIndentedString(like)).append("\n");
+    sb.append("    nowRank: ").append(toIndentedString(nowRank)).append("\n");
+    sb.append("    hisRank: ").append(toIndentedString(hisRank)).append("\n");
+    sb.append("    dislike: ").append(toIndentedString(dislike)).append("\n");
+    sb.append("    evaluation: ").append(toIndentedString(evaluation)).append("\n");
+    sb.append("    vt: ").append(toIndentedString(vt)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -280,7 +436,7 @@ public class GetSocialBilibiliVideoinfo200ResponseStat {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("view", "danmaku", "reply", "favorite", "coin", "share", "like"));
+    openapiFields = new HashSet<String>(Arrays.asList("aid", "view", "danmaku", "reply", "favorite", "coin", "share", "like", "now_rank", "his_rank", "dislike", "evaluation", "vt"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -307,6 +463,9 @@ public class GetSocialBilibiliVideoinfo200ResponseStat {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
+      if ((jsonObj.get("evaluation") != null && !jsonObj.get("evaluation").isJsonNull()) && !jsonObj.get("evaluation").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `evaluation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("evaluation").toString()));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

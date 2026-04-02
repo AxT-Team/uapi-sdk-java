@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * PostTextAesEncryptRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostTextAesEncryptRequest {
   public static final String SERIALIZED_NAME_KEY = "key";
   @SerializedName(SERIALIZED_NAME_KEY)
@@ -71,7 +71,7 @@ public class PostTextAesEncryptRequest {
   }
 
   /**
-   * Key must be 16, 24, or 32 bytes long to select AES-128, AES-192, or AES-256.
+   * 密钥长度必须为 16、24 或 32 字节，分别对应 AES-128、AES-192、AES-256。
    * @return key
    */
   @javax.annotation.Nonnull
@@ -90,7 +90,7 @@ public class PostTextAesEncryptRequest {
   }
 
   /**
-   * Get text
+   * 待加密的明文文本。
    * @return text
    */
   @javax.annotation.Nonnull

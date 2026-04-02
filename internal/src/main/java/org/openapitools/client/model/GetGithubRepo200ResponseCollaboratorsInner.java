@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * GetGithubRepo200ResponseCollaboratorsInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetGithubRepo200ResponseCollaboratorsInner {
   public static final String SERIALIZED_NAME_LOGIN = "login";
   @SerializedName(SERIALIZED_NAME_LOGIN)
@@ -81,7 +81,7 @@ public class GetGithubRepo200ResponseCollaboratorsInner {
   }
 
   /**
-   * Get login
+   * GitHub 登录名。
    * @return login
    */
   @javax.annotation.Nullable
@@ -100,7 +100,7 @@ public class GetGithubRepo200ResponseCollaboratorsInner {
   }
 
   /**
-   * Get name
+   * 显示名称。
    * @return name
    */
   @javax.annotation.Nullable
@@ -119,7 +119,7 @@ public class GetGithubRepo200ResponseCollaboratorsInner {
   }
 
   /**
-   * Get email
+   * 公开邮箱。
    * @return email
    */
   @javax.annotation.Nullable
@@ -138,7 +138,7 @@ public class GetGithubRepo200ResponseCollaboratorsInner {
   }
 
   /**
-   * Get url
+   * GitHub 主页链接。
    * @return url
    */
   @javax.annotation.Nullable

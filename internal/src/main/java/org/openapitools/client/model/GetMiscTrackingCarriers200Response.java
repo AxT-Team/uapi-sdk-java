@@ -21,8 +21,10 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.client.model.GetMiscTrackingCarriers200ResponseData;
+import java.util.List;
+import org.openapitools.client.model.GetMiscTrackingCarriers200ResponseCarriersInner;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,80 +53,64 @@ import org.openapitools.client.JSON;
 /**
  * GetMiscTrackingCarriers200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscTrackingCarriers200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
+  public static final String SERIALIZED_NAME_CARRIERS = "carriers";
+  @SerializedName(SERIALIZED_NAME_CARRIERS)
   @javax.annotation.Nullable
-  private String code;
+  private List<GetMiscTrackingCarriers200ResponseCarriersInner> carriers = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  public static final String SERIALIZED_NAME_TOTAL = "total";
+  @SerializedName(SERIALIZED_NAME_TOTAL)
   @javax.annotation.Nullable
-  private String message;
-
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
-  @javax.annotation.Nullable
-  private GetMiscTrackingCarriers200ResponseData data;
+  private Integer total;
 
   public GetMiscTrackingCarriers200Response() {
   }
 
-  public GetMiscTrackingCarriers200Response code(@javax.annotation.Nullable String code) {
-    this.code = code;
+  public GetMiscTrackingCarriers200Response carriers(@javax.annotation.Nullable List<GetMiscTrackingCarriers200ResponseCarriersInner> carriers) {
+    this.carriers = carriers;
+    return this;
+  }
+
+  public GetMiscTrackingCarriers200Response addCarriersItem(GetMiscTrackingCarriers200ResponseCarriersInner carriersItem) {
+    if (this.carriers == null) {
+      this.carriers = new ArrayList<>();
+    }
+    this.carriers.add(carriersItem);
     return this;
   }
 
   /**
-   * Get code
-   * @return code
+   * 快递公司列表
+   * @return carriers
    */
   @javax.annotation.Nullable
-  public String getCode() {
-    return code;
+  public List<GetMiscTrackingCarriers200ResponseCarriersInner> getCarriers() {
+    return carriers;
   }
 
-  public void setCode(@javax.annotation.Nullable String code) {
-    this.code = code;
+  public void setCarriers(@javax.annotation.Nullable List<GetMiscTrackingCarriers200ResponseCarriersInner> carriers) {
+    this.carriers = carriers;
   }
 
 
-  public GetMiscTrackingCarriers200Response message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public GetMiscTrackingCarriers200Response total(@javax.annotation.Nullable Integer total) {
+    this.total = total;
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * 支持的快递公司总数
+   * @return total
    */
   @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  public Integer getTotal() {
+    return total;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
-  }
-
-
-  public GetMiscTrackingCarriers200Response data(@javax.annotation.Nullable GetMiscTrackingCarriers200ResponseData data) {
-    this.data = data;
-    return this;
-  }
-
-  /**
-   * Get data
-   * @return data
-   */
-  @javax.annotation.Nullable
-  public GetMiscTrackingCarriers200ResponseData getData() {
-    return data;
-  }
-
-  public void setData(@javax.annotation.Nullable GetMiscTrackingCarriers200ResponseData data) {
-    this.data = data;
+  public void setTotal(@javax.annotation.Nullable Integer total) {
+    this.total = total;
   }
 
 
@@ -138,23 +124,21 @@ public class GetMiscTrackingCarriers200Response {
       return false;
     }
     GetMiscTrackingCarriers200Response getMiscTrackingCarriers200Response = (GetMiscTrackingCarriers200Response) o;
-    return Objects.equals(this.code, getMiscTrackingCarriers200Response.code) &&
-        Objects.equals(this.message, getMiscTrackingCarriers200Response.message) &&
-        Objects.equals(this.data, getMiscTrackingCarriers200Response.data);
+    return Objects.equals(this.carriers, getMiscTrackingCarriers200Response.carriers) &&
+        Objects.equals(this.total, getMiscTrackingCarriers200Response.total);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, data);
+    return Objects.hash(carriers, total);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetMiscTrackingCarriers200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    carriers: ").append(toIndentedString(carriers)).append("\n");
+    sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,7 +160,7 @@ public class GetMiscTrackingCarriers200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "message", "data"));
+    openapiFields = new HashSet<String>(Arrays.asList("carriers", "total"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -203,15 +187,19 @@ public class GetMiscTrackingCarriers200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("code") != null && !jsonObj.get("code").isJsonNull()) && !jsonObj.get("code").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
-      }
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
-      }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        GetMiscTrackingCarriers200ResponseData.validateJsonElement(jsonObj.get("data"));
+      if (jsonObj.get("carriers") != null && !jsonObj.get("carriers").isJsonNull()) {
+        JsonArray jsonArraycarriers = jsonObj.getAsJsonArray("carriers");
+        if (jsonArraycarriers != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("carriers").isJsonArray()) {
+            throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `carriers` to be an array in the JSON string but got `%s`", jsonObj.get("carriers").toString()));
+          }
+
+          // validate the optional field `carriers` (array)
+          for (int i = 0; i < jsonArraycarriers.size(); i++) {
+            GetMiscTrackingCarriers200ResponseCarriersInner.validateJsonElement(jsonArraycarriers.get(i));
+          };
+        }
       }
   }
 

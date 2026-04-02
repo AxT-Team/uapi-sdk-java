@@ -21,8 +21,9 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import org.openapitools.client.model.GetMiscLunartime200ResponseData;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -51,80 +52,552 @@ import org.openapitools.client.JSON;
 /**
  * GetMiscLunartime200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscLunartime200Response {
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
+  public static final String SERIALIZED_NAME_QUERY_TIMESTAMP = "query_timestamp";
+  @SerializedName(SERIALIZED_NAME_QUERY_TIMESTAMP)
   @javax.annotation.Nullable
-  private Integer code;
+  private String queryTimestamp;
 
-  public static final String SERIALIZED_NAME_MESSAGE = "message";
-  @SerializedName(SERIALIZED_NAME_MESSAGE)
+  public static final String SERIALIZED_NAME_QUERY_TIMEZONE = "query_timezone";
+  @SerializedName(SERIALIZED_NAME_QUERY_TIMEZONE)
   @javax.annotation.Nullable
-  private String message;
+  private String queryTimezone;
 
-  public static final String SERIALIZED_NAME_DATA = "data";
-  @SerializedName(SERIALIZED_NAME_DATA)
+  public static final String SERIALIZED_NAME_TIMEZONE = "timezone";
+  @SerializedName(SERIALIZED_NAME_TIMEZONE)
   @javax.annotation.Nullable
-  private GetMiscLunartime200ResponseData data;
+  private String timezone;
+
+  public static final String SERIALIZED_NAME_DATETIME = "datetime";
+  @SerializedName(SERIALIZED_NAME_DATETIME)
+  @javax.annotation.Nullable
+  private String datetime;
+
+  public static final String SERIALIZED_NAME_DATETIME_RFC3339 = "datetime_rfc3339";
+  @SerializedName(SERIALIZED_NAME_DATETIME_RFC3339)
+  @javax.annotation.Nullable
+  private String datetimeRfc3339;
+
+  public static final String SERIALIZED_NAME_TIMESTAMP_UNIX = "timestamp_unix";
+  @SerializedName(SERIALIZED_NAME_TIMESTAMP_UNIX)
+  @javax.annotation.Nullable
+  private Integer timestampUnix;
+
+  public static final String SERIALIZED_NAME_WEEKDAY = "weekday";
+  @SerializedName(SERIALIZED_NAME_WEEKDAY)
+  @javax.annotation.Nullable
+  private String weekday;
+
+  public static final String SERIALIZED_NAME_WEEKDAY_CN = "weekday_cn";
+  @SerializedName(SERIALIZED_NAME_WEEKDAY_CN)
+  @javax.annotation.Nullable
+  private String weekdayCn;
+
+  public static final String SERIALIZED_NAME_LUNAR_YEAR = "lunar_year";
+  @SerializedName(SERIALIZED_NAME_LUNAR_YEAR)
+  @javax.annotation.Nullable
+  private Integer lunarYear;
+
+  public static final String SERIALIZED_NAME_LUNAR_MONTH = "lunar_month";
+  @SerializedName(SERIALIZED_NAME_LUNAR_MONTH)
+  @javax.annotation.Nullable
+  private Integer lunarMonth;
+
+  public static final String SERIALIZED_NAME_LUNAR_DAY = "lunar_day";
+  @SerializedName(SERIALIZED_NAME_LUNAR_DAY)
+  @javax.annotation.Nullable
+  private Integer lunarDay;
+
+  public static final String SERIALIZED_NAME_IS_LEAP_MONTH = "is_leap_month";
+  @SerializedName(SERIALIZED_NAME_IS_LEAP_MONTH)
+  @javax.annotation.Nullable
+  private Boolean isLeapMonth;
+
+  public static final String SERIALIZED_NAME_LUNAR_YEAR_CN = "lunar_year_cn";
+  @SerializedName(SERIALIZED_NAME_LUNAR_YEAR_CN)
+  @javax.annotation.Nullable
+  private String lunarYearCn;
+
+  public static final String SERIALIZED_NAME_LUNAR_MONTH_CN = "lunar_month_cn";
+  @SerializedName(SERIALIZED_NAME_LUNAR_MONTH_CN)
+  @javax.annotation.Nullable
+  private String lunarMonthCn;
+
+  public static final String SERIALIZED_NAME_LUNAR_DAY_CN = "lunar_day_cn";
+  @SerializedName(SERIALIZED_NAME_LUNAR_DAY_CN)
+  @javax.annotation.Nullable
+  private String lunarDayCn;
+
+  public static final String SERIALIZED_NAME_GANZHI_YEAR = "ganzhi_year";
+  @SerializedName(SERIALIZED_NAME_GANZHI_YEAR)
+  @javax.annotation.Nullable
+  private String ganzhiYear;
+
+  public static final String SERIALIZED_NAME_GANZHI_MONTH = "ganzhi_month";
+  @SerializedName(SERIALIZED_NAME_GANZHI_MONTH)
+  @javax.annotation.Nullable
+  private String ganzhiMonth;
+
+  public static final String SERIALIZED_NAME_GANZHI_DAY = "ganzhi_day";
+  @SerializedName(SERIALIZED_NAME_GANZHI_DAY)
+  @javax.annotation.Nullable
+  private String ganzhiDay;
+
+  public static final String SERIALIZED_NAME_ZODIAC = "zodiac";
+  @SerializedName(SERIALIZED_NAME_ZODIAC)
+  @javax.annotation.Nullable
+  private String zodiac;
+
+  public static final String SERIALIZED_NAME_SOLAR_TERM = "solar_term";
+  @SerializedName(SERIALIZED_NAME_SOLAR_TERM)
+  @javax.annotation.Nullable
+  private String solarTerm;
+
+  public static final String SERIALIZED_NAME_LUNAR_FESTIVALS = "lunar_festivals";
+  @SerializedName(SERIALIZED_NAME_LUNAR_FESTIVALS)
+  @javax.annotation.Nullable
+  private List<String> lunarFestivals = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_SOLAR_FESTIVALS = "solar_festivals";
+  @SerializedName(SERIALIZED_NAME_SOLAR_FESTIVALS)
+  @javax.annotation.Nullable
+  private List<String> solarFestivals = new ArrayList<>();
 
   public GetMiscLunartime200Response() {
   }
 
-  public GetMiscLunartime200Response code(@javax.annotation.Nullable Integer code) {
-    this.code = code;
+  public GetMiscLunartime200Response queryTimestamp(@javax.annotation.Nullable String queryTimestamp) {
+    this.queryTimestamp = queryTimestamp;
     return this;
   }
 
   /**
-   * 业务状态码，200 表示成功。
-   * @return code
+   * 原始 ts 入参。
+   * @return queryTimestamp
    */
   @javax.annotation.Nullable
-  public Integer getCode() {
-    return code;
+  public String getQueryTimestamp() {
+    return queryTimestamp;
   }
 
-  public void setCode(@javax.annotation.Nullable Integer code) {
-    this.code = code;
+  public void setQueryTimestamp(@javax.annotation.Nullable String queryTimestamp) {
+    this.queryTimestamp = queryTimestamp;
   }
 
 
-  public GetMiscLunartime200Response message(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public GetMiscLunartime200Response queryTimezone(@javax.annotation.Nullable String queryTimezone) {
+    this.queryTimezone = queryTimezone;
     return this;
   }
 
   /**
-   * 状态描述。
-   * @return message
+   * 原始 timezone 入参。
+   * @return queryTimezone
    */
   @javax.annotation.Nullable
-  public String getMessage() {
-    return message;
+  public String getQueryTimezone() {
+    return queryTimezone;
   }
 
-  public void setMessage(@javax.annotation.Nullable String message) {
-    this.message = message;
+  public void setQueryTimezone(@javax.annotation.Nullable String queryTimezone) {
+    this.queryTimezone = queryTimezone;
   }
 
 
-  public GetMiscLunartime200Response data(@javax.annotation.Nullable GetMiscLunartime200ResponseData data) {
-    this.data = data;
+  public GetMiscLunartime200Response timezone(@javax.annotation.Nullable String timezone) {
+    this.timezone = timezone;
     return this;
   }
 
   /**
-   * Get data
-   * @return data
+   * 解析后的时区。
+   * @return timezone
    */
   @javax.annotation.Nullable
-  public GetMiscLunartime200ResponseData getData() {
-    return data;
+  public String getTimezone() {
+    return timezone;
   }
 
-  public void setData(@javax.annotation.Nullable GetMiscLunartime200ResponseData data) {
-    this.data = data;
+  public void setTimezone(@javax.annotation.Nullable String timezone) {
+    this.timezone = timezone;
+  }
+
+
+  public GetMiscLunartime200Response datetime(@javax.annotation.Nullable String datetime) {
+    this.datetime = datetime;
+    return this;
+  }
+
+  /**
+   * 本地化时间，格式 YYYY-MM-DD HH:mm:ss。
+   * @return datetime
+   */
+  @javax.annotation.Nullable
+  public String getDatetime() {
+    return datetime;
+  }
+
+  public void setDatetime(@javax.annotation.Nullable String datetime) {
+    this.datetime = datetime;
+  }
+
+
+  public GetMiscLunartime200Response datetimeRfc3339(@javax.annotation.Nullable String datetimeRfc3339) {
+    this.datetimeRfc3339 = datetimeRfc3339;
+    return this;
+  }
+
+  /**
+   * RFC3339 时间格式。
+   * @return datetimeRfc3339
+   */
+  @javax.annotation.Nullable
+  public String getDatetimeRfc3339() {
+    return datetimeRfc3339;
+  }
+
+  public void setDatetimeRfc3339(@javax.annotation.Nullable String datetimeRfc3339) {
+    this.datetimeRfc3339 = datetimeRfc3339;
+  }
+
+
+  public GetMiscLunartime200Response timestampUnix(@javax.annotation.Nullable Integer timestampUnix) {
+    this.timestampUnix = timestampUnix;
+    return this;
+  }
+
+  /**
+   * 秒级 Unix 时间戳。
+   * @return timestampUnix
+   */
+  @javax.annotation.Nullable
+  public Integer getTimestampUnix() {
+    return timestampUnix;
+  }
+
+  public void setTimestampUnix(@javax.annotation.Nullable Integer timestampUnix) {
+    this.timestampUnix = timestampUnix;
+  }
+
+
+  public GetMiscLunartime200Response weekday(@javax.annotation.Nullable String weekday) {
+    this.weekday = weekday;
+    return this;
+  }
+
+  /**
+   * 星期英文。
+   * @return weekday
+   */
+  @javax.annotation.Nullable
+  public String getWeekday() {
+    return weekday;
+  }
+
+  public void setWeekday(@javax.annotation.Nullable String weekday) {
+    this.weekday = weekday;
+  }
+
+
+  public GetMiscLunartime200Response weekdayCn(@javax.annotation.Nullable String weekdayCn) {
+    this.weekdayCn = weekdayCn;
+    return this;
+  }
+
+  /**
+   * 星期中文。
+   * @return weekdayCn
+   */
+  @javax.annotation.Nullable
+  public String getWeekdayCn() {
+    return weekdayCn;
+  }
+
+  public void setWeekdayCn(@javax.annotation.Nullable String weekdayCn) {
+    this.weekdayCn = weekdayCn;
+  }
+
+
+  public GetMiscLunartime200Response lunarYear(@javax.annotation.Nullable Integer lunarYear) {
+    this.lunarYear = lunarYear;
+    return this;
+  }
+
+  /**
+   * 农历年份（数字）。
+   * @return lunarYear
+   */
+  @javax.annotation.Nullable
+  public Integer getLunarYear() {
+    return lunarYear;
+  }
+
+  public void setLunarYear(@javax.annotation.Nullable Integer lunarYear) {
+    this.lunarYear = lunarYear;
+  }
+
+
+  public GetMiscLunartime200Response lunarMonth(@javax.annotation.Nullable Integer lunarMonth) {
+    this.lunarMonth = lunarMonth;
+    return this;
+  }
+
+  /**
+   * 农历月份（数字）。
+   * @return lunarMonth
+   */
+  @javax.annotation.Nullable
+  public Integer getLunarMonth() {
+    return lunarMonth;
+  }
+
+  public void setLunarMonth(@javax.annotation.Nullable Integer lunarMonth) {
+    this.lunarMonth = lunarMonth;
+  }
+
+
+  public GetMiscLunartime200Response lunarDay(@javax.annotation.Nullable Integer lunarDay) {
+    this.lunarDay = lunarDay;
+    return this;
+  }
+
+  /**
+   * 农历日期（数字）。
+   * @return lunarDay
+   */
+  @javax.annotation.Nullable
+  public Integer getLunarDay() {
+    return lunarDay;
+  }
+
+  public void setLunarDay(@javax.annotation.Nullable Integer lunarDay) {
+    this.lunarDay = lunarDay;
+  }
+
+
+  public GetMiscLunartime200Response isLeapMonth(@javax.annotation.Nullable Boolean isLeapMonth) {
+    this.isLeapMonth = isLeapMonth;
+    return this;
+  }
+
+  /**
+   * 是否闰月。
+   * @return isLeapMonth
+   */
+  @javax.annotation.Nullable
+  public Boolean getIsLeapMonth() {
+    return isLeapMonth;
+  }
+
+  public void setIsLeapMonth(@javax.annotation.Nullable Boolean isLeapMonth) {
+    this.isLeapMonth = isLeapMonth;
+  }
+
+
+  public GetMiscLunartime200Response lunarYearCn(@javax.annotation.Nullable String lunarYearCn) {
+    this.lunarYearCn = lunarYearCn;
+    return this;
+  }
+
+  /**
+   * 农历年份中文表示。
+   * @return lunarYearCn
+   */
+  @javax.annotation.Nullable
+  public String getLunarYearCn() {
+    return lunarYearCn;
+  }
+
+  public void setLunarYearCn(@javax.annotation.Nullable String lunarYearCn) {
+    this.lunarYearCn = lunarYearCn;
+  }
+
+
+  public GetMiscLunartime200Response lunarMonthCn(@javax.annotation.Nullable String lunarMonthCn) {
+    this.lunarMonthCn = lunarMonthCn;
+    return this;
+  }
+
+  /**
+   * 农历月份中文表示。
+   * @return lunarMonthCn
+   */
+  @javax.annotation.Nullable
+  public String getLunarMonthCn() {
+    return lunarMonthCn;
+  }
+
+  public void setLunarMonthCn(@javax.annotation.Nullable String lunarMonthCn) {
+    this.lunarMonthCn = lunarMonthCn;
+  }
+
+
+  public GetMiscLunartime200Response lunarDayCn(@javax.annotation.Nullable String lunarDayCn) {
+    this.lunarDayCn = lunarDayCn;
+    return this;
+  }
+
+  /**
+   * 农历日期中文表示。
+   * @return lunarDayCn
+   */
+  @javax.annotation.Nullable
+  public String getLunarDayCn() {
+    return lunarDayCn;
+  }
+
+  public void setLunarDayCn(@javax.annotation.Nullable String lunarDayCn) {
+    this.lunarDayCn = lunarDayCn;
+  }
+
+
+  public GetMiscLunartime200Response ganzhiYear(@javax.annotation.Nullable String ganzhiYear) {
+    this.ganzhiYear = ganzhiYear;
+    return this;
+  }
+
+  /**
+   * 干支年。
+   * @return ganzhiYear
+   */
+  @javax.annotation.Nullable
+  public String getGanzhiYear() {
+    return ganzhiYear;
+  }
+
+  public void setGanzhiYear(@javax.annotation.Nullable String ganzhiYear) {
+    this.ganzhiYear = ganzhiYear;
+  }
+
+
+  public GetMiscLunartime200Response ganzhiMonth(@javax.annotation.Nullable String ganzhiMonth) {
+    this.ganzhiMonth = ganzhiMonth;
+    return this;
+  }
+
+  /**
+   * 干支月。
+   * @return ganzhiMonth
+   */
+  @javax.annotation.Nullable
+  public String getGanzhiMonth() {
+    return ganzhiMonth;
+  }
+
+  public void setGanzhiMonth(@javax.annotation.Nullable String ganzhiMonth) {
+    this.ganzhiMonth = ganzhiMonth;
+  }
+
+
+  public GetMiscLunartime200Response ganzhiDay(@javax.annotation.Nullable String ganzhiDay) {
+    this.ganzhiDay = ganzhiDay;
+    return this;
+  }
+
+  /**
+   * 干支日。
+   * @return ganzhiDay
+   */
+  @javax.annotation.Nullable
+  public String getGanzhiDay() {
+    return ganzhiDay;
+  }
+
+  public void setGanzhiDay(@javax.annotation.Nullable String ganzhiDay) {
+    this.ganzhiDay = ganzhiDay;
+  }
+
+
+  public GetMiscLunartime200Response zodiac(@javax.annotation.Nullable String zodiac) {
+    this.zodiac = zodiac;
+    return this;
+  }
+
+  /**
+   * 生肖。
+   * @return zodiac
+   */
+  @javax.annotation.Nullable
+  public String getZodiac() {
+    return zodiac;
+  }
+
+  public void setZodiac(@javax.annotation.Nullable String zodiac) {
+    this.zodiac = zodiac;
+  }
+
+
+  public GetMiscLunartime200Response solarTerm(@javax.annotation.Nullable String solarTerm) {
+    this.solarTerm = solarTerm;
+    return this;
+  }
+
+  /**
+   * 节气名称。有值时返回，无值时可能为空字符串或不返回。
+   * @return solarTerm
+   */
+  @javax.annotation.Nullable
+  public String getSolarTerm() {
+    return solarTerm;
+  }
+
+  public void setSolarTerm(@javax.annotation.Nullable String solarTerm) {
+    this.solarTerm = solarTerm;
+  }
+
+
+  public GetMiscLunartime200Response lunarFestivals(@javax.annotation.Nullable List<String> lunarFestivals) {
+    this.lunarFestivals = lunarFestivals;
+    return this;
+  }
+
+  public GetMiscLunartime200Response addLunarFestivalsItem(String lunarFestivalsItem) {
+    if (this.lunarFestivals == null) {
+      this.lunarFestivals = new ArrayList<>();
+    }
+    this.lunarFestivals.add(lunarFestivalsItem);
+    return this;
+  }
+
+  /**
+   * 农历节日数组。
+   * @return lunarFestivals
+   */
+  @javax.annotation.Nullable
+  public List<String> getLunarFestivals() {
+    return lunarFestivals;
+  }
+
+  public void setLunarFestivals(@javax.annotation.Nullable List<String> lunarFestivals) {
+    this.lunarFestivals = lunarFestivals;
+  }
+
+
+  public GetMiscLunartime200Response solarFestivals(@javax.annotation.Nullable List<String> solarFestivals) {
+    this.solarFestivals = solarFestivals;
+    return this;
+  }
+
+  public GetMiscLunartime200Response addSolarFestivalsItem(String solarFestivalsItem) {
+    if (this.solarFestivals == null) {
+      this.solarFestivals = new ArrayList<>();
+    }
+    this.solarFestivals.add(solarFestivalsItem);
+    return this;
+  }
+
+  /**
+   * 公历节日数组。
+   * @return solarFestivals
+   */
+  @javax.annotation.Nullable
+  public List<String> getSolarFestivals() {
+    return solarFestivals;
+  }
+
+  public void setSolarFestivals(@javax.annotation.Nullable List<String> solarFestivals) {
+    this.solarFestivals = solarFestivals;
   }
 
 
@@ -138,23 +611,61 @@ public class GetMiscLunartime200Response {
       return false;
     }
     GetMiscLunartime200Response getMiscLunartime200Response = (GetMiscLunartime200Response) o;
-    return Objects.equals(this.code, getMiscLunartime200Response.code) &&
-        Objects.equals(this.message, getMiscLunartime200Response.message) &&
-        Objects.equals(this.data, getMiscLunartime200Response.data);
+    return Objects.equals(this.queryTimestamp, getMiscLunartime200Response.queryTimestamp) &&
+        Objects.equals(this.queryTimezone, getMiscLunartime200Response.queryTimezone) &&
+        Objects.equals(this.timezone, getMiscLunartime200Response.timezone) &&
+        Objects.equals(this.datetime, getMiscLunartime200Response.datetime) &&
+        Objects.equals(this.datetimeRfc3339, getMiscLunartime200Response.datetimeRfc3339) &&
+        Objects.equals(this.timestampUnix, getMiscLunartime200Response.timestampUnix) &&
+        Objects.equals(this.weekday, getMiscLunartime200Response.weekday) &&
+        Objects.equals(this.weekdayCn, getMiscLunartime200Response.weekdayCn) &&
+        Objects.equals(this.lunarYear, getMiscLunartime200Response.lunarYear) &&
+        Objects.equals(this.lunarMonth, getMiscLunartime200Response.lunarMonth) &&
+        Objects.equals(this.lunarDay, getMiscLunartime200Response.lunarDay) &&
+        Objects.equals(this.isLeapMonth, getMiscLunartime200Response.isLeapMonth) &&
+        Objects.equals(this.lunarYearCn, getMiscLunartime200Response.lunarYearCn) &&
+        Objects.equals(this.lunarMonthCn, getMiscLunartime200Response.lunarMonthCn) &&
+        Objects.equals(this.lunarDayCn, getMiscLunartime200Response.lunarDayCn) &&
+        Objects.equals(this.ganzhiYear, getMiscLunartime200Response.ganzhiYear) &&
+        Objects.equals(this.ganzhiMonth, getMiscLunartime200Response.ganzhiMonth) &&
+        Objects.equals(this.ganzhiDay, getMiscLunartime200Response.ganzhiDay) &&
+        Objects.equals(this.zodiac, getMiscLunartime200Response.zodiac) &&
+        Objects.equals(this.solarTerm, getMiscLunartime200Response.solarTerm) &&
+        Objects.equals(this.lunarFestivals, getMiscLunartime200Response.lunarFestivals) &&
+        Objects.equals(this.solarFestivals, getMiscLunartime200Response.solarFestivals);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message, data);
+    return Objects.hash(queryTimestamp, queryTimezone, timezone, datetime, datetimeRfc3339, timestampUnix, weekday, weekdayCn, lunarYear, lunarMonth, lunarDay, isLeapMonth, lunarYearCn, lunarMonthCn, lunarDayCn, ganzhiYear, ganzhiMonth, ganzhiDay, zodiac, solarTerm, lunarFestivals, solarFestivals);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetMiscLunartime200Response {\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
-    sb.append("    data: ").append(toIndentedString(data)).append("\n");
+    sb.append("    queryTimestamp: ").append(toIndentedString(queryTimestamp)).append("\n");
+    sb.append("    queryTimezone: ").append(toIndentedString(queryTimezone)).append("\n");
+    sb.append("    timezone: ").append(toIndentedString(timezone)).append("\n");
+    sb.append("    datetime: ").append(toIndentedString(datetime)).append("\n");
+    sb.append("    datetimeRfc3339: ").append(toIndentedString(datetimeRfc3339)).append("\n");
+    sb.append("    timestampUnix: ").append(toIndentedString(timestampUnix)).append("\n");
+    sb.append("    weekday: ").append(toIndentedString(weekday)).append("\n");
+    sb.append("    weekdayCn: ").append(toIndentedString(weekdayCn)).append("\n");
+    sb.append("    lunarYear: ").append(toIndentedString(lunarYear)).append("\n");
+    sb.append("    lunarMonth: ").append(toIndentedString(lunarMonth)).append("\n");
+    sb.append("    lunarDay: ").append(toIndentedString(lunarDay)).append("\n");
+    sb.append("    isLeapMonth: ").append(toIndentedString(isLeapMonth)).append("\n");
+    sb.append("    lunarYearCn: ").append(toIndentedString(lunarYearCn)).append("\n");
+    sb.append("    lunarMonthCn: ").append(toIndentedString(lunarMonthCn)).append("\n");
+    sb.append("    lunarDayCn: ").append(toIndentedString(lunarDayCn)).append("\n");
+    sb.append("    ganzhiYear: ").append(toIndentedString(ganzhiYear)).append("\n");
+    sb.append("    ganzhiMonth: ").append(toIndentedString(ganzhiMonth)).append("\n");
+    sb.append("    ganzhiDay: ").append(toIndentedString(ganzhiDay)).append("\n");
+    sb.append("    zodiac: ").append(toIndentedString(zodiac)).append("\n");
+    sb.append("    solarTerm: ").append(toIndentedString(solarTerm)).append("\n");
+    sb.append("    lunarFestivals: ").append(toIndentedString(lunarFestivals)).append("\n");
+    sb.append("    solarFestivals: ").append(toIndentedString(solarFestivals)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -176,7 +687,7 @@ public class GetMiscLunartime200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("code", "message", "data"));
+    openapiFields = new HashSet<String>(Arrays.asList("query_timestamp", "query_timezone", "timezone", "datetime", "datetime_rfc3339", "timestamp_unix", "weekday", "weekday_cn", "lunar_year", "lunar_month", "lunar_day", "is_leap_month", "lunar_year_cn", "lunar_month_cn", "lunar_day_cn", "ganzhi_year", "ganzhi_month", "ganzhi_day", "zodiac", "solar_term", "lunar_festivals", "solar_festivals"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -203,12 +714,58 @@ public class GetMiscLunartime200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      if ((jsonObj.get("message") != null && !jsonObj.get("message").isJsonNull()) && !jsonObj.get("message").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `message` to be a primitive type in the JSON string but got `%s`", jsonObj.get("message").toString()));
+      if ((jsonObj.get("query_timestamp") != null && !jsonObj.get("query_timestamp").isJsonNull()) && !jsonObj.get("query_timestamp").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `query_timestamp` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_timestamp").toString()));
       }
-      // validate the optional field `data`
-      if (jsonObj.get("data") != null && !jsonObj.get("data").isJsonNull()) {
-        GetMiscLunartime200ResponseData.validateJsonElement(jsonObj.get("data"));
+      if ((jsonObj.get("query_timezone") != null && !jsonObj.get("query_timezone").isJsonNull()) && !jsonObj.get("query_timezone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `query_timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("query_timezone").toString()));
+      }
+      if ((jsonObj.get("timezone") != null && !jsonObj.get("timezone").isJsonNull()) && !jsonObj.get("timezone").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `timezone` to be a primitive type in the JSON string but got `%s`", jsonObj.get("timezone").toString()));
+      }
+      if ((jsonObj.get("datetime") != null && !jsonObj.get("datetime").isJsonNull()) && !jsonObj.get("datetime").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `datetime` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datetime").toString()));
+      }
+      if ((jsonObj.get("datetime_rfc3339") != null && !jsonObj.get("datetime_rfc3339").isJsonNull()) && !jsonObj.get("datetime_rfc3339").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `datetime_rfc3339` to be a primitive type in the JSON string but got `%s`", jsonObj.get("datetime_rfc3339").toString()));
+      }
+      if ((jsonObj.get("weekday") != null && !jsonObj.get("weekday").isJsonNull()) && !jsonObj.get("weekday").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `weekday` to be a primitive type in the JSON string but got `%s`", jsonObj.get("weekday").toString()));
+      }
+      if ((jsonObj.get("weekday_cn") != null && !jsonObj.get("weekday_cn").isJsonNull()) && !jsonObj.get("weekday_cn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `weekday_cn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("weekday_cn").toString()));
+      }
+      if ((jsonObj.get("lunar_year_cn") != null && !jsonObj.get("lunar_year_cn").isJsonNull()) && !jsonObj.get("lunar_year_cn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `lunar_year_cn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lunar_year_cn").toString()));
+      }
+      if ((jsonObj.get("lunar_month_cn") != null && !jsonObj.get("lunar_month_cn").isJsonNull()) && !jsonObj.get("lunar_month_cn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `lunar_month_cn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lunar_month_cn").toString()));
+      }
+      if ((jsonObj.get("lunar_day_cn") != null && !jsonObj.get("lunar_day_cn").isJsonNull()) && !jsonObj.get("lunar_day_cn").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `lunar_day_cn` to be a primitive type in the JSON string but got `%s`", jsonObj.get("lunar_day_cn").toString()));
+      }
+      if ((jsonObj.get("ganzhi_year") != null && !jsonObj.get("ganzhi_year").isJsonNull()) && !jsonObj.get("ganzhi_year").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `ganzhi_year` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ganzhi_year").toString()));
+      }
+      if ((jsonObj.get("ganzhi_month") != null && !jsonObj.get("ganzhi_month").isJsonNull()) && !jsonObj.get("ganzhi_month").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `ganzhi_month` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ganzhi_month").toString()));
+      }
+      if ((jsonObj.get("ganzhi_day") != null && !jsonObj.get("ganzhi_day").isJsonNull()) && !jsonObj.get("ganzhi_day").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `ganzhi_day` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ganzhi_day").toString()));
+      }
+      if ((jsonObj.get("zodiac") != null && !jsonObj.get("zodiac").isJsonNull()) && !jsonObj.get("zodiac").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `zodiac` to be a primitive type in the JSON string but got `%s`", jsonObj.get("zodiac").toString()));
+      }
+      if ((jsonObj.get("solar_term") != null && !jsonObj.get("solar_term").isJsonNull()) && !jsonObj.get("solar_term").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `solar_term` to be a primitive type in the JSON string but got `%s`", jsonObj.get("solar_term").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("lunar_festivals") != null && !jsonObj.get("lunar_festivals").isJsonNull() && !jsonObj.get("lunar_festivals").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `lunar_festivals` to be an array in the JSON string but got `%s`", jsonObj.get("lunar_festivals").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("solar_festivals") != null && !jsonObj.get("solar_festivals").isJsonNull() && !jsonObj.get("solar_festivals").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `solar_festivals` to be an array in the JSON string but got `%s`", jsonObj.get("solar_festivals").toString()));
       }
   }
 

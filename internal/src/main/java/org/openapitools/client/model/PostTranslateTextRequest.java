@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * PostTranslateTextRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostTranslateTextRequest {
   public static final String SERIALIZED_NAME_TEXT = "text";
   @SerializedName(SERIALIZED_NAME_TEXT)
@@ -66,7 +66,7 @@ public class PostTranslateTextRequest {
   }
 
   /**
-   * 待翻译的文本内容。
+   * 待翻译的文本内容，最大长度3000字符。
    * @return text
    */
   @javax.annotation.Nonnull

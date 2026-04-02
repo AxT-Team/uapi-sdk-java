@@ -52,88 +52,64 @@ import org.openapitools.client.JSON;
 /**
  * GetWebparseExtractimages200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetWebparseExtractimages200Response {
-  public static final String SERIALIZED_NAME_COUNT = "count";
-  @SerializedName(SERIALIZED_NAME_COUNT)
+  public static final String SERIALIZED_NAME_PAGE_URL = "page_url";
+  @SerializedName(SERIALIZED_NAME_PAGE_URL)
   @javax.annotation.Nullable
-  private Integer count;
+  private String pageUrl;
 
-  public static final String SERIALIZED_NAME_IMAGES = "images";
-  @SerializedName(SERIALIZED_NAME_IMAGES)
+  public static final String SERIALIZED_NAME_IMAGE_URLS = "image_urls";
+  @SerializedName(SERIALIZED_NAME_IMAGE_URLS)
   @javax.annotation.Nullable
-  private List<String> images = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_URL = "url";
-  @SerializedName(SERIALIZED_NAME_URL)
-  @javax.annotation.Nullable
-  private String url;
+  private List<String> imageUrls = new ArrayList<>();
 
   public GetWebparseExtractimages200Response() {
   }
 
-  public GetWebparseExtractimages200Response count(@javax.annotation.Nullable Integer count) {
-    this.count = count;
+  public GetWebparseExtractimages200Response pageUrl(@javax.annotation.Nullable String pageUrl) {
+    this.pageUrl = pageUrl;
     return this;
   }
 
   /**
-   * Get count
-   * @return count
+   * 实际解析的网页地址。
+   * @return pageUrl
    */
   @javax.annotation.Nullable
-  public Integer getCount() {
-    return count;
+  public String getPageUrl() {
+    return pageUrl;
   }
 
-  public void setCount(@javax.annotation.Nullable Integer count) {
-    this.count = count;
+  public void setPageUrl(@javax.annotation.Nullable String pageUrl) {
+    this.pageUrl = pageUrl;
   }
 
 
-  public GetWebparseExtractimages200Response images(@javax.annotation.Nullable List<String> images) {
-    this.images = images;
+  public GetWebparseExtractimages200Response imageUrls(@javax.annotation.Nullable List<String> imageUrls) {
+    this.imageUrls = imageUrls;
     return this;
   }
 
-  public GetWebparseExtractimages200Response addImagesItem(String imagesItem) {
-    if (this.images == null) {
-      this.images = new ArrayList<>();
+  public GetWebparseExtractimages200Response addImageUrlsItem(String imageUrlsItem) {
+    if (this.imageUrls == null) {
+      this.imageUrls = new ArrayList<>();
     }
-    this.images.add(imagesItem);
+    this.imageUrls.add(imageUrlsItem);
     return this;
   }
 
   /**
-   * Get images
-   * @return images
+   * 页面中提取到的图片链接列表。
+   * @return imageUrls
    */
   @javax.annotation.Nullable
-  public List<String> getImages() {
-    return images;
+  public List<String> getImageUrls() {
+    return imageUrls;
   }
 
-  public void setImages(@javax.annotation.Nullable List<String> images) {
-    this.images = images;
-  }
-
-
-  public GetWebparseExtractimages200Response url(@javax.annotation.Nullable String url) {
-    this.url = url;
-    return this;
-  }
-
-  /**
-   * Get url
-   * @return url
-   */
-  @javax.annotation.Nullable
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(@javax.annotation.Nullable String url) {
-    this.url = url;
+  public void setImageUrls(@javax.annotation.Nullable List<String> imageUrls) {
+    this.imageUrls = imageUrls;
   }
 
 
@@ -147,23 +123,21 @@ public class GetWebparseExtractimages200Response {
       return false;
     }
     GetWebparseExtractimages200Response getWebparseExtractimages200Response = (GetWebparseExtractimages200Response) o;
-    return Objects.equals(this.count, getWebparseExtractimages200Response.count) &&
-        Objects.equals(this.images, getWebparseExtractimages200Response.images) &&
-        Objects.equals(this.url, getWebparseExtractimages200Response.url);
+    return Objects.equals(this.pageUrl, getWebparseExtractimages200Response.pageUrl) &&
+        Objects.equals(this.imageUrls, getWebparseExtractimages200Response.imageUrls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(count, images, url);
+    return Objects.hash(pageUrl, imageUrls);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetWebparseExtractimages200Response {\n");
-    sb.append("    count: ").append(toIndentedString(count)).append("\n");
-    sb.append("    images: ").append(toIndentedString(images)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
+    sb.append("    pageUrl: ").append(toIndentedString(pageUrl)).append("\n");
+    sb.append("    imageUrls: ").append(toIndentedString(imageUrls)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -185,7 +159,7 @@ public class GetWebparseExtractimages200Response {
 
   static {
     // a set of all properties/fields (JSON key names)
-    openapiFields = new HashSet<String>(Arrays.asList("count", "images", "url"));
+    openapiFields = new HashSet<String>(Arrays.asList("page_url", "image_urls"));
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>(0);
@@ -212,12 +186,12 @@ public class GetWebparseExtractimages200Response {
         }
       }
         JsonObject jsonObj = jsonElement.getAsJsonObject();
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("images") != null && !jsonObj.get("images").isJsonNull() && !jsonObj.get("images").isJsonArray()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `images` to be an array in the JSON string but got `%s`", jsonObj.get("images").toString()));
+      if ((jsonObj.get("page_url") != null && !jsonObj.get("page_url").isJsonNull()) && !jsonObj.get("page_url").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `page_url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("page_url").toString()));
       }
-      if ((jsonObj.get("url") != null && !jsonObj.get("url").isJsonNull()) && !jsonObj.get("url").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `url` to be a primitive type in the JSON string but got `%s`", jsonObj.get("url").toString()));
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("image_urls") != null && !jsonObj.get("image_urls").isJsonNull() && !jsonObj.get("image_urls").isJsonArray()) {
+        throw new IllegalArgumentException(String.format(Locale.ROOT, "Expected the field `image_urls` to be an array in the JSON string but got `%s`", jsonObj.get("image_urls").toString()));
       }
   }
 

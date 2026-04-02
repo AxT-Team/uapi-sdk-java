@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * 仓库最新发布版本信息，如果没有 Release 则为 null。可用于实现应用更新检查功能。
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-02-26T17:21:00.573689900+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetGithubRepo200ResponseLatestRelease {
   public static final String SERIALIZED_NAME_TAG_NAME = "tag_name";
   @SerializedName(SERIALIZED_NAME_TAG_NAME)
