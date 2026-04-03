@@ -23,11 +23,13 @@ import java.util.Map;
 public class Demo {
     public static void main(String[] args) throws Exception {
         var client = new Client("https://uapis.cn", "YOUR_API_KEY");
-        var info = client.social().getSocialQqUserinfo(Map.of("qq", "10001"));
+        var info = client.misc().getMiscHotboard(Map.of("type", "weibo"));
         System.out.println(info);
     }
 }
 ```
+
+这个接口默认只要传 `type` 就可以拿当前热榜。`time`、`keyword`、`time_start`、`time_end`、`limit`、`sources` 都是按场景再传的可选参数。
 
 ## 特性
 
