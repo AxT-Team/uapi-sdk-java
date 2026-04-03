@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class Demo {
     public static void main(String[] args) throws Exception {
-        var client = new Client("https://uapis.cn/api/v1", "");
+        var client = new Client("https://uapis.cn", "YOUR_API_KEY");
         var info = client.social().getSocialQqUserinfo(Map.of("qq", "10001"));
         System.out.println(info);
     }
@@ -54,7 +54,7 @@ import uapi.Client;
 import uapi.UapiException;
 import java.util.Map;
 
-var client = new Client("https://uapis.cn/api/v1", "");
+var client = new Client("https://uapis.cn", "YOUR_API_KEY");
 
 // 成功路径
 var result = client.social().getSocialQqUserinfo(Map.of("qq", "10001"));

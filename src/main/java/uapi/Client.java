@@ -13,9 +13,14 @@ public class Client {
     private final OkHttpClient http = new OkHttpClient();
     private volatile UapiException.ResponseMeta lastResponseMeta;
 
-    public Client(String baseUrl, String token) { this.baseUrl = baseUrl; this.token = token; }
+    public Client(String baseUrl, String token) { this.baseUrl = normalizeBaseUrl(baseUrl); this.token = token; }
 
     public UapiException.ResponseMeta getLastResponseMeta() { return lastResponseMeta; }
+
+    private static String normalizeBaseUrl(String baseUrl) {
+        var normalized = baseUrl.replaceAll("/+$", "");
+        return normalized.endsWith("/api/v1") ? normalized.substring(0, normalized.length() - "/api/v1".length()) : normalized;
+    }
 
     private Object request(String method, String path, Map<String, Object> params, Object body) throws UapiException, IOException {
         HttpUrl.Builder url = HttpUrl.parse(baseUrl + path).newBuilder();
