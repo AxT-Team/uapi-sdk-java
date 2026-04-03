@@ -41,7 +41,7 @@ public class Demo {
 
 针对 401、404、429 等标准 HTTP 响应，SDK 已将其统一映射为具名的异常类型（`UapiException.Unauthorized`、`UapiException.NotFound`、`UapiException.ServiceBusy` 等）。这些异常均附带 `status`、`code`、`details` 等关键上下文信息，确保你在日志中能第一时间准确、快速地诊断问题。
 
-基础域名、请求超时和 `User-Agent` 已预设为合理的默认值。但你完全拥有控制权，可以通过 `new Client(baseUrl, token)` 结合 OkHttp 自定义拦截器，灵活覆盖 Token、BaseURL 等配置。
+当前通过 `new Client(baseUrl, token)` 配置 BaseURL 和 Token，内部会自动追加 `Authorization` 头。如果你需要代理、超时或重试策略，建议在项目里再封装一层，或者按需扩展源码。
 
 如果你需要查看字段细节或内部逻辑，仓库中的 `./internal` 目录同步保留了由 `openapi-generator` 生成的完整结构体，随时可供参考。
 
