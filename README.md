@@ -43,6 +43,51 @@ public class Demo {
 
 如果你需要查看字段细节或内部逻辑，仓库中的 `./internal` 目录同步保留了由 `openapi-generator` 生成的完整结构体，随时可供参考。
 
+## 响应元信息
+
+每次请求完成后，SDK 会自动把响应 Header 解析成结构化的 `ResponseMeta`，你不用自己拆原始字符串。
+
+成功时可以通过 `client.getLastResponseMeta()` 读取，失败时可以通过 `e.meta` 读取，两条路径拿到的是同一套字段。
+
+```java
+import uapi.Client;
+import uapi.UapiException;
+import java.util.Map;
+
+var client = new Client("https://uapis.cn/api/v1", "");
+
+// 成功路径
+var result = client.social().getSocialQqUserinfo(Map.of("qq", "10001"));
+var meta = client.getLastResponseMeta();
+if (meta != null) {
+    System.out.println("余额剩余: " + (meta.balanceRemainingCents != null ? meta.balanceRemainingCents : 0) + " 分");
+    System.out.println("资源包剩余: " + (meta.quotaRemainingCredits != null ? meta.quotaRemainingCredits : 0) + " 积分");
+    System.out.println("Request ID: " + meta.requestId);
+}
+
+// 失败路径
+try {
+    client.social().getSocialQqUserinfo(Map.of("qq", "10001"));
+} catch (UapiException e) {
+    if (e.meta != null) {
+        System.out.println("限流，" + (e.meta.retryAfterSeconds != null ? e.meta.retryAfterSeconds : 0) + "s 后重试");
+        System.out.println("Request ID: " + e.meta.requestId);
+    }
+}
+```
+
+常用字段一览：
+
+| 字段 | 说明 |
+|------|------|
+| `balanceRemainingCents` | 账户余额剩余（分） |
+| `quotaRemainingCredits` | 资源包剩余积分 |
+| `visitorQuotaRemainingCredits` | 访客配额剩余积分 |
+| `retryAfterSeconds` | 触发限流后的建议等待时长 |
+| `requestId` | 请求唯一 ID，排障时使用 |
+| `debitStatus` | 本次计费状态 |
+| `rateLimitPolicies` / `rateLimits` | 完整结构化限流策略数据 |
+
 ## 错误模型概览
 
 | HTTP 状态码 | SDK 错误类型                                  | 附加信息                                                                          |
