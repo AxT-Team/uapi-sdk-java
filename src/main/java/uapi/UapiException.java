@@ -111,6 +111,7 @@ public class UapiException extends Exception {
 
         ResponseMeta meta = new ResponseMeta();
         meta.requestId = raw.get("x-request-id");
+        meta.retryAfterRaw = raw.get("retry-after");
         meta.retryAfterSeconds = parseInteger(raw.get("retry-after"));
         meta.debitStatus = raw.get("uapi-debit-status");
         meta.creditsRequested = parseLong(raw.get("uapi-credits-requested"));
@@ -157,6 +158,48 @@ public class UapiException extends Exception {
         }
         if (meta.rateLimits.containsKey("visitor-quota")) {
             meta.visitorQuotaRemainingCredits = meta.rateLimits.get("visitor-quota").remaining;
+        }
+        if (meta.rateLimitPolicies.containsKey("billing-key-rate")) {
+            RateLimitPolicyEntry entry = meta.rateLimitPolicies.get("billing-key-rate");
+            meta.billingKeyRateLimit = entry.quota;
+            meta.billingKeyRateUnit = entry.unit;
+            meta.billingKeyRateWindowSeconds = entry.windowSeconds;
+        }
+        if (meta.rateLimits.containsKey("billing-key-rate")) {
+            RateLimitStateEntry entry = meta.rateLimits.get("billing-key-rate");
+            meta.billingKeyRateRemaining = entry.remaining;
+            if (meta.billingKeyRateUnit == null || meta.billingKeyRateUnit.isBlank()) {
+                meta.billingKeyRateUnit = entry.unit;
+            }
+            meta.billingKeyRateResetAfterSeconds = entry.resetAfterSeconds;
+        }
+        if (meta.rateLimitPolicies.containsKey("billing-ip-rate")) {
+            RateLimitPolicyEntry entry = meta.rateLimitPolicies.get("billing-ip-rate");
+            meta.billingIpRateLimit = entry.quota;
+            meta.billingIpRateUnit = entry.unit;
+            meta.billingIpRateWindowSeconds = entry.windowSeconds;
+        }
+        if (meta.rateLimits.containsKey("billing-ip-rate")) {
+            RateLimitStateEntry entry = meta.rateLimits.get("billing-ip-rate");
+            meta.billingIpRateRemaining = entry.remaining;
+            if (meta.billingIpRateUnit == null || meta.billingIpRateUnit.isBlank()) {
+                meta.billingIpRateUnit = entry.unit;
+            }
+            meta.billingIpRateResetAfterSeconds = entry.resetAfterSeconds;
+        }
+        if (meta.rateLimitPolicies.containsKey("visitor-rate")) {
+            RateLimitPolicyEntry entry = meta.rateLimitPolicies.get("visitor-rate");
+            meta.visitorRateLimit = entry.quota;
+            meta.visitorRateUnit = entry.unit;
+            meta.visitorRateWindowSeconds = entry.windowSeconds;
+        }
+        if (meta.rateLimits.containsKey("visitor-rate")) {
+            RateLimitStateEntry entry = meta.rateLimits.get("visitor-rate");
+            meta.visitorRateRemaining = entry.remaining;
+            if (meta.visitorRateUnit == null || meta.visitorRateUnit.isBlank()) {
+                meta.visitorRateUnit = entry.unit;
+            }
+            meta.visitorRateResetAfterSeconds = entry.resetAfterSeconds;
         }
         return meta;
     }
@@ -258,6 +301,7 @@ public class UapiException extends Exception {
 
     public static class ResponseMeta {
         public String requestId;
+        public String retryAfterRaw;
         public Integer retryAfterSeconds;
         public String debitStatus;
         public Long creditsRequested;
@@ -275,6 +319,21 @@ public class UapiException extends Exception {
         public Long quotaRemainingCredits;
         public Long visitorQuotaLimitCredits;
         public Long visitorQuotaRemainingCredits;
+        public Long billingKeyRateLimit;
+        public Long billingKeyRateRemaining;
+        public String billingKeyRateUnit;
+        public Integer billingKeyRateWindowSeconds;
+        public Integer billingKeyRateResetAfterSeconds;
+        public Long billingIpRateLimit;
+        public Long billingIpRateRemaining;
+        public String billingIpRateUnit;
+        public Integer billingIpRateWindowSeconds;
+        public Integer billingIpRateResetAfterSeconds;
+        public Long visitorRateLimit;
+        public Long visitorRateRemaining;
+        public String visitorRateUnit;
+        public Integer visitorRateWindowSeconds;
+        public Integer visitorRateResetAfterSeconds;
         public Map<String, String> rawHeaders = new HashMap<>();
     }
     public static class ApiError extends UapiException {
