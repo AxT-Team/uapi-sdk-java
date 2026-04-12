@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * 搜索结果数量限制
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T12:48:58.845719500+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSearchEngines200ResponseLimits {
   public static final String SERIALIZED_NAME_DEFAULT = "default";
   @SerializedName(SERIALIZED_NAME_DEFAULT)

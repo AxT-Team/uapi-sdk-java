@@ -68,7 +68,7 @@ import org.openapitools.client.JSON;
 /**
  * 18项生活指数（indices&#x3D;true 时返回），每项包含 level（等级名称）、brief（简短描述）、advice（详细建议）
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T12:48:58.845719500+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscWeather200ResponseLifeIndices {
   public static final String SERIALIZED_NAME_CLOTHING = "clothing";
   @SerializedName(SERIALIZED_NAME_CLOTHING)

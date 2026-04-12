@@ -64,7 +64,7 @@ import org.openapitools.client.JSON;
 /**
  * GetSocialBilibiliVideoinfo200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T12:48:58.845719500+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialBilibiliVideoinfo200Response {
   public static final String SERIALIZED_NAME_BVID = "bvid";
   @SerializedName(SERIALIZED_NAME_BVID)

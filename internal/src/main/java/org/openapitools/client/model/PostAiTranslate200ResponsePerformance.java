@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * PostAiTranslate200ResponsePerformance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T12:48:58.845719500+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class PostAiTranslate200ResponsePerformance {
   public static final String SERIALIZED_NAME_PROCESSING_TIME_MS = "processing_time_ms";
   @SerializedName(SERIALIZED_NAME_PROCESSING_TIME_MS)

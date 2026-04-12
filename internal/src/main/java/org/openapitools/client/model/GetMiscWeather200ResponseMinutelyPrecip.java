@@ -53,7 +53,7 @@ import org.openapitools.client.JSON;
 /**
  * 分钟级降水预报（minutely&#x3D;true 时返回，仅国内城市可用，精确到2分钟）
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T12:48:58.845719500+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscWeather200ResponseMinutelyPrecip {
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)

@@ -51,7 +51,7 @@ import org.openapitools.client.JSON;
 /**
  * GetSocialBilibiliVideoinfo200ResponseStaffInner
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T12:48:58.845719500+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetSocialBilibiliVideoinfo200ResponseStaffInner {
   public static final String SERIALIZED_NAME_MID = "mid";
   @SerializedName(SERIALIZED_NAME_MID)

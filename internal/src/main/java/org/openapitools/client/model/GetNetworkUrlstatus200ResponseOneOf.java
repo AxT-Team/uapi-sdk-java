@@ -50,7 +50,7 @@ import org.openapitools.client.JSON;
 /**
  * 当目标 URL 可访问时，&#x60;status&#x60; 为目标返回的 HTTP 状态码（如 &#x60;200&#x60;）。
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T12:48:58.845719500+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetNetworkUrlstatus200ResponseOneOf {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)

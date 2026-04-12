@@ -23,13 +23,11 @@ import java.util.Map;
 public class Demo {
     public static void main(String[] args) throws Exception {
         var client = new Client("https://uapis.cn", "YOUR_API_KEY");
-        var info = client.misc().getMiscHotboard(Map.of("type", "weibo"));
+        var info = client.social().getSocialQqUserinfo(Map.of("qq", "10001"));
         System.out.println(info);
     }
 }
 ```
-
-这个接口默认只要传 `type` 就可以拿当前热榜。`time`、`keyword`、`time_start`、`time_end`、`limit`、`sources` 都是按场景再传的可选参数。
 
 ## 特性
 
@@ -41,80 +39,9 @@ public class Demo {
 
 针对 401、404、429 等标准 HTTP 响应，SDK 已将其统一映射为具名的异常类型（`UapiException.Unauthorized`、`UapiException.NotFound`、`UapiException.ServiceBusy` 等）。这些异常均附带 `status`、`code`、`details` 等关键上下文信息，确保你在日志中能第一时间准确、快速地诊断问题。
 
-当前通过 `new Client(baseUrl, token)` 配置 BaseURL 和 Token，内部会自动追加 `Authorization` 头。如果你需要代理、超时或重试策略，建议在项目里再封装一层，或者按需扩展源码。
+基础域名、请求超时和 `User-Agent` 已预设为合理的默认值。但你完全拥有控制权，可以通过 `new Client(baseUrl, token)` 结合 OkHttp 自定义拦截器，灵活覆盖 Token、BaseURL 等配置。
 
 如果你需要查看字段细节或内部逻辑，仓库中的 `./internal` 目录同步保留了由 `openapi-generator` 生成的完整结构体，随时可供参考。
-
-## 响应元信息
-
-每次请求完成后，SDK 会自动把响应 Header 解析成结构化的 `ResponseMeta`，你不用自己拆原始字符串。
-
-成功时可以通过 `client.getLastResponseMeta()` 读取，失败时可以通过 `e.meta` 读取，两条路径拿到的是同一套字段。
-
-```java
-import uapi.Client;
-import uapi.UapiException;
-import java.util.Map;
-
-var client = new Client("https://uapis.cn", "YOUR_API_KEY");
-
-// 成功路径
-client.social().getSocialQqUserinfo(Map.of("qq", "10001"));
-var meta = client.getLastResponseMeta();
-if (meta != null) {
-    System.out.println("这次请求原价: " + (meta.creditsRequested != null ? meta.creditsRequested : 0) + " 积分");
-    System.out.println("这次实际扣费: " + (meta.creditsCharged != null ? meta.creditsCharged : 0) + " 积分");
-    System.out.println("特殊计价: " + (meta.creditsPricing != null ? meta.creditsPricing : "原价"));
-    System.out.println("余额剩余: " + (meta.balanceRemainingCents != null ? meta.balanceRemainingCents : 0) + " 分");
-    System.out.println("资源包剩余: " + (meta.quotaRemainingCredits != null ? meta.quotaRemainingCredits : 0) + " 积分");
-    System.out.println("当前有效额度桶: " + (meta.activeQuotaBuckets != null ? meta.activeQuotaBuckets : 0));
-    System.out.println("额度用空即停: " + (meta.stopOnEmpty != null ? meta.stopOnEmpty : false));
-    System.out.println(
-        "Key QPS: "
-            + (meta.billingKeyRateRemaining != null ? meta.billingKeyRateRemaining : 0)
-            + " / "
-            + (meta.billingKeyRateLimit != null ? meta.billingKeyRateLimit : 0)
-            + " "
-            + (meta.billingKeyRateUnit != null ? meta.billingKeyRateUnit : "req")
-    );
-    System.out.println("Request ID: " + meta.requestId);
-}
-
-// 失败路径
-try {
-    client.social().getSocialQqUserinfo(Map.of("qq", "10001"));
-} catch (UapiException e) {
-    if (e.meta != null) {
-        System.out.println("Retry-After 秒数: " + e.meta.retryAfterSeconds);
-        System.out.println("Retry-After 原始值: " + e.meta.retryAfterRaw);
-        System.out.println(
-            "访客 QPS: "
-                + (e.meta.visitorRateRemaining != null ? e.meta.visitorRateRemaining : 0)
-                + " / "
-                + (e.meta.visitorRateLimit != null ? e.meta.visitorRateLimit : 0)
-        );
-        System.out.println("Request ID: " + e.meta.requestId);
-    }
-}
-```
-
-常用字段一览：
-
-| 字段 | 说明 |
-|------|------|
-| `creditsRequested` | 这次请求原本要扣多少积分，也就是请求价 |
-| `creditsCharged` | 这次请求实际扣了多少积分 |
-| `creditsPricing` | 特殊计价原因，例如缓存半价 `cache-hit-half-price` |
-| `balanceRemainingCents` | 账户余额剩余（分） |
-| `quotaRemainingCredits` | 资源包剩余积分 |
-| `activeQuotaBuckets` | 当前还有多少个有效额度桶参与计费 |
-| `stopOnEmpty` | 额度耗尽后是否直接停止服务 |
-| `retryAfterSeconds` / `retryAfterRaw` | 限流后的等待时长；当服务端返回 HTTP 时间字符串时看 `retryAfterRaw` |
-| `requestId` | 请求唯一 ID，排障时使用 |
-| `billingKeyRateLimit` / `billingKeyRateRemaining` | Billing Key 当前 QPS 规则的上限与剩余 |
-| `billingIpRateLimit` / `billingIpRateRemaining` | Billing Key 单 IP 当前 QPS 规则的上限与剩余 |
-| `visitorRateLimit` / `visitorRateRemaining` | 访客当前 QPS 规则的上限与剩余 |
-| `rateLimitPolicies` / `rateLimits` | 完整结构化限流策略数据 |
 
 ## 错误模型概览
 

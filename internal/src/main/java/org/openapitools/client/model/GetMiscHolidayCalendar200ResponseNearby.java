@@ -54,7 +54,7 @@ import org.openapitools.client.JSON;
 /**
  * 前后最近节日，仅 include_nearby&#x3D;true 且 date 模式返回。
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-03T01:17:16.046042800+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-04-12T12:48:58.845719500+08:00[Asia/Shanghai]", comments = "Generator version: 7.17.0")
 public class GetMiscHolidayCalendar200ResponseNearby {
   public static final String SERIALIZED_NAME_PREVIOUS = "previous";
   @SerializedName(SERIALIZED_NAME_PREVIOUS)
