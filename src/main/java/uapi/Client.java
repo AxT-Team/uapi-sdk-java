@@ -3,9 +3,17 @@ package uapi;
 import okhttp3.*;
 import com.google.gson.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Client {
     private final String baseUrl;
@@ -89,20 +97,77 @@ public class Client {
         return query;
     }
 
-    private Object request(String method, String path, Map<String, Object> params, Object body, Boolean disableCache) throws UapiException, IOException {
+    private static String stringifyFormValue(Object value) {
+        if (value instanceof Boolean boolValue) {
+            return boolValue ? "true" : "false";
+        }
+        return String.valueOf(value);
+    }
+
+    private static void addMultipartFilePart(MultipartBody.Builder builder, String name, Object value) throws IOException {
+        if (value instanceof String textValue) {
+            Path path = Path.of(textValue);
+            if (!Files.isRegularFile(path)) {
+                throw new IOException("File not found: " + textValue);
+            }
+            builder.addFormDataPart(name, path.getFileName().toString(), RequestBody.create(Files.readAllBytes(path)));
+            return;
+        }
+        if (value instanceof Path pathValue) {
+            if (!Files.isRegularFile(pathValue)) {
+                throw new IOException("File not found: " + pathValue);
+            }
+            builder.addFormDataPart(name, pathValue.getFileName().toString(), RequestBody.create(Files.readAllBytes(pathValue)));
+            return;
+        }
+        if (value instanceof File fileValue) {
+            addMultipartFilePart(builder, name, fileValue.toPath());
+            return;
+        }
+        if (value instanceof byte[] bytesValue) {
+            builder.addFormDataPart(name, "upload.bin", RequestBody.create(bytesValue));
+            return;
+        }
+        throw new IllegalArgumentException("Unsupported multipart file value for " + name + ": " + value.getClass().getName());
+    }
+
+    private static MultipartBody buildMultipartBody(Map<String, Object> body, List<String> fileFields) throws IOException {
+        MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        Set<String> fileFieldSet = new HashSet<>(fileFields);
+        for (var entry : body.entrySet()) {
+            if (entry.getValue() == null) {
+                continue;
+            }
+            if (fileFieldSet.contains(entry.getKey())) {
+                addMultipartFilePart(builder, entry.getKey(), entry.getValue());
+            } else {
+                builder.addFormDataPart(entry.getKey(), stringifyFormValue(entry.getValue()));
+            }
+        }
+        return builder.build();
+    }
+
+    private Object request(String method, String path, Map<String, Object> params, Object body, Boolean disableCache, boolean multipart, List<String> fileFields, String responseKind) throws UapiException, IOException {
         params = applyCacheControl(method, params, disableCache);
         HttpUrl.Builder url = HttpUrl.parse(baseUrl + path).newBuilder();
         if (params != null) for (var e: params.entrySet()) url.addQueryParameter(e.getKey(), String.valueOf(e.getValue()));
-        RequestBody reqBody = body == null ? null : RequestBody.create(MediaType.parse("application/json"), new Gson().toJson(body));
+        RequestBody reqBody = null;
+        if (multipart) {
+            reqBody = buildMultipartBody(body instanceof Map<?, ?> bodyMap ? (Map<String, Object>) bodyMap : new HashMap<>(), fileFields);
+        } else if (body != null) {
+            reqBody = RequestBody.create(MediaType.parse("application/json"), new Gson().toJson(body));
+        }
         Request.Builder req = new Request.Builder().url(url.build());
         req.method(method, reqBody);
         if (token != null && !token.isEmpty()) req.addHeader("Authorization", "Bearer " + token);
         Response resp = http.newCall(req.build()).execute();
         String ct = resp.header("content-type", "");
-        String text = resp.body() == null ? "" : resp.body().string();
+        byte[] raw = resp.body() == null ? new byte[0] : resp.body().bytes();
+        String text = new String(raw, StandardCharsets.UTF_8);
         lastResponseMeta = UapiException.extractMeta(resp.headers());
         if (!resp.isSuccessful()) throw UapiException.map(resp.code(), text, resp.headers());
         if (ct.contains("application/json")) return new Gson().fromJson(text, Object.class);
+        if ("arrayBuffer".equals(responseKind)) return raw;
         return text;
     }
     public ClipzyZaiXianJianTieBanApi clipzyZaiXianJianTieBan() { return new ClipzyZaiXianJianTieBanApi(); }
@@ -114,7 +179,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("id")) q.put("id", args.get("id"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/api/get";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getClipzyRaw(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -125,7 +191,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/api/raw/{id}";
             if (args != null && args.containsKey("id")) path = path.replace("{" + "id" + "}", String.valueOf(args.get("id")));
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "text";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postClipzyStore(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -135,7 +202,8 @@ public class Client {
             if (args != null && args.containsKey("compressedData")) body.put("compressedData", args.get("compressedData"));
             if (args != null && args.containsKey("ttl")) body.put("ttl", args.get("ttl"));
             String path = "/api/v1/api/store";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public ConvertApi convert() { return new ConvertApi(); }
@@ -147,7 +215,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("time")) q.put("time", args.get("time"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/convert/unixtime";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postConvertJson(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -156,7 +225,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("content")) body.put("content", args.get("content"));
             String path = "/api/v1/convert/json";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public DailyApi daily() { return new DailyApi(); }
@@ -167,7 +237,8 @@ public class Client {
             Boolean disableCache = readDisableCache(args);
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/daily/news-image";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public GameApi game() { return new GameApi(); }
@@ -178,7 +249,8 @@ public class Client {
             Boolean disableCache = readDisableCache(args);
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/game/epic-free";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getGameMinecraftHistoryid(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -188,7 +260,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("uuid")) q.put("uuid", args.get("uuid"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/game/minecraft/historyid";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getGameMinecraftServerstatus(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -197,7 +270,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("server")) q.put("server", args.get("server"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/game/minecraft/serverstatus";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getGameMinecraftUserinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -206,7 +280,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("username")) q.put("username", args.get("username"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/game/minecraft/userinfo";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getGameSteamSummary(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -218,7 +293,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("key")) q.put("key", args.get("key"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/game/steam/summary";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public ImageApi image() { return new ImageApi(); }
@@ -234,7 +310,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("r")) q.put("r", args.get("r"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/avatar/gravatar";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getImageBingDaily(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -245,7 +322,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("format")) q.put("format", args.get("format"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/image/bing-daily";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = args != null && "json".equals(String.valueOf(args.get("format"))) ? "json" : "arrayBuffer";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getImageBingDailyHistory(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -257,7 +335,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("page_size")) q.put("page_size", args.get("page_size"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/image/bing-daily/history";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getImageMotou(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -267,7 +346,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("bg_color")) q.put("bg_color", args.get("bg_color"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/image/motou";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getImageQrcode(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -281,7 +361,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("bgcolor")) q.put("bgcolor", args.get("bgcolor"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/image/qrcode";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getImageTobase64(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -290,7 +371,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/image/tobase64";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postImageCompress(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -301,7 +383,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
             String path = "/api/v1/image/compress";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, true, Arrays.asList("file"), responseKind);
         }
         public Object postImageDecode(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -319,7 +402,8 @@ public class Client {
             if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
             if (args != null && args.containsKey("url")) body.put("url", args.get("url"));
             String path = "/api/v1/image/decode";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, true, Arrays.asList("file"), responseKind);
         }
         public Object postImageFrombase64(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -328,7 +412,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("imageData")) body.put("imageData", args.get("imageData"));
             String path = "/api/v1/image/frombase64";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postImageMotou(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -339,7 +424,8 @@ public class Client {
             if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
             if (args != null && args.containsKey("image_url")) body.put("image_url", args.get("image_url"));
             String path = "/api/v1/image/motou";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, true, Arrays.asList("file"), responseKind);
         }
         public Object postImageNsfw(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -349,7 +435,8 @@ public class Client {
             if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
             if (args != null && args.containsKey("url")) body.put("url", args.get("url"));
             String path = "/api/v1/image/nsfw";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, true, Arrays.asList("file"), responseKind);
         }
         public Object postImageOcr(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -364,7 +451,8 @@ public class Client {
             if (args != null && args.containsKey("return_markdown")) body.put("return_markdown", args.get("return_markdown"));
             if (args != null && args.containsKey("url")) body.put("url", args.get("url"));
             String path = "/api/v1/image/ocr";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, true, Arrays.asList("file"), responseKind);
         }
         public Object postImageSpeechless(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -374,7 +462,8 @@ public class Client {
             if (args != null && args.containsKey("bottom_text")) body.put("bottom_text", args.get("bottom_text"));
             if (args != null && args.containsKey("top_text")) body.put("top_text", args.get("top_text"));
             String path = "/api/v1/image/speechless";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postImageSvg(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -387,7 +476,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
             String path = "/api/v1/image/svg";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, true, Arrays.asList("file"), responseKind);
         }
     }
     public MiscApi misc() { return new MiscApi(); }
@@ -400,7 +490,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("day")) q.put("day", args.get("day"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/history/programmer";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getHistoryProgrammerToday(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -408,7 +499,8 @@ public class Client {
             Boolean disableCache = readDisableCache(args);
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/history/programmer/today";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscDistrict(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -423,7 +515,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("limit")) q.put("limit", args.get("limit"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/district";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscHolidayCalendar(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -439,7 +532,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("exclude_past")) q.put("exclude_past", args.get("exclude_past"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/holiday-calendar";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscHotboard(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -453,7 +547,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("limit")) q.put("limit", args.get("limit"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/hotboard";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscLunartime(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -463,7 +558,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("timezone")) q.put("timezone", args.get("timezone"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/lunartime";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscPhoneinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -472,7 +568,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("phone")) q.put("phone", args.get("phone"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/phoneinfo";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscRandomnumber(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -486,7 +583,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("decimal_places")) q.put("decimal_places", args.get("decimal_places"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/randomnumber";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscTimestamp(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -495,7 +593,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("ts")) q.put("ts", args.get("ts"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/timestamp";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscTrackingCarriers(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -503,7 +602,8 @@ public class Client {
             Boolean disableCache = readDisableCache(args);
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/tracking/carriers";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscTrackingDetect(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -512,7 +612,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("tracking_number")) q.put("tracking_number", args.get("tracking_number"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/tracking/detect";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscTrackingQuery(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -524,7 +625,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("full")) q.put("full", args.get("full"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/tracking/query";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscWeather(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -540,7 +642,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("lang")) q.put("lang", args.get("lang"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/weather";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getMiscWorldtime(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -549,7 +652,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("city")) q.put("city", args.get("city"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/worldtime";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postMiscDateDiff(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -560,7 +664,8 @@ public class Client {
             if (args != null && args.containsKey("format")) body.put("format", args.get("format"));
             if (args != null && args.containsKey("start_date")) body.put("start_date", args.get("start_date"));
             String path = "/api/v1/misc/date-diff";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public NetworkApi network() { return new NetworkApi(); }
@@ -573,7 +678,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("type")) q.put("type", args.get("type"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/dns";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getNetworkIcp(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -582,7 +688,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("domain")) q.put("domain", args.get("domain"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/icp";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getNetworkIpinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -592,7 +699,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("source")) q.put("source", args.get("source"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/ipinfo";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getNetworkMyip(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -601,7 +709,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("source")) q.put("source", args.get("source"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/myip";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getNetworkPing(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -610,7 +719,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("host")) q.put("host", args.get("host"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/ping";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getNetworkPingmyip(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -618,7 +728,8 @@ public class Client {
             Boolean disableCache = readDisableCache(args);
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/pingmyip";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getNetworkPortscan(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -629,7 +740,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("protocol")) q.put("protocol", args.get("protocol"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/portscan";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getNetworkUrlstatus(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -638,7 +750,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/urlstatus";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getNetworkWhois(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -648,7 +761,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("format")) q.put("format", args.get("format"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/whois";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getNetworkWxdomain(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -657,7 +771,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("domain")) q.put("domain", args.get("domain"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/network/wxdomain";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public PoemApi poem() { return new PoemApi(); }
@@ -668,7 +783,8 @@ public class Client {
             Boolean disableCache = readDisableCache(args);
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/saying";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public RandomApi random() { return new RandomApi(); }
@@ -680,7 +796,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("question")) q.put("question", args.get("question"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/answerbook/ask";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getRandomImage(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -690,7 +807,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("type")) q.put("type", args.get("type"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/random/image";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getRandomString(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -700,7 +818,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("type")) q.put("type", args.get("type"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/random/string";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postAnswerbookAsk(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -709,7 +828,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("question")) body.put("question", args.get("question"));
             String path = "/api/v1/answerbook/ask";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public SocialApi social() { return new SocialApi(); }
@@ -721,7 +841,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("repo")) q.put("repo", args.get("repo"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/github/repo";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getGithubUser(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -733,7 +854,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("org")) q.put("org", args.get("org"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/github/user";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getSocialBilibiliArchives(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -746,7 +868,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("pn")) q.put("pn", args.get("pn"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/social/bilibili/archives";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getSocialBilibiliLiveroom(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -756,7 +879,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("room_id")) q.put("room_id", args.get("room_id"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/social/bilibili/liveroom";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getSocialBilibiliReplies(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -768,7 +892,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("pn")) q.put("pn", args.get("pn"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/social/bilibili/replies";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getSocialBilibiliUserinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -777,7 +902,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("uid")) q.put("uid", args.get("uid"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/social/bilibili/userinfo";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getSocialBilibiliVideoinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -787,7 +913,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("bvid")) q.put("bvid", args.get("bvid"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/social/bilibili/videoinfo";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getSocialQqGroupinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -796,7 +923,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("group_id")) q.put("group_id", args.get("group_id"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/social/qq/groupinfo";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getSocialQqUserinfo(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -805,7 +933,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("qq")) q.put("qq", args.get("qq"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/social/qq/userinfo";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public StatusApi status() { return new StatusApi(); }
@@ -817,7 +946,8 @@ public class Client {
             if ("header".equals("query") && args != null && args.containsKey("Authorization")) q.put("Authorization", args.get("Authorization"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/status/ratelimit";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getStatusUsage(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -826,7 +956,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("path")) q.put("path", args.get("path"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/status/usage";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public TextApi text() { return new TextApi(); }
@@ -838,7 +969,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("text")) q.put("text", args.get("text"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/text/md5";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextAesDecrypt(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -849,7 +981,8 @@ public class Client {
             if (args != null && args.containsKey("nonce")) body.put("nonce", args.get("nonce"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/aes/decrypt";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextAesDecryptAdvanced(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -862,7 +995,8 @@ public class Client {
             if (args != null && args.containsKey("padding")) body.put("padding", args.get("padding"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/aes/decrypt-advanced";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextAesEncrypt(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -872,7 +1006,8 @@ public class Client {
             if (args != null && args.containsKey("key")) body.put("key", args.get("key"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/aes/encrypt";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextAesEncryptAdvanced(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -886,7 +1021,8 @@ public class Client {
             if (args != null && args.containsKey("padding")) body.put("padding", args.get("padding"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/aes/encrypt-advanced";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextAnalyze(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -895,7 +1031,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/analyze";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextBase64Decode(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -904,7 +1041,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/base64/decode";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextBase64Encode(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -913,7 +1051,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/base64/encode";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextConvert(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -925,7 +1064,8 @@ public class Client {
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             if (args != null && args.containsKey("to")) body.put("to", args.get("to"));
             String path = "/api/v1/text/convert";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextMarkdownToHtml(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -936,7 +1076,8 @@ public class Client {
             if (args != null && args.containsKey("sanitize")) body.put("sanitize", args.get("sanitize"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/markdown-to-html";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextMarkdownToPdf(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -947,7 +1088,8 @@ public class Client {
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             if (args != null && args.containsKey("theme")) body.put("theme", args.get("theme"));
             String path = "/api/v1/text/markdown-to-pdf";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "arrayBuffer";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextMd5(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -956,7 +1098,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/md5";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTextMd5Verify(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -966,7 +1109,8 @@ public class Client {
             if (args != null && args.containsKey("hash")) body.put("hash", args.get("hash"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/md5/verify";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public TranslateApi translate() { return new TranslateApi(); }
@@ -977,7 +1121,8 @@ public class Client {
             Boolean disableCache = readDisableCache(args);
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/ai/translate/languages";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postAiTranslate(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -991,7 +1136,8 @@ public class Client {
             if (args != null && args.containsKey("style")) body.put("style", args.get("style"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/ai/translate";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTranslateStream(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -1003,7 +1149,8 @@ public class Client {
             if (args != null && args.containsKey("to_lang")) body.put("to_lang", args.get("to_lang"));
             if (args != null && args.containsKey("tone")) body.put("tone", args.get("tone"));
             String path = "/api/v1/translate/stream";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postTranslateText(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -1013,7 +1160,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/translate/text";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public WebparseApi webparse() { return new WebparseApi(); }
@@ -1026,7 +1174,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/web/tomarkdown/async/{task_id}";
             if (args != null && args.containsKey("task_id")) path = path.replace("{" + "task_id" + "}", String.valueOf(args.get("task_id")));
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getWebparseExtractimages(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -1035,7 +1184,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/webparse/extractimages";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object getWebparseMetadata(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -1044,7 +1194,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/webparse/metadata";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postWebTomarkdownAsync(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -1053,7 +1204,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("url")) q.put("url", args.get("url"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/web/tomarkdown/async";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public MinGanCiShiBieApi minGanCiShiBie() { return new MinGanCiShiBieApi(); }
@@ -1065,7 +1217,8 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("keyword")) q.put("keyword", args.get("keyword"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/sensitive-word/analyze-query";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postSensitiveWordAnalyze(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -1074,7 +1227,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("keywords")) body.put("keywords", args.get("keywords"));
             String path = "/api/v1/sensitive-word/analyze";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postSensitiveWordQuickCheck(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -1083,7 +1237,8 @@ public class Client {
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
             String path = "/api/v1/text/profanitycheck";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
     public ZhiNengSouSuoApi zhiNengSouSuo() { return new ZhiNengSouSuoApi(); }
@@ -1094,7 +1249,8 @@ public class Client {
             Boolean disableCache = readDisableCache(args);
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/search/engines";
-            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
         public Object postSearchAggregate(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
@@ -1108,7 +1264,8 @@ public class Client {
             if (args != null && args.containsKey("sort")) body.put("sort", args.get("sort"));
             if (args != null && args.containsKey("time_range")) body.put("time_range", args.get("time_range"));
             String path = "/api/v1/search/aggregate";
-            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+            String responseKind = "json";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache, false, Arrays.asList(), responseKind);
         }
     }
 }
