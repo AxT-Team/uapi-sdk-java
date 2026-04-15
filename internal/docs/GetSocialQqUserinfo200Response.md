@@ -14,7 +14,7 @@
 |**age** | **Integer** | 年龄 |  [optional] |
 |**sex** | **String** | 性别 |  [optional] |
 |**qid** | **String** | QQ个性域名 |  [optional] |
-|**qqLevel** | **Integer** | QQ等级 |  [optional] |
+|**qqLevel** | **Integer** | QQ等级。用户隐藏时返回 null |  [optional] |
 |**location** | **String** | 地理位置（省市） |  [optional] |
 |**email** | **String** | QQ邮箱 |  [optional] |
 |**isVip** | **Boolean** | 是否为VIP用户 |  [optional] |

@@ -240,8 +240,23 @@ public class Client {
             Map<String, Object> q = new HashMap<>();
             Map<String, Object> body = new HashMap<>();
             Boolean disableCache = readDisableCache(args);
+            if ("query".equals("query") && args != null && args.containsKey("date")) q.put("date", args.get("date"));
+            if ("query".equals("query") && args != null && args.containsKey("resolution")) q.put("resolution", args.get("resolution"));
+            if ("query".equals("query") && args != null && args.containsKey("format")) q.put("format", args.get("format"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/image/bing-daily";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+        }
+        public Object getImageBingDailyHistory(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            Boolean disableCache = readDisableCache(args);
+            if ("query".equals("query") && args != null && args.containsKey("date")) q.put("date", args.get("date"));
+            if ("query".equals("query") && args != null && args.containsKey("resolution")) q.put("resolution", args.get("resolution"));
+            if ("query".equals("query") && args != null && args.containsKey("page")) q.put("page", args.get("page"));
+            if ("query".equals("query") && args != null && args.containsKey("page_size")) q.put("page_size", args.get("page_size"));
+            if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
+            String path = "/api/v1/image/bing-daily/history";
             return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
         }
         public Object getImageMotou(Map<String, Object> args) throws Exception {
@@ -288,6 +303,24 @@ public class Client {
             String path = "/api/v1/image/compress";
             return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
         }
+        public Object postImageDecode(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            Boolean disableCache = readDisableCache(args);
+            if ("query".equals("query") && args != null && args.containsKey("width")) q.put("width", args.get("width"));
+            if ("query".equals("query") && args != null && args.containsKey("height")) q.put("height", args.get("height"));
+            if ("query".equals("query") && args != null && args.containsKey("max_width")) q.put("max_width", args.get("max_width"));
+            if ("query".equals("query") && args != null && args.containsKey("max_height")) q.put("max_height", args.get("max_height"));
+            if ("query".equals("query") && args != null && args.containsKey("format")) q.put("format", args.get("format"));
+            if ("query".equals("query") && args != null && args.containsKey("color_mode")) q.put("color_mode", args.get("color_mode"));
+            if ("query".equals("query") && args != null && args.containsKey("fit")) q.put("fit", args.get("fit"));
+            if ("query".equals("query") && args != null && args.containsKey("background")) q.put("background", args.get("background"));
+            if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
+            if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
+            if (args != null && args.containsKey("url")) body.put("url", args.get("url"));
+            String path = "/api/v1/image/decode";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+        }
         public Object postImageFrombase64(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             Map<String, Object> body = new HashMap<>();
@@ -316,6 +349,21 @@ public class Client {
             if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
             if (args != null && args.containsKey("url")) body.put("url", args.get("url"));
             String path = "/api/v1/image/nsfw";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+        }
+        public Object postImageOcr(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            Boolean disableCache = readDisableCache(args);
+            if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
+            if (args != null && args.containsKey("enable_cls")) body.put("enable_cls", args.get("enable_cls"));
+            if (args != null && args.containsKey("file")) body.put("file", args.get("file"));
+            if (args != null && args.containsKey("image_base64")) body.put("image_base64", args.get("image_base64"));
+            if (args != null && args.containsKey("image_name")) body.put("image_name", args.get("image_name"));
+            if (args != null && args.containsKey("need_location")) body.put("need_location", args.get("need_location"));
+            if (args != null && args.containsKey("return_markdown")) body.put("return_markdown", args.get("return_markdown"));
+            if (args != null && args.containsKey("url")) body.put("url", args.get("url"));
+            String path = "/api/v1/image/ocr";
             return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
         }
         public Object postImageSpeechless(Map<String, Object> args) throws Exception {
@@ -388,6 +436,7 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("holiday_type")) q.put("holiday_type", args.get("holiday_type"));
             if ("query".equals("query") && args != null && args.containsKey("include_nearby")) q.put("include_nearby", args.get("include_nearby"));
             if ("query".equals("query") && args != null && args.containsKey("nearby_limit")) q.put("nearby_limit", args.get("nearby_limit"));
+            if ("query".equals("query") && args != null && args.containsKey("exclude_past")) q.put("exclude_past", args.get("exclude_past"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/holiday-calendar";
             return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
@@ -402,7 +451,6 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("time_start")) q.put("time_start", args.get("time_start"));
             if ("query".equals("query") && args != null && args.containsKey("time_end")) q.put("time_end", args.get("time_end"));
             if ("query".equals("query") && args != null && args.containsKey("limit")) q.put("limit", args.get("limit"));
-            if ("query".equals("query") && args != null && args.containsKey("sources")) q.put("sources", args.get("sources"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/hotboard";
             return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
@@ -473,6 +521,7 @@ public class Client {
             if ("query".equals("query") && args != null && args.containsKey("tracking_number")) q.put("tracking_number", args.get("tracking_number"));
             if ("query".equals("query") && args != null && args.containsKey("carrier_code")) q.put("carrier_code", args.get("carrier_code"));
             if ("query".equals("query") && args != null && args.containsKey("phone")) q.put("phone", args.get("phone"));
+            if ("query".equals("query") && args != null && args.containsKey("full")) q.put("full", args.get("full"));
             if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
             String path = "/api/v1/misc/tracking/query";
             return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
@@ -674,6 +723,18 @@ public class Client {
             String path = "/api/v1/github/repo";
             return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
         }
+        public Object getGithubUser(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            Boolean disableCache = readDisableCache(args);
+            if ("query".equals("query") && args != null && args.containsKey("user")) q.put("user", args.get("user"));
+            if ("query".equals("query") && args != null && args.containsKey("activity")) q.put("activity", args.get("activity"));
+            if ("query".equals("query") && args != null && args.containsKey("activity_scope")) q.put("activity_scope", args.get("activity_scope"));
+            if ("query".equals("query") && args != null && args.containsKey("org")) q.put("org", args.get("org"));
+            if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
+            String path = "/api/v1/github/user";
+            return request("GET", path, q, body.isEmpty() ? null : body, disableCache);
+        }
         public Object getSocialBilibiliArchives(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             Map<String, Object> body = new HashMap<>();
@@ -866,6 +927,28 @@ public class Client {
             String path = "/api/v1/text/convert";
             return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
         }
+        public Object postTextMarkdownToHtml(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            Boolean disableCache = readDisableCache(args);
+            if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
+            if (args != null && args.containsKey("format")) body.put("format", args.get("format"));
+            if (args != null && args.containsKey("sanitize")) body.put("sanitize", args.get("sanitize"));
+            if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
+            String path = "/api/v1/text/markdown-to-html";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+        }
+        public Object postTextMarkdownToPdf(Map<String, Object> args) throws Exception {
+            Map<String, Object> q = new HashMap<>();
+            Map<String, Object> body = new HashMap<>();
+            Boolean disableCache = readDisableCache(args);
+            if (args != null && args.containsKey("_t")) q.put("_t", args.get("_t"));
+            if (args != null && args.containsKey("paper_size")) body.put("paper_size", args.get("paper_size"));
+            if (args != null && args.containsKey("text")) body.put("text", args.get("text"));
+            if (args != null && args.containsKey("theme")) body.put("theme", args.get("theme"));
+            String path = "/api/v1/text/markdown-to-pdf";
+            return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
+        }
         public Object postTextMd5(Map<String, Object> args) throws Exception {
             Map<String, Object> q = new HashMap<>();
             Map<String, Object> body = new HashMap<>();
@@ -1024,7 +1107,6 @@ public class Client {
             if (args != null && args.containsKey("site")) body.put("site", args.get("site"));
             if (args != null && args.containsKey("sort")) body.put("sort", args.get("sort"));
             if (args != null && args.containsKey("time_range")) body.put("time_range", args.get("time_range"));
-            if (args != null && args.containsKey("timeout_ms")) body.put("timeout_ms", args.get("timeout_ms"));
             String path = "/api/v1/search/aggregate";
             return request("POST", path, q, body.isEmpty() ? null : body, disableCache);
         }

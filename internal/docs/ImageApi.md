@@ -5,14 +5,17 @@ All URIs are relative to *https://uapis.cn/api/v1*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**getAvatarGravatar**](ImageApi.md#getAvatarGravatar) | **GET** /avatar/gravatar | 获取Gravatar头像 |
-| [**getImageBingDaily**](ImageApi.md#getImageBingDaily) | **GET** /image/bing-daily | 必应壁纸 |
+| [**getImageBingDaily**](ImageApi.md#getImageBingDaily) | **GET** /image/bing-daily | 获取必应每日壁纸 |
+| [**getImageBingDailyHistory**](ImageApi.md#getImageBingDailyHistory) | **GET** /image/bing-daily/history | 查询必应壁纸历史 |
 | [**getImageMotou**](ImageApi.md#getImageMotou) | **GET** /image/motou | 生成摸摸头GIF (QQ号) |
 | [**getImageQrcode**](ImageApi.md#getImageQrcode) | **GET** /image/qrcode | 生成二维码 |
 | [**getImageTobase64**](ImageApi.md#getImageTobase64) | **GET** /image/tobase64 | 图片转 Base64 |
 | [**postImageCompress**](ImageApi.md#postImageCompress) | **POST** /image/compress | 无损压缩图片 |
+| [**postImageDecode**](ImageApi.md#postImageDecode) | **POST** /image/decode | 解码并缩放图片 |
 | [**postImageFrombase64**](ImageApi.md#postImageFrombase64) | **POST** /image/frombase64 | 通过Base64编码上传图片 |
 | [**postImageMotou**](ImageApi.md#postImageMotou) | **POST** /image/motou | 生成摸摸头GIF |
 | [**postImageNsfw**](ImageApi.md#postImageNsfw) | **POST** /image/nsfw | 图片敏感检测 |
+| [**postImageOcr**](ImageApi.md#postImageOcr) | **POST** /image/ocr | 通用 OCR 文字识别 |
 | [**postImageSpeechless**](ImageApi.md#postImageSpeechless) | **POST** /image/speechless | 生成你们怎么不说话了表情包 |
 | [**postImageSvg**](ImageApi.md#postImageSvg) | **POST** /image/svg | SVG转图片 |
 
@@ -23,7 +26,7 @@ All URIs are relative to *https://uapis.cn/api/v1*
 
 获取Gravatar头像
 
-提供一个超高速、高可用的Gravatar头像代理服务。内置了强大的ETag条件缓存，确保用户在更新Gravatar头像后能几乎立刻看到变化，同时最大化地利用缓存。
+提供稳定、易用的头像获取能力，适合在网页或应用中直接展示头像。
 
 ### Example
 ```java
@@ -91,11 +94,11 @@ No authorization required
 
 <a id="getImageBingDaily"></a>
 # **getImageBingDaily**
-> File getImageBingDaily()
+> File getImageBingDaily(date, resolution, format)
 
-必应壁纸
+获取必应每日壁纸
 
-每天都想换张新壁纸？让必应的美图点亮你的一天吧！  ## 功能概述 这个接口会获取 Bing 搜索引擎当天全球同步的每日壁纸，并直接以图片形式返回。你可以用它来做应用的启动页、网站背景，或者任何需要每日更新精美图片的地方。  ## 使用须知 此接口成功时直接返回图片二进制数据，通常是 &#x60;image/jpeg&#x60;，不是 JSON 格式。接入时请按图片响应来处理。
+这个接口可以获取最新或指定日期的必应壁纸。默认直接返回图片，也可以传 &#x60;format&#x3D;json&#x60; 获取元数据，或者传 &#x60;format&#x3D;redirect&#x60; 直接跳转到最终图片地址。  ## 功能概述 - 不传参数时，默认返回当天壁纸图片二进制 - 可以传 &#x60;date&#x60; 查询指定日期的壁纸 - 可以传 &#x60;resolution&#x60; 选择 &#x60;4k&#x60; 或 &#x60;1080&#x60; - 可以传 &#x60;format&#x60; 控制返回图片、JSON 或 302 跳转 - 当传 &#x60;format&#x3D;json&#x60; 时，返回的是扁平 JSON 对象，里面会包含标题、副标题、说明文案、版权信息、问答信息和图片地址等字段  ## 参数说明 &#x60;resolution&#x60; 默认是 &#x60;4k&#x60;。 &#x60;format&#x60; 默认是 &#x60;image&#x60;。
 
 ### Example
 ```java
@@ -112,8 +115,11 @@ public class Example {
     defaultClient.setBasePath("https://uapis.cn/api/v1");
 
     ImageApi apiInstance = new ImageApi(defaultClient);
+    String date = "date_example"; // String | 壁纸日期，格式是 `YYYY-MM-DD`。不传时返回当天壁纸。
+    String resolution = "4k"; // String | 返回图片的目标分辨率。可以传 `4k` 或 `1080`，不传时默认是 `4k`。
+    String format = "image"; // String | 响应格式。可以传 `image`、`json` 或 `redirect`。不传时默认是 `image`。
     try {
-      File result = apiInstance.getImageBingDaily();
+      File result = apiInstance.getImageBingDaily(date, resolution, format);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ImageApi#getImageBingDaily");
@@ -127,7 +133,12 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **String**| 壁纸日期，格式是 &#x60;YYYY-MM-DD&#x60;。不传时返回当天壁纸。 | [optional] |
+| **resolution** | **String**| 返回图片的目标分辨率。可以传 &#x60;4k&#x60; 或 &#x60;1080&#x60;，不传时默认是 &#x60;4k&#x60;。 | [optional] [default to 4k] [enum: 4k, 1080] |
+| **format** | **String**| 响应格式。可以传 &#x60;image&#x60;、&#x60;json&#x60; 或 &#x60;redirect&#x60;。不传时默认是 &#x60;image&#x60;。 | [optional] [default to image] [enum: image, json, redirect] |
 
 ### Return type
 
@@ -140,13 +151,87 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: image/*, application/json
+ - **Accept**: image/jpeg, application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | 请求成功！响应体是JPEG或PNG格式的图片二进制数据。 |  -  |
-| **502** | 上游服务错误。我们无法从必应官方API获取到图片，并且备用图片方案也失败了。请稍后重试。 |  -  |
+| **200** | 请求成功。&#x60;format&#x3D;image&#x60; 返回图片二进制，&#x60;format&#x3D;json&#x60; 返回壁纸元数据。 |  -  |
+| **302** | 当 &#x60;format&#x3D;redirect&#x60; 时，这个接口会通过 &#x60;Location&#x60; 响应头跳转到最终图片地址。 |  * Location -  <br>  |
+| **400** | 请求参数不正确。 |  -  |
+| **404** | 指定日期没有找到对应的壁纸。 |  -  |
+| **500** | 服务器处理失败，请稍后重试。 |  -  |
+
+<a id="getImageBingDailyHistory"></a>
+# **getImageBingDailyHistory**
+> GetImageBingDailyHistory200Response getImageBingDailyHistory(date, resolution, page, pageSize)
+
+查询必应壁纸历史
+
+这个接口用于查询必应壁纸历史列表，也可以按日期精确查询某一天。默认按时间倒序返回 JSON。  ## 功能概述 - 可以传 &#x60;date&#x60; 精确查询某一天，命中后只返回 1 条数据 - 不传 &#x60;date&#x60; 时，按时间倒序分页返回历史列表 - 可以传 &#x60;resolution&#x60; 让 &#x60;image_url&#x60; 直接对应 &#x60;4k&#x60; 或 &#x60;1080&#x60; - 可以传 &#x60;page&#x60; 和 &#x60;page_size&#x60; 控制分页 - 每条记录都是扁平 JSON 对象，里面会包含标题、副标题、说明文案、版权信息、问答信息和图片地址等字段  ## 参数说明 &#x60;resolution&#x60; 默认是 &#x60;4k&#x60;。 &#x60;page&#x60; 默认是 &#x60;1&#x60;，&#x60;page_size&#x60; 默认是 &#x60;30&#x60;，最大是 &#x60;100&#x60;。 当传了 &#x60;date&#x60; 以后，&#x60;page&#x60; 和 &#x60;page_size&#x60; 不生效。
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ImageApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://uapis.cn/api/v1");
+
+    ImageApi apiInstance = new ImageApi(defaultClient);
+    String date = "2026-04-05"; // String | 壁纸日期，格式是 `YYYY-MM-DD`。传了以后会按日期精确查询，并且忽略 `page` 和 `page_size`。
+    String resolution = "4k"; // String | 返回图片的目标分辨率。可以传 `4k` 或 `1080`，不传时默认是 `4k`。
+    Integer page = 1; // Integer | 分页页码，必须是正整数。不传时默认是 `1`。只有在不传 `date` 时才生效。
+    Integer pageSize = 30; // Integer | 每页条数，必须是正整数。不传时默认是 `30`，最大是 `100`。只有在不传 `date` 时才生效。
+    try {
+      GetImageBingDailyHistory200Response result = apiInstance.getImageBingDailyHistory(date, resolution, page, pageSize);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ImageApi#getImageBingDailyHistory");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **date** | **String**| 壁纸日期，格式是 &#x60;YYYY-MM-DD&#x60;。传了以后会按日期精确查询，并且忽略 &#x60;page&#x60; 和 &#x60;page_size&#x60;。 | [optional] |
+| **resolution** | **String**| 返回图片的目标分辨率。可以传 &#x60;4k&#x60; 或 &#x60;1080&#x60;，不传时默认是 &#x60;4k&#x60;。 | [optional] [default to 4k] [enum: 4k, 1080] |
+| **page** | **Integer**| 分页页码，必须是正整数。不传时默认是 &#x60;1&#x60;。只有在不传 &#x60;date&#x60; 时才生效。 | [optional] [default to 1] |
+| **pageSize** | **Integer**| 每页条数，必须是正整数。不传时默认是 &#x60;30&#x60;，最大是 &#x60;100&#x60;。只有在不传 &#x60;date&#x60; 时才生效。 | [optional] [default to 30] |
+
+### Return type
+
+[**GetImageBingDailyHistory200Response**](GetImageBingDailyHistory200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | 查询成功，返回历史壁纸列表和分页信息。 |  -  |
+| **400** | 请求参数不正确。 |  -  |
+| **404** | 按日期精确查询时，没有找到对应的壁纸。 |  -  |
+| **500** | 服务器处理失败，请稍后重试。 |  -  |
 
 <a id="getImageMotou"></a>
 # **getImageMotou**
@@ -284,7 +369,7 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | 请求成功。响应的格式和内容取决于你传入的 &#x60;format&#x60; 参数。请参考下面不同 &#x60;Content-Type&#x60; 的定义。 |  -  |
+| **200** | 请求成功。响应的格式和内容取决于你传入的 &#x60;format&#x60; 参数。请参考下面不同格式的定义。 |  -  |
 | **400** | 请求参数错误。请检查 &#x60;text&#x60; 是否提供，&#x60;size&#x60; 是否在有效范围内，&#x60;format&#x60; 是否为支持的值。 |  -  |
 | **500** | 服务器内部错误。在生成二维码的过程中发生了未知错误。 |  -  |
 
@@ -358,7 +443,7 @@ No authorization required
 
 无损压缩图片
 
-还在为图片体积和加载速度发愁吗？体验一下我们强大的**无损压缩服务**，它能在几乎不牺牲任何肉眼可感知的画质的前提下，将图片体积压缩到极致。  ## 功能概述 你只需要上传一张常见的图片（如 PNG, JPG），选择一个压缩等级，就能获得一个体积小到惊人的压缩文件。这对于需要大量展示高清图片的网站、App 或小程序来说，是优化用户体验、节省带宽和存储成本的利器。  ## 使用须知 &gt; [!TIP] &gt; 为了给您最好的压缩效果，我们的算法需要进行复杂计算，处理时间可能会稍长一些，请耐心等待。  &gt; [!WARNING] &gt; **服务排队提醒** &gt; 这是一个计算密集型服务。在高并发时，您的请求可能会被排队等待处理。如果您需要将其集成到对延迟敏感的生产服务中，请注意这一点。  ### 请求与响应格式 - 请求必须使用 &#x60;multipart/form-data&#x60; 格式上传文件。 - 成功响应将直接返回压缩后的文件二进制流 (&#x60;image/_*&#x60;)，并附带 &#x60;Content-Disposition&#x60; 头，建议客户端根据此头信息保存文件。  ## 参数详解 ### &#x60;level&#x60; (压缩等级) 这是一个从 &#x60;1&#x60; 到 &#x60;5&#x60; 的整数，它决定了压缩的强度和策略，数字越小，压缩率越高。所有等级都经过精心调校，以在最大化压缩率的同时保证出色的视觉质量。 - &#x60;1&#x60;: **极限压缩** (推荐，体积最小，画质优异) - &#x60;2&#x60;: **高效压缩** - &#x60;3&#x60;: **智能均衡** (默认选项) - &#x60;4&#x60;: **画质优先** - &#x60;5&#x60;: **专业保真** (压缩率稍低，保留最多图像信息)  ## 错误处理指南 - **400 Bad Request**: 通常因为没有上传文件，或者 &#x60;level&#x60; 参数不在 1-5 的范围内。 - **500 Internal Server Error**: 如果在压缩过程中服务器发生内部错误，会返回此状态码。
+还在为图片体积和加载速度发愁吗？体验一下我们强大的**无损压缩服务**，它能在几乎不牺牲任何肉眼可感知的画质的前提下，将图片体积压缩到极致。  ## 功能概述 你只需要上传一张常见的图片（如 PNG, JPG），选择一个压缩等级，就能获得一个体积小到惊人的压缩文件。这对于需要大量展示高清图片的网站、App 或小程序来说，是优化用户体验、节省带宽和存储成本的利器。  ## 使用须知 &gt; [!TIP] &gt; 图片越大或压缩等级越高，处理时间可能越长，请您耐心等待。  &gt; [!WARNING] &gt; **处理时间提醒** &gt; 在访问量较高时，处理时间可能进一步延长。如果您的业务对返回时间比较敏感，建议预留充足的处理时间。  ### 请求与响应格式 - 请求必须使用 &#x60;multipart/form-data&#x60; 格式上传文件。 - 成功响应将直接返回压缩后的文件二进制流 (&#x60;image/_*&#x60;)，并附带 &#x60;Content-Disposition&#x60; 头，建议客户端根据此头信息保存文件。  ## 参数详解 ### &#x60;level&#x60; (压缩等级) 这是一个从 &#x60;1&#x60; 到 &#x60;5&#x60; 的整数，它决定了压缩的强度和策略，数字越小，压缩率越高。所有等级都经过精心调校，以在最大化压缩率的同时保证出色的视觉质量。 - &#x60;1&#x60;: **极限压缩** (推荐，体积最小，画质优异) - &#x60;2&#x60;: **高效压缩** - &#x60;3&#x60;: **智能均衡** (默认选项) - &#x60;4&#x60;: **画质优先** - &#x60;5&#x60;: **专业保真** (压缩率稍低，保留最多图像信息)  ## 错误处理指南 - **400 Bad Request**: 通常因为没有上传文件，或者 &#x60;level&#x60; 参数不在 1-5 的范围内。 - **500 Internal Server Error**: 如果在压缩过程中服务器发生内部错误，会返回此状态码。
 
 ### Example
 ```java
@@ -416,9 +501,95 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | 压缩成功响应。响应是压缩后的图片二进制数据。&#x60;Content-Type&#x60; 依据选择的目标格式，默认为 image/png。 |  * Content-Disposition - 提示客户端文件下载为压缩后的文件。建议扩展名与输出格式一致。 <br>  |
+| **200** | 压缩成功响应。响应是压缩后的图片二进制数据。返回格式会依据你选择的目标格式变化，默认是 PNG 图片数据。 |  * Content-Disposition - 提示客户端文件下载为压缩后的文件。建议扩展名与输出格式一致。 <br>  |
 | **400** | 请求无效。可能是未上传文件、文件格式不受支持或参数错误。 |  -  |
 | **500** | 服务器内部错误。压缩过程中发生错误。 |  -  |
+
+<a id="postImageDecode"></a>
+# **postImageDecode**
+> File postImageDecode(width, height, maxWidth, maxHeight, format, colorMode, fit, background, _file, url)
+
+解码并缩放图片
+
+在 RAM 和 Flash 极其有限的设备上解码图片是一项繁重的任务。这个接口专为 IoT 和嵌入式开发设计，将复杂的图像解码和缩放操作转移到云端，直接输出适用于单片机屏幕的二进制像素流。  ## 功能概述 此接口提供了灵活的云端图像预处理能力，帮助硬件开发者跳过繁琐的图像处理逻辑： - **直接推流渲染**：如果选择输出纯像素流（如 RGB565），单片机收到网络数据后无需解析文件头，可直接将其写入显存，实现极低内存占用的边下边播。 - **完美适配屏幕**：无需在设备端编写裁剪或补边代码。只需传入目标屏幕的物理分辨率，接口会自动完成等比缩放、居中补色或铺满裁剪，确保最终显示画面不变形。 - **精准内存分配**：在动态缩放图片的场景下，服务端会在 HTTP 响应头中提前注入 &#x60;X-Image-Width&#x60; 和 &#x60;X-Image-Height&#x60;，方便设备在读取真实的二进制数据前进行准确的内存分配。  ## 使用须知 - **请求格式**：无论是上传本地文件还是传递图片链接，请求体都必须使用 &#x60;multipart/form-data&#x60; 编码格式。 - **网络资源获取**：当您选择传递图片链接时，服务端会自动尝试获取该资源。请确保您提供的图片链接是公网直接可访问的，且不需要任何形式的登录鉴权。
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ImageApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://uapis.cn/api/v1");
+
+    ImageApi apiInstance = new ImageApi(defaultClient);
+    Integer width = 56; // Integer | 目标宽度，单位是像素。可以单独传，也可以和 `height` 一起传。与 `max_width`、`max_height` 互斥。
+    Integer height = 56; // Integer | 目标高度，单位是像素。可以单独传，也可以和 `width` 一起传。与 `max_width`、`max_height` 互斥。
+    Integer maxWidth = 56; // Integer | 最大宽度，单位是像素。只有在不传 `width`、`height` 时才生效，会按原比例缩放。
+    Integer maxHeight = 56; // Integer | 最大高度，单位是像素。只有在不传 `width`、`height` 时才生效，会按原比例缩放。
+    String format = "bmp"; // String | 输出格式。可以传 `bmp`、`rgb565` 或 `rgb888`，不传时默认是 `bmp`。
+    String colorMode = "RGB565"; // String | BMP 输出的颜色模式。只有在 `format=bmp` 时才生效，可以传 `RGB565` 或 `RGB888`，不传时默认是 `RGB888`。
+    String fit = "contain"; // String | 缩放模式。可以传 `contain`、`cover` 或 `fill`，不传时默认是 `contain`。当传 `cover` 或 `fill` 时，`width` 和 `height` 都要传。
+    String background = "black"; // String | 背景色。可以传 `black`、`white` 或 `#RRGGBB`，不传时默认是 `black`。
+    File _file = new File("/path/to/file"); // File | 要处理的图片文件。这个接口适合直接上传 JPG、JPEG、PNG、WebP、BMP 等常见格式。
+    URI url = new URI(); // URI | 要处理的图片链接。适合不方便直接上传文件时使用。
+    try {
+      File result = apiInstance.postImageDecode(width, height, maxWidth, maxHeight, format, colorMode, fit, background, _file, url);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ImageApi#postImageDecode");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **width** | **Integer**| 目标宽度，单位是像素。可以单独传，也可以和 &#x60;height&#x60; 一起传。与 &#x60;max_width&#x60;、&#x60;max_height&#x60; 互斥。 | [optional] |
+| **height** | **Integer**| 目标高度，单位是像素。可以单独传，也可以和 &#x60;width&#x60; 一起传。与 &#x60;max_width&#x60;、&#x60;max_height&#x60; 互斥。 | [optional] |
+| **maxWidth** | **Integer**| 最大宽度，单位是像素。只有在不传 &#x60;width&#x60;、&#x60;height&#x60; 时才生效，会按原比例缩放。 | [optional] |
+| **maxHeight** | **Integer**| 最大高度，单位是像素。只有在不传 &#x60;width&#x60;、&#x60;height&#x60; 时才生效，会按原比例缩放。 | [optional] |
+| **format** | **String**| 输出格式。可以传 &#x60;bmp&#x60;、&#x60;rgb565&#x60; 或 &#x60;rgb888&#x60;，不传时默认是 &#x60;bmp&#x60;。 | [optional] [default to bmp] [enum: bmp, rgb565, rgb888] |
+| **colorMode** | **String**| BMP 输出的颜色模式。只有在 &#x60;format&#x3D;bmp&#x60; 时才生效，可以传 &#x60;RGB565&#x60; 或 &#x60;RGB888&#x60;，不传时默认是 &#x60;RGB888&#x60;。 | [optional] [default to RGB888] [enum: RGB565, RGB888] |
+| **fit** | **String**| 缩放模式。可以传 &#x60;contain&#x60;、&#x60;cover&#x60; 或 &#x60;fill&#x60;，不传时默认是 &#x60;contain&#x60;。当传 &#x60;cover&#x60; 或 &#x60;fill&#x60; 时，&#x60;width&#x60; 和 &#x60;height&#x60; 都要传。 | [optional] [default to contain] [enum: contain, cover, fill] |
+| **background** | **String**| 背景色。可以传 &#x60;black&#x60;、&#x60;white&#x60; 或 &#x60;#RRGGBB&#x60;，不传时默认是 &#x60;black&#x60;。 | [optional] [default to black] |
+| **_file** | **File**| 要处理的图片文件。这个接口适合直接上传 JPG、JPEG、PNG、WebP、BMP 等常见格式。 | [optional] |
+| **url** | **URI**| 要处理的图片链接。适合不方便直接上传文件时使用。 | [optional] |
+
+### Return type
+
+[**File**](File.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: image/bmp, application/octet-stream, application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | 处理成功，直接返回图片二进制数据。&#x60;format&#x3D;bmp&#x60; 时返回 BMP 图片数据，&#x60;format&#x3D;rgb565&#x60; 或 &#x60;rgb888&#x60; 时返回原始二进制像素数据。 |  * X-Image-Width - 输出图片的实际宽度（像素）。 <br>  * X-Image-Height - 输出图片的实际高度（像素）。 <br>  * X-Output-Format - 本次响应使用的输出格式。 <br>  * X-Color-Mode - 本次响应使用的颜色模式。 <br>  * X-Source-Format - 源图片识别出的格式。 <br>  * X-Byte-Order - 当输出使用 16 位像素数据时返回字节序信息。 <br>  |
+| **400** | 请求参数不正确，或者传入的文件和链接都不是可处理的图片内容。 |  -  |
+| **413** | 上传图片体积、拉取到的图片体积、源图片像素，或者输出图片像素超过限制。 |  -  |
+| **500** | 服务器处理失败，例如图片编码阶段发生错误。 |  -  |
+| **502** | 图片下载失败，或者图片链接返回的不是可识别的图片内容。 |  -  |
+| **503** | 当前图片处理任务过多，或者暂时无法获取图片。 |  -  |
+| **504** | 获取图片超时。 |  -  |
 
 <a id="postImageFrombase64"></a>
 # **postImageFrombase64**
@@ -618,6 +789,85 @@ No authorization required
 | **400** | 请求参数错误。可能是未提供图片、文件格式不支持或文件过大。 |  -  |
 | **413** | 文件过大。上传的图片超过了 20MB 的限制。 |  -  |
 | **500** | 服务器内部错误。在处理图片或进行 NSFW 检测时发生错误。 |  -  |
+
+<a id="postImageOcr"></a>
+# **postImageOcr**
+> PostImageOcr200Response postImageOcr(_file, url, imageBase64, imageName, needLocation, returnMarkdown, enableCls)
+
+通用 OCR 文字识别
+
+无论您是需要实现票据的自动化录入，还是在网页前端对图片上的文字进行坐标框选，这个高精度的 OCR 接口都能为您提供强大的基础能力。  ## 功能概述 &gt; [!IMPORTANT] &gt; 如果您只关心图片上写了什么（例如截图取字或内容安全审核），强烈建议将 &#x60;need_location&#x60; 设置为 &#x60;false&#x60;。这会大幅精简返回的 JSON 数据体积，提升网络传输与系统解析效率。  除了常规的图片转文字，这个接口还针对实际开发场景做了一些实用设计： - **前端文字高亮与结构化分析**：默认返回每一段文字的矩形坐标和四个顶点坐标。这非常适合使用 Canvas 在原图上画框高亮，或者在后端根据相对位置提取票据中的键值对信息。 - **复杂拍摄环境下的抗畸变**：针对手机拍摄导致的旋转或倾斜，可以开启 &#x60;enable_cls&#x3D;true&#x60;。服务端在识别前会自动进行方向预校正，显著提升识别准确率。 - **灵活的输入与请求要求**：接口支持 &#x60;file&#x60;、&#x60;url&#x60; 或 &#x60;image_base64&#x60; 三种方式输入。请确保请求格式为 &#x60;multipart/form-data&#x60;，且图片链接在公网可直接访问。
+
+### Example
+```java
+// Import classes:
+import org.openapitools.client.ApiClient;
+import org.openapitools.client.ApiException;
+import org.openapitools.client.Configuration;
+import org.openapitools.client.models.*;
+import org.openapitools.client.api.ImageApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://uapis.cn/api/v1");
+
+    ImageApi apiInstance = new ImageApi(defaultClient);
+    File _file = new File("/path/to/file"); // File | 待识别的图片文件。支持 JPG、JPEG、PNG、BMP、GIF、WebP 等常见格式，最大不超过 10MB。请勿与 url 或 image_base64 同时提交。
+    URI url = new URI(); // URI | 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。
+    String imageBase64 = "imageBase64_example"; // String | 图片的 Base64 字符串。可以传完整 Data URI，也可以只传纯 Base64 内容。请勿与 file 或 url 同时提交。
+    String imageName = "imageName_example"; // String | 自定义图片文件名。传链接或纯 Base64 时建议一起传，便于保留或推断扩展名。
+    String needLocation = "true"; // String | 是否返回文字坐标信息。请传 `true` 或 `false`，不传时默认是 `true`。
+    String returnMarkdown = "true"; // String | 是否额外返回整理后的 Markdown 文本。请传 `true` 或 `false`，不传时默认是 `false`。
+    String enableCls = "true"; // String | 是否开启额外的文字方向校正。请传 `true` 或 `false`，不传时默认是 `false`。
+    try {
+      PostImageOcr200Response result = apiInstance.postImageOcr(_file, url, imageBase64, imageName, needLocation, returnMarkdown, enableCls);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ImageApi#postImageOcr");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **_file** | **File**| 待识别的图片文件。支持 JPG、JPEG、PNG、BMP、GIF、WebP 等常见格式，最大不超过 10MB。请勿与 url 或 image_base64 同时提交。 | [optional] |
+| **url** | **URI**| 公网可直接访问的图片地址。请勿与 file 或 image_base64 同时提交。 | [optional] |
+| **imageBase64** | **String**| 图片的 Base64 字符串。可以传完整 Data URI，也可以只传纯 Base64 内容。请勿与 file 或 url 同时提交。 | [optional] |
+| **imageName** | **String**| 自定义图片文件名。传链接或纯 Base64 时建议一起传，便于保留或推断扩展名。 | [optional] |
+| **needLocation** | **String**| 是否返回文字坐标信息。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;true&#x60;。 | [optional] [default to true] [enum: true, false] |
+| **returnMarkdown** | **String**| 是否额外返回整理后的 Markdown 文本。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;false&#x60;。 | [optional] [default to false] [enum: true, false] |
+| **enableCls** | **String**| 是否开启额外的文字方向校正。请传 &#x60;true&#x60; 或 &#x60;false&#x60;，不传时默认是 &#x60;false&#x60;。 | [optional] [default to false] [enum: true, false] |
+
+### Return type
+
+[**PostImageOcr200Response**](PostImageOcr200Response.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | 识别成功，返回统一的 OCR 结果对象。默认会带坐标信息；当 &#x60;need_location&#x3D;false&#x60; 时，坐标相关字段会省略。 |  -  |
+| **400** | 请求参数不正确，比如没有传图片来源、提交了多重图片来源，或者布尔参数和 Base64 格式不合法。 |  -  |
+| **413** | 图片大小超过当前限制。 |  -  |
+| **415** | 上传内容不是可识别的常见图片格式。 |  -  |
+| **502** | 识别处理失败，请稍后重试。 |  -  |
+| **503** | 文字识别服务暂时不可用，请稍后再试。 |  -  |
 
 <a id="postImageSpeechless"></a>
 # **postImageSpeechless**

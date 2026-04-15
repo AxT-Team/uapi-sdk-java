@@ -8,7 +8,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**whois** | **String** | **WHOIS原始文本**  返回未经处理的原始WHOIS查询结果文本。 |  [optional] |
+|**whois** | **String** | WHOIS 原始文本，返回未经处理的原始 WHOIS 查询结果文本。 |  [optional] |
 
 
 

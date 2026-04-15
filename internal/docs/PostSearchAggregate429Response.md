@@ -9,7 +9,6 @@
 |------------ | ------------- | ------------- | -------------|
 |**code** | **String** |  |  [optional] |
 |**message** | **String** |  |  [optional] |
-|**timestamp** | **OffsetDateTime** |  |  [optional] |
 
 
 

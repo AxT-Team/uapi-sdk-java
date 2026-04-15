@@ -223,11 +223,11 @@ No authorization required
 
 <a id="getMiscHolidayCalendar"></a>
 # **getMiscHolidayCalendar**
-> GetMiscHolidayCalendar200Response getMiscHolidayCalendar(date, month, year, timezone, holidayType, includeNearby, nearbyLimit)
+> GetMiscHolidayCalendar200Response getMiscHolidayCalendar(date, month, year, timezone, holidayType, includeNearby, nearbyLimit, excludePast)
 
 查询节假日与万年历
 
-查询指定日期、月份或年份的万年历与节假日信息。  ## 功能概述 这个接口支持三种查询方式：按天（&#x60;date&#x60;）、按月（&#x60;month&#x60;）和按年（&#x60;year&#x60;）。调用时三者选一个传入即可。  如果你只关心某一类事件，可以通过 &#x60;holiday_type&#x60; 进行筛选，例如只看法定休假/调休、公历节日、农历节日或节气。  在 &#x60;date&#x60; 模式下，传 &#x60;include_nearby&#x3D;true&#x60; 可以额外返回该日期前后最近的节日；返回数量由 &#x60;nearby_limit&#x60; 控制，默认 7，最大 30。
+查询指定日期、月份或年份的万年历与节假日信息。  ## 功能概述 这个接口支持三种查询方式：按天（&#x60;date&#x60;）、按月（&#x60;month&#x60;）和按年（&#x60;year&#x60;）。调用时三者选一个传入即可。  如果你只关心某一类事件，可以通过 &#x60;holiday_type&#x60; 进行筛选，例如只看法定休假/调休、公历节日、农历节日或节气。  在 &#x60;date&#x60; 模式下，传 &#x60;include_nearby&#x3D;true&#x60; 可以额外返回该日期前后最近的节日；返回数量由 &#x60;nearby_limit&#x60; 控制，默认 7，最大 30。  如果你只想保留今天和之后的节日，可以再传 &#x60;exclude_past&#x3D;true&#x60; 过滤已经过去的节日。
 
 ### Example
 ```java
@@ -251,8 +251,9 @@ public class Example {
     String holidayType = "all"; // String | 节日筛选类型，默认 all。
     Boolean includeNearby = false; // Boolean | 是否返回前后最近节日，仅 date 模式生效，默认 false。month/year 模式会忽略此参数。
     Integer nearbyLimit = 7; // Integer | 返回最近节日数量限制，默认 7，最大 30。仅 date 模式 + include_nearby=true 生效。
+    Boolean excludePast = false; // Boolean | 传 true 时，会过滤今天之前已经过去的节日。默认 false。
     try {
-      GetMiscHolidayCalendar200Response result = apiInstance.getMiscHolidayCalendar(date, month, year, timezone, holidayType, includeNearby, nearbyLimit);
+      GetMiscHolidayCalendar200Response result = apiInstance.getMiscHolidayCalendar(date, month, year, timezone, holidayType, includeNearby, nearbyLimit, excludePast);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MiscApi#getMiscHolidayCalendar");
@@ -276,6 +277,7 @@ public class Example {
 | **holidayType** | **String**| 节日筛选类型，默认 all。 | [optional] [default to all] [enum: all, legal, legal_rest, legal_workday, solar, lunar, term] |
 | **includeNearby** | **Boolean**| 是否返回前后最近节日，仅 date 模式生效，默认 false。month/year 模式会忽略此参数。 | [optional] [default to false] |
 | **nearbyLimit** | **Integer**| 返回最近节日数量限制，默认 7，最大 30。仅 date 模式 + include_nearby&#x3D;true 生效。 | [optional] [default to 7] |
+| **excludePast** | **Boolean**| 传 true 时，会过滤今天之前已经过去的节日。默认 false。 | [optional] [default to false] |
 
 ### Return type
 
@@ -298,11 +300,11 @@ No authorization required
 
 <a id="getMiscHotboard"></a>
 # **getMiscHotboard**
-> GetMiscHotboard200Response getMiscHotboard(type, time, keyword, timeStart, timeEnd, limit, sources)
+> GetMiscHotboard200Response getMiscHotboard(type, time, keyword, timeStart, timeEnd, limit)
 
 查询热榜
 
-想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 &#x60;type&#x60; 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 &#x60;type&#x60; + &#x60;time&#x60; 参数，返回最接近指定时间的热榜快照。如果不可用或无数据，会返回空。  ### 搜索模式 传 &#x60;type&#x60; + &#x60;keyword&#x60; + &#x60;time_start&#x60; + &#x60;time_end&#x60; 参数，在指定时间范围内搜索包含关键词的热榜条目。可选传 &#x60;limit&#x60; 限制返回数量。  ### 数据源列表 传 &#x60;sources&#x3D;true&#x60;，返回所有支持历史数据的平台列表。
+想快速跟上网络热点？这个接口让你一网打尽各大主流平台的实时热榜/热搜！  ## 功能概述 你只需要指定一个平台类型，就能获取到该平台当前的热榜数据列表。每个热榜条目都包含标题、热度值和原始链接。非常适合用于制作信息聚合类应用或看板。  ## 三种使用模式  ### 默认模式 只传 &#x60;type&#x60; 参数，返回该平台当前的实时热榜。  ### 时光机模式 传 &#x60;type&#x60; + &#x60;time&#x60; 参数，返回最接近指定时间的热榜快照。如果不可用或无数据，会返回空。  ### 搜索模式 传 &#x60;type&#x60; + &#x60;keyword&#x60; + &#x60;time_start&#x60; + &#x60;time_end&#x60; 参数，在指定时间范围内搜索包含关键词的热榜条目。可选传 &#x60;limit&#x60; 限制返回数量。
 
 ### Example
 ```java
@@ -325,9 +327,8 @@ public class Example {
     Long timeStart = 56L; // Long | 搜索模式必填：搜索起始时间戳（毫秒）。
     Long timeEnd = 56L; // Long | 搜索模式必填：搜索结束时间戳（毫秒）。
     Integer limit = 56; // Integer | 搜索模式下最大返回条数，默认 50，最大 200。
-    Boolean sources = true; // Boolean | 设为 true 时列出所有可用的历史数据源，忽略其他参数。
     try {
-      GetMiscHotboard200Response result = apiInstance.getMiscHotboard(type, time, keyword, timeStart, timeEnd, limit, sources);
+      GetMiscHotboard200Response result = apiInstance.getMiscHotboard(type, time, keyword, timeStart, timeEnd, limit);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MiscApi#getMiscHotboard");
@@ -350,7 +351,6 @@ public class Example {
 | **timeStart** | **Long**| 搜索模式必填：搜索起始时间戳（毫秒）。 | [optional] |
 | **timeEnd** | **Long**| 搜索模式必填：搜索结束时间戳（毫秒）。 | [optional] |
 | **limit** | **Integer**| 搜索模式下最大返回条数，默认 50，最大 200。 | [optional] |
-| **sources** | **Boolean**| 设为 true 时列出所有可用的历史数据源，忽略其他参数。 | [optional] |
 
 ### Return type
 
@@ -368,10 +368,10 @@ No authorization required
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | 查询成功！返回指定平台的热榜列表数据。不同模式返回格式不同：默认模式和时光机模式返回 list 数组；搜索模式返回 results 数组；数据源列表模式返回 sources 数组。 |  -  |
+| **200** | 查询成功！返回指定平台的热榜列表数据。不同模式返回格式不同：默认模式和时光机模式返回 list 数组；搜索模式返回 results 数组。 |  -  |
 | **400** | 请求参数错误。你提供的 &#x60;type&#x60; 参数不是我们支持的平台类型，请检查拼写。 |  -  |
 | **500** | 获取热榜失败。服务器在处理数据时发生内部错误。 |  -  |
-| **502** | 上游服务错误。我们从目标平台（如微博）获取数据时失败，可能是对方接口暂时不可用或有反爬策略。 |  -  |
+| **502** | 暂时无法获取相关数据，请稍后重试。 |  -  |
 
 <a id="getMiscLunartime"></a>
 # **getMiscLunartime**
@@ -761,11 +761,11 @@ No authorization required
 
 <a id="getMiscTrackingQuery"></a>
 # **getMiscTrackingQuery**
-> GetMiscTrackingQuery200Response getMiscTrackingQuery(trackingNumber, carrierCode, phone)
+> GetMiscTrackingQuery200Response getMiscTrackingQuery(trackingNumber, carrierCode, phone, full)
 
 查询快递物流信息
 
-买了东西想知道快递到哪儿了？这个接口帮你实时追踪物流状态。  ## 功能概述 提供一个快递单号，系统会自动识别快递公司并返回完整的物流轨迹信息。这个接口目前可以查询中通、圆通、韵达、申通、极兔、京东、EMS、德邦等主流快递公司的物流信息。  ## 使用须知 目前暂不支持顺丰快递单号的物流查询。  - **自动识别**：不知道是哪家快递？系统会根据单号规则自动识别快递公司（推荐使用） - **手动指定**：如果已知快递公司，可以传递 &#x60;carrier_code&#x60; 参数，查询速度会更快 - **手机尾号验证**：部分快递公司需要验证收件人手机尾号才能查询详细物流，如果返回 &#x60;暂无物流信息&#x60;，建议尝试传入 &#x60;phone&#x60; 参数 - **查询时效**：物流信息实时查询，响应时间通常在1-2秒内
+买了东西想知道快递到哪儿了？这个接口帮你实时追踪物流状态。  ## 功能概述 提供一个快递单号，系统会自动识别快递公司并返回完整的物流轨迹信息。这个接口目前可以查询中通、圆通、韵达、申通、极兔、顺丰、京东、EMS、德邦等主流快递公司的物流信息。  ## 使用须知 - **自动识别**：不知道是哪家快递？系统会根据单号规则自动识别快递公司（推荐使用） - **手动指定**：如果已知快递公司，可以传递 &#x60;carrier_code&#x60; 参数，查询速度会更快 - **手机尾号验证**：顺丰等部分快递公司需要验证收件人手机尾号才能查询详细物流，如果返回 &#x60;暂无物流信息&#x60;，建议尝试传入 &#x60;phone&#x60; 参数 - **查询时效**：物流信息实时查询，响应时间通常在1-2秒内
 
 ### Example
 ```java
@@ -785,8 +785,9 @@ public class Example {
     String trackingNumber = "YT1234567890123"; // String | 快递单号，通常是一串10-20位的数字或字母数字组合。
     String carrierCode = "carrierCode_example"; // String | 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。
     String phone = "phone_example"; // String | 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。
+    Boolean full = true; // Boolean | 使用这个参数可以获得完整的物流信息。但会消耗34积分/一次（不过缓存命中半价）。因为成本实在太贵了，否则非常非常亏说是
     try {
-      GetMiscTrackingQuery200Response result = apiInstance.getMiscTrackingQuery(trackingNumber, carrierCode, phone);
+      GetMiscTrackingQuery200Response result = apiInstance.getMiscTrackingQuery(trackingNumber, carrierCode, phone, full);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling MiscApi#getMiscTrackingQuery");
@@ -806,6 +807,7 @@ public class Example {
 | **trackingNumber** | **String**| 快递单号，通常是一串10-20位的数字或字母数字组合。 | |
 | **carrierCode** | **String**| 快递公司编码（可选）。不填写时系统会自动识别，填写后可加快查询速度。 | [optional] |
 | **phone** | **String**| 收件人手机尾号，4位数字（可选）。部分快递公司需要验证手机尾号才能查询详细物流信息。 | [optional] |
+| **full** | **Boolean**| 使用这个参数可以获得完整的物流信息。但会消耗34积分/一次（不过缓存命中半价）。因为成本实在太贵了，否则非常非常亏说是 | [optional] |
 
 ### Return type
 

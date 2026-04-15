@@ -12,7 +12,7 @@
 |**displayName** | **String** | 引擎显示名称 |  [optional] |
 |**description** | **String** | 引擎描述 |  [optional] |
 |**available** | **Boolean** | 引擎是否可用 |  [optional] |
-|**version** | **String** | 引擎版本号 |  [optional] |
+|**version** | **String** | 配置版本标识 |  [optional] |
 |**features** | **List&lt;String&gt;** | 支持的特性列表 |  [optional] |
 
 
