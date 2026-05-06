@@ -8,6 +8,29 @@
     <maven.compiler.target>17</maven.compiler.target>
     <maven.compiler.source>17</maven.compiler.source>
   </properties>
+  <name>UAPI SDK for Java</name>
+  <description>Official Java SDK for UAPI / uapis.cn — typed Java 17+ wrapper around 100+ free public-API endpoints (network, text, image, social, translation, search). Generated from the live OpenAPI 3.1 spec.</description>
+  <url>https://uapis.cn/docs/sdk/java</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://github.com/AxT-Team/uapi-sdk-java/blob/main/LICENSE</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>uapi</id>
+      <name>UAPI</name>
+      <email>dev@uapis.cn</email>
+      <organization>AxT-Team</organization>
+      <organizationUrl>https://uapis.cn</organizationUrl>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git://github.com/AxT-Team/uapi-sdk-java.git</connection>
+    <developerConnection>scm:git:ssh://github.com:AxT-Team/uapi-sdk-java.git</developerConnection>
+    <url>https://github.com/AxT-Team/uapi-sdk-java/tree/main</url>
+  </scm>
   <dependencies>
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
